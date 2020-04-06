@@ -1,13 +1,13 @@
-FROM php:7.2.10-fpm
+FROM php:7.3
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends vim curl debconf subversion git apt-transport-https apt-utils \
-    build-essential locales acl mailutils wget nodejs zip unzip \
+    build-essential locales acl mailutils wget nodejs \
     gnupg gnupg1 gnupg2 \
     zlib1g-dev \
     sudo
 
-RUN docker-php-ext-install pdo pdo_mysql zip
+RUN docker-php-ext-install pdo pdo_mysql
 
 COPY php.ini /usr/local/etc/php/php.ini
 COPY php-fpm-pool.conf 	/usr/local/etc/php/pool.d/www.conf
