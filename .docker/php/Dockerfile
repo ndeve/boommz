@@ -1,8 +1,8 @@
-FROM php:7.3
+FROM php:7.3.14-fpm
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends vim curl debconf subversion git apt-transport-https apt-utils \
-    build-essential locales acl mailutils wget nodejs \
+    build-essential locales acl mailutils wget nodejs zip unzip \
     gnupg gnupg1 gnupg2 \
     zlib1g-dev \
     sudo
@@ -26,6 +26,15 @@ RUN	echo "deb https://deb.nodesource.com/node_6.x jessie main" >> /etc/apt/sourc
     apt-get update && \
 	apt-get install -y --force-yes nodejs && \
 	rm -f /etc/apt/sources.list.d/nodejs.list
+
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash \
+      && apt-get install -y nodejs
+
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+
+RUN apt-get update && apt-get install -y yarn
+
 
 RUN groupadd dev -g 999
 RUN useradd dev -g dev -d /home/dev -m

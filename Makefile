@@ -91,7 +91,7 @@ apache-start:
 
 #connect to the php container
 php:
-	@C=bz_php S=bash make connect
+	@C=php S=bash make connect
 
 #restart the php container
 php-restart:
@@ -108,19 +108,19 @@ php-start:
 
 #connect to the mysql container
 mysql:
-	@C=bz_mysql S=bash make connect
+	@C=mysql S=bash make connect
 
 #restart the mysql container
 mysql-restart:
-	@${CDC} restart bz_mysql
+	@${CDC} restart mysql
 
 #restart the mysql container
 mysql-stop:
-	@${CDC} stop bz_mysql
+	@${CDC} stop mysql
 
 #restart the mysql container
 mysql-start:
-	@${CDC} start bz_mysql
+	@${CDC} start mysql
 
 composer: composer-bz
 
@@ -140,15 +140,15 @@ yarn: yarn-bz
 
 #install assets of boommz directory
 yarn-install:
-	@${CDC} exec bz_php bash -c 'cd boommz && yarn install'
+	@${CDC} exec php bash -c 'cd boommz && yarn install'
 
 #install assets of boommz directory
 yarn-bz:
-	@${CDC} exec bz_php bash -c 'cd boommz && yarn encore dev'
+	@${CDC} exec php bash -c 'cd boommz && yarn encore dev'
 
 #watch assets of boommz directory
 yarn-watch-bz:
-	@${CDC} exec bz_php bash -c 'cd boommz && yarn encore dev --watch'
+	@${CDC} exec php bash -c 'cd boommz && yarn encore dev --watch'
 
 
 create-log: check-log create-log-bz

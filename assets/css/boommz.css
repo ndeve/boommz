@@ -1,0 +1,889 @@
+body {
+    background-color: #f1f1f1;
+}
+
+.block {
+    background-color: #fff;
+    border: 0 none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    padding: 10px;
+    position: relative;
+}
+.block.draft {
+    background-color: #EDE4BB;
+}
+
+header .navbar {
+    background-color: #67c57f;
+    border-bottom: 2px solid #565656;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+}
+
+.navbar-header {
+    float: left;
+}
+
+header .navbar-header .fa-bars {
+    color: #fff;
+    cursor: pointer;
+    float: left;
+    font-size: 30px;
+    margin: 8px 5px 0;
+}
+header .navbar-header a {
+    background-image: url("../images/boumz.png");
+    float: left;
+    height: 80px;
+    overflow: hidden;
+    padding: 0 10px 0 0;
+    position: relative;
+    width: 197px;
+}
+header .navbar-header a img {
+    bottom: 0;
+    left: 70px;
+    position: absolute;
+}
+
+header .navbar .navbar-nav {
+    margin-left: 20px;
+}
+.navbar-nav > li > a,
+.navbar-nav > li > div > a {
+    color: #fff;
+    font-family: "Oswald",sans-serif;
+    font-size: 17px;
+    line-height: 17px;
+    margin: 0 7px;
+    padding: 56px 5px 5px;
+}
+
+.navbar-nav > .active > a,
+.navbar-nav a:hover,
+.navbar-nav a:focus {
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    color: #20592E !important;
+}
+.sb-slidebar {
+    background-color: #409b55;
+}
+.sb-site-container {
+    background-color: #F1F1F1;
+    transform: none;
+}
+.sb-left .navbar-nav > li > a {
+    margin: 0;
+    padding: 5px;
+}
+.sb-left .navbar-nav > li > div > a {
+    float: left;
+    margin: 0;
+    padding: 5px;
+}
+.sb-left .dropdown-menu {
+    background-color: #ffffff;
+}
+@media (min-width:768px) and (max-width:992px){
+    .navbar-nav > li > a, .navbar-nav > li > div > a {
+        border-radius: 3px;
+        font-size: 14px;
+        margin: 53px 2px 0;
+        padding: 5px 3px;
+    }
+}
+
+header .navbar .navbar-nav li.choose_country {
+    height: 80px;
+    height: 80px;
+    margin-left: 5px;
+    position: relative;
+    width: 45px;
+}
+header .navbar .navbar-nav li.choose_country div {
+    background-color: #8ddda1;
+    border-radius: 4px 4px 0 0;
+    bottom: 0;
+    padding: 3px 2px 1px;
+    position: absolute;
+    width: 42px;
+}
+header .navbar .navbar-nav li.choose_country div a {
+    display: none;
+    font-size: 12px;
+    line-height: 12px;
+    margin: 1px 0;
+    padding: 3px 4px;
+}
+header .navbar .navbar-nav li.choose_country div a .flag {
+    display: inline-block;
+    margin-right: 2px;
+}
+header .navbar .navbar-nav li.choose_country div a span {
+    font-size: 12px;
+    line-height: 12px;
+    margin-top: 0;
+    vertical-align: 3px;
+}
+
+header .navbar .navbar-nav li.choose_country:hover div a,
+header .navbar .navbar-nav li.choose_country div a.on {
+    display: block;
+}
+
+header .navbar .navbar-nav li .uavatar img {
+    border-radius: 3px;
+    float: left;
+    height: 20px;
+    margin-right: 3px;
+    margin-top: -1px;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #20592E;
+}
+
+#content {
+    margin-top: 100px;
+}
+
+/** Header plus petit **/
+body.sm #content {
+    margin-top: 60px;
+}
+body.sm header .navbar {
+    height: 42px;
+    min-height: 42px;
+}
+body.sm header .navbar-header a {
+    background-position: 0 -7px;
+    height: 40px;
+    min-height: 40px;
+}
+body.sm header .navbar-header a img {
+    display: none;
+}
+body.sm header .navbar .navbar-nav > li > a,
+body.sm header .navbar .navbar-nav > li > div > a {
+    border-radius: 2px;
+    margin: 7px;
+    padding: 5px;
+}
+
+body.sm header .navbar .navbar-nav li.choose_country {
+    display: none;
+}
+
+h1 {
+    display: inline-block;
+    font-family: "Oswald",sans-serif;
+    font-size: 25px;
+    line-height: 25px;
+    margin: 10px;
+}
+
+.row.title h1 {
+    margin: 8px 0 0;
+}
+
+.row.comic {
+    margin: 0;
+    padding: 0;
+}
+
+.row.comic > div,
+.row.comic > li {
+    overflow: hidden;
+    padding: 2px;
+}
+.row.comic > div.alert {
+    padding: 15px;
+    margin: 10px 0;
+}
+.cloze.ok {
+    border-bottom-color: #1e913b;
+    color: #1e913b;
+}
+
+.box {
+    background-color: #ffffff;
+    background-position: center center;
+    background-size: cover;
+    border: 2px solid #565656;
+    /*display: flex;*/
+    display: table;
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.box .caption {
+    background-color: #fff;
+    border: 1px solid #565656;
+    font-size: 13px;
+    left: 1px;
+    opacity: 0.95;
+    padding: 2px 6px;
+    position: absolute;
+    top: 1px;
+    z-index: 99;
+}
+
+.box .caption.tr {
+    left: auto;
+    right: 1px;
+}
+.box .caption.bl {
+    bottom: 1px;
+    right: auto;
+    top: auto;
+}
+.box .caption.br {
+    bottom: 1px;
+    top: auto;
+    left: auto;
+    right: 1px;
+}
+
+.bubble {
+    /*align-self: flex-end;*/
+    display: inline-block;
+    font-size: 0;
+    margin: 0 auto;
+    min-width: 105px;
+    padding: 5px 2px;
+    text-align: center;
+    vertical-align: bottom;
+    width: auto!important;
+    /**width: 50%;**/
+}
+
+#content .bubble {
+    display: table-cell;
+}
+
+.bubble.l {
+    left: 10px;
+}
+.bubble.r {
+    right: 10px;
+}
+
+.bubble cite {
+    display: inline-block;
+    position: relative;
+    width: 30px;
+}
+.bubble cite strong {
+    display: none;
+}
+.bubble cite i {
+    background-image:url(../images/boumz.png);
+    background-repeat: no-repeat;
+    top: -6px;
+    display: block;
+    height: 20px;
+    position: absolute;
+    width: 20px;
+}
+.bubble.nt cite i,
+.bubble.nt blockquote
+{
+    visibility: hidden;
+}
+.bubble.nt blockquote {
+    min-width: 133px;
+}
+
+.bubble.l cite {
+    margin-right: 40px;
+}
+.bubble.l cite i {
+    background-position: -20px -100px;
+    left: 30px;
+}
+.bubble.l.s1 cite i {
+    background-position: -60px -100px;
+}
+.bubble.r cite {
+    margin-left: 40px;
+}
+.bubble.r cite i {
+    background-position: 0 -100px;
+    right: 30px;
+}
+.bubble.r.s1 cite i {
+    background-position: -40px -100px;
+}
+
+.bubble blockquote {
+    border: 0;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+.bubble blockquote p {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #545454;
+    border-radius: 5px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+    color: #545454;
+    display: inline-block;
+    font-size: 13px;
+    margin: 0 2px 5px;
+    min-width: 25px;
+    padding: 1px 3px;
+    text-align: left;
+}
+
+.flag {
+    background-image: url(../images/flags.png);
+    background-repeat: no-repeat;
+    display: block;
+	height: 16px;
+    width: 16px;
+}
+
+.flag.flag-cn {background-position: -16px 0}
+.flag.flag-de {background-position: -32px 0}
+.flag.flag-es {background-position: -48px 0}
+.flag.flag-fr {background-position: 0 -16px}
+.flag.flag-gb {background-position: -16px -16px}
+.flag.flag-it {background-position: -32px -16px}
+.flag.flag-jp {background-position: -48px -16px}
+.flag.flag-kr {background-position: 0 -32px}
+.flag.flag-nl {background-position: -16px -32px}
+.flag.flag-pt {background-position: -32px -32px}
+.flag.flag-en {background-position: -48px -32px}
+
+.bottom {
+    margin-top: 10px;
+}
+
+.embed button.close,
+.report button.close {
+    position: absolute;
+    right: 12px;
+    top: 5px;
+}
+.embed textarea {
+    font-size: 12px;
+    height: 44px;
+    padding: 4px;
+}
+
+/** User Edition **/
+.form-date select.form-control {
+    margin-right: 5px;
+}
+
+.form-group .uavatar {
+    border-radius: 4px;
+    float: left;
+    margin-right: 10px;
+    width: 50px;
+}
+
+.panel.panel-submit {
+    border-top: 0 none;
+    bottom: 0;
+    margin-top: -30px;
+    position: sticky;
+}
+@-moz-document url-prefix() {
+    .col-md-3.user {
+        position: sticky;
+        top: 100px
+    }
+}
+.form-username .fa {
+    display: none;
+    margin-left: 15px;
+}
+.form-username:hover .fa {
+    display: inline-block;
+}
+/** End User Edition **/
+
+.header-user {
+    height: 110px;
+    margin: 0 auto 0;
+    width: 90%;
+}
+.header-user .a {
+    float:left;
+}
+.header-user .a img {
+    border-radius: 4px;
+    height: 100px;
+}
+.header-user .i {
+    margin-left: 115px;
+}
+.header-user .i h1, h1.u {
+    color: #3D3D3D;
+    font-size: 30px;
+    margin: 10px 0 5px;
+}
+.header-user .i p {
+    color: #6B6B6B;
+    font-size: 12px;
+}
+.header-user .i .stats {
+    width: 500px;
+    max-width: 100%;
+}
+.header-user .i .stats div {
+    border-right: 1px solid #e0e0e0;
+    float: left;
+    margin-right: 30px;
+    padding-right: 30px;
+}
+.header-user .i .stats div:last-child {
+    border-right: 0;
+}
+.header-user .i .stats div b {
+    font-size: 20px;
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+}
+.header-user .i .stats div span {
+    color: #898989;
+    display: block;
+    font-size: 11px;
+    margin-top: -3px;
+    text-transform: uppercase;
+}
+hr.u {
+    border-color: #e0e0e0;
+    margin-bottom: 15px;
+}
+
+.connect {
+    color: #fff;
+    display: inline-block;
+    height: 37px;
+    margin: 0 auto;
+    padding: 0 !important;
+    text-transform: uppercase;
+}
+.connect:hover {
+    color: #fff;
+    opacity: 0.8;
+}
+.connect b {
+    color: #fff;
+    display: block;
+    float: left;
+    font-family: "FontAwesome";
+    font-size: 20px;
+    font-weight: normal;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    width: 36px;
+}
+.connect span {
+    display: block;
+    float: left;
+    padding: 8px;
+}
+
+.connect.facebook b:before {
+    content: "\f09a";
+}
+.connect.facebook b {
+    background-color: #354f88;
+}
+.connect.facebook {
+    background-color: #4667A8;
+}
+
+.connect.twitter b:before {
+    content: "\f099";
+}
+.connect.twitter b {
+    background-color: #40A2D1;
+}
+.connect.twitter {
+    background: #45B0E3;
+}
+
+.connect.boumz b {
+    background-image: url(../images/boumz.png);
+    background-color: #4CA562;
+    background-position: 0px -120px;
+    border-color: #4CA562;
+    border-width: 5px;
+    border-style: solid;
+}
+.connect.boumz {
+    background-color: #67C57F;
+}
+
+.connect.gplus b:before {
+    content: "\f0d5";
+}
+.connect.gplus b {
+    background-color: #eb4026;
+}
+.connect.gplus {
+    background-color: #eb4026;
+}
+
+.connect.pinterest b:before {
+    content: "\f0d2";
+}
+.connect.pinterest b {
+    background-color: #ca212a;
+}
+.connect.pinterest {
+    background-color: #ca212a;
+}
+
+.share {
+    border-radius: 3px;
+    height: 32px;
+    overflow: hidden;
+}
+.share b {
+    height: 32px;
+    line-height: 32px;
+    padding: 0 4px;
+    width: 32px;
+}
+.share span {
+    font-size: 13px;
+    padding: 6px 5px;
+    text-transform: none;
+}
+
+.rate {
+    background-color: #67c57f;
+    border-radius: 3px;
+    height: 32px;
+}
+.rate b {
+    background-image: url(../images/boumz.png);
+    background-color: #4ca562;
+    border-color: #4CA562;
+    border-radius: 3px 0 0 3px;
+    border-style: solid;
+    border-width: 6px 7px;
+    height: 32px;
+    width: 32px;
+}
+.rate b.love {
+    background-position: 0 -180px;
+}
+.rate b.lol {
+    background-position: -22px -180px;
+}
+.rate b.wtf {
+    background-position: -43px -180px;
+}
+.rate span {
+    font-size: 12px;
+}
+.rate span i {
+    font-style: normal;
+}
+
+div.hr {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+}
+
+div.hr span {
+    background:#fff;
+    padding:0 10px;
+}
+
+.panel-register {
+    max-width: 500px;
+    margin: 0 auto;
+}
+.panel-register form {
+    margin: 0 auto 20px;
+    max-width: 320px;
+}
+.panel-register .checkbox.pull-left {
+    margin-top: 1px;
+}
+.panel-register .btn.btn-link.pull-right {
+    padding-top: 0px;
+}
+
+.comics .block {
+    padding: 8px 8px 5px;
+}
+.comics .block h2 {
+    background-color: rgba(255, 255, 255, 0.85);
+    bottom: 0;
+    display: none;
+    font-size: 25px;
+    left: 0;
+    margin: auto;
+    overflow: hidden;
+    padding: 10px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    z-index: 2;
+}
+.comics .block h2 span {
+    color: #3d3d3d;
+    display: inline-block;
+    font-family: "Oswald",sans-serif;
+    margin: auto;
+    vertical-align: middle;
+}
+.comics .block img {
+    display: block;
+    width: 100%;
+}
+.comics .block a:hover h2 {
+    display: flex;
+}
+
+.comics .block .fa-chevron-left,
+.comics .block .fa-chevron-right {
+    bottom: 0;
+    color: #fff;
+    font-size: 46px;
+    left: 20px;
+    height: 46px;
+    margin: auto 0;
+    position: absolute;
+    text-shadow: 0 0 5px #777;
+    top: 0;
+}
+.comics .block .fa-chevron-right {
+    left: auto;
+    right: 20px;
+}
+.comics .block a:hover .fa {
+    display: none;
+}
+
+
+.comics .u {
+    font-size: 13px;
+    height: 50px;
+    margin: -5px 10px 0;
+}
+
+.comics .block a.ni {
+    background-color: #67c57f;
+    border: 1px solid #3f3f3f;
+    display: block;
+    height: 143px;
+}
+.comics .col-xs-2 .block a.ni {
+    height: 104px;
+}
+.comics .block a.ni h2 {
+    color: #fff;
+    background-color: #67c57f;
+    display: block;
+}
+
+.comics .u > a {
+    text-decoration: none;
+}
+.comics .u > a > img {
+    border-radius: 2px;
+    width: 20px;
+}
+.comics .col-xs-6 .block h2 {
+    font-size: 18px;
+}
+.comics .col-xs-6 .u {
+    font-size: 11px;
+    height: 40px;
+    margin: -10px 5px 0;
+}
+
+img.u {
+    border-radius: 2px;
+}
+
+.block.infos > img.u {
+    vertical-align: top;
+    width: 50px;
+}
+.block.infos .comment div > a {
+    font-weight: bold;
+}
+.block.infos > hr {
+    margin-bottom: 10px;
+}
+.block.infos .vote {
+    margin-top: -3px;
+    text-align: right;
+}
+
+/** Landing **/
+body.green {
+    background-color: #8ddda1;
+}
+body.blue {
+    background-color: #BCDAE5;
+}
+.bubble_big {
+    display: block!important;
+    font-size: inherit;
+    margin: 20px auto;
+}
+.bubble_big div.panel-register {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #545454;
+    border-radius: 10px;
+}
+.bubble_big .panel-heading {
+    border-radius: 10px 10px 0 0;
+}
+.bubble_big .panel-footer {
+    border-radius: 0 0 10px 10px;
+}
+.bubble_big cite i {
+    top: -1px;
+}
+.hand {
+    font-family: 'Merienda', cursive;
+    font-size: 13px;
+    line-height: 13px;
+}
+.f12 {font-size: 12px;}
+.f13 {font-size: 13px;}
+.f14 {font-size: 14px;}
+.f15 {font-size: 15px;}
+.f16 {font-size: 16px;}
+.f17 {font-size: 17px;}
+.f18 {font-size: 18px;}
+.f19 {font-size: 19px;}
+.f20 {font-size: 20px;}
+
+input.cloze {
+    border: 0;
+    border-bottom: 1px dashed #000;
+    height: 15px;
+    margin: 0 0 2px;
+    padding: 0;
+}
+/** End Landing **/
+
+.comment {
+    border-bottom: 1px solid #f7f7f7;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.comment > .u {
+    float: left;
+    margin-top: 2px;
+    width: 50px;
+}
+.comment > div {
+    font-size: 13px;
+    margin-left: 60px;
+}
+.comment > div a {
+
+}
+.comment > div i {
+    color: #999999;
+    font-size: 12px;
+    font-style: normal;
+}
+.container > h1,
+.container > h2,
+.users > h3 {
+    color: #545454;
+    display: inline;
+    font-family: "Oswald",sans-serif;
+    font-size: 18px;
+    margin: 5px 0 5px 10px;
+    padding: 0;
+    text-transform: uppercase;
+}
+.personas > h3,
+.users > h3 {
+    display: block;
+}
+.container > h1 {
+    font-size: 24px;
+}
+.users .user {
+    float: left;
+    height: 52px;
+    overflow: hidden;
+    position: relative;
+    width: 52px;
+}
+.users .user > img {
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.users .user:hover {
+    background-color: #BCE0C5;
+}
+
+footer {
+    background-color: #e8e8e8;
+    border-top: 4px solid #e2e2e2;
+    margin: 10px auto 0!important;
+}
+footer .container {
+    color: #828282;
+    padding: 5px;
+}
+footer h3 {
+    font-family: "Oswald",sans-serif;
+    font-size: 16px;
+    margin: 0 0 5px;
+}
+.fa-refresh:before {
+    content: "\f021";
+}
+
+.fa-refresh {
+    animation: 2s linear 0s normal none infinite running fa-spin;
+    font-family: FontAwesome;
+    font-weight: normal;
+}
+
+footer a.s {
+    border-radius: 2px;
+    display: block;
+    float: left;
+    height: 50px;
+    margin-right: 5px;
+    padding: 5px 0;
+    text-align: center;
+    width: 50px;
+}
+footer a.s.f {
+    background-color: #728cc1;
+}
+footer a.s.t {
+    background-color: #4fc1f2;
+}
+
+.modal-open #sb-site {
+    position: initial!important;
+    transform: none!important;
+}
+
+.bubble{}

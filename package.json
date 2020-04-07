@@ -1,0 +1,23 @@
+{
+  "devDependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "@symfony/webpack-encore": "^0.23.0",
+    "babel-core": "^6.x",
+    "babel-loader": "^7.x",
+    "babel-preset-env": "^1.7.0",
+    "choices.js": "^3.0.4",
+    "fontfaceobserver": "^2.0.13",
+    "jquery": "^3.4.1",
+    "lazysizes": "^4.1.4",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^7.1.0",
+    "webpack-notifier": "^1.6.0"
+  },
+  "dependencies": {
+    "imagesloaded": "^4.1.4",
+    "isotope-layout": "^3.0.6"
+  },
+  "scripts": {
+    "dev-server": "encore dev-server --public http://app.vm:8080"
+  }
+}

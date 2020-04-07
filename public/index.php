@@ -6,8 +6,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 require dirname(__DIR__).'/config/bootstrap.php';
 
-dump($_ENV['DATABASE_URL']);
-die();
 if ($_SERVER['APP_DEBUG']) {
     umask(0000);
 
