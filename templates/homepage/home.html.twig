@@ -39,11 +39,11 @@
 
             <ul class="nav navbar-nav text-uppercase">
                 {% if  app.user  %}
-                    <li{% if  app.request.attributes.get('_route') == 'boumz_comic_create' %} class="active"{% endif %}><a href="">{% trans %}Create a comic{% endtrans %}</a></li>
+                    <li{% if  app.request.attributes.get('_route') == 'boommz_comic_create' %} class="active"{% endif %}><a href="">{% trans %}Create a comic{% endtrans %}</a></li>
                 {% endif %}
-                <li{% if  app.request.attributes.get('_route') == 'boumz_comics' or app.request.attributes.get('_route') == 'boumz_comics_popular' or app.request.attributes.get('_route') == 'boumz_comic' %} class="active"{% endif %}><a href="">{% trans %}All comics{% endtrans %}</a></li>
+                <li{% if  app.request.attributes.get('_route') == 'boommz_comics' or app.request.attributes.get('_route') == 'boommz_comics_popular' or app.request.attributes.get('_route') == 'boommz_comic' %} class="active"{% endif %}><a href="">{% trans %}All comics{% endtrans %}</a></li>
                 {% if  app.user  %}
-                    <li{% if  app.request.attributes.get('_route') == 'boumz_characters_create' %} class="active"{% endif %}><a href="">{% trans %}Create characters{% endtrans %}</a></li>
+                    <li{% if  app.request.attributes.get('_route') == 'boommz_characters_create' %} class="active"{% endif %}><a href="">{% trans %}Create characters{% endtrans %}</a></li>
                 {% endif %}
 </ul>
 
@@ -71,8 +71,8 @@ Boumz! © 2015 ·
 </div>
 <div class="col-sm-4">
 <h3>Retrouvez nous chez d'autres super-héros</h3>
-<a href="https://www.facebook.com/BoumzComics" target="_blank" class="s f"><img src="http://fr.boumz.com/images/p/Others/fbMan.png" /></a>
-<a href="https://twitter.com/BoumzComics" target="_blank" class="s t"><img src="http://fr.boumz.com/images/p/Others/TwitterMan.png" /></a>
+<a href="https://www.facebook.com/BoumzComics" target="_blank" class="s f"><img src="http://fr.boommz.com/images/p/Others/fbMan.png" /></a>
+<a href="https://twitter.com/BoumzComics" target="_blank" class="s t"><img src="http://fr.boommz.com/images/p/Others/TwitterMan.png" /></a>
 </div>
 </div>
 </div>

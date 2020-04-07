@@ -26,10 +26,16 @@ class User extends BaseUser
      */
     private $comics;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Persona", mappedBy="users")
+     */
+    private $personas;
+
     public function __construct()
     {
         parent::__construct();
         $this->comics = new ArrayCollection();
+        $this->personas = new ArrayCollection();
         // your own logic
     }
 
@@ -59,6 +65,34 @@ class User extends BaseUser
             if ($comic->getAuthor() === $this) {
                 $comic->setAuthor(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Persona[]
+     */
+    public function getPersonas(): Collection
+    {
+        return $this->personas;
+    }
+
+    public function addPersona(Persona $persona): self
+    {
+        if (!$this->personas->contains($persona)) {
+            $this->personas[] = $persona;
+            $persona->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePersona(Persona $persona): self
+    {
+        if ($this->personas->contains($persona)) {
+            $this->personas->removeElement($persona);
+            $persona->removeUser($this);
         }
 
         return $this;

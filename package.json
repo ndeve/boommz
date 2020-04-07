@@ -14,7 +14,9 @@
   },
   "dependencies": {
     "imagesloaded": "^4.1.4",
-    "isotope-layout": "^3.0.6"
+    "isotope-layout": "^3.0.6",
+    "bulma-start": "*",
+    "core-js@2": "*"
   },
   "scripts": {
     "dev-server": "encore dev-server --public http://app.vm:8080"

@@ -2,7 +2,10 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Behat\Transliterator;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ComicRepository")
@@ -47,9 +50,29 @@ class Comic
      */
     private $public;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Box", mappedBy="comic", orphanRemoval=true)
+     */
+    private $boxes;
+
+    /**
+     * @ORM\Column(type="string", length=5)
+     */
+    private $locale;
+
+    public function __construct()
+    {
+        $this->boxes = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function __toString()
+    {
+        return $this->getTitle();
     }
 
     public function getTitle(): ?string
@@ -122,5 +145,63 @@ class Comic
         $this->public = $public;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Box[]
+     */
+    public function getBoxes(): Collection
+    {
+        return $this->boxes;
+    }
+
+    public function addBox(Box $box): self
+    {
+        if (!$this->boxes->contains($box)) {
+            $this->boxes[] = $box;
+            $box->setComic($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBox(Box $box): self
+    {
+        if ($this->boxes->contains($box)) {
+            $this->boxes->removeElement($box);
+            // set the owning side to null (unless already changed)
+            if ($box->getComic() === $this) {
+                $box->setComic(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getLocale(): ?string
+    {
+        return $this->locale;
+    }
+
+    public function setLocale(string $locale): self
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    public function getRewritten()
+    {
+        return $this->getTitle();
+    }
+
+    public function getRouteParams()
+    {
+        return ['id' => $this->getId(), 'rewritten' => $this->getRewritten()];
+    }
+
+    public function getOnline()
+    {
+        return true;
     }
 }
