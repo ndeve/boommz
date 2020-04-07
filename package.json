@@ -1,10 +1,9 @@
 {
   "devDependencies": {
-    "@babel/polyfill": "^7.0.0",
+    "@babel/polyfill": "*",
     "@symfony/webpack-encore": "^0.23.0",
-    "babel-core": "^6.x",
-    "babel-loader": "^7.x",
-    "babel-preset-env": "^1.7.0",
+    "babel-core": "*",
+    "babel-preset-env": "*",
     "choices.js": "^3.0.4",
     "fontfaceobserver": "^2.0.13",
     "jquery": "^3.4.1",

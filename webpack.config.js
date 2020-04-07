@@ -60,5 +60,3 @@ config.module.rules.push({
 
 // export the final config
 module.exports = config;
-
-//console.log(module.exports);

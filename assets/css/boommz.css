@@ -32,7 +32,7 @@ header .navbar-header .fa-bars {
     margin: 8px 5px 0;
 }
 header .navbar-header a {
-    background-image: url("../images/boumz.png");
+    background-image: url("../images/boommz.png");
     float: left;
     height: 80px;
     overflow: hidden;
@@ -281,7 +281,7 @@ h1 {
     display: none;
 }
 .bubble cite i {
-    background-image:url(../images/boumz.png);
+    background-image:url(../images/boommz.png);
     background-repeat: no-repeat;
     top: -6px;
     display: block;
@@ -513,15 +513,15 @@ hr.u {
     background: #45B0E3;
 }
 
-.connect.boumz b {
-    background-image: url(../images/boumz.png);
+.connect.boommz b {
+    background-image: url(../images/boommz.png);
     background-color: #4CA562;
     background-position: 0px -120px;
     border-color: #4CA562;
     border-width: 5px;
     border-style: solid;
 }
-.connect.boumz {
+.connect.boommz {
     background-color: #67C57F;
 }
 
@@ -568,7 +568,7 @@ hr.u {
     height: 32px;
 }
 .rate b {
-    background-image: url(../images/boumz.png);
+    background-image: url(../images/boommz.png);
     background-color: #4ca562;
     border-color: #4CA562;
     border-radius: 3px 0 0 3px;

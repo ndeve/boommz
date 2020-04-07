@@ -17,14 +17,7 @@
     <meta name="twitter:image" content="{% spaceless %}{{ block('og_image') }}{% endspaceless %}">
     {% block metas %}{% endblock %}
     {% block stylesheets %}
-        {% stylesheets  'bootstrap/css/bootstrap.css'
-            'http://fonts.googleapis.com/css?family=Oswald|Merienda'
-            'bundles/boumzboumz/font-awesome/css/font-awesome.css'
-            'bundles/boumzboumz/slidebars/dist/slidebars.css'
-            'bundles/boumzboumz/css/boumz.css'
-            filter='cssrewrite,yui_css' %}
-            <link rel="stylesheet" href="{{ asset_url }}?z" type="text/css" />
-        {% endstylesheets %}
+        {{ encore_entry_link_tags('app') }}
     {% endblock %}
     <link rel="icon" type="image/png" href="logo.png" />
     <link rel="icon" sizes="192x192" href="favicon192x192.png">
@@ -46,15 +39,14 @@
 
             <ul class="nav navbar-nav text-uppercase">
                 {% if  app.user  %}
-                    <li{% if  app.request.attributes.get('_route') == 'boumz_comic_create' %} class="active"{% endif %}><a href="{{ url('boumz_comic_create') }}">{% trans %}Create a comic{% endtrans %}</a></li>
+                    <li{% if  app.request.attributes.get('_route') == 'boumz_comic_create' %} class="active"{% endif %}><a href="">{% trans %}Create a comic{% endtrans %}</a></li>
                 {% endif %}
-                <li{% if  app.request.attributes.get('_route') == 'boumz_comics' or app.request.attributes.get('_route') == 'boumz_comics_popular' or app.request.attributes.get('_route') == 'boumz_comic' %} class="active"{% endif %}><a href="{{ url('boumz_comics') }}">{% trans %}All comics{% endtrans %}</a></li>
+                <li{% if  app.request.attributes.get('_route') == 'boumz_comics' or app.request.attributes.get('_route') == 'boumz_comics_popular' or app.request.attributes.get('_route') == 'boumz_comic' %} class="active"{% endif %}><a href="">{% trans %}All comics{% endtrans %}</a></li>
                 {% if  app.user  %}
-                    <li{% if  app.request.attributes.get('_route') == 'boumz_characters_create' %} class="active"{% endif %}><a href="{{ url('boumz_characters_create') }}">{% trans %}Create characters{% endtrans %}</a></li>
+                    <li{% if  app.request.attributes.get('_route') == 'boumz_characters_create' %} class="active"{% endif %}><a href="">{% trans %}Create characters{% endtrans %}</a></li>
                 {% endif %}
 </ul>
 
-{{ render_esi(url('boumz_use_header')) }}
 
 </div>
 </nav>
@@ -97,13 +89,6 @@ ga('send', 'pageview');
 </script>
 
 {% block javascripts %}
-{% javascripts  'http://code.jquery.com/jquery-1.9.1.min.js'
-    'bootstrap/js/bootstrap.js'
-    '@BoumzBoumzBundle/Resources/public/js/boumz.js'
-    '@BoumzBoumzBundle/Resources/public/slidebars/dist/slidebars.js'
-    filter='yui_js' %}
-<script src="{{ asset_url }}"></script>
-{% endjavascripts %}
 {% endblock javascripts %}
 </body>
 </html>
