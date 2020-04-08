@@ -1,0 +1,51 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+    <h1 class="title">{% trans %}Register{% endtrans %}</h1>
+
+    {{ form_start(registrationForm) }}
+    <div class="field">
+        {{ form_label(registrationForm.email, 'Email', {'label_attr': {'class': 'label'}}) }}
+
+        <div class="control has-icons-left has-icons-right">
+            {{ form_widget(registrationForm.email, { 'attr': {'class': 'input'}}) }}
+            <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
+        </div>
+    </div>
+
+    <div class="field">
+        {{ form_label(registrationForm.username, 'Username', {'label_attr': {'class': 'label'}}) }}
+
+        <div class="control has-icons-left has-icons-right">
+            {{ form_widget(registrationForm.username, { 'attr': {'class': 'input'}}) }}
+            <span class="icon is-small is-left"><i class="fas fa-user"></i></span>
+        </div>
+    </div>
+
+    <div class="field">
+        {{ form_label(registrationForm.plainPassword, 'Password', {'label_attr': {'class': 'label'}}) }}
+
+        <div class="control has-icons-left has-icons-right">
+            {{ form_widget(registrationForm.plainPassword, { 'attr': {'class': 'input'}}) }}
+            <span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
+        </div>
+    </div>
+
+    <div class="field">
+
+        <div class="control">
+            <label class="checkbox">
+                {{ form_widget(registrationForm.agreeTerms) }}
+                {{ form_label(registrationForm.agreeTerms) }}
+            </label>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+            <button class="button is-primary">{% trans %}Submit{% endtrans %}</button>
+        </div>
+    </div>
+
+    {{ form_end(registrationForm) }}
+{% endblock %}
