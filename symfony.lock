@@ -1,26 +1,6 @@
 {
-    "api-platform/api-pack": {
-        "version": "v1.2.2"
-    },
-    "api-platform/core": {
-        "version": "2.5",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "2.5",
-            "ref": "a93061567140e386f107be75340ac2aee3f86cbf"
-        },
-        "files": [
-            "config/packages/api_platform.yaml",
-            "config/routes/api_platform.yaml",
-            "src/Entity/.gitignore"
-        ]
-    },
     "behat/transliterator": {
         "version": "v1.3.0"
-    },
-    "cocur/slugify": {
-        "version": "v4.0.0"
     },
     "doctrine/annotations": {
         "version": "1.0",
@@ -98,18 +78,6 @@
     "doctrine/reflection": {
         "version": "1.2.1"
     },
-    "easycorp/easy-log-handler": {
-        "version": "1.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "1.0",
-            "ref": "70062abc2cd58794d2a90274502f81b55cd9951b"
-        },
-        "files": [
-            "config/packages/dev/easy_log_handler.yaml"
-        ]
-    },
     "easycorp/easyadmin-bundle": {
         "version": "2.0",
         "recipe": {
@@ -126,35 +94,14 @@
     "egulias/email-validator": {
         "version": "2.1.17"
     },
-    "fig/link-util": {
-        "version": "1.1.0"
-    },
     "friendsofsymfony/user-bundle": {
         "version": "v2.1.2"
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
-    "knplabs/knp-menu": {
-        "version": "2.6.0"
-    },
-    "knplabs/knp-menu-bundle": {
-        "version": "v2.3.0"
-    },
     "monolog/monolog": {
         "version": "1.25.3"
-    },
-    "nelmio/cors-bundle": {
-        "version": "1.5",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "1.5",
-            "ref": "6388de23860284db9acce0a7a5d9d13153bcb571"
-        },
-        "files": [
-            "config/packages/nelmio_cors.yaml"
-        ]
     },
     "nikic/php-parser": {
         "version": "v4.3.0"
@@ -203,47 +150,6 @@
         "files": [
             "config/packages/sensio_framework_extra.yaml"
         ]
-    },
-    "sonata-project/admin-bundle": {
-        "version": "3.64",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "3.64",
-            "ref": "e300c83e77d35a352b863a82c8d039f29f10fd62"
-        },
-        "files": [
-            "config/packages/sonata_admin.yaml",
-            "config/routes/sonata_admin.yaml",
-            "src/Admin/.gitignore"
-        ]
-    },
-    "sonata-project/block-bundle": {
-        "version": "3.18.4"
-    },
-    "sonata-project/cache": {
-        "version": "2.0.1"
-    },
-    "sonata-project/core-bundle": {
-        "version": "3.9",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "3.9",
-            "ref": "2f69bd1995730b73a5211a9707622fb25a925df7"
-        },
-        "files": [
-            "config/packages/sonata_core.yaml"
-        ]
-    },
-    "sonata-project/datagrid-bundle": {
-        "version": "2.5.0"
-    },
-    "sonata-project/doctrine-extensions": {
-        "version": "1.6.0"
-    },
-    "sonata-project/exporter": {
-        "version": "2.2.0"
     },
     "swiftmailer/swiftmailer": {
         "version": "v6.2.3"
@@ -480,9 +386,6 @@
             "config/routes.yaml"
         ]
     },
-    "symfony/security-acl": {
-        "version": "v3.0.4"
-    },
     "symfony/security-bundle": {
         "version": "4.4",
         "recipe": {
@@ -639,20 +542,11 @@
             "config/packages/twig_extensions.yaml"
         ]
     },
-    "twig/extra-bundle": {
-        "version": "v3.0.3"
-    },
-    "twig/string-extra": {
-        "version": "v3.0.3"
-    },
     "twig/twig": {
         "version": "v3.0.3"
     },
     "webmozart/assert": {
         "version": "1.7.0"
-    },
-    "willdurand/negotiation": {
-        "version": "v2.3.1"
     },
     "zendframework/zend-code": {
         "version": "3.4.1"

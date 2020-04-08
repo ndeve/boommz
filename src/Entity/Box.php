@@ -19,12 +19,6 @@ class Box
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\comic", inversedBy="boxes")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $comic;
-
-    /**
      * @ORM\Column(type="integer")
      */
     private $orderBox;
@@ -44,9 +38,20 @@ class Box
      */
     private $bubbles;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Page", inversedBy="boxes")
+     */
+    private $pages;
+
     public function __construct()
     {
         $this->bubbles = new ArrayCollection();
+        $this->pages = new ArrayCollection();
+    }
+
+    public function _toString()
+    {
+        return $this->getId();
     }
 
     public function getId(): ?int
@@ -61,6 +66,7 @@ class Box
 
     public function setComic(?comic $comic): self
     {
+        $this->setDateCreation();
         $this->comic = $comic;
 
         return $this;
@@ -83,9 +89,9 @@ class Box
         return $this->dateCreation;
     }
 
-    public function setDateCreation(\DateTimeInterface $dateCreation): self
+    public function setDateCreation(): self
     {
-        $this->dateCreation = $dateCreation;
+        $this->dateCreation = new \DateTime();
 
         return $this;
     }
@@ -127,6 +133,37 @@ class Box
             // set the owning side to null (unless already changed)
             if ($bubble->getBox() === $this) {
                 $bubble->setBox(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Page[]
+     */
+    public function getPages(): Collection
+    {
+        return $this->pages;
+    }
+
+    public function addPage(Page $page): self
+    {
+        if (!$this->pages->contains($page)) {
+            $this->pages[] = $page;
+            $page->setBox($this);
+        }
+
+        return $this;
+    }
+
+    public function removePage(Page $page): self
+    {
+        if ($this->pages->contains($page)) {
+            $this->pages->removeElement($page);
+            // set the owning side to null (unless already changed)
+            if ($page->getBox() === $this) {
+                $page->setBox(null);
             }
         }
 

@@ -1,3 +1,4 @@
-//require('../bulma/_sass/main.scss');
-require('../bulma/css/main.css');
-require('../css/boommz.css');
+const $ = require("jquery");
+
+import "../bulma/css/main.css";
+import "../js/create.js";

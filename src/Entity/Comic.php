@@ -40,8 +40,8 @@ class Comic
     private $datePublication;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\user", inversedBy="comics")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comics")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $author;
 
@@ -51,18 +51,19 @@ class Comic
     private $public;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Box", mappedBy="comic", orphanRemoval=true)
-     */
-    private $boxes;
-
-    /**
      * @ORM\Column(type="string", length=5)
      */
     private $locale;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Page", mappedBy="comic", orphanRemoval=true, cascade={"persist"})
+     */
+    private $pages;
+
     public function __construct()
     {
         $this->boxes = new ArrayCollection();
+        $this->pages = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -82,6 +83,8 @@ class Comic
 
     public function setTitle(string $title): self
     {
+        $this->setDateCreation();
+        $this->setDateUpdate();
         $this->title = $title;
 
         return $this;
@@ -92,9 +95,9 @@ class Comic
         return $this->dateCreation;
     }
 
-    public function setDateCreation(\DateTimeInterface $dateCreation): self
+    public function setDateCreation(): self
     {
-        $this->dateCreation = $dateCreation;
+        $this->dateCreation = new \DateTime();
 
         return $this;
     }
@@ -104,9 +107,9 @@ class Comic
         return $this->dateUpdate;
     }
 
-    public function setDateUpdate(\DateTimeInterface $dateUpdate): self
+    public function setDateUpdate(): self
     {
-        $this->dateUpdate = $dateUpdate;
+        $this->dateUpdate = new \DateTime();
 
         return $this;
     }
@@ -203,5 +206,36 @@ class Comic
     public function getOnline()
     {
         return true;
+    }
+
+    /**
+     * @return Collection|Page[]
+     */
+    public function getPages(): Collection
+    {
+        return $this->pages;
+    }
+
+    public function addPage(Page $page): self
+    {
+        if (!$this->pages->contains($page)) {
+            $this->pages[] = $page;
+            $page->setComic($this);
+        }
+
+        return $this;
+    }
+
+    public function removePage(Page $page): self
+    {
+        if ($this->pages->contains($page)) {
+            $this->pages->removeElement($page);
+            // set the owning side to null (unless already changed)
+            if ($page->getComic() === $this) {
+                $page->setComic(null);
+            }
+        }
+
+        return $this;
     }
 }

@@ -1,0 +1,7 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+    {% for comic in comics %}
+    {{ comic.title }}
+    {% endfor %}
+{% endblock body %}

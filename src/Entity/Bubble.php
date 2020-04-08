@@ -17,7 +17,7 @@ class Bubble
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\box", inversedBy="bubbles")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Box", inversedBy="bubbles")
      */
     private $box;
 
@@ -48,6 +48,7 @@ class Bubble
 
     public function setBox(?box $box): self
     {
+        $this->setDateCreation();
         $this->box = $box;
 
         return $this;
@@ -82,9 +83,9 @@ class Bubble
         return $this->dateCreation;
     }
 
-    public function setDateCreation(\DateTimeInterface $dateCreation): self
+    public function setDateCreation(): self
     {
-        $this->dateCreation = $dateCreation;
+        $this->dateCreation = new \DateTime();
 
         return $this;
     }

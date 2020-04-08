@@ -29,6 +29,8 @@ Encore
     //      pattern: /\.(png|jpg|jpeg|svg)$/,
     //  })
 
+    .autoProvidejQuery()
+
     //enables hashed filenames (e.g. app.abc123.css)
     .configureFilenames({
         images: '[path][name].[hash:8].[ext]'

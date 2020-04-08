@@ -44,7 +44,7 @@ class Persona
     private $public;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\user", inversedBy="personas")
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="personas")
      */
     private $users;
 
