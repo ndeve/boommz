@@ -2,6 +2,6 @@
 
 {% block body %}
     {% for comic in comics %}
-    {{ comic.title }}
+        <a href="{{ url('comic', comic.routeParams) }}">{{ comic.title }}</a><br />
     {% endfor %}
 {% endblock body %}

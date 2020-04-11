@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200407111808 extends AbstractMigration
+final class Version20200410132237 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,8 +22,7 @@ final class Version20200407111808 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE TABLE box (id INT AUTO_INCREMENT NOT NULL, comic_id INT NOT NULL, order_box INT NOT NULL, date_creation DATETIME NOT NULL, background VARCHAR(255) DEFAULT NULL, INDEX IDX_8A9483AD663094A (comic_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('ALTER TABLE box ADD CONSTRAINT FK_8A9483AD663094A FOREIGN KEY (comic_id) REFERENCES comic (id)');
+        $this->addSql('ALTER TABLE persona DROP url, DROP subcategory');
     }
 
     public function down(Schema $schema) : void
@@ -31,6 +30,6 @@ final class Version20200407111808 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('DROP TABLE box');
+        $this->addSql('ALTER TABLE persona ADD url VARCHAR(200) CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_unicode_ci`, ADD subcategory VARCHAR(100) CHARACTER SET utf8mb4 DEFAULT NULL COLLATE `utf8mb4_unicode_ci`');
     }
 }

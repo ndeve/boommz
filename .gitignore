@@ -19,3 +19,7 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+/public/persona/
+/public/decor/
+/public/p/
+/public/dump_boumz.sql

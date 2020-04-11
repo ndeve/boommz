@@ -33,11 +33,17 @@ class User extends BaseUser
      */
     private $personas;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Background", mappedBy="user")
+     */
+    private $backgrounds;
+
     public function __construct()
     {
         parent::__construct();
         $this->comics = new ArrayCollection();
         $this->personas = new ArrayCollection();
+        $this->backgrounds = new ArrayCollection();
         // your own logic
     }
 
@@ -95,6 +101,42 @@ class User extends BaseUser
         if ($this->personas->contains($persona)) {
             $this->personas->removeElement($persona);
             $persona->removeUser($this);
+        }
+
+        return $this;
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return Collection|Background[]
+     */
+    public function getBackgrounds(): Collection
+    {
+        return $this->backgrounds;
+    }
+
+    public function addBackground(Background $background): self
+    {
+        if (!$this->backgrounds->contains($background)) {
+            $this->backgrounds[] = $background;
+            $background->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBackground(Background $background): self
+    {
+        if ($this->backgrounds->contains($background)) {
+            $this->backgrounds->removeElement($background);
+            // set the owning side to null (unless already changed)
+            if ($background->getUser() === $this) {
+                $background->setUser(null);
+            }
         }
 
         return $this;

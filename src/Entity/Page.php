@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,14 +34,20 @@ class Page
     private $orderPage;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\OneToMany(targetEntity="App\Entity\Box", mappedBy="page", orphanRemoval=true, cascade={"persist"})
+     */
+    private $boxes;
+
+    /**
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $dateCreation;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Box", mappedBy="page", orphanRemoval=true, cascade={"persist"})
-     */
-    private $box;
+    public function __construct()
+    {
+        $this->dateCreation = new \DateTime();
+        $this->boxes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -65,6 +73,7 @@ class Page
 
     public function setComic(?comic $comic): self
     {
+        $this->setOrderPage();
         $this->comic = $comic;
 
         return $this;
@@ -75,8 +84,9 @@ class Page
         return $this->orderPage;
     }
 
-    public function setOrderPage(int $orderPage): self
+    public function setOrderPage(): self
     {
+        $orderPage = rand(0, 1000);
         $this->orderPage = $orderPage;
 
         return $this;
@@ -89,19 +99,40 @@ class Page
 
     public function setDateCreation(\DateTimeInterface $dateCreation): self
     {
-        $this->dateCreation = $dateCreation;
+        if (!$this->dateCreation) {
+            $this->dateCreation = $dateCreation;
+        }
 
         return $this;
     }
 
-    public function getBox(): ?Box
+    /**
+     * @return Collection|Box[]
+     */
+    public function getBoxes(): Collection
     {
-        return $this->box;
+        return $this->boxes;
     }
 
-    public function setBox(?Box $box): self
+    public function addBox(Box $box): self
     {
-        $this->box = $box;
+        if (!$this->boxes->contains($box)) {
+            $this->boxes[] = $box;
+            $box->setPage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBox(Box $box): self
+    {
+        if ($this->boxes->contains($box)) {
+            $this->boxes->removeElement($box);
+            // set the owning side to null (unless already changed)
+            if ($box->getPage() === $this) {
+                $box->setPage(null);
+            }
+        }
 
         return $this;
     }

@@ -1,0 +1,26 @@
+.page.edit {
+}
+.page .column div.actions {
+    border: 0;
+    top: 5px;
+    height: auto;
+    left: -62px;
+    position: absolute;
+    border-radius: 3px;
+    width: 60px;
+    padding: 5px;
+}
+.page .column div.actions span {
+    margin-bottom: 5px;
+    width: 50px;
+}
+
+.page .column {
+    transition: all 1s ease-out;
+}
+
+.bubble textarea {
+    border: 0;
+    font-family: "Permanent Marker";
+    outline: none;
+}

@@ -32,13 +32,48 @@ class Bubble
     private $style;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $dateCreation;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $orientation = 1;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $x = 0;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $y = 0;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Persona")
+     */
+    private $persona;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     */
+    private $author;
+
+    public function __construct()
+    {
+        $this->dateCreation = new \DateTime();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function __toString()
+    {
+        return 'bubble_'. $this->getId();
     }
 
     public function getBox(): ?box
@@ -48,7 +83,6 @@ class Bubble
 
     public function setBox(?box $box): self
     {
-        $this->setDateCreation();
         $this->box = $box;
 
         return $this;
@@ -83,9 +117,71 @@ class Bubble
         return $this->dateCreation;
     }
 
-    public function setDateCreation(): self
+    public function setDateCreation(\DateTimeInterface $dateCreation): self
     {
-        $this->dateCreation = new \DateTime();
+        if (!$this->dateCreation) {
+            $this->dateCreation = $dateCreation;
+        }
+
+        return $this;
+    }
+
+    public function getOrientation(): ?bool
+    {
+        return $this->orientation;
+    }
+
+    public function setOrientation(bool $orientation): self
+    {
+        $this->orientation = $orientation;
+
+        return $this;
+    }
+
+    public function getX(): ?int
+    {
+        return $this->x;
+    }
+
+    public function setX(int $x): self
+    {
+        $this->x = $x;
+
+        return $this;
+    }
+
+    public function getY(): ?int
+    {
+        return $this->y;
+    }
+
+    public function setY(int $y): self
+    {
+        $this->y = $y;
+
+        return $this;
+    }
+
+    public function getPersona(): ?Persona
+    {
+        return $this->persona;
+    }
+
+    public function setPersona(?Persona $persona): self
+    {
+        $this->persona = $persona;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }

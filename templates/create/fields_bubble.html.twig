@@ -1,0 +1,11 @@
+{% block bubble_widget %}
+    <blockquote
+            class="bubble {{ form.vars.value.orientation ? 'left' : 'right' }}"
+            style="">
+        {{ form_widget(form.text,  { 'attr': { 'placeholder': 'Write here !' }}) }}
+        {{ form_widget(form.x) }}
+        {{ form_widget(form.y) }}
+        {{ form_widget(form.orientation) }}
+        <footer><img src="/persona/stars/donald-trump.png"/></footer>
+    </blockquote>
+{% endblock %}

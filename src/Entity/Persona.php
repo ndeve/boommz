@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Behat\Transliterator\Transliterator;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -24,7 +25,7 @@ class Persona
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $description;
 
@@ -34,12 +35,17 @@ class Persona
     private $category;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string", length=10)
+     */
+    private $path;
+
+    /**
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $dateCreation;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default": true})
      */
     private $public;
 
@@ -51,6 +57,11 @@ class Persona
     public function __construct()
     {
         $this->users = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return 'persona_'. $this->getId();
     }
 
     public function getId(): ?int
@@ -140,6 +151,23 @@ class Persona
         if ($this->users->contains($user)) {
             $this->users->removeElement($user);
         }
+
+        return $this;
+    }
+
+    public function getUrl()
+    {
+        return 'persona/'. $this->getPath() . Transliterator::urlize($this->getName()) .'-'. $this->getId() .'.png';
+    }
+
+    public function getPath(): ?string
+    {
+        return $this->path;
+    }
+
+    public function setPath(string $path): self
+    {
+        $this->path = $path;
 
         return $this;
     }

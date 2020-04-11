@@ -1,0 +1,15 @@
+{% block page_widget %}
+    <div class="field">
+        {{ form_label(form.title, 'Page title', {'label_attr': {'class': 'label is-small'}}) }}
+        {{ form_widget(form.title, {'attr': {'class': 'input is-small'}}) }}
+    </div>
+
+    <section class="page edit">
+        <div class="columns is-multiline">
+            {% for box in form.boxes %}
+                {{ form_row(box) }}
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}

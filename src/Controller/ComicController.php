@@ -16,7 +16,7 @@ class ComicController extends Controller
     /**
      * @Route(  path="/{rewritten}-{id}",
      *          name="comic",
-     *          requirements={"id"= "\d+"}
+     *          requirements={"rewritten"="[a-z0-9-]+", "id"= "\d+"}
      *      )
      * @Template
      */

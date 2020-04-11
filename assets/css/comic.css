@@ -1,0 +1,139 @@
+@import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
+
+.page {
+    background-color: #FAF3E9;
+    padding: 20px;
+    display: block;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.06);
+}
+.page .column {
+    height: 200px;
+    padding: 0.30rem;
+    position: relative;
+}
+.page .column.h-1 {
+    height: 220px;
+}
+.page .column.h-2 {
+    height: 250px;
+}
+.page .column.h-3 {
+    height: 300px;
+}
+.page .column div {
+    background-color: #ffffff;
+    background-size: cover;
+    background-position: bottom;
+    border-radius: 755px 15px 225px 10px/10px 625px 10px 255px;
+    border: solid 3px #4f4f4f;
+    height: 100%;
+    padding: 5px;
+    position: relative;
+    overflow: hidden;
+}
+.page .column.c-1 div {
+    border-radius: 10px 625px 10px 255px/755px 15px 225px 10px;
+}
+.page .column.c-2 div {
+    border-radius: 455px 15px 725px 10px/10px 425px 10px 655px;
+}
+.page .column div blockquote {
+    bottom: 0;
+    display: block;
+    position: absolute;
+}
+.page .column div blockquote.bubble {
+    bottom: 88px;
+}
+.bubble {
+    background: white;
+    border: 3px solid black;
+    border-radius: 10px;
+    font-family: "Permanent Marker";
+    padding: 8px;
+}
+.bubble:before {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    height: 30px;
+    width: 40px;
+}
+.bubble.left:before {
+    border-radius: 0 0 100%;
+    box-shadow: -2px -2px 0 0 #000 inset, -14px 0 0 0 #fff inset, -16px -2px 0 0 #000 inset;
+    left: 30px;
+}
+.bubble.right:before {
+    border-radius: 0 0 0 100%;
+    box-shadow: 2px -2px 0 0 #000 inset, 14px 0 0 0 #fff inset, 16px -2px 0 0 #000 inset;
+    right: 20px;
+}
+.bubble.think:before {
+    height: 3px;
+    width: 3px;
+    bottom: -14px;
+    border-radius: 100%;
+    background: #fff;
+}
+.bubble.think.left:before {
+    left: 60px;
+    box-shadow: 0 0 0 4px white, 0 0 0 7px black, -14px 12px 0 3px white, -14px 12px 0 5px black, -25px 17px 0 1px white, -25px 17px 0 3px black;
+}
+.bubble.think.right:before {
+    right: 50px;
+    box-shadow: 0 0 0 4px white, 0 0 0 7px black, 14px 12px 0 3px white, 14px 12px 0 5px black, 25px 17px 0 1px white, 25px 17px 0 3px black;
+}
+.bubble.yell {
+    font-weight: bold;
+}
+.bubble.yell:before {
+    height: 0px;
+    width: 0px;
+    bottom: -8px;
+    border-radius: 0;
+    background: #fff;
+}
+.bubble.yell:after {
+    content: '';
+    position: absolute;
+    bottom: -32px;
+    height: 16px;
+    width: 26px;
+}
+.bubble.yell.left:before {
+    -webkit-transform: skew(-45deg);
+    transform: skew(-45deg);
+    left: 50px;
+    box-shadow: 0 -3px 0 5px white, 0 0 0 5px white, 0 5px 0 5px white, 8px 5px 0 5px white, 16px 5px 0 5px white, 24px 5px 0 5px white,  0 0 0 8px black, 0 5px 0 8px black, 8px 5px 0 8px black, 16px 5px 0 8px black, 24px 5px 0 8px black;
+}
+.bubble.yell.left:after {
+    border-radius: 0 0 60%;
+    -webkit-transform: skew(-45deg);
+    transform: skew(-45deg);
+    box-shadow: -3px -2px 0 0 #000 inset, -14px 0 0 0 #fff inset, -17px -2px 0 0 #000 inset;
+    left: 40px;
+}
+.bubble.yell.right:before {
+    -webkit-transform: skew(45deg);
+    transform: skew(45deg);
+    right: 35px;
+    box-shadow: 0 -3px 0 5px white, 0 0 0 5px white, 0 5px 0 5px white, -8px 5px 0 5px white, -16px 5px 0 5px white, -24px 5px 0 5px white, 0 0 0 8px black, 0 5px 0 8px black, -8px 5px 0 8px black, -16px 5px 0 8px black, -24px 5px 0 8px black;
+}
+.bubble.yell.right:after {
+    border-radius: 0 0 0 60%;
+    -webkit-transform: skew(45deg);
+    transform: skew(45deg);
+    box-shadow: 3px -2px 0 0 #000 inset, 14px 0 0 0 #fff inset, 17px -2px 0 0 #000 inset;
+    right: 25px;
+}
+.bubble footer {
+    bottom: -95px;
+    position: absolute;
+}
+.bubble.left footer {
+    left: -8px;
+}
+.bubble.right footer {
+    right: -15px;
+}

@@ -1,21 +1,30 @@
 {% extends "layout.html.twig" %}
 
+{% form_theme form with ['create/fields_page.html.twig', 'create/fields_box.html.twig', 'create/fields_bubble.html.twig'] %}
 
 {% block body %}
 
     {{ form_start(form) }}
+
     <h1 class="title">{% trans %}Create comic{% endtrans %}</h1>
 
     <div class="field">
-        {{ form_label(form.title, 'Title', {'label_attr': {'class': 'label'}}) }}
-        {{ form_widget(form.title, {'attr': {'class': 'input'}}) }}
+        {{ form_label(form.title, 'Comic title', {'label_attr': {'class': 'label is-medium'}}) }}
+        {{ form_widget(form.title, {'attr': {'class': 'input is-medium'}}) }}
     </div>
+
+
+    {% for page in form.pages %}
+        {{ form_row(page) }}
+    {% endfor %}
+
 
     <ul class="pages" data-prototype="{{ form_widget(form.pages.vars.prototype)|e('html_attr') }}"></ul>
 
+
     <div class="field">
         <div class="control">
-            <button class="button is-primary">{% trans %}Submit{% endtrans %}</button>
+            <input type="submit" class="button is-primary" value="{% trans %}Submit{% endtrans %}">
         </div>
     </div>
 

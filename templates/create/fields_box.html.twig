@@ -1,0 +1,24 @@
+{% block box_row %}
+    <div class="column is-{{ form.vars.value.size }} h-{{ form.vars.value.height }}" id="{{ form.vars.id }}">
+        <div>
+            {% for bubble in form.bubbles %}
+                {{ form_widget(bubble) }}
+            {% endfor %}
+        </div>
+        <div class="actions">
+                <span class="button is-light" title="" id="resizeH">
+                    <i class="fas fa-arrows-alt-h fa-lg"></i>
+                </span>
+            <span class="button is-light" title="" id="resizeV">
+                    <i class="fas fa-arrows-alt-v fa-lg"></i>
+                </span>
+            <span class="button is-light" title="" id="addBubble">
+                    <i class="far fa-comment-dots fa-lg"></i>
+                </span>
+
+            {{ form_widget(form.background) }}
+            {{ form_widget(form.orderBox) }}
+
+        </div>
+    </div>
+{% endblock %}

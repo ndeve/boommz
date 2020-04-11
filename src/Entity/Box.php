@@ -21,55 +21,58 @@ class Box
     /**
      * @ORM\Column(type="integer")
      */
-    private $orderBox;
+    private $orderBox = 0;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $dateCreation;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $background;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Bubble", mappedBy="box")
+     * @ORM\OneToMany(targetEntity="App\Entity\Bubble", mappedBy="box", cascade={"persist"})
      */
     private $bubbles;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Page", inversedBy="boxes")
      */
-    private $pages;
+    private $page;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $size = 'one-third';
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Background")
+     */
+    private $background;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $height = '1';
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     */
+    private $author;
 
     public function __construct()
     {
+        $this->dateCreation = new \DateTime();
         $this->bubbles = new ArrayCollection();
-        $this->pages = new ArrayCollection();
+        $this->page = new ArrayCollection();
     }
 
-    public function _toString()
+    public function __toString()
     {
-        return $this->getId();
+        return 'bubble_'. $this->getId();
     }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getComic(): ?comic
-    {
-        return $this->comic;
-    }
-
-    public function setComic(?comic $comic): self
-    {
-        $this->setDateCreation();
-        $this->comic = $comic;
-
-        return $this;
     }
 
     public function getOrderBox(): ?int
@@ -89,21 +92,11 @@ class Box
         return $this->dateCreation;
     }
 
-    public function setDateCreation(): self
+    public function setDateCreation(\DateTimeInterface $dateCreation): self
     {
-        $this->dateCreation = new \DateTime();
-
-        return $this;
-    }
-
-    public function getBackground(): ?string
-    {
-        return $this->background;
-    }
-
-    public function setBackground(?string $background): self
-    {
-        $this->background = $background;
+        if (!$this->dateCreation) {
+            $this->dateCreation = $dateCreation;
+        }
 
         return $this;
     }
@@ -166,6 +159,73 @@ class Box
                 $page->setBox(null);
             }
         }
+
+        return $this;
+    }
+
+    public function setPages(?Page $pages): self
+    {
+        $this->pages = $pages;
+
+        return $this;
+    }
+
+    public function getPage(): ?Page
+    {
+        return $this->page;
+    }
+
+    public function setPage(?Page $page): self
+    {
+        $this->page = $page;
+
+        return $this;
+    }
+
+    public function getSize(): ?string
+    {
+        return $this->size;
+    }
+
+    public function setSize(?string $size): self
+    {
+        $this->size = $size;
+
+        return $this;
+    }
+
+    public function getBackground(): ?Background
+    {
+        return $this->background;
+    }
+
+    public function setBackground(?Background $background): self
+    {
+        $this->background = $background;
+
+        return $this;
+    }
+
+    public function getHeight(): ?int
+    {
+        return $this->height;
+    }
+
+    public function setHeight(int $height): self
+    {
+        $this->height = $height;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }

@@ -2,16 +2,17 @@
 
 namespace App\Entity;
 
+use Behat\Transliterator\Transliterator;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Behat\Transliterator;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ComicRepository")
  */
 class Comic
 {
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -25,12 +26,12 @@ class Comic
     private $title;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $dateCreation;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $dateUpdate;
 
@@ -53,16 +54,18 @@ class Comic
     /**
      * @ORM\Column(type="string", length=5)
      */
-    private $locale;
+    private $locale = 'fr';
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Page", mappedBy="comic", orphanRemoval=true, cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Page", mappedBy="comic",
+     *   orphanRemoval=true, cascade={"persist"})
      */
     private $pages;
 
     public function __construct()
     {
-        $this->boxes = new ArrayCollection();
+        $this->dateCreation = new \DateTime();
+        $this->dateUpdate = new \DateTime();
         $this->pages = new ArrayCollection();
     }
 
@@ -83,8 +86,6 @@ class Comic
 
     public function setTitle(string $title): self
     {
-        $this->setDateCreation();
-        $this->setDateUpdate();
         $this->title = $title;
 
         return $this;
@@ -95,9 +96,9 @@ class Comic
         return $this->dateCreation;
     }
 
-    public function setDateCreation(): self
+    public function setDateCreation(\DateTimeInterface $dateCreation): self
     {
-        $this->dateCreation = new \DateTime();
+        $this->dateCreation = $dateCreation;
 
         return $this;
     }
@@ -107,9 +108,9 @@ class Comic
         return $this->dateUpdate;
     }
 
-    public function setDateUpdate(): self
+    public function setDateUpdate(\DateTimeInterface $dateUpdate): self
     {
-        $this->dateUpdate = new \DateTime();
+        $this->dateUpdate = $dateUpdate;
 
         return $this;
     }
@@ -119,8 +120,8 @@ class Comic
         return $this->datePublication;
     }
 
-    public function setDatePublication(?\DateTimeInterface $datePublication): self
-    {
+    public function setDatePublication(?\DateTimeInterface $datePublication
+    ): self {
         $this->datePublication = $datePublication;
 
         return $this;
@@ -150,37 +151,6 @@ class Comic
         return $this;
     }
 
-    /**
-     * @return Collection|Box[]
-     */
-    public function getBoxes(): Collection
-    {
-        return $this->boxes;
-    }
-
-    public function addBox(Box $box): self
-    {
-        if (!$this->boxes->contains($box)) {
-            $this->boxes[] = $box;
-            $box->setComic($this);
-        }
-
-        return $this;
-    }
-
-    public function removeBox(Box $box): self
-    {
-        if ($this->boxes->contains($box)) {
-            $this->boxes->removeElement($box);
-            // set the owning side to null (unless already changed)
-            if ($box->getComic() === $this) {
-                $box->setComic(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getLocale(): ?string
     {
         return $this->locale;
@@ -195,7 +165,7 @@ class Comic
 
     public function getRewritten()
     {
-        return $this->getTitle();
+        return Transliterator::urlize($this->getTitle());
     }
 
     public function getRouteParams()
@@ -219,9 +189,10 @@ class Comic
     public function addPage(Page $page): self
     {
         if (!$this->pages->contains($page)) {
-            $this->pages[] = $page;
             $page->setComic($this);
         }
+
+        $this->pages->add($page);
 
         return $this;
     }
@@ -238,4 +209,5 @@ class Comic
 
         return $this;
     }
+
 }
