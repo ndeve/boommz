@@ -1,17 +1,20 @@
 .page.edit {
+    margin-bottom: 10px;
+    padding-bottom: 70px;
 }
-.page .column div.actions {
-    border: 0;
-    top: 5px;
+.page.edit .column.on div {
+    border:solid 5px red;
+}
+.page.edit .column div#actionsBox {
+    border: solid 1px #bcbab7;
+    border-radius: 7px;
     height: auto;
-    left: -62px;
-    position: absolute;
-    border-radius: 3px;
-    width: 60px;
+    margin-top: 4px;
     padding: 5px;
+    position: absolute;
+    z-index: 10;
 }
-.page .column div.actions span {
-    margin-bottom: 5px;
+.page.edit .column div#actionsBox span {
     width: 50px;
 }
 
@@ -22,5 +25,6 @@
 .bubble textarea {
     border: 0;
     font-family: "Permanent Marker";
+    font-size: 16px;
     outline: none;
 }

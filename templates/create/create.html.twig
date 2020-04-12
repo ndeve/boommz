@@ -13,14 +13,9 @@
         {{ form_widget(form.title, {'attr': {'class': 'input is-medium'}}) }}
     </div>
 
-
     {% for page in form.pages %}
         {{ form_row(page) }}
     {% endfor %}
-
-
-    <ul class="pages" data-prototype="{{ form_widget(form.pages.vars.prototype)|e('html_attr') }}"></ul>
-
 
     <div class="field">
         <div class="control">

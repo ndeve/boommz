@@ -1,11 +1,17 @@
 {% block box_row %}
-    <div class="column is-{{ form.vars.value.size }} h-{{ form.vars.value.height }}" id="{{ form.vars.id }}">
+    <div class="column is-{{ form.vars.value.size }} h-{{ form.vars.value.height }} {{ ('comic_pages_0_boxes_0' == form.vars.id) ? 'on' : '' }}" data-id="{{ form.vars.id }}">
         <div>
             {% for bubble in form.bubbles %}
                 {{ form_widget(bubble) }}
             {% endfor %}
         </div>
-        <div class="actions">
+        {{ form_widget(form.background) }}
+        {{ form_widget(form.orderBox) }}
+        {{ form_widget(form.size) }}
+        {{ form_widget(form.height) }}
+
+        {% if 'comic_pages_0_boxes_0' == form.vars.id %}
+        <div id="actionsBox" data-bubble="{{ form_widget(form.bubbles.vars.prototype)|e('html_attr') }}">
                 <span class="button is-light" title="" id="resizeH">
                     <i class="fas fa-arrows-alt-h fa-lg"></i>
                 </span>
@@ -13,12 +19,12 @@
                     <i class="fas fa-arrows-alt-v fa-lg"></i>
                 </span>
             <span class="button is-light" title="" id="addBubble">
+<i class="fas fa-user-plus"></i>                </span>
+            <span class="button is-light" title="" id="addBubble">
                     <i class="far fa-comment-dots fa-lg"></i>
                 </span>
-
-            {{ form_widget(form.background) }}
-            {{ form_widget(form.orderBox) }}
-
         </div>
+        {% endif %}
     </div>
+
 {% endblock %}

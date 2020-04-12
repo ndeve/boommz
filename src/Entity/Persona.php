@@ -61,7 +61,7 @@ class Persona
 
     public function __toString()
     {
-        return 'persona_'. $this->getId();
+        return (string)$this->getId();
     }
 
     public function getId(): ?int
@@ -157,7 +157,7 @@ class Persona
 
     public function getUrl()
     {
-        return 'persona/'. $this->getPath() . Transliterator::urlize($this->getName()) .'-'. $this->getId() .'.png';
+        return 'persona/'. $this->getPath() . Transliterator::urlize($this->getName()) .'.png';
     }
 
     public function getPath(): ?string

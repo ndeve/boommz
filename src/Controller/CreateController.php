@@ -37,6 +37,14 @@ class CreateController extends Controller
         $box = new Box();
         $box->addBubble($bubble);
         $page->addBox($box);
+
+        $box = new Box();
+        $box->addBubble($bubble);
+        $page->addBox($box);
+
+        $box = new Box();
+        $box->addBubble($bubble);
+        $page->addBox($box);
         $comic->addPage($page);
 
         $form = $this->createForm(ComicType::class, $comic);
