@@ -37,6 +37,36 @@ jQuery(document).ready(function () {
         var element = $('#actionsPersona').detach();
         $('.column.on').append(element);
         $('#actionsPersona').removeClass('is-hidden');
+
+        bulmaCarousel.attach('#slidePersona', {
+            slidesToScroll: 2,
+            slidesToShow: 4,
+            infinite: true,
+            pagination: false
+        });
+    });
+
+    $('.persona').on('click', function(){
+        $('.bubble.on img').attr('src', $(this).attr('src'));
+        $('#'+ $('.bubble.on').attr('data-id') + '_persona').val($(this).attr('data-id'));
+        $('#actionsPersona').addClass('is-hidden');
+    });
+
+    $('#styleBubble').on('click', function () {
+        var style = '';
+        if ($('.bubble.on').hasClass('think')) {
+            $('.bubble.on').removeClass('think').addClass('yell');
+            style = 'yell';
+        }
+        else if ($('.bubble.on').hasClass('yell')) {
+            $('.bubble.on').removeClass('yell');
+            style = '';
+        }
+        else {
+            $('.bubble.on').addClass('think');
+            style = 'think';
+        }
+        $('#'+ $('.bubble.on').attr('data-id') + '_style').val(style);
     });
 
     $('#removeBubble').on('click', function () {

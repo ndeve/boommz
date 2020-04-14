@@ -62,27 +62,9 @@ class CreateController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             $entityManager->persist($comic);
-
-            /**foreach ($comic->getPages() as $page) {
-                $entityManager->persist($page);
-
-                dump('page', $page->getTitle());
-                foreach ($page->getBoxes() as $box) {
-                    $entityManager->persist($box);
-
-                    dump('box', $box->getId());
-                    foreach ($box->getBubbles() as $bubble) {
-                        $entityManager->persist($bubble);
-
-                        dump($bubble->getText(), $bubble->getBox()->getId());
-                    }
-                }
-            }**/
             $entityManager->flush();
 
             $url = $this->generateUrl('comic', $comic->getRouteParams() );
-            //die();
-
             return $this->redirect($url);
         }
         return [

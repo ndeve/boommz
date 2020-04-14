@@ -20,7 +20,7 @@
 .page .column.h-3 {
     height: 300px;
 }
-.page .column div {
+.page .column .ccolumn {
     background-color: #ffffff;
     background-size: cover;
     background-position: bottom;
@@ -31,18 +31,18 @@
     position: relative;
     overflow: hidden;
 }
-.page .column.c-1 div {
+.page .column.c-1 .ccolumn {
     border-radius: 10px 625px 10px 255px/755px 15px 225px 10px;
 }
-.page .column.c-2 div {
+.page .column.c-2 .ccolumn {
     border-radius: 455px 15px 725px 10px/10px 425px 10px 655px;
 }
-.page .column div blockquote {
+.page .column .ccolumn blockquote {
     bottom: 0;
     display: block;
     position: absolute;
 }
-.page .column div blockquote.bubble {
+.page .column .ccolumn blockquote.bubble {
     bottom: 88px;
 }
 .bubble {

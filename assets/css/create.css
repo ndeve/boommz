@@ -2,10 +2,11 @@
     margin-bottom: 10px;
     padding-bottom: 70px;
 }
-.page.edit .column.on div {
+.page.edit .column.on .ccolumn {
     border:solid 5px #7eb7a6;
 }
-.page.edit .column div.actions {
+.page.edit .column .actions {
+    background-color: #ffffff;
     border: solid 1px #76a094;
     border-radius: 7px;
     height: auto;
@@ -15,36 +16,58 @@
     z-index: 10;
 
 }
-.page.edit .column div.actions span {
+.page.edit .column .actions span {
     text-align: center;
     width: 40px;
 }
-.page.edit .column div.actions span svg {
+.page.edit .column .actions span svg {
     width: 22px;
     height: 22px;
     overflow: visible;
 }
 
-.page.edit .column div.actions span:hover svg {
+.page.edit .column .actions span:hover svg {
     color: #76a094;
 }
-.page.edit .column div#actionsBubble {
+#actionsBubble {
     left: 150px;
 }
-.page.edit .column div#actionsPersona {
-    bottom: -99px;
-    height: 48px;
+#actionsPersona {
+    height: 55px;
     left: 5px;
-    padding: 0;
-    width: 340px;
+    padding: 4px;
+    z-index: 20;
+    right: 5px;
 }
-.page.edit .column div#actionsPersona div {
-    border: solid 5px #fff;
+#actionsPersona #slidePersona {
+    height: 47px;
     margin: 0;
+    overflow: hidden;
     padding: 0;
 }
-.page.edit .column div#actionsPersona span {
-    display: inline-block;
+#slidePersona .slider-item {
+    cursor: pointer;
+    height: 50px;
+    outline: 0;
+    text-align: center;
+    width: 55px!important;
+}
+#slidePersona .slider-navigation-next,
+#slidePersona .slider-navigation-previous {
+    border-radius: 0;
+    width: 20px;
+    top: 0;
+    margin-top: 0;
+    bottom: 0;
+    height: 50px;
+}
+#slidePersona .slider-navigation-next svg,
+#slidePersona .slider-navigation-previous svg {
+    width: 10px;
+}
+#slidePersona .slider-navigation-next:hover svg,
+#slidePersona .slider-navigation-previous:hover svg {
+    color: #76a094;
 }
 
 .page.edit .column {
@@ -64,8 +87,12 @@
     font-size: 16px;
     outline: none;
 }
+.bubble {
+    z-index: auto;
+}
 .bubble.on {
     border-color: #7eb7a6;
+    z-index: 10;
 }
 .bubble.on.left:before {
     box-shadow: -2px -2px 0 0 #7eb7a6 inset, -14px 0 0 0 #fff inset, -16px -2px 0 0 #7eb7a6 inset;

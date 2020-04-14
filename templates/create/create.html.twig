@@ -24,9 +24,11 @@
     </div>
 
     <div id="actionsPersona" class="actions is-hidden">
-        <div>
+        <div id="slidePersona">
         {% for persona in personas %}
-            <span><img src="{{ persona.url }}" data-id="{{ persona.id }}" title="{{ persona.name }}" /></span>
+            <div class="item-{{ loop.index }}">
+                <img src="{{ persona.url }}" data-id="{{ persona.id }}" title="{{ persona.name }}" class="persona" />
+            </div>
         {% endfor %}
         </div>
     </div>
