@@ -1,5 +1,6 @@
 {% block box_row %}
-    <div class="column is-{{ form.vars.value.size }} h-{{ form.vars.value.height }} {{ ('comic_pages_0_boxes_0' == form.vars.id) ? 'on' : '' }}" data-id="{{ form.vars.id }}">
+    <div class="column is-{{ form.vars.value.size }} h-{{ form.vars.value.height }} {{ ('comic_pages_0_boxes_0' == form.vars.id) ? 'on' : '' }}"
+         data-id="{{ form.vars.id }}">
         <div>
             {% for bubble in form.bubbles %}
                 {{ form_widget(bubble) }}
@@ -11,19 +12,29 @@
         {{ form_widget(form.height) }}
 
         {% if 'comic_pages_0_boxes_0' == form.vars.id %}
-        <div id="actionsBox" data-bubble="{{ form_widget(form.bubbles.vars.prototype)|e('html_attr') }}">
-                <span class="button is-light" title="" id="resizeH">
-                    <i class="fas fa-arrows-alt-h fa-lg"></i>
+            <div id="actionsBox" class="actions" data-bubble="{{ form_widget(form.bubbles.vars.prototype)|e('html_attr') }}">
+                <span class="button is-light" title="{% trans %}Aggrandir{% endtrans %}" id="resizeH">
+                    {% include "/svg/box_size.html.twig" %}
                 </span>
-            <span class="button is-light" title="" id="resizeV">
-                    <i class="fas fa-arrows-alt-v fa-lg"></i>
+                <span class="button is-light" title="{% trans %}Aggrandir{% endtrans %}" id="resizeV">
+                    {% include "/svg/box_height.html.twig" %}
                 </span>
-            <span class="button is-light" title="" id="addBubble">
-<i class="fas fa-user-plus"></i>                </span>
-            <span class="button is-light" title="" id="addBubble">
-                    <i class="far fa-comment-dots fa-lg"></i>
+                <span class="button is-light" title="{% trans %}Add persona{% endtrans %}" id="addPersona">
+                    {% include "/svg/persona_add.html.twig" %}
                 </span>
-        </div>
+            </div>
+
+            <div id="actionsBubble" class="actions">
+                <span class="button is-light" title="{% trans %}Remove bubble{% endtrans %}" id="removeBubble">
+                    {% include "/svg/bubble_remove.html.twig" %}
+                </span>
+                <span class="button is-light is-hidden" title="{% trans %}Add bubble{% endtrans %}" id="addBubble">
+                    {% include "/svg/bubble_add.html.twig" %}
+                </span>
+                <span class="button is-light" title="{% trans %}Change persona{% endtrans %}" id="editPersona">
+                    {% include "/svg/persona_edit.html.twig" %}
+                </span>
+            </div>
         {% endif %}
     </div>
 

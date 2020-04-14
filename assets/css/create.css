@@ -3,28 +3,91 @@
     padding-bottom: 70px;
 }
 .page.edit .column.on div {
-    border:solid 5px red;
+    border:solid 5px #7eb7a6;
 }
-.page.edit .column div#actionsBox {
-    border: solid 1px #bcbab7;
+.page.edit .column div.actions {
+    border: solid 1px #76a094;
     border-radius: 7px;
     height: auto;
     margin-top: 4px;
     padding: 5px;
     position: absolute;
     z-index: 10;
+
 }
-.page.edit .column div#actionsBox span {
-    width: 50px;
+.page.edit .column div.actions span {
+    text-align: center;
+    width: 40px;
+}
+.page.edit .column div.actions span svg {
+    width: 22px;
+    height: 22px;
+    overflow: visible;
 }
 
-.page .column {
+.page.edit .column div.actions span:hover svg {
+    color: #76a094;
+}
+.page.edit .column div#actionsBubble {
+    left: 150px;
+}
+.page.edit .column div#actionsPersona {
+    bottom: -99px;
+    height: 48px;
+    left: 5px;
+    padding: 0;
+    width: 340px;
+}
+.page.edit .column div#actionsPersona div {
+    border: solid 5px #fff;
+    margin: 0;
+    padding: 0;
+}
+.page.edit .column div#actionsPersona span {
+    display: inline-block;
+}
+
+.page.edit .column {
     transition: all 1s ease-out;
 }
+.page.edit .column blockquote {
+    cursor: pointer;
+}
+.page.edit .column blockquote textarea {
+    display: none;
+}
 
-.bubble textarea {
+.page.edit .column blockquote.bubble textarea {
     border: 0;
+    display: block;
     font-family: "Permanent Marker";
     font-size: 16px;
     outline: none;
+}
+.bubble.on {
+    border-color: #7eb7a6;
+}
+.bubble.on.left:before {
+    box-shadow: -2px -2px 0 0 #7eb7a6 inset, -14px 0 0 0 #fff inset, -16px -2px 0 0 #7eb7a6 inset;
+}
+.bubble.on.right:before {
+    box-shadow: 2px -2px 0 0 #7eb7a6 inset, 14px 0 0 0 #fff inset, 16px -2px 0 0 #7eb7a6 inset;
+}
+.bubble.on.think.left:before {
+    box-shadow: 0 0 0 4px white, 0 0 0 7px #7eb7a6, -14px 12px 0 3px white, -14px 12px 0 5px #7eb7a6, -25px 17px 0 1px white, -25px 17px 0 3px #7eb7a6;
+}
+.bubble.on.think.right:before {
+    box-shadow: 0 0 0 4px white, 0 0 0 7px #7eb7a6, 14px 12px 0 3px white, 14px 12px 0 5px #7eb7a6, 25px 17px 0 1px white, 25px 17px 0 3px #7eb7a6;
+}
+.bubble.on.yell.left:before {
+    box-shadow: 0 -3px 0 5px white, 0 0 0 5px white, 0 5px 0 5px white, 8px 5px 0 5px white, 16px 5px 0 5px white, 24px 5px 0 5px white, 0 0 0 8px #7eb7a6, 0 5px 0 8px #7eb7a6, 8px 5px 0 8px #7eb7a6, 16px 5px 0 8px #7eb7a6, 24px 5px 0 8px #7eb7a6;
+}
+.bubble.on.yell.left:after {
+    box-shadow: -3px -2px 0 0 #7eb7a6 inset, -14px 0 0 0 #fff inset, -17px -2px 0 0 #7eb7a6 inset;
+}
+.bubble.on.yell.right:before {
+    box-shadow: 0 -3px 0 5px white, 0 0 0 5px white, 0 5px 0 5px white, -8px 5px 0 5px white, -16px 5px 0 5px white, -24px 5px 0 5px white, 0 0 0 8px #7eb7a6, 0 5px 0 8px #7eb7a6, -8px 5px 0 8px #7eb7a6, -16px 5px 0 8px #7eb7a6, -24px 5px 0 8px #7eb7a6;
+}
+.bubble.on.yell.right:after {
+    box-shadow: 3px -2px 0 0 #7eb7a6 inset, 14px 0 0 0 #fff inset, 17px -2px 0 0 #7eb7a6 inset;
 }

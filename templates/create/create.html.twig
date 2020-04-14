@@ -23,6 +23,14 @@
         </div>
     </div>
 
+    <div id="actionsPersona" class="actions is-hidden">
+        <div>
+        {% for persona in personas %}
+            <span><img src="{{ persona.url }}" data-id="{{ persona.id }}" title="{{ persona.name }}" /></span>
+        {% endfor %}
+        </div>
+    </div>
+
     {{ form_end(form) }}
 
 {% endblock body %}

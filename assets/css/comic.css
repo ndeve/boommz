@@ -62,12 +62,12 @@
 .bubble.left:before {
     border-radius: 0 0 100%;
     box-shadow: -2px -2px 0 0 #000 inset, -14px 0 0 0 #fff inset, -16px -2px 0 0 #000 inset;
-    left: 30px;
+    left: -20px;
 }
 .bubble.right:before {
     border-radius: 0 0 0 100%;
     box-shadow: 2px -2px 0 0 #000 inset, 14px 0 0 0 #fff inset, 16px -2px 0 0 #000 inset;
-    right: 20px;
+    right: -20px;
 }
 .bubble.think:before {
     height: 3px;
@@ -77,11 +77,11 @@
     background: #fff;
 }
 .bubble.think.left:before {
-    left: 60px;
+    left: 10px;
     box-shadow: 0 0 0 4px white, 0 0 0 7px black, -14px 12px 0 3px white, -14px 12px 0 5px black, -25px 17px 0 1px white, -25px 17px 0 3px black;
 }
 .bubble.think.right:before {
-    right: 50px;
+    right: 10px;
     box-shadow: 0 0 0 4px white, 0 0 0 7px black, 14px 12px 0 3px white, 14px 12px 0 5px black, 25px 17px 0 1px white, 25px 17px 0 3px black;
 }
 .bubble.yell {
@@ -104,7 +104,7 @@
 .bubble.yell.left:before {
     -webkit-transform: skew(-45deg);
     transform: skew(-45deg);
-    left: 50px;
+    left: 5px;
     box-shadow: 0 -3px 0 5px white, 0 0 0 5px white, 0 5px 0 5px white, 8px 5px 0 5px white, 16px 5px 0 5px white, 24px 5px 0 5px white,  0 0 0 8px black, 0 5px 0 8px black, 8px 5px 0 8px black, 16px 5px 0 8px black, 24px 5px 0 8px black;
 }
 .bubble.yell.left:after {
@@ -112,12 +112,12 @@
     -webkit-transform: skew(-45deg);
     transform: skew(-45deg);
     box-shadow: -3px -2px 0 0 #000 inset, -14px 0 0 0 #fff inset, -17px -2px 0 0 #000 inset;
-    left: 40px;
+    left: -5px;
 }
 .bubble.yell.right:before {
     -webkit-transform: skew(45deg);
     transform: skew(45deg);
-    right: 35px;
+    right: 5px;
     box-shadow: 0 -3px 0 5px white, 0 0 0 5px white, 0 5px 0 5px white, -8px 5px 0 5px white, -16px 5px 0 5px white, -24px 5px 0 5px white, 0 0 0 8px black, 0 5px 0 8px black, -8px 5px 0 8px black, -16px 5px 0 8px black, -24px 5px 0 8px black;
 }
 .bubble.yell.right:after {
@@ -125,15 +125,22 @@
     -webkit-transform: skew(45deg);
     transform: skew(45deg);
     box-shadow: 3px -2px 0 0 #000 inset, 14px 0 0 0 #fff inset, 17px -2px 0 0 #000 inset;
-    right: 25px;
+    right: -5px;
 }
 .bubble footer {
     bottom: -95px;
     position: absolute;
 }
 .bubble.left footer {
-    left: -8px;
+    left: -60px;
 }
 .bubble.right footer {
-    right: -15px;
+    right: -60px;
+}
+
+.column div blockquote:first-child {
+    left: 60px;
+}
+.column div blockquote:last-child {
+    right: 65px;
 }

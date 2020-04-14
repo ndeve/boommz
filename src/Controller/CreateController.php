@@ -29,22 +29,30 @@ class CreateController extends Controller
         $comic->setLocale($request->getLocale())
               ->setPublic(1);
         $page = new Page();
-        $bubble = new Bubble();
 
+        $bubble = new Bubble();
         $persona = $entityManager->getRepository('App:Persona')->findOneBy(['id' => 2105]);
         $bubble->setPersona($persona);
 
-        $box = new Box();
-        $box->addBubble($bubble);
-        $page->addBox($box);
+        $box1 = new Box();
+        $box1->addBubble($bubble);
+        $page->addBox($box1);
 
-        $box = new Box();
-        $box->addBubble($bubble);
-        $page->addBox($box);
+        $bubble = new Bubble();
+        $persona = $entityManager->getRepository('App:Persona')->findOneBy(['id' => 2105]);
+        $bubble->setPersona($persona);
 
-        $box = new Box();
-        $box->addBubble($bubble);
-        $page->addBox($box);
+        $box2 = new Box();
+        $box2->addBubble($bubble);
+        $page->addBox($box2);
+
+        $bubble = new Bubble();
+        $persona = $entityManager->getRepository('App:Persona')->findOneBy(['id' => 2105]);
+        $bubble->setPersona($persona);
+
+        $box3 = new Box();
+        $box3->addBubble($bubble);
+        $page->addBox($box3);
         $comic->addPage($page);
 
         $form = $this->createForm(ComicType::class, $comic);
@@ -54,6 +62,22 @@ class CreateController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             $entityManager->persist($comic);
+
+            /**foreach ($comic->getPages() as $page) {
+                $entityManager->persist($page);
+
+                dump('page', $page->getTitle());
+                foreach ($page->getBoxes() as $box) {
+                    $entityManager->persist($box);
+
+                    dump('box', $box->getId());
+                    foreach ($box->getBubbles() as $bubble) {
+                        $entityManager->persist($bubble);
+
+                        dump($bubble->getText(), $bubble->getBox()->getId());
+                    }
+                }
+            }**/
             $entityManager->flush();
 
             $url = $this->generateUrl('comic', $comic->getRouteParams() );
@@ -61,11 +85,10 @@ class CreateController extends Controller
 
             return $this->redirect($url);
         }
-
         return [
           'comic'             => $comic,
           'form'        => $form->createView(),
-          'personas'          => [],//$em->getRepository('BoumzBoumzBundle:Persona')->findPersonas([ 'user' => $user ]),
+          'personas'          => $entityManager->getRepository('App:Persona')->findBy(['path' => 'stars/']),
           'backgrounds'       => [],//$em->getRepository('BoumzBoumzBundle:Background')->findBackgrounds([ 'user' => $user ])
         ];
     }
