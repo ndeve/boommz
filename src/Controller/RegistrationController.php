@@ -34,6 +34,12 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
+            $this->get('security.authentication.guard_handler')
+              ->authenticateUserAndHandleSuccess(
+                $user,
+                $request,
+                $this->get('app.security.login_form_authenticator'),
+                );
             // do anything else you need here, like send an email
 
             return $this->redirectToRoute('comic_create');
