@@ -39,6 +39,7 @@ class RegistrationController extends AbstractController
                 $user,
                 $request,
                 $this->get('app.security.login_form_authenticator'),
+                'main'
                 );
             // do anything else you need here, like send an email
 
