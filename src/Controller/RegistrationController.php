@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
+
 
 class RegistrationController extends AbstractController
 {
@@ -28,20 +30,13 @@ class RegistrationController extends AbstractController
                     $user,
                     $form->get('plainPassword')->getData()
                 )
-            );
+            )
+                ->setEnabled(true);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
 
-            $this->get('security.authentication.guard_handler')
-              ->authenticateUserAndHandleSuccess(
-                $user,
-                $request,
-                $this->get('app.security.login_form_authenticator'),
-                'main'
-                );
-            // do anything else you need here, like send an email
 
             return $this->redirectToRoute('comic_create');
         }
