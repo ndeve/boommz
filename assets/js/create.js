@@ -1,5 +1,3 @@
-import absCeil from "../../public/bundles/sonatacore/vendor/moment/src/lib/utils/abs-ceil";
-
 jQuery(document).ready(function () {
     var size = {
             'prefix': 'is-',
