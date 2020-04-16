@@ -30,17 +30,9 @@ Encore
     })
 
     .copyFiles({
-        from: './node_modules/bulma-carousel/dist/js/',
+        from: './node_modules/jquery-circle-progress/dist/',
         // optional target path, relative to the output dir
         to: './js/[path][name].[ext]',
-        // only copy files matching this pattern
-        pattern: /\.(js)$/,
-    })
-
-    .copyFiles({
-        from: './node_modules/bulma-carousel/dist/css/',
-        // optional target path, relative to the output dir
-        to: './css/[path][name].[ext]',
         // only copy files matching this pattern
         pattern: /\.(js)$/,
     })

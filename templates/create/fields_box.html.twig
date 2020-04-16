@@ -34,11 +34,13 @@
                 <span class="button is-light" title="{% trans %}Change persona{% endtrans %}" id="editPersona">
                     {% include "/svg/persona_edit.html.twig" %}
                 </span>
-                <span class="button is-light" title="{% trans %}Change persona{% endtrans %}" id="styleBubble">
+                <span class="button is-light" title="{% trans %}Change style{% endtrans %}" id="styleBubble">
                     {% include "/svg/bubble_style.html.twig" %}
+                </span>
+                <span class="button is-light" title="{% trans %}Change style{% endtrans %}" id="carBubble">
+                        <div id="circle"></div>
                 </span>
             </div>
         {% endif %}
     </div>
-
 {% endblock %}

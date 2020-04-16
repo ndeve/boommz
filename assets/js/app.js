@@ -1,3 +1,4 @@
+require("jquery-circle-progress");
 const $ = require("jquery");
 
 import bulmaCarousel from "bulma-carousel";

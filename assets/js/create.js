@@ -1,3 +1,5 @@
+import absCeil from "../../public/bundles/sonatacore/vendor/moment/src/lib/utils/abs-ceil";
+
 jQuery(document).ready(function () {
     var size = {
             'prefix': 'is-',
@@ -153,3 +155,16 @@ function resizeBox(box, size) {
     box.addClass(size.prefix + newValue);
     $('#' + formId + '_' + size.key).val(newValue);
 }
+
+$('textarea').on('keydown', function () {
+    var perc = absCeil(($(this).val().length/150)*100);
+    console.log(perc);
+    $('#circle').circleProgress({
+        value: perc,
+        size: 30,
+        thickness: 3,
+        fill: {
+            gradient: ["#76a094", "#9cd3c6"]
+        }
+    });
+})
