@@ -17,8 +17,10 @@ jQuery(document).ready(function () {
     });
 
     $(document).on('focus', '.column textarea', function () {
-        selectbox($(this).parent().parent().parent());
-        selectBubble($(this).parent());
+        if (!$(this).parent().hasClass('on')) {
+            selectbox($(this).parent().parent().parent());
+            selectBubble($(this).parent());
+        }
     });
 
     $(document).on('click', '.column', function () {
@@ -118,6 +120,7 @@ function selectBubble(bubble) {
     var element = $('#actionsBubble').detach();
     bubble.parent().parent().append(element);
     $('#actionsBubble').show();
+    bubble.children('textarea').focus();
     if (bubble.hasClass('bubble')) {
         $('#addBubble').addClass('is-hidden');
         $('#removeBubble').removeClass('is-hidden');

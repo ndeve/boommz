@@ -1,6 +1,6 @@
 {% block bubble_widget %}
     <blockquote
-            class="bubble {{ form.vars.value.orientation ? 'left' : 'right' }}"
+            class="bubble {{ form.vars.value.orientation ? 'left' : 'right' }} {{ (form.vars.id == 'comic_pages_0_boxes_0_bubbles_0') ? 'on' : '' }}"
             data-id="{{ form.vars.id }}"
             style="">
         {{ form_widget(form.text,  { 'attr': { 'placeholder': 'Write here !' }}) }}

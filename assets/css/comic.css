@@ -44,6 +44,9 @@
 }
 .page .column .ccolumn blockquote.bubble {
     bottom: 88px;
+    max-width: 50%;
+    min-width: 100px;
+    text-align: center;
 }
 .bubble {
     background: white;
@@ -62,12 +65,12 @@
 .bubble.left:before {
     border-radius: 0 0 100%;
     box-shadow: -2px -2px 0 0 #000 inset, -14px 0 0 0 #fff inset, -16px -2px 0 0 #000 inset;
-    left: -20px;
+    left: 40px;
 }
 .bubble.right:before {
     border-radius: 0 0 0 100%;
     box-shadow: 2px -2px 0 0 #000 inset, 14px 0 0 0 #fff inset, 16px -2px 0 0 #000 inset;
-    right: -20px;
+    right: 40px;
 }
 .bubble.think:before {
     height: 3px;
@@ -77,11 +80,11 @@
     background: #fff;
 }
 .bubble.think.left:before {
-    left: 10px;
+    left: 70px;
     box-shadow: 0 0 0 4px white, 0 0 0 7px black, -14px 12px 0 3px white, -14px 12px 0 5px black, -25px 17px 0 1px white, -25px 17px 0 3px black;
 }
 .bubble.think.right:before {
-    right: 10px;
+    right: 60px;
     box-shadow: 0 0 0 4px white, 0 0 0 7px black, 14px 12px 0 3px white, 14px 12px 0 5px black, 25px 17px 0 1px white, 25px 17px 0 3px black;
 }
 .bubble.yell {
@@ -104,7 +107,7 @@
 .bubble.yell.left:before {
     -webkit-transform: skew(-45deg);
     transform: skew(-45deg);
-    left: 5px;
+    left: 55px;
     box-shadow: 0 -3px 0 5px white, 0 0 0 5px white, 0 5px 0 5px white, 8px 5px 0 5px white, 16px 5px 0 5px white, 24px 5px 0 5px white,  0 0 0 8px black, 0 5px 0 8px black, 8px 5px 0 8px black, 16px 5px 0 8px black, 24px 5px 0 8px black;
 }
 .bubble.yell.left:after {
@@ -112,12 +115,12 @@
     -webkit-transform: skew(-45deg);
     transform: skew(-45deg);
     box-shadow: -3px -2px 0 0 #000 inset, -14px 0 0 0 #fff inset, -17px -2px 0 0 #000 inset;
-    left: -5px;
+    left: 45px;
 }
 .bubble.yell.right:before {
     -webkit-transform: skew(45deg);
     transform: skew(45deg);
-    right: 5px;
+    right: 55px;
     box-shadow: 0 -3px 0 5px white, 0 0 0 5px white, 0 5px 0 5px white, -8px 5px 0 5px white, -16px 5px 0 5px white, -24px 5px 0 5px white, 0 0 0 8px black, 0 5px 0 8px black, -8px 5px 0 8px black, -16px 5px 0 8px black, -24px 5px 0 8px black;
 }
 .bubble.yell.right:after {
@@ -125,22 +128,25 @@
     -webkit-transform: skew(45deg);
     transform: skew(45deg);
     box-shadow: 3px -2px 0 0 #000 inset, 14px 0 0 0 #fff inset, 17px -2px 0 0 #000 inset;
-    right: -5px;
+    right: 45px;
 }
 .bubble footer {
     bottom: -95px;
     position: absolute;
 }
 .bubble.left footer {
-    left: -60px;
+    left: 0;
 }
 .bubble.right footer {
-    right: -60px;
+    right: -10px;
 }
 
 .column div blockquote:first-child {
-    left: 60px;
+    left: 20px;
+}
+.column div blockquote.b-1 {
+    right: 33%;
 }
 .column div blockquote:last-child {
-    right: 65px;
+    right: 20px;
 }
