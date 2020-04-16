@@ -86,6 +86,7 @@
     font-family: "Permanent Marker";
     font-size: 16px;
     outline: none;
+    overflow: hidden;
     resize: none;
     text-align: center;
     width: 100%;

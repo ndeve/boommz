@@ -29,14 +29,6 @@ jQuery(document).ready(function () {
         selectbox($(this));
     });
 
-    $('html').on('keydown', function (e) {
-        if (39 === e.keyCode && $('.column.on').next().length) {
-            selectbox($('.column.on').next());
-        } else if (37 === e.keyCode && $('.column.on').prev().length) {
-            selectbox($('.column.on').prev());
-        }
-    });
-
     $('#editPersona').on('click', function () {
         var element = $('#actionsPersona').detach();
         $('.column.on').append(element);
@@ -117,6 +109,16 @@ function selectbox(box) {
     }
 }
 function selectBubble(bubble) {
+
+    $('#circle').circleProgress({
+        value: 0,
+        size: 30,
+        thickness: 3,
+        fill: {
+            gradient: ["#76a094", "#9cd3c6"]
+        }
+    });
+
     $('.bubble').removeClass('on');
     bubble.addClass('on');
     var element = $('#actionsBubble').detach();
@@ -156,15 +158,19 @@ function resizeBox(box, size) {
     $('#' + formId + '_' + size.key).val(newValue);
 }
 
-$('textarea').on('keydown', function () {
-    var perc = absCeil(($(this).val().length/150)*100);
-    console.log(perc);
-    $('#circle').circleProgress({
-        value: perc,
-        size: 30,
-        thickness: 3,
-        fill: {
-            gradient: ["#76a094", "#9cd3c6"]
-        }
-    });
+$('textarea').on('keypress', function () {
+    var nbCar = $(this).val().length,
+        perc = nbCar/70;
+    if (nbCar > 100) {
+        $(this).addClass('t-vsmall');
+    }
+    else if (nbCar > 70) {
+        $(this).addClass('t-small');
+    }
+    else {
+        $(this).removeClass('t-vsmall').removeClass('t-small');
+    }
+
+    console.log(nbCar);
+    $('#circle').circleProgress('value', perc);
 })
