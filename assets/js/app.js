@@ -9,3 +9,4 @@ import "../css/comic.css";
 import "../css/create.css";
 
 import "../js/create.js";
+import "../best-textarea-auto-expand/dist/script";
