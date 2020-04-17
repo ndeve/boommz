@@ -1,7 +1,10 @@
 {% extends "layout.html.twig" %}
 
 {% block body %}
+    <h1 class="time">All comics</h1>
+    <p>
     {% for comic in comics %}
         <a href="{{ url('comic', comic.routeParams) }}">{{ comic.title }}</a><br />
     {% endfor %}
+    </p>
 {% endblock body %}
