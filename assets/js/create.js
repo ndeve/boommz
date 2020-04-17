@@ -104,20 +104,20 @@ jQuery(document).ready(function () {
             $('#nbCar').html(nbCarMax-nbCar);
         }
         if (nbCar > 95) {
-            $(this).removeClass('fs-*').addClass('fs-12');
+            $(this).removeClass('fs-14 fs-16 fs-18').addClass('fs-12');
             $('#circle').circleProgress({'fill': {gradient: ["#e8793a", "#ff5900"]}});
         }
         else if (nbCar > 65) {
             $('#nbCar').html('');
-            $(this).removeClass('fs-*').addClass('fs-14');
+            $(this).removeClass('fs-12 fs-16 fs-18').addClass('fs-14');
             $('#circle').circleProgress({'fill': {gradient: ["#76a094", "#e8793a"]}});
         }
         else if (nbCar > 35) {
-            $(this).removeClass('fs-*').addClass('fs-16');
+            $(this).removeClass('fs-14 fs-12 fs-18').addClass('fs-16');
             $('#circle').circleProgress({fill: { gradient: ["#9cd3c6", "#76a094"]}});
         }
         else {
-            $(this).removeClass('fs-*').addClass('fs-18');
+            $(this).removeClass('fs-12 fs-14 fs-16').addClass('fs-18');
         }
 
         $('#circle').circleProgress('value', perc);
