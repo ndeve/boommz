@@ -5,39 +5,47 @@
 .page.edit .column.on .ccolumn {
     border:solid 5px #7eb7a6;
 }
-.page.edit .column .actions {
+.actions {
     background-color: #ffffff;
     border: solid 1px #76a094;
     border-radius: 7px;
+    display: inline-block;
     height: auto;
-    margin-top: 4px;
+    margin: 0 5px;
     padding: 5px;
-    position: absolute;
-    z-index: 10;
-
 }
-.page.edit .column .actions .button {
+.actions .button {
     text-align: center;
     width: 40px;
 }
-.page.edit .column .actions .button svg {
+.actions .button svg {
     width: 22px;
     height: 22px;
     overflow: visible;
 }
-
-.page.edit .column .actions .button:hover svg {
+.actions .button:hover svg {
     color: #76a094;
 }
-#actionsBubble {
-    left: 150px;
+#actions {
+    position: absolute;
+    z-index: 10;
+    margin-top: 4px;
+    width: 100%;
+}
+
+#actionsLine {
+    position: absolute;
+    right: 5px;
 }
 #actionsPersona {
     height: 55px;
     left: 5px;
+    margin-top: 4px;
     padding: 4px;
-    z-index: 20;
+    position: absolute;
     right: 5px;
+    width: 100%;
+    z-index: 20;
 }
 #actionsPersona #slidePersona {
     height: 47px;

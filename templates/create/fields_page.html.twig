@@ -3,13 +3,29 @@
         {{ form_label(form.title, 'Page title', {'label_attr': {'class': 'label is-small'}}) }}
         {{ form_widget(form.title, {'attr': {'class': 'input is-small'}}) }}
     </div>#}
+    {% set total = 0 %}
+    {% set nbBox = 0 %}
+    <section class="page edit" data-id="{{ form.vars.id }}" data-box-form="{{ form_row(form.boxes.vars.prototype)|e('html_attr') }}">
+        <div class="columns is-multiline" data-nbBox="">
 
-    <section class="page edit">
-        <div class="columns is-multiline">
-            {% for box in form.boxes %}
-                {{ form_row(box) }}
-            {% endfor %}
-        </div>
+        {% for box in form.boxes %}
+
+            {#{% if total == 0 or total == 1 %}
+                <div class="columns is-multiline" data-nbBox="">
+            {% endif %}
+#}
+            {% set total = total+box.vars.value.size|nbSize %}
+            {% set nbBox = nbBox +1 %}
+
+            {{ form_row(box) }}
+{#
+            {% if total == 1 %}
+                </div>
+            {% endif %}
+#}
+        {% endfor %}
+            </div>
+
     </section>
 
 {% endblock %}

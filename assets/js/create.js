@@ -1,4 +1,11 @@
 jQuery(document).ready(function () {
+
+    if ($('.columns').length) {
+        $('.columns').each(function () {
+            $(this).attr('data-nbBox', $(this).children('.column').length);
+        });
+    }
+
     var nbCarMax = 140,
         size = {
             'prefix': 'is-',
@@ -42,9 +49,9 @@ jQuery(document).ready(function () {
         });
     });
 
-    $('.persona').on('click', function(){
+    $('.persona').on('click', function () {
         $('.bubble.on img').attr('src', $(this).attr('src'));
-        $('#'+ $('.bubble.on').attr('data-id') + '_persona').val($(this).attr('data-id'));
+        $('#' + $('.bubble.on').attr('data-id') + '_persona').val($(this).attr('data-id'));
         $('#actionsPersona').addClass('is-hidden');
     });
 
@@ -53,16 +60,14 @@ jQuery(document).ready(function () {
         if ($('.bubble.on').hasClass('think')) {
             $('.bubble.on').removeClass('think').addClass('yell');
             style = 'yell';
-        }
-        else if ($('.bubble.on').hasClass('yell')) {
+        } else if ($('.bubble.on').hasClass('yell')) {
             $('.bubble.on').removeClass('yell');
             style = '';
-        }
-        else {
+        } else {
             $('.bubble.on').addClass('think');
             style = 'think';
         }
-        $('#'+ $('.bubble.on').attr('data-id') + '_style').val(style);
+        $('#' + $('.bubble.on').attr('data-id') + '_style').val(style);
     });
 
     $('#removeBubble').on('click', function () {
@@ -79,15 +84,22 @@ jQuery(document).ready(function () {
     });
 
     $('#addPersona').on('click', function () {
-        var box = $(this).parent().parent(),
-            nbBubble = box.find('div blockquote').length;
+        addPersona($(this).parent().parent().parent());
+    });
 
-        var nameForm = box.attr('data-id').replace(/comic_pages_/g, 'comic[pages][').replace(/_boxes_/g, '][boxes][') + ']';
-        var formBubble = $('#actionsBox').attr('data-bubble')
-            .replace(/comic_pages_0_boxes_0/g, box.attr('data-id'))
-            .replace(/__name__/g, nbBubble);
-        formBubble = formBubble.replace(/comic\[pages\]\[0\]\[boxes\]\[0\]/g, nameForm);
-        box.children('div:first').append(formBubble);
+    $('#addBox').on('click', function (e) {
+        var page = $(this).parent().parent().parent().parent().parent(),
+            nbBox = page.find('.column').length;
+
+        var nameForm = page.attr('data-id').replace(/comic_pages_/g, 'comic[pages][') + ']';
+        var formBox = page.attr('data-box-form')
+            .replace(/comic_pages_0/g, page.attr('data-id'))
+            .replace(/__name__/g, nbBox);
+        formBox = formBox.replace(/comic\[pages\]\[0\]/g, nameForm);
+        $(this).parent().parent().parent().after(formBox);
+        selectBox($('[data-id="'+ page.attr('data-id') +'_boxes_'+ nbBox +'"]'));
+        addPersona($('[data-id="'+ page.attr('data-id') +'_boxes_'+ nbBox +'"]'));
+        e.stopPropagation();
     });
 
     $('#resizeH').on('click', function () {
@@ -98,41 +110,71 @@ jQuery(document).ready(function () {
         resizeBox($(this).parent().parent(), height)
     });
 
+    $('#changeColumns').on('click', function () {
+        var line = $(this).parent().parent().parent(),
+            next = line.next('.columns');
+
+        if (nbBox != '1') {
+            if (!next.length) {
+                line.after('<div class="columns" data-nbBox="1"></div>');
+            }
+            var lastBox = line.find('.column:last-child');
+            next = line.next('.columns');
+            next.append(lastBox);
+            line.children('.column').each(function () {
+                resizeBox($(this), size, 'half');
+            });
+            line.attr('data-nbBox', nbBox-1);
+        }
+    })
+
     $('textarea').on('keyup', function () {
         $(this).css('height', 'auto');
         $(this).css('height', this.scrollHeight + 'px');
     });
+
     $('textarea').on('keydown', function () {
         var nbCar = $(this).val().length,
-            perc = nbCar/nbCarMax;
+            perc = nbCar / nbCarMax;
 
         if (nbCar > 100) {
-            $('#nbCar').html(nbCarMax-nbCar);
+            $('#nbCar').html(nbCarMax - nbCar);
         }
         if (nbCar > 95) {
             $(this).removeClass('fs-14 fs-16 fs-18').addClass('fs-12').attr('data-height-row', 14);
             $('#circle').circleProgress({'fill': {gradient: ["#e8793a", "#ff5900"]}});
-        }
-        else if (nbCar > 65) {
+        } else if (nbCar > 65) {
             $('#nbCar').html('');
             $(this).removeClass('fs-12 fs-16 fs-18').addClass('fs-14').attr('data-height-row', 16);
             $('#circle').circleProgress({'fill': {gradient: ["#76a094", "#e8793a"]}});
-        }
-        else if (nbCar > 35) {
+        } else if (nbCar > 35) {
             $(this).removeClass('fs-14 fs-12 fs-18').addClass('fs-16').attr('data-height-row', 18);
-            $('#circle').circleProgress({fill: { gradient: ["#9cd3c6", "#76a094"]}});
-        }
-        else {
+            $('#circle').circleProgress({fill: {gradient: ["#9cd3c6", "#76a094"]}});
+        } else {
             $(this).removeClass('fs-12 fs-14 fs-16').addClass('fs-18').attr('data-height-row', 23);
         }
 
         $('#circle').circleProgress('value', perc);
     });
 
+    function addPersona(box) {
+        var nbBubble = box.find('div blockquote').length;
+
+        var nameForm = box.attr('data-id').replace(/comic_pages_/g, 'comic[pages][').replace(/_boxes_/g, '][boxes][') + ']';
+        var formBubble = box.attr('data-bubble-form')
+            .replace(/comic_pages_0_boxes_0/g, box.attr('data-id'))
+            .replace(/__name__/g, nbBubble);
+        formBubble = formBubble.replace(/comic\[pages\]\[0\]\[boxes\]\[0\]/g, nameForm);
+        box.children('div:first').append(formBubble);
+
+        //$('[data-id="'+ box.attr('data-id') +'_boxes_'+ nbBox +'"]')
+    }
+
     function selectBox(box) {
+        box.css('border-color', 'green');
         $('.column').removeClass('on');
         box.addClass('on');
-        var element = $('#actionsBox').detach();
+        var element = $('#actions').detach();
         box.append(element);
         if (!box.find('div blockquote.on').length) {
             $('blockquote').removeClass('on');
@@ -153,40 +195,48 @@ jQuery(document).ready(function () {
 
         $('.bubble').removeClass('on');
         bubble.addClass('on');
-        var element = $('#actionsBubble').detach();
+        var element = $('#actions').detach();
         bubble.parent().parent().append(element);
         $('#actionsBubble').show();
         bubble.children('textarea').focus();
         if (bubble.hasClass('bubble')) {
             $('#addBubble').addClass('is-hidden');
             $('#removeBubble').removeClass('is-hidden');
-        }
-        else {
+        } else {
             $('#addBubble').removeClass('is-hidden');
             $('#removeBubble').addClass('is-hidden');
         }
     }
 
-    function resizeBox(box, size) {
+    function resizeBox(box, size, newValue) {
         var ok = 0,
-            newValue = '',
             formId = box.attr('data-id');
 
-        size.values.forEach(value => {
-            if (ok == 1) {
-                newValue = value;
-                ok = 'end';
+        if (!newValue) {
+            size.values.forEach(value => {
+                if (ok == 1) {
+                    newValue = value;
+                    ok = 'end';
+                }
+                if (box.hasClass(size.prefix + value) && ok == 0) {
+                    ok = 1;
+                }
+            });
+            if (ok != 'end') {
+                newValue = size.values[0];
             }
-            if (box.hasClass(size.prefix + value) && ok == 0) {
-                box.removeClass(size.prefix + value);
-                ok = 1;
-            }
-        });
-        if (ok != 'end') {
-            newValue = size.values[0];
         }
+
+        size.values.forEach(value => {
+            box.removeClass(size.prefix + value);
+        });
 
         box.addClass(size.prefix + newValue);
         $('#' + formId + '_' + size.key).val(newValue);
+    }
+
+    function orderBox() {
+        $('.ccolumn').each(function () {
+        });
     }
 });

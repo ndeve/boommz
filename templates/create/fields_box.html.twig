@@ -1,45 +1,59 @@
 {% block box_row %}
-    <div class="column is-{{ form.vars.value.size }} h-{{ form.vars.value.height }} {{ ('comic_pages_0_boxes_0' == form.vars.id) ? 'on' : '' }}"
-         data-id="{{ form.vars.id }}">
+    <div class="column is-{{ form.vars.value.size ?? 'one-third' }} h-{{ form.vars.value.height ?? '1' }} {{ ('comic_pages_0_boxes_0' == form.vars.id) ? 'on' : '' }}"
+         data-id="{{ form.vars.id }}"
+         data-bubble-form="{{ form_widget(form.bubbles.vars.prototype)|e('html_attr') }}">
         <div class="ccolumn">
             {% for bubble in form.bubbles %}
                 {{ form_widget(bubble) }}
             {% endfor %}
         </div>
         {{ form_widget(form.background) }}
-        {{ form_widget(form.orderBox) }}
+        {{ form_widget(form.orderBox, { 'attr': { 'class': 'orderBox'}}) }}
         {{ form_widget(form.size) }}
         {{ form_widget(form.height) }}
 
         {% if 'comic_pages_0_boxes_0' == form.vars.id %}
-            <div id="actionsBox" class="actions" data-bubble="{{ form_widget(form.bubbles.vars.prototype)|e('html_attr') }}">
-                <span class="button is-light" title="{% trans %}Aggrandir{% endtrans %}" id="resizeH">
-                    {% include "/svg/box_size.html.twig" %}
-                </span>
-                <span class="button is-light" title="{% trans %}Aggrandir{% endtrans %}" id="resizeV">
-                    {% include "/svg/box_height.html.twig" %}
-                </span>
-                <span class="button is-light" title="{% trans %}Add persona{% endtrans %}" id="addPersona">
-                    {% include "/svg/persona_add.html.twig" %}
-                </span>
-            </div>
+            <div id="actions">
+                <div id="actionsBox" class="actions">
+                    {#<div class="button is-light" title="{% trans %}3 columns To 2{% endtrans %}" id="changeColumns">
+                        {% include "/svg/box_three.html.twig" %}
+                    </div>
+                    <div class="button is-light" title="{% trans %}Aggrandir{% endtrans %}" id="resizeV">
+                        {% include "/svg/box_height.html.twig" %}
+                    </div>
+                    <div class="button is-light" title="{% trans %}Aggrandir{% endtrans %}" id="resizeH">
+                        {% include "/svg/box_size.html.twig" %}
+                    </div>
+                    #}
+                    <div class="button is-light" title="{% trans %}Add persona{% endtrans %}" id="addPersona">
+                        {% include "/svg/persona_add.html.twig" %}
+                    </div>
+                </div>
 
-            <div id="actionsBubble" class="actions">
-                <div class="button is-light" title="{% trans %}Remove bubble{% endtrans %}" id="removeBubble">
-                    {% include "/svg/bubble_remove.html.twig" %}
+                <div id="actionsBubble" class="actions">
+                    <div class="button is-light" title="{% trans %}Remove bubble{% endtrans %}" id="removeBubble">
+                        {% include "/svg/bubble_remove.html.twig" %}
+                    </div>
+                    <div class="button is-light is-hidden" title="{% trans %}Add bubble{% endtrans %}" id="addBubble">
+                        {% include "/svg/bubble_add.html.twig" %}
+                    </div>
+                    <div class="button is-light" title="{% trans %}Change persona{% endtrans %}" id="editPersona">
+                        {% include "/svg/persona_edit.html.twig" %}
+                    </div>
+                    <div class="button is-light" title="{% trans %}Change style{% endtrans %}" id="styleBubble">
+                        {% include "/svg/bubble_style.html.twig" %}
+                    </div>
+                    <div class="button is-light" title="{% trans %}Change style{% endtrans %}" id="carBubble">
+                        <div id="nbCar"></div>
+                        <div id="circle"></div>
+                    </div>
                 </div>
-                <div class="button is-light is-hidden" title="{% trans %}Add bubble{% endtrans %}" id="addBubble">
-                    {% include "/svg/bubble_add.html.twig" %}
-                </div>
-                <div class="button is-light" title="{% trans %}Change persona{% endtrans %}" id="editPersona">
-                    {% include "/svg/persona_edit.html.twig" %}
-                </div>
-                <div class="button is-light" title="{% trans %}Change style{% endtrans %}" id="styleBubble">
-                    {% include "/svg/bubble_style.html.twig" %}
-                </div>
-                <div class="button is-light" title="{% trans %}Change style{% endtrans %}" id="carBubble">
-                    <div id="nbCar"></div>
-                    <div id="circle"></div>
+
+                <div id="actionsLine" class="actions">
+                    <div class="button is-light" title="{% trans %}Add persona{% endtrans %}" id="addBox"
+                         data-box-form="">
+                        {% include "/svg/box_add.html.twig" %}
+                    </div>
                 </div>
             </div>
         {% endif %}

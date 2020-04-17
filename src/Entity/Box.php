@@ -194,6 +194,13 @@ class Box
         return $this;
     }
 
+    public function getSizeNum():float
+    {
+        if ($this->getSize() == 'one-third') {
+            return 1/3;
+        }
+    }
+
     public function getBackground(): ?Background
     {
         return $this->background;
