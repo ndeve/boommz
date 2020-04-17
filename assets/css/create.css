@@ -27,10 +27,13 @@
     color: #76a094;
 }
 #actions {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 0 0 5px 5px;
+    padding-bottom: 10px;
+    padding-top: 5px;
     position: absolute;
-    z-index: 10;
-    margin-top: 4px;
     width: 100%;
+    z-index: 10;
 }
 
 #actionsLine {
