@@ -185,4 +185,28 @@ class Bubble
 
         return $this;
     }
+
+    public function getClasses()
+    {
+        $classes = '';
+        if ($this->getText()) {
+            $nbCar = strlen($this->getText());
+            $classes .= 'bubble ' . ($this->getOrientation() ? 'left ': 'right ') . ($this->getStyle() ?? '') .' ';
+
+            if ($nbCar > 95) {
+                $classes .= 'fs-12';
+            }
+            else if ($nbCar > 65) {
+                $classes .= 'fs-14';
+            }
+            else if ($nbCar > 35) {
+                $classes .= 'fs-16';
+            }
+            else {
+                $classes .= 'fs-18';
+            }
+        }
+
+        return $classes;
+    }
 }

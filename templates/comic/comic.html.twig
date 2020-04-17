@@ -22,7 +22,7 @@
                         <div {% if box.background %}style="background-image: url({{ box.background }})"{% endif %} class="ccolumn">
                             {% for bubble in box.bubbles %}
                                 <blockquote
-                                        class="{% if bubble.text %}bubble {{ bubble.orientation ? 'left': 'right' }} {{ bubble.style ?? '' }}{% endif %} b-{{ loop.index0 }}"
+                                        class="{{ bubble.classes }} b-{{ loop.index0 }}"
                                         style="{{ bubble.x ? 'botttom:' ~ bubble.y ~ 'px;' : '' }}{{ bubble.y ? 'left:' ~ bubble.x ~ 'px' : '' }}">
                                     {{ bubble.text }}
                                     {% if bubble.persona %}

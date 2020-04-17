@@ -44,7 +44,7 @@
 }
 .page .column .ccolumn blockquote.bubble {
     bottom: 88px;
-    max-width: 50%;
+    max-width: 55%;
     min-width: 100px;
     text-align: center;
 }
@@ -53,7 +53,7 @@
     border: 3px solid black;
     border-radius: 10px;
     font-family: "Permanent Marker";
-    padding: 8px;
+    padding: 5px;
 }
 .bubble:before {
     content: '';

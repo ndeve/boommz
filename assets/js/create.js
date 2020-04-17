@@ -18,6 +18,7 @@ jQuery(document).ready(function () {
     });
 
     $(document).on('focus', '.column textarea', function () {
+        $(this).css('height', this.scrollHeight + 'px');
         if (!$(this).parent().hasClass('on')) {
             selectBox($(this).parent().parent().parent());
             selectBubble($(this).parent());
@@ -66,6 +67,7 @@ jQuery(document).ready(function () {
 
     $('#removeBubble').on('click', function () {
         $('blockquote.on').removeClass('bubble');
+        $('blockquote.on textarea').val('');
         $('#addBubble').removeClass('is-hidden');
         $('#removeBubble').addClass('is-hidden');
     });
@@ -96,6 +98,10 @@ jQuery(document).ready(function () {
         resizeBox($(this).parent().parent(), height)
     });
 
+    $('textarea').on('keyup', function () {
+        $(this).css('height', 'auto');
+        $(this).css('height', this.scrollHeight + 'px');
+    });
     $('textarea').on('keydown', function () {
         var nbCar = $(this).val().length,
             perc = nbCar/nbCarMax;
@@ -104,20 +110,20 @@ jQuery(document).ready(function () {
             $('#nbCar').html(nbCarMax-nbCar);
         }
         if (nbCar > 95) {
-            $(this).removeClass('fs-14 fs-16 fs-18').addClass('fs-12');
+            $(this).removeClass('fs-14 fs-16 fs-18').addClass('fs-12').attr('data-height-row', 14);
             $('#circle').circleProgress({'fill': {gradient: ["#e8793a", "#ff5900"]}});
         }
         else if (nbCar > 65) {
             $('#nbCar').html('');
-            $(this).removeClass('fs-12 fs-16 fs-18').addClass('fs-14');
+            $(this).removeClass('fs-12 fs-16 fs-18').addClass('fs-14').attr('data-height-row', 16);
             $('#circle').circleProgress({'fill': {gradient: ["#76a094", "#e8793a"]}});
         }
         else if (nbCar > 35) {
-            $(this).removeClass('fs-14 fs-12 fs-18').addClass('fs-16');
+            $(this).removeClass('fs-14 fs-12 fs-18').addClass('fs-16').attr('data-height-row', 18);
             $('#circle').circleProgress({fill: { gradient: ["#9cd3c6", "#76a094"]}});
         }
         else {
-            $(this).removeClass('fs-12 fs-14 fs-16').addClass('fs-18');
+            $(this).removeClass('fs-12 fs-14 fs-16').addClass('fs-18').attr('data-height-row', 23);
         }
 
         $('#circle').circleProgress('value', perc);
