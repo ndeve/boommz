@@ -16,17 +16,17 @@
     z-index: 10;
 
 }
-.page.edit .column .actions span {
+.page.edit .column .actions .button {
     text-align: center;
     width: 40px;
 }
-.page.edit .column .actions span svg {
+.page.edit .column .actions .button svg {
     width: 22px;
     height: 22px;
     overflow: visible;
 }
 
-.page.edit .column .actions span:hover svg {
+.page.edit .column .actions .button:hover svg {
     color: #76a094;
 }
 #actionsBubble {
@@ -84,7 +84,6 @@
     border: 0;
     display: block;
     font-family: "Permanent Marker";
-    font-size: 16px;
     outline: none;
     overflow: hidden;
     resize: none;
@@ -128,4 +127,9 @@
 
 #circle {
     margin-top: 6px;
+}
+#nbCar {
+    position: absolute;
+    font-size: 13px;
+    color: #EC7532;
 }

@@ -3,7 +3,7 @@
             class="bubble {{ form.vars.value.orientation ? 'left' : 'right' }} {{ (form.vars.id == 'comic_pages_0_boxes_0_bubbles_0') ? 'on' : '' }}"
             data-id="{{ form.vars.id }}"
             style="">
-        {{ form_widget(form.text,  { 'attr': { 'placeholder': 'Write here !', 'class': 'autoExpand', 'rows': 1, 'data-min-rows': 1 }}) }}
+        {{ form_widget(form.text,  { 'attr': { 'placeholder': 'Write here !', 'class': 'autoExpand fs-18', 'rows': 1, 'data-min-rows': 1 }}) }}
         {{ form_widget(form.x) }}
         {{ form_widget(form.y) }}
         {{ form_widget(form.orientation) }}

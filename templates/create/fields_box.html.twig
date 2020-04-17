@@ -25,21 +25,22 @@
             </div>
 
             <div id="actionsBubble" class="actions">
-                <span class="button is-light" title="{% trans %}Remove bubble{% endtrans %}" id="removeBubble">
+                <div class="button is-light" title="{% trans %}Remove bubble{% endtrans %}" id="removeBubble">
                     {% include "/svg/bubble_remove.html.twig" %}
-                </span>
-                <span class="button is-light is-hidden" title="{% trans %}Add bubble{% endtrans %}" id="addBubble">
+                </div>
+                <div class="button is-light is-hidden" title="{% trans %}Add bubble{% endtrans %}" id="addBubble">
                     {% include "/svg/bubble_add.html.twig" %}
-                </span>
-                <span class="button is-light" title="{% trans %}Change persona{% endtrans %}" id="editPersona">
+                </div>
+                <div class="button is-light" title="{% trans %}Change persona{% endtrans %}" id="editPersona">
                     {% include "/svg/persona_edit.html.twig" %}
-                </span>
-                <span class="button is-light" title="{% trans %}Change style{% endtrans %}" id="styleBubble">
+                </div>
+                <div class="button is-light" title="{% trans %}Change style{% endtrans %}" id="styleBubble">
                     {% include "/svg/bubble_style.html.twig" %}
-                </span>
-                <span class="button is-light" title="{% trans %}Change style{% endtrans %}" id="carBubble">
-                        <div id="circle"></div>
-                </span>
+                </div>
+                <div class="button is-light" title="{% trans %}Change style{% endtrans %}" id="carBubble">
+                    <div id="nbCar"></div>
+                    <div id="circle"></div>
+                </div>
             </div>
         {% endif %}
     </div>

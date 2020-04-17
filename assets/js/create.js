@@ -1,5 +1,6 @@
 jQuery(document).ready(function () {
-    var size = {
+    var nbCarMax = 140,
+        size = {
             'prefix': 'is-',
             'key': 'size',
             'values': ['one-quarter', 'one-third', 'two-fifths', 'half', 'three-fifths', 'two-thirds', 'three-quarters', 'full']
@@ -11,20 +12,20 @@ jQuery(document).ready(function () {
         };
 
     $(document).on('click', '.column blockquote', function (event) {
-        selectbox($(this).parent().parent());
+        selectBox($(this).parent().parent());
         selectBubble($(this));
         event.stopPropagation();
     });
 
     $(document).on('focus', '.column textarea', function () {
         if (!$(this).parent().hasClass('on')) {
-            selectbox($(this).parent().parent().parent());
+            selectBox($(this).parent().parent().parent());
             selectBubble($(this).parent());
         }
     });
 
     $(document).on('click', '.column', function () {
-        selectbox($(this));
+        selectBox($(this));
     });
 
     $('#editPersona').on('click', function () {
@@ -90,85 +91,96 @@ jQuery(document).ready(function () {
     $('#resizeH').on('click', function () {
         resizeBox($(this).parent().parent(), size)
     });
+
     $('#resizeV').on('click', function () {
         resizeBox($(this).parent().parent(), height)
     });
 
+    $('textarea').on('keydown', function () {
+        var nbCar = $(this).val().length,
+            perc = nbCar/nbCarMax;
+
+        if (nbCar > 100) {
+            $('#nbCar').html(nbCarMax-nbCar);
+        }
+        if (nbCar > 95) {
+            $(this).removeClass('fs-*').addClass('fs-12');
+            $('#circle').circleProgress({'fill': {gradient: ["#e8793a", "#ff5900"]}});
+        }
+        else if (nbCar > 65) {
+            $('#nbCar').html('');
+            $(this).removeClass('fs-*').addClass('fs-14');
+            $('#circle').circleProgress({'fill': {gradient: ["#76a094", "#e8793a"]}});
+        }
+        else if (nbCar > 35) {
+            $(this).removeClass('fs-*').addClass('fs-16');
+            $('#circle').circleProgress({fill: { gradient: ["#9cd3c6", "#76a094"]}});
+        }
+        else {
+            $(this).removeClass('fs-*').addClass('fs-18');
+        }
+
+        $('#circle').circleProgress('value', perc);
+    });
+
+    function selectBox(box) {
+        $('.column').removeClass('on');
+        box.addClass('on');
+        var element = $('#actionsBox').detach();
+        box.append(element);
+        if (!box.find('div blockquote.on').length) {
+            $('blockquote').removeClass('on');
+            $('#actionsBubble').hide();
+        }
+    }
+
+    function selectBubble(bubble) {
+        $('#circle').circleProgress({
+            value: 0,
+            size: 30,
+            thickness: 3,
+            animation: false,
+            fill: {
+                gradient: ["#9cd3c6", "#76a094"]
+            }
+        });
+
+        $('.bubble').removeClass('on');
+        bubble.addClass('on');
+        var element = $('#actionsBubble').detach();
+        bubble.parent().parent().append(element);
+        $('#actionsBubble').show();
+        bubble.children('textarea').focus();
+        if (bubble.hasClass('bubble')) {
+            $('#addBubble').addClass('is-hidden');
+            $('#removeBubble').removeClass('is-hidden');
+        }
+        else {
+            $('#addBubble').removeClass('is-hidden');
+            $('#removeBubble').addClass('is-hidden');
+        }
+    }
+
+    function resizeBox(box, size) {
+        var ok = 0,
+            newValue = '',
+            formId = box.attr('data-id');
+
+        size.values.forEach(value => {
+            if (ok == 1) {
+                newValue = value;
+                ok = 'end';
+            }
+            if (box.hasClass(size.prefix + value) && ok == 0) {
+                box.removeClass(size.prefix + value);
+                ok = 1;
+            }
+        });
+        if (ok != 'end') {
+            newValue = size.values[0];
+        }
+
+        box.addClass(size.prefix + newValue);
+        $('#' + formId + '_' + size.key).val(newValue);
+    }
 });
-
-function selectbox(box) {
-    $('.column').removeClass('on');
-    box.addClass('on');
-    var element = $('#actionsBox').detach();
-    box.append(element);
-    if (!box.find('div blockquote.on').length) {
-        $('blockquote').removeClass('on');
-        $('#actionsBubble').hide();
-    }
-}
-function selectBubble(bubble) {
-
-    $('#circle').circleProgress({
-        value: 0,
-        size: 30,
-        thickness: 3,
-        fill: {
-            gradient: ["#76a094", "#9cd3c6"]
-        }
-    });
-
-    $('.bubble').removeClass('on');
-    bubble.addClass('on');
-    var element = $('#actionsBubble').detach();
-    bubble.parent().parent().append(element);
-    $('#actionsBubble').show();
-    bubble.children('textarea').focus();
-    if (bubble.hasClass('bubble')) {
-        $('#addBubble').addClass('is-hidden');
-        $('#removeBubble').removeClass('is-hidden');
-    }
-    else {
-        $('#addBubble').removeClass('is-hidden');
-        $('#removeBubble').addClass('is-hidden');
-    }
-}
-
-function resizeBox(box, size) {
-    var ok = 0,
-        newValue = '',
-        formId = box.attr('data-id');
-
-    size.values.forEach(value => {
-        if (ok == 1) {
-            newValue = value;
-            ok = 'end';
-        }
-        if (box.hasClass(size.prefix + value) && ok == 0) {
-            box.removeClass(size.prefix + value);
-            ok = 1;
-        }
-    });
-    if (ok != 'end') {
-        newValue = size.values[0];
-    }
-
-    box.addClass(size.prefix + newValue);
-    $('#' + formId + '_' + size.key).val(newValue);
-}
-
-$('textarea').on('keypress', function () {
-    var nbCar = $(this).val().length,
-        perc = nbCar/70;
-    if (nbCar > 100) {
-        $(this).addClass('t-vsmall');
-    }
-    else if (nbCar > 70) {
-        $(this).addClass('t-small');
-    }
-    else {
-        $(this).removeClass('t-vsmall').removeClass('t-small');
-    }
-
-    console.log(nbCar);
-    $('#circle').circleProgress('value', perc);
-})
