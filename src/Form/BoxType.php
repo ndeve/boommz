@@ -7,11 +7,20 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
 use App\Entity\Box;
 use App\Form\BubbleType;
+use App\Entity\Background;
+use App\Form\DataTransformer\BackgroundToNumberTransformer;
 
 class BoxType extends AbstractType
 {
+    private $transformer;
+
+    public function __construct(BackgroundToNumberTransformer $transformer)
+    {
+        $this->transformer = $transformer;
+    }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -26,7 +35,8 @@ class BoxType extends AbstractType
             'allow_add' => true,
             'allow_delete' => true,
             'by_reference' => false,
-          ]);
+          ])
+          ->get('background')->addModelTransformer($this->transformer);
     }
 
     public function configureOptions(OptionsResolver $resolver)
