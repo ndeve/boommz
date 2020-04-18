@@ -1,0 +1,59 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+
+    <div id="boommzcreator">
+        <div id="persona">
+            <img src="/persona/creator/vest_0000.png" class="vest"/>
+            <img src="/persona/creator/top_0000.png" class="top"/>
+            <img src="/persona/creator/trousers_0000.png" class="trousers"/>
+            <img src="/persona/creator/nude.png" class="nude"/>
+        </div>
+
+        <div class="actions">
+
+
+            <div class="sub" title="{% trans %}Choose vest{% endtrans %}" id="vest" data-max="24" data-num="0"
+                 data-src="/persona/creator/vest_ID.png">
+                <div class="button is-light previous">
+                    {% include "/svg/previous.html.twig" %}
+                </div>
+                <div class="button is-light next">
+                    <img src="/persona/creator/vest_0001.png"/>
+                </div>
+                <div class="button is-light next">
+                    {% include "/svg/next.html.twig" %}
+                </div>
+            </div>
+
+            <div class="sub" title="{% trans %}Choose top{% endtrans %}" id="top" data-max="24" data-num="0"
+                 data-src="/persona/creator/top_ID.png">
+                <div class="button is-light previous">
+                    {% include "/svg/previous.html.twig" %}
+                </div>
+                <div class="button is-light next">
+                    <img src="/persona/creator/top_0001.png"/>
+                </div>
+                <div class="button is-light next">
+                    {% include "/svg/next.html.twig" %}
+                </div>
+            </div>
+
+            <div class="sub" title="{% trans %}Choose tousers{% endtrans %}" id="trousers" data-max="24" data-num="0"
+                 data-src="/persona/creator/trousers_ID.png">
+                <div class="button is-light previous">
+                    {% include "/svg/previous.html.twig" %}
+                </div>
+                <div class="button is-light next">
+                    <img src="/persona/creator/trousers_0001.png"/>
+                </div>
+                <div class="button is-light next">
+                    {% include "/svg/next.html.twig" %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
