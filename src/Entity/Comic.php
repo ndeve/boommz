@@ -63,9 +63,9 @@ class Comic
     private $pages;
 
     /**
-     * @ORM\Column(type="boolean", options={"default": "false"})
+     * @ORM\Column(type="boolean", options={"default": 0})
      */
-    private $selected = false;
+    private $selected = 0;
 
     public function __construct()
     {
