@@ -196,7 +196,7 @@ class Bubble
             if ($nbCar > 95) {
                 $classes .= 'fs-12';
             }
-            else if ($nbCar > 65) {
+            else if ($nbCar > 55) {
                 $classes .= 'fs-14';
             }
             else if ($nbCar > 35) {

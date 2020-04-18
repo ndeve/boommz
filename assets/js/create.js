@@ -164,7 +164,7 @@ jQuery(document).ready(function () {
         if (nbCar > 95) {
             $(this).removeClass('fs-14 fs-16 fs-18').addClass('fs-12').attr('data-height-row', 14);
             $('#circle').circleProgress({'fill': {gradient: ["#e8793a", "#ff5900"]}});
-        } else if (nbCar > 65) {
+        } else if (nbCar > 55) {
             $('#nbCar').html('');
             $(this).removeClass('fs-12 fs-16 fs-18').addClass('fs-14').attr('data-height-row', 16);
             $('#circle').circleProgress({'fill': {gradient: ["#76a094", "#e8793a"]}});
