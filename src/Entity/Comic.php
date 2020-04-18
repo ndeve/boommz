@@ -62,6 +62,11 @@ class Comic
      */
     private $pages;
 
+    /**
+     * @ORM\Column(type="boolean", options={"default": "false"})
+     */
+    private $selected = false;
+
     public function __construct()
     {
         $this->dateCreation = new \DateTime();
@@ -206,6 +211,18 @@ class Comic
                 $page->setComic(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSelected(): ?bool
+    {
+        return $this->selected;
+    }
+
+    public function setSelected(bool $selected): self
+    {
+        $this->selected = $selected;
 
         return $this;
     }

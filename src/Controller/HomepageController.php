@@ -16,6 +16,10 @@ class HomepageController
     public function homeAction()
     {
 
-        return  [];
+        $em = $this->getDoctrine()->getManager();
+
+        $comics = $em->getRepository('App:Comic')->findBy(['selected' => true]);
+
+        return  [ 'comics' => $comics];
     }
 }
