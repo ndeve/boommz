@@ -69,9 +69,9 @@ class CreateController extends Controller
         }
         return [
           'comic'             => $comic,
-          'form'        => $form->createView(),
+          'form'              => $form->createView(),
           'personas'          => $entityManager->getRepository('App:Persona')->findBy(['path' => 'stars/']),
-          'backgrounds'       => [],//$em->getRepository('BoumzBoumzBundle:Background')->findBackgrounds([ 'user' => $user ])
+          'backgrounds'       => $entityManager->getRepository('App:Background')->findBy([ 'selection' => true ])
         ];
     }
 

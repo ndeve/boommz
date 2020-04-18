@@ -19,7 +19,6 @@ class ComicsController extends Controller
      */
     public function comicsAction(int $page = 0)
     {
-
         $em = $this->getDoctrine()->getManager();
 
         $comics = $em->getRepository('App:Comic')->findByParams([]);// ['page' => $page] );

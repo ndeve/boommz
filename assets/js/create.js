@@ -71,6 +71,16 @@ jQuery(document).ready(function () {
         $('#' + $('.bubble.on').attr('data-id') + '_style').val(style);
     });
 
+    $('#changeBackground').on('click', function () {
+        var id = parseInt($('#backgrounds').attr('data-num')) +1,
+            max = parseInt($('#backgrounds').attr('data-max')),
+            num = (id > max) ? 0 : id,
+            bg = $('#backgrounds div[data-num='+ num +']');
+        $('#backgrounds').attr('data-num', num);
+        $('.column.on .ccolumn').css('background-image', 'url('+ bg.attr('data-src') +')');
+        $('.column.on input.bg').val(bg.attr('data-id'));
+    });
+
     $('#removeBubble').on('click', function () {
         $('blockquote.on').removeClass('bubble');
         $('blockquote.on textarea').val('');

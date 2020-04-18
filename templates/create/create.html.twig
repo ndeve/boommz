@@ -32,6 +32,12 @@
         {% endfor %}
         </div>
     </div>
+    <div id="backgrounds" class="is-hidden" data-num="0" data-max="{{ backgrounds|length }}">
+        <div data-num="bg-0" data-src="" data-id=""></div>
+        {% for bg in backgrounds %}
+            <div data-num="{{ loop.index }}" data-src="{{ bg.url }}" data-id="{{ bg.id }}"></div>
+        {% endfor %}
+    </div>
 
     {{ form_end(form) }}
 

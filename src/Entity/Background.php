@@ -43,11 +43,6 @@ class Background
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=5)
-     */
-    private $ext;
-
-    /**
      * @ORM\Column(type="boolean")
      */
     private $selection;
@@ -112,7 +107,11 @@ class Background
 
     public function getUrl()
     {
-        return 'decor/1/1/'. Transliterator::urlize($this->getTitle()) .'-'. $this->getId() .'.jpg';
+        if ($this->getSelection()) {
+            return 'decor/selection/' . Transliterator::urlize($this->getTitle()) . '.png';
+        }
+
+        return '';
     }
 
     public function getDescription(): ?string
@@ -123,18 +122,6 @@ class Background
     public function setDescription(string $description): self
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getExt(): ?string
-    {
-        return $this->ext;
-    }
-
-    public function setExt(string $ext): self
-    {
-        $this->ext = $ext;
 
         return $this;
     }
