@@ -1,5 +1,29 @@
 @import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
 
+.hero-head {
+    background-color: #67c57e;
+    border-bottom: 4px solid #3ea556;
+}
+.navbar-item img {
+    max-height: 5rem;
+}
+.tabs li a {
+    border: 1px solid #67c57e;
+    border-radius: 7px;
+    margin: 0 4px;
+}
+.tabs li.is-active a {
+    border: 1px solid #3ea556;
+    color: #4baf63;
+    background-color: #fff;
+}
+.tabs li a:hover {
+    background-color: #b4eac1;
+    border: solid 1px #c2eacd;
+}
+.tabs li.is-active a {
+    background-color: #fff;
+}
 .page {
     background-color: #FAF3E9;
     padding: 20px;
