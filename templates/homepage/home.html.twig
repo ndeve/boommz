@@ -4,7 +4,7 @@
 
 
     {% for comic in comics %}
-        <a href="{{ comic.url }}" class="title">{{ comic.title }}</a>
+        <a href="{{ url('comic', comic.routeParams) }}" class="title">{{ comic.title }}</a>
         {% for page in comic.pages %}
             <section class="page">
                 <div class="columns is-multiline">
