@@ -34,7 +34,7 @@
 .vest {
     z-index: 4;
 }
-.actions {
+#boommzcreator .actions {
     background-color: #ffffff;
     border: solid 1px #76a094;
     border-radius: 7px;
@@ -44,10 +44,10 @@
     position: absolute;
     display: inline-block;
 }
-.actions .button svg {
+#boommzcreator .actions .button svg {
     color: #5eb272;
 }
-.actions .button img {
+#boommzcreator .actions .button img {
     width: 36px;
     height: 83px;
     position: absolute;
