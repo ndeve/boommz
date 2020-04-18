@@ -36,13 +36,13 @@
     position: relative;
 }
 .page .column.h-1 {
-    height: 220px;
-}
-.page .column.h-2 {
     height: 250px;
 }
+.page .column.h-2 {
+    height: 280px;
+}
 .page .column.h-3 {
-    height: 300px;
+    height: 320px;
 }
 .page .column .ccolumn {
     background-color: #ffffff;

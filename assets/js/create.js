@@ -99,7 +99,11 @@ jQuery(document).ready(function () {
     });
 
     $('#removeBox').on('click', function(e){
-        $('.column.on').remove();
+
+        var removeBpx = $('.column.on'),
+            newSelectedBox = $('.column.on').next().length ? $('.column.on').next() : $('.column.on').prev();
+        selectBox(newSelectedBox);
+        removeBpx.remove();
         orderBox();
     });
 
