@@ -105,7 +105,6 @@ php-stop:
 php-start:
 	@${CDC} start php
 
-
 #connect to the mysql container
 mysql:
 	@C=mysql S=bash make connect
@@ -183,7 +182,6 @@ clone-bz:
 		echo "\033[0;32mProject Boommz.com already exists. No need to clone.\033[0m"; \
 	fi
 
-#install-db: create-data-dir import-sql
 
 create-data-dir:
 	@if [ ! -d "${DATA_PATH}" ]; then \
@@ -192,27 +190,6 @@ create-data-dir:
 	else \
 		echo  "\033[0;32mData directory already exists.\033[0m"; \
 	fi \
-
-import-sql:
-	@if [ ! -f "${DATA_PATH}/db.sql" ]; then \
-		echo "\033[0;31mMySQL dump not found. Importing mysql dump from server ${HOST}.\033[0m"; \
-		scp -r ${HOST}:${HOST_DATA_PATH}/db.sql ${CURRENT_DIR}/db.sql || echo "\033[0;31mFailed to copy db.sql from ${HOST} on ${HOST_DATA_PATH}\033[0m"; \
-	else \
-	    echo  "\033[0;32mMySQL dump already exists.\033[0m"; \
-	fi
-
-init-sql:
-	@pv ${DATA_PATH}/db.sql | ${CDC} exec -T mysql mysql -u ${MYSQL_USER} -h localhost -D ${MYSQL_DATABASE} -p${MYSQL_PASSWORD};
-
-init-sql-api:
-	@pv ${DATA_PATH}/db_api.sql | ${CDC} exec -T mysql mysql -u root -h localhost -D ${MYSQL_DATABASE_API} -p${MYSQL_ROOT_PASSWORD};
-
-reimport-sql:
-	@sudo rm -rf ${DATA_PATH}/mysql
-	@make import-sql
-
-
-install-dev-program: check-env install-docker install-docker-compose install-php install-pv install-composer install-git permission
 
 permission:
 	@if ! [ -f .yarn ]; then \
