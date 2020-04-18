@@ -1,4 +1,5 @@
 jQuery(document).ready(function () {
+    orderBox();
 
     if ($('.columns').length) {
         $('.columns').each(function () {
@@ -87,6 +88,11 @@ jQuery(document).ready(function () {
         addPersona($(this).parent().parent().parent());
     });
 
+    $('#removeBox').on('click', function(e){
+        $('.column.on').remove();
+        orderBox();
+    });
+
     $('#addBox').on('click', function (e) {
         var page = $(this).parent().parent().parent().parent().parent(),
             nbBox = page.find('.column').length;
@@ -96,9 +102,10 @@ jQuery(document).ready(function () {
             .replace(/comic_pages_0/g, page.attr('data-id'))
             .replace(/__name__/g, nbBox);
         formBox = formBox.replace(/comic\[pages\]\[0\]/g, nameForm);
-        $(this).parent().parent().parent().after(formBox);
+        $('.column.on').after(formBox);
         selectBox($('[data-id="'+ page.attr('data-id') +'_boxes_'+ nbBox +'"]'));
         addPersona($('[data-id="'+ page.attr('data-id') +'_boxes_'+ nbBox +'"]'));
+        orderBox();
         e.stopPropagation();
     });
 
@@ -236,7 +243,10 @@ jQuery(document).ready(function () {
     }
 
     function orderBox() {
-        $('.ccolumn').each(function () {
+        var i = 0;
+        $('.orderBox').each(function () {
+            $(this).val(i);
+            i++;
         });
     }
 });

@@ -35,6 +35,7 @@ class Page
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Box", mappedBy="page", orphanRemoval=true, cascade={"persist"})
+     * @ORM\OrderBy({"orderBox" = "ASC"})
      */
     private $boxes;
 

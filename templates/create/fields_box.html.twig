@@ -50,7 +50,11 @@
                 </div>
 
                 <div id="actionsLine" class="actions">
-                    <div class="button is-light" title="{% trans %}Add persona{% endtrans %}" id="addBox"
+                    <div class="button is-light" title="{% trans %}Remove Box{% endtrans %}" id="removeBox"
+                         data-box-form="">
+                        {% include "/svg/delete.html.twig" %}
+                    </div>
+                    <div class="button is-light" title="{% trans %}Add box{% endtrans %}" id="addBox"
                          data-box-form="">
                         {% include "/svg/box_add.html.twig" %}
                     </div>

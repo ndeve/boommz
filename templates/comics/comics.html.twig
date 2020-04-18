@@ -1,10 +1,10 @@
 {% extends "layout.html.twig" %}
 
 {% block body %}
-    <h1 class="time">All comics</h1>
-    <p>
+    <h1 class="title">All comics</h1>
+    <p class="content">
     {% for comic in comics %}
-        <a href="{{ url('comic', comic.routeParams) }}">{{ comic.title }}</a><br />
+        <a href="{{ url('comic', comic.routeParams) }}" class="has-text-black">{{ comic.title }}</a><br />
     {% endfor %}
     </p>
 {% endblock body %}
