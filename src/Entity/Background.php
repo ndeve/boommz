@@ -47,6 +47,11 @@ class Background
      */
     private $ext;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $selection;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -130,6 +135,18 @@ class Background
     public function setExt(string $ext): self
     {
         $this->ext = $ext;
+
+        return $this;
+    }
+
+    public function getSelection(): ?bool
+    {
+        return $this->selection;
+    }
+
+    public function setSelection(bool $selection): self
+    {
+        $this->selection = $selection;
 
         return $this;
     }
