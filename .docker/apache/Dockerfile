@@ -1,4 +1,4 @@
-FROM debian:stretchhttp://www.boommz.com/
+FROM debian:stretch
 
 ENV HTTPD_PREFIX /usr/local/apache2
 ENV PATH $HTTPD_PREFIX/bin:$PATH
