@@ -1,6 +1,6 @@
 {% extends "layout.html.twig" %}
 
-{% block title %}{{ comic.title }} - Boumz!{% endblock title %}
+{% block title %}{{ comic.title }} - BOOMMZ!{% endblock title %}
 {% block og_image %}{% if comic.imageUrl %}{{ comic.imageUrl('share') }}{% endif %}{% endblock og_image %}
 {% block metas %}
     {% if url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) != url('comic', comic.routeParams) %}
