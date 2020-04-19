@@ -1,65 +1,134 @@
 {% extends "layout.html.twig" %}
 
 {% block body %}
-
     <div id="boommzcreator">
 
-    <div class="actions">
-        <div class="sub" title="{% trans %}Choose vest{% endtrans %}" id="eyes" data-max="24" data-num="1"
-             data-src="/persona/creator/eyes/ID.png">
-            <div class="button is-light previous">
-                {% include "/svg/previous.html.twig" %}
+        <div class="actions actionsg">
+            <div class="subc">
+                <div class="button is-light sex" data-src="/persona/creator/men/ID.png">
+                    {% include "/svg/male.html.twig" %}
+                </div>
+                <div class="button is-light sex on" data-src="/persona/creator/women/ID.png">
+                    {% include "/svg/female.html.twig" %}
+                </div>
+                <div class="button is-light color on" data-color="0">
+                    <div class="color-0"></div>
+                </div>
+                <div class="button is-light color" data-color="1">
+                    <div class="color-1"></div>
+                </div>
             </div>
-            <div class="button is-light img next">
-                <img />
-            </div>
-            <div class="button is-light next">
-                {% include "/svg/next.html.twig" %}
-            </div>
-        </div>
-    </div>
-        <div id="persona">
-            <img src="/persona/creator/eyes/0000.png" class="eyes"/>
-            <img src="/persona/creator/vest/0000.png" class="vest"/>
-            <img src="/persona/creator/top/0000.png" class="top"/>
-            <img src="/persona/creator/trousers/0000.png" class="trousers"/>
-            <img src="/persona/creator/nude.png" class="nude"/>
         </div>
 
         <div class="actions">
-            <div class="sub" title="{% trans %}Choose vest{% endtrans %}" id="vest" data-max="24" data-num="0"
+            <div class="sub" title="{% trans %}Choose hair{% endtrans %}" id="hairs" data-max="21" data-num="1"
+                 data-sub="3"
+                 data-src="/persona/creator/hairs/ID.png">
+                <div class="button is-light previous is-hidden-mobile">
+                    {% include "/svg/previous.html.twig" %}
+                </div>
+                <div class="button is-light img next">
+                    <img/>
+                </div>
+                <div class="button is-light next">
+                    {% include "/svg/next.html.twig" %}
+                </div>
+            </div>
+            <div class="sub" title="{% trans %}Choose eyes{% endtrans %}" id="eyes" data-max="23" data-num="1"
+                 data-sub="12"
+                 data-src="/persona/creator/eyes/ID.png">
+                <div class="button is-light previous is-hidden-mobile">
+                    {% include "/svg/previous.html.twig" %}
+                </div>
+                <div class="button is-light img next">
+                    <img/>
+                </div>
+                <div class="button is-light next">
+                    {% include "/svg/next.html.twig" %}
+                </div>
+            </div>
+            <div class="sub" title="{% trans %}Choose noises{% endtrans %}" id="noises" data-max="7"
+                 data-num="1"
+                 data-sub="3"
+                 data-src="/persona/creator/noises/ID.png">
+                <div class="button is-light previous is-hidden-mobile">
+                    {% include "/svg/previous.html.twig" %}
+                </div>
+                <div class="button is-light img next">
+                    <img/>
+                </div>
+                <div class="button is-light next">
+                    {% include "/svg/next.html.twig" %}
+                </div>
+            </div>
+
+            <div class="sub" title="{% trans %}Choose mouth{% endtrans %}" id="mouths" data-max="22"
+                 data-num="1"
+                 data-sub="2"
+                 data-src="/persona/creator/mouths/ID.png">
+                <div class="button is-light previous is-hidden-mobile">
+                    {% include "/svg/previous.html.twig" %}
+                </div>
+                <div class="button is-light img next">
+                    <img/>
+                </div>
+                <div class="button is-light next">
+                    {% include "/svg/next.html.twig" %}
+                </div>
+            </div>
+        </div>
+        <div id="persona">
+            <img src="/persona/creator/women/0000.png" class="persona" />
+        </div>
+
+        <div class="actions">
+            <div class="sub" title="{% trans %}Choose hat{% endtrans %}" id="hats" data-max="10" data-num="0"
+                 data-sub="3"
+                 data-src="/persona/creator/hats/ID.png">
+                <div class="button is-light previous is-hidden-mobile">
+                    {% include "/svg/previous.html.twig" %}
+                </div>
+                <div class="button is-light img next">
+                    <img/>
+                </div>
+                <div class="button is-light next">
+                    {% include "/svg/next.html.twig" %}
+                </div>
+            </div>
+            <div class="sub" title="{% trans %}Choose vest{% endtrans %}" id="vests" data-max="11" data-num="0"
                  data-src="/persona/creator/vests/ID.png">
-                <div class="button is-light previous">
+                <div class="button is-light previous is-hidden-mobile">
                     {% include "/svg/previous.html.twig" %}
                 </div>
                 <div class="button is-light next">
-                    <img />
+                    <img/>
                 </div>
                 <div class="button is-light next">
                     {% include "/svg/next.html.twig" %}
                 </div>
             </div>
 
-            <div class="sub" title="{% trans %}Choose top{% endtrans %}" id="top" data-max="24" data-num="0"
+            <div class="sub" title="{% trans %}Choose top{% endtrans %}" id="tops" data-max="24" data-num="0"
                  data-src="/persona/creator/tops/ID.png">
-                <div class="button is-light previous">
+                <div class="button is-light previous is-hidden-mobile">
                     {% include "/svg/previous.html.twig" %}
                 </div>
                 <div class="button is-light next">
-                    <img />
+                    <img/>
                 </div>
                 <div class="button is-light next">
                     {% include "/svg/next.html.twig" %}
                 </div>
             </div>
 
-            <div class="sub" title="{% trans %}Choose tousers{% endtrans %}" id="trousers" data-max="24" data-num="0"
-                 data-src="/persona/creator/trousers_ID.png">
-                <div class="button is-light previous">
+            <div class="sub" title="{% trans %}Choose tousers{% endtrans %}" id="trousers" data-max="25"
+                 data-num="0"
+                 data-src="/persona/creator/trousers/ID.png">
+                <div class="button is-light previous is-hidden-mobile">
                     {% include "/svg/previous.html.twig" %}
                 </div>
                 <div class="button is-light next">
-                    <img src="/persona/creator/trousers_0001.png"/>
+                    <img/>
                 </div>
                 <div class="button is-light next">
                     {% include "/svg/next.html.twig" %}
@@ -67,7 +136,5 @@
             </div>
         </div>
     </div>
-
-
 
 {% endblock %}

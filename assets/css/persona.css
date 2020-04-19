@@ -3,6 +3,9 @@
     border-radius: 6px;
     background-color: #b3d6bb;
     text-align: center;
+    margin: 10px auto;
+    padding: 5px;
+    width: max-content;
 }
 #persona {
     display: inline-block;
@@ -11,12 +14,10 @@
     border: 2px solid #92b199;
     border-radius: 7px;
     position: relative;
-    margin: 10px;
+    margin: 5px;
     background-color: #fff;
 }
-#boommzcreator .actions {
-    border: 1px solid #92b199;
-}
+
 #persona img {
     bottom: 15px;
     left: 15px;
@@ -28,21 +29,27 @@
 .trousers {
     z-index: 3;
 }
-.top {
+.tops {
     z-index: 2;
 }
-.vest {
+.vests {
     z-index: 4;
 }
 .eyes {
     z-index: 5;
+}
+.hairs {
+    z-index: 6;
+}
+.hats {
+    z-index: 7;
 }
 #boommzcreator .actions {
     background-color: #ffffff;
     border: solid 1px #76a094;
     border-radius: 7px;
     height: auto;
-    margin: 10px;
+    margin: 5px;
     padding: 5px;
     position: relative;
     display: inline-block;
@@ -50,11 +57,48 @@
 #boommzcreator .actions .button svg {
     color: #5eb272;
 }
+#boommzcreator .actions .button.on svg {
+    color: #29863f;
+}
 #boommzcreator .actions .button img {
     width: 36px;
     height: 83px;
     position: absolute;
 }
+#boommzcreator .actionsg {
+    width: 100%;
+    display: block;
+    margin: 0;
+}
+
+#boommzcreator .actionsg .button {
+    padding: 3px;
+}
 #trousers img {
     top: -49px;
+}
+#eyes img,
+#noises img {
+    top: 0;
+}
+#hairs img {
+    top: 5px;
+}
+#hats img {
+    top: 9px;
+}
+#mouths img {
+    top: -8px;
+}
+
+.color div {
+    height: 100%;
+    width: 100%;
+    border-radius: 3px;
+}
+.color-0 {
+    background-color: #F5CEA4;
+}
+.color-1 {
+    background-color: #A67950;
 }

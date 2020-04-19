@@ -1,7 +1,27 @@
 jQuery(document).ready(function () {
+    $('.color').on('click', function () {
+        $('.color').removeClass('on');
+        $(this).addClass('on');
+        reloadPersona();
+    });
+
+    $('.sex').on('click', function () {
+        $('.sex').removeClass('on');
+        $(this).addClass('on');
+        reloadPersona();
+    });
+
+    function reloadPersona() {
+        $('.persona').attr('src', $('.sex.on').attr('data-src').replace(/ID/g, ('000' + $('.color.on').attr('data-color')).slice(-4)));
+    }
 
     $('.sub').each(function(){
-        $(this).children('img').attr('src', $(this).attr('data-src').replace(/ID/g, ('000' + $(this).attr('data-num'))).slice(-4))
+        var idsub = '0001';
+        if ($(this).attr('data-sub')) {
+            idsub = ('000' + $(this).attr('data-sub')).slice(-4);
+        }
+        $('#' + $(this).attr('id') +' img').attr('src', $(this).attr('data-src').replace(/ID/g, idsub));
+        $('#persona').append('<img src="'+ $(this).attr('data-src').replace(/ID/g, ('000' + $(this).attr('data-num')).slice(-4)) +'" class="'+ $(this).attr('id') +'"/>');
     });
 
     $('.previous').on('click', function () {
