@@ -3,23 +3,37 @@
 {% block body %}
 
     <div id="boommzcreator">
+
+    <div class="actions">
+        <div class="sub" title="{% trans %}Choose vest{% endtrans %}" id="eyes" data-max="24" data-num="1"
+             data-src="/persona/creator/eyes/ID.png">
+            <div class="button is-light previous">
+                {% include "/svg/previous.html.twig" %}
+            </div>
+            <div class="button is-light img next">
+                <img />
+            </div>
+            <div class="button is-light next">
+                {% include "/svg/next.html.twig" %}
+            </div>
+        </div>
+    </div>
         <div id="persona">
-            <img src="/persona/creator/vest_0000.png" class="vest"/>
-            <img src="/persona/creator/top_0000.png" class="top"/>
-            <img src="/persona/creator/trousers_0000.png" class="trousers"/>
+            <img src="/persona/creator/eyes/0000.png" class="eyes"/>
+            <img src="/persona/creator/vest/0000.png" class="vest"/>
+            <img src="/persona/creator/top/0000.png" class="top"/>
+            <img src="/persona/creator/trousers/0000.png" class="trousers"/>
             <img src="/persona/creator/nude.png" class="nude"/>
         </div>
 
         <div class="actions">
-
-
             <div class="sub" title="{% trans %}Choose vest{% endtrans %}" id="vest" data-max="24" data-num="0"
-                 data-src="/persona/creator/vest_ID.png">
+                 data-src="/persona/creator/vests/ID.png">
                 <div class="button is-light previous">
                     {% include "/svg/previous.html.twig" %}
                 </div>
                 <div class="button is-light next">
-                    <img src="/persona/creator/vest_0001.png"/>
+                    <img />
                 </div>
                 <div class="button is-light next">
                     {% include "/svg/next.html.twig" %}
@@ -27,12 +41,12 @@
             </div>
 
             <div class="sub" title="{% trans %}Choose top{% endtrans %}" id="top" data-max="24" data-num="0"
-                 data-src="/persona/creator/top_ID.png">
+                 data-src="/persona/creator/tops/ID.png">
                 <div class="button is-light previous">
                     {% include "/svg/previous.html.twig" %}
                 </div>
                 <div class="button is-light next">
-                    <img src="/persona/creator/top_0001.png"/>
+                    <img />
                 </div>
                 <div class="button is-light next">
                     {% include "/svg/next.html.twig" %}

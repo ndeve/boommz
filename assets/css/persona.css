@@ -34,6 +34,9 @@
 .vest {
     z-index: 4;
 }
+.eyes {
+    z-index: 5;
+}
 #boommzcreator .actions {
     background-color: #ffffff;
     border: solid 1px #76a094;
@@ -41,7 +44,7 @@
     height: auto;
     margin: 10px;
     padding: 5px;
-    position: absolute;
+    position: relative;
     display: inline-block;
 }
 #boommzcreator .actions .button svg {

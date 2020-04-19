@@ -1,5 +1,9 @@
 jQuery(document).ready(function () {
 
+    $('.sub').each(function(){
+        $(this).children('img').attr('src', $(this).attr('data-src').replace(/ID/g, ('000' + $(this).attr('data-num'))).slice(-4))
+    });
+
     $('.previous').on('click', function () {
         var parent = $(this).parent(),
             max = parseInt(parent.attr('data-max')),
