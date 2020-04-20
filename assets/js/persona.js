@@ -12,7 +12,9 @@ jQuery(document).ready(function () {
     });
 
     function reloadPersona() {
-        $('.persona').attr('src', $('.sex.on').attr('data-src').replace(/ID/g, ('000' + $('.color.on').attr('data-color')).slice(-4)));
+        var persona = $('.sex.on').attr('data-src').replace(/ID/g, ('000' + $('.color.on').attr('data-color')).slice(-4));
+        $('.persona').attr('src', persona);
+        $('#persona_creator_persona').val(persona);
     }
 
     $('.sub').each(function(){

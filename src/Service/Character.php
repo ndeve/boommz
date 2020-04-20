@@ -94,64 +94,37 @@ class Character {
     public function generateCharacter($data)
     {
         //alpha & transparency
-        $dest_img = imagecreatetruecolor(27, 44);
+        $dest_img = imagecreatetruecolor(36, 83);
 
         imagesavealpha($dest_img, true);
-
         //create a fully transparent background (127 means fully transparent)
         $trans_background = imagecolorallocatealpha($dest_img, 0, 0, 0, 127);
 
         //fill the image with a transparent background
         imagefill($dest_img, 0, 0, $trans_background);
 
-        $img_bo = imagecreatefrompng('http://fr.boumz.com/images/mp/bo/'. $data['co'] . $data['se'] .'.png');
-        $img_to = imagecreatefrompng('http://fr.boumz.com/images/mp/to/'. $data['to'] .'.png');
-        $img_le = imagecreatefrompng('http://fr.boumz.com/images/mp/le/'. $data['le'] .'.png');
-        $img_he = imagecreatefrompng('http://fr.boumz.com/images/mp/he/'. $data['co'] . $data['he'] .'.png');
-        $img_no = imagecreatefrompng('http://fr.boumz.com/images/mp/no/'. $data['no'] .'.png');
-        $img_mo = imagecreatefrompng('http://fr.boumz.com/images/mp/mo/'. $data['mo'] .'.png');
-        $img_ey = imagecreatefrompng('http://fr.boumz.com/images/mp/ey/'. $data['ey'] .'.png');
-        $img_eb = imagecreatefrompng('http://fr.boumz.com/images/mp/eb/'. $data['eb'] .'.png');
-        $img_ha = imagecreatefrompng('http://fr.boumz.com/images/mp/ha/'. $data['ha'] .'.png');
+        $name = '';
+        $dir = '';
+        $img_bo = imagecreatefrompng(getcwd() . $data['persona']);
+        imagecopy($dest_img, $img_bo, 0, 0, 0, 0, 36, 83);
+        unset($data['persona']);
 
-        //merge all images
-        imagecopy($dest_img, $img_bo, 0, 0, 0, 0, 27, 44);
-        imagecopy($dest_img, $img_to, 0, 0, 0, 0, 27, 44);
-        imagecopy($dest_img, $img_le, 0, 0, 0, 0, 27, 44);
-        imagecopy($dest_img, $img_he, 0, 0, 0, 0, 27, 44);
-        imagecopy($dest_img, $img_no, 0, 0, 0, 0, 27, 44);
-        imagecopy($dest_img, $img_mo, 0, 0, 0, 0, 27, 44);
-        imagecopy($dest_img, $img_ey, 0, 0, 0, 0, 27, 44);
-        imagecopy($dest_img, $img_eb, 0, 0, 0, 0, 27, 44);
-        imagecopy($dest_img, $img_ha, 0, 0, 0, 0, 27, 44);
+        foreach ($data as $key => $value) {
+            $img_bo = imagecreatefrompng(getcwd() . '/persona/creator/' . $key . '/' . $value . '.png');
+            imagecopy($dest_img, $img_bo, 0, 0, 0, 0, 36, 83);
+            $name = $name . $value .'-';
+            $dir = $dir . $value .'/';
+        }
+        $name = substr($name, 0, -1);
+        $dir = getcwd() .'/persona/creator/p/'. substr($dir, 0, 15);
 
-        //se-co-to-le-he-mo-no-ey-eb-ha
-
-        $name = implode('-', $data);
-
-        $dir = 'mp';
-
-        foreach(str_split(substr(md5($name), 0, 5)) as $value) {
-            $dir = $dir .'/'. $value;
-            if(!is_dir('images/p/'. $dir)) {
-                mkdir('images/p/'. $dir);
-            }
+        if (!is_dir($dir)) {
+            mkdir($dir, 0777, true);
         }
 
         //save the png image
-        imagepng($dest_img, 'images/p/'. $dir .'/'. $name .'.png');
+        imagepng($dest_img, $dir .'/'. $name .'.png');
 
-        if(!$p     = $this->em->getRepository('BoumzBoumzBundle:Persona')->findOneBy( ['url' => $dir .'/'. $name .'.png' ] )) {
-            $p = new Persona();
-            $p->setName('B!')
-              ->setCategory('B!')
-              ->setUrl($dir .'/'. $name .'.png')
-              ->setPublic(0);
-        }
-
-        $p->addUser($this->securityContext->getToken()->getUser());
-
-        $this->em->persist($p);
-        $this->em->flush();
+        return $name;
     }
 }

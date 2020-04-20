@@ -35,7 +35,7 @@ class Persona
     private $category;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=50)
      */
     private $path;
 
@@ -56,6 +56,7 @@ class Persona
 
     public function __construct()
     {
+        $this->dateCreation = new \DateTime();
         $this->users = new ArrayCollection();
     }
 
@@ -157,7 +158,11 @@ class Persona
 
     public function getUrl()
     {
-        return 'persona/'. $this->getPath() . Transliterator::urlize($this->getName()) .'.png';
+        if ('stars/' === $this->getPath()) {
+            return '/persona/'. $this->getPath() . Transliterator::urlize($this->getName()) .'.png';
+        }
+
+        return '/persona/creator/p/'. substr(str_replace('-', '/', $this->getPath()), 0, 15) . $this->getPath() .'.png';
     }
 
     public function getPath(): ?string

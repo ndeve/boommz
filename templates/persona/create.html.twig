@@ -146,4 +146,10 @@
 
     {{ form_end(form) }}
 
+    <div class="has-text-centered">
+    {% for persona in app.user.personas %}
+        <img src="{{ persona.url }}" />
+    {% endfor %}
+    </div>
+
 {% endblock %}

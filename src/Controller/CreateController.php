@@ -2,19 +2,20 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\Request;
-use Doctrine\Common\Collections\ArrayCollection;
-use App\Form\ComicType;
-use App\Entity\Comic;
-use App\Entity\Page;
 use App\Entity\Box;
 use App\Entity\Bubble;
+use App\Entity\Comic;
+use App\Entity\Page;
+use App\Form\ComicType;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class CreateController extends Controller
 {
+
     /**
      * @Route(  path="/create",
      *          name="comic_create"
@@ -27,11 +28,16 @@ class CreateController extends Controller
 
         $comic = new Comic();
         $comic->setLocale($request->getLocale())
-              ->setPublic(1);
+          ->setPublic(1);
+        if ($user = $this->getUser()) {
+            $comic->setAuthor($this->getUser());
+        }
+
         $page = new Page();
 
         $bubble = new Bubble();
-        $persona = $entityManager->getRepository('App:Persona')->findOneBy(['id' => 2105]);
+        $persona = $entityManager->getRepository('App:Persona')
+          ->findOneBy(['id' => 2105]);
         $bubble->setPersona($persona);
 
         $box1 = new Box();
@@ -39,7 +45,8 @@ class CreateController extends Controller
         $page->addBox($box1);
 
         $bubble = new Bubble();
-        $persona = $entityManager->getRepository('App:Persona')->findOneBy(['id' => 2105]);
+        $persona = $entityManager->getRepository('App:Persona')
+          ->findOneBy(['id' => 2105]);
         $bubble->setPersona($persona);
 
         $box2 = new Box();
@@ -47,7 +54,8 @@ class CreateController extends Controller
         $page->addBox($box2);
 
         $bubble = new Bubble();
-        $persona = $entityManager->getRepository('App:Persona')->findOneBy(['id' => 2105]);
+        $persona = $entityManager->getRepository('App:Persona')
+          ->findOneBy(['id' => 2105]);
         $bubble->setPersona($persona);
 
         $box3 = new Box();
@@ -64,14 +72,16 @@ class CreateController extends Controller
             $entityManager->persist($comic);
             $entityManager->flush();
 
-            $url = $this->generateUrl('comic', $comic->getRouteParams() );
+            $url = $this->generateUrl('comic', $comic->getRouteParams());
             return $this->redirect($url);
         }
         return [
-          'comic'             => $comic,
-          'form'              => $form->createView(),
-          'personas'          => $entityManager->getRepository('App:Persona')->findBy(['path' => 'stars/']),
-          'backgrounds'       => $entityManager->getRepository('App:Background')->findBy([ 'selection' => true ])
+          'comic' => $comic,
+          'form' => $form->createView(),
+          'personas' => $entityManager->getRepository('App:Persona')
+            ->findBy(['path' => 'stars/']),
+          'backgrounds' => $entityManager->getRepository('App:Background')
+            ->findBy(['selection' => true]),
         ];
     }
 
@@ -85,8 +95,9 @@ class CreateController extends Controller
     public function editAction(int $id, Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
-        if (null === $comic = $entityManager->getRepository('App:Comic')->findOneById($id)) {
-            throw $this->createNotFoundException('No comic found for id '.$id);
+        if (null === $comic = $entityManager->getRepository('App:Comic')
+            ->findOneById($id)) {
+            throw $this->createNotFoundException('No comic found for id ' . $id);
         }
 
         $originalPages = new ArrayCollection();
@@ -111,15 +122,18 @@ class CreateController extends Controller
             $entityManager->persist($comic);
             $entityManager->flush();
 
-            $url = $this->generateUrl('comic', $comic->getRouteParams() );
+            $url = $this->generateUrl('comic', $comic->getRouteParams());
             return $this->redirect($url);
         }
 
         return [
-          'comic'             => $comic,
-          'form'        => $form->createView(),
-          'personas'          => [],//$em->getRepository('BoumzBoumzBundle:Persona')->findPersonas([ 'user' => $user ]),
-          'backgrounds'       => [],//$em->getRepository('BoumzBoumzBundle:Background')->findBackgrounds([ 'user' => $user ])
+          'comic' => $comic,
+          'form' => $form->createView(),
+          'personas' => [],
+            //$em->getRepository('BoumzBoumzBundle:Persona')->findPersonas([ 'user' => $user ]),
+          'backgrounds' => [],
+            //$em->getRepository('BoumzBoumzBundle:Background')->findBackgrounds([ 'user' => $user ])
         ];
     }
+
 }

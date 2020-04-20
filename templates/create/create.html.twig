@@ -25,11 +25,20 @@
 
     <div id="actionsPersona" class="actions is-hidden">
         <div id="slidePersona">
-        {% for persona in personas %}
-            <div class="item-{{ loop.index }}">
-                <img src="{{ persona.url }}" data-id="{{ persona.id }}" title="{{ persona.name }}" class="persona" />
-            </div>
-        {% endfor %}
+            {% for persona in personas %}
+                <div class="item-{{ loop.index }}">
+                    <img src="{{ persona.url }}" data-id="{{ persona.id }}" title="{{ persona.name }}" class="persona"/>
+                </div>
+            {% endfor %}
+
+            {% if app.user %}
+                {% for persona in app.user.personas %}
+                    <div class="item-{{ loop.index }}">
+                        <img src="{{ persona.url }}" data-id="{{ persona.id }}" title=""
+                             class="persona"/>
+                    </div>
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
     <div id="backgrounds" class="is-hidden" data-num="0" data-max="{{ backgrounds|length }}">
