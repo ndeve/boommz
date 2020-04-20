@@ -6,12 +6,12 @@
     <section class="page">
         <div class="columns is-multiline">
             {% for comic in comics %}
-                <div class="column is-one-quarter h-1">
+                <div class="column is-one-third h-1">
                     <div {% if comic.pages.0.boxes.0.background %}style="background-image: url({{ comic.pages.0.boxes.0.background }})"{% endif %}
                          class="ccolumn">
                         <a href="{{ url('comic', comic.routeParams) }}" class="comic-title">
                     <span class="ctitle">
-                            <span class="title is-4">Conférence de Presse d'Édouard Philippe</span><br />
+                            <span class="title is-4">{{ comic.title }}</span><br />
                         {% if comic.author %}
                             <span class="subtitle">by {{ comic.author.username }}</span>
                         {% endif %}
