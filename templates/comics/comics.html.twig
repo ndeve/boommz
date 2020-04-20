@@ -6,16 +6,16 @@
     <section class="page">
         <div class="columns is-multiline">
             {% for comic in comics %}
-                <div class="column is-{{ comic.pages.0.boxes.0.size ?? 'one-quarter' }} {{ cycle(['c-1', 'c-2', ''], loop.index0) }} h-{{ comic.pages.0.boxes.0.height }}">
+                <div class="column is-one-quarter h-1">
                     <div {% if comic.pages.0.boxes.0.background %}style="background-image: url({{ comic.pages.0.boxes.0.background }})"{% endif %}
                          class="ccolumn">
                         <a href="{{ url('comic', comic.routeParams) }}" class="comic-title">
                     <span class="ctitle">
-                            <span class="title has-text-black">{{ comic.title }}</span>
+                            <span class="title is-4">Conférence de Presse d'Édouard Philippe</span><br />
                         {% if comic.author %}
-                            <span class="subtitle">de {{ comic.author.username }}</span>
+                            <span class="subtitle">by {{ comic.author.username }}</span>
                         {% endif %}
-                    </span>
+                                </span>
                         </a>
                         {% for bubble in comic.pages.0.boxes.0.bubbles %}
                             <blockquote
