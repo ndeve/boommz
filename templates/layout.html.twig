@@ -44,7 +44,7 @@
                         <div class="tabs is-right">
                             <ul>
                                 <li {% if app.request.attributes.get('_route') == 'homepage' %} class="is-active"{% endif %}><a>Home</a></li>
-                                <li{% if  app.request.attributes.get('_route') == 'comics' %} class="is-active"{% endif %}><a href="{{ url('comics') }}">{% trans %}Comics{% endtrans %}</a></li>
+                                <li{% if  app.request.attributes.get('_route') == 'comics' or app.request.attributes.get('_route') == 'comic' %} class="is-active"{% endif %}><a href="{{ url('comics') }}">{% trans %}Comics{% endtrans %}</a></li>
                                 <li{% if  app.request.attributes.get('_route') == 'comic_create' %} class="is-active"{% endif %}><a href="{{ url('comic_create') }}">{% trans %}Create comic{% endtrans %}</a></li>
                                 <li{% if  app.request.attributes.get('_route') == 'character_create' %} class="is-active"{% endif %}><a href="{{ url('character_create') }}">{% trans %}Create character{% endtrans %}</a></li>
                                 {% if is_granted ( 'IS_AUTHENTICATED_REMEMBERED' )  %}
