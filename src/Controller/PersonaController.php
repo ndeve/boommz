@@ -39,7 +39,7 @@ class PersonaController extends Controller
             $entityManager->persist($persona);
             $entityManager->flush();
 
-            $url = $this->generateUrl('persona_create');
+            $url = $this->generateUrl('character_create');
             return $this->redirect($url);
         }
 
