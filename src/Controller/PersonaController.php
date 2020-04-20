@@ -26,6 +26,12 @@ class PersonaController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            if(!$this->getUser()) {
+                $url = $this->generateUrl('app_register');
+                return $this->redirect($url);
+            }
+
             $url = $character->generateCharacter($form->getData());
 
             $persona = new Persona();
