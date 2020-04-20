@@ -12,6 +12,9 @@
 {% block body %}
 
     <h1 class="title">{{ comic.title }}</h1>
+    {% if comic.author %}
+    <h2 class="subtitle">{{ comic.author.name }}</h2>
+    {% endif %}
     {% for page in comic.pages %}
         <section class="page">
             {% if page.title %}<h2 class="subtitle">{{ page.title }}</h2>{% endif %}
