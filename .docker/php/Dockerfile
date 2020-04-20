@@ -5,9 +5,20 @@ RUN apt-get update \
     build-essential locales acl mailutils wget nodejs zip unzip \
     gnupg gnupg1 gnupg2 \
     zlib1g-dev \
+    libwebp-dev libjpeg62-turbo-dev libpng-dev libxpm-dev \
+    libfreetype6-dev \
     sudo
 
 RUN docker-php-ext-install pdo pdo_mysql
+
+#RUN apt-get update -y && apt-get install -y libwebp-dev libjpeg62-turbo-dev libpng-dev libxpm-dev \
+#    libfreetype6-dev
+
+RUN docker-php-ext-configure gd --with-gd --with-webp-dir
+    --with-png-dir --with-zlib-dir --with-xpm-dir --with-freetype-dir
+
+RUN docker-php-ext-install gd
+
 
 COPY php.ini /usr/local/etc/php/php.ini
 COPY php-fpm-pool.conf 	/usr/local/etc/php/pool.d/www.conf

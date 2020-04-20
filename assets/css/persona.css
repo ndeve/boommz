@@ -29,19 +29,19 @@
 .trousers {
     z-index: 3;
 }
-.tops {
+.top {
     z-index: 2;
 }
-.vests {
+.vest {
     z-index: 4;
 }
 .eyes {
     z-index: 5;
 }
-.hairs {
+.hair {
     z-index: 6;
 }
-.hats {
+.hat {
     z-index: 7;
 }
 #boommzcreator .actions {
@@ -78,16 +78,16 @@
     top: -49px;
 }
 #eyes img,
-#noises img {
+#nose img {
     top: 0;
 }
-#hairs img {
+#hair img {
     top: 5px;
 }
-#hats img {
+#hat img {
     top: 9px;
 }
-#mouths img {
+#mouth img {
     top: -8px;
 }
 

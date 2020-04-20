@@ -2,13 +2,13 @@
 
 namespace App\Controller;
 
-use App\Entity\Box;
-use App\Form\ComicType;
+use App\Form\PersonaCreatorType;
+use App\Service\Character;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\Request;
-use App\Entity\Comic;
+
 
 class PersonaController extends Controller
 {
@@ -19,9 +19,23 @@ class PersonaController extends Controller
      *      )
      * @Template
      */
-    public function createAction()
+    public function createAction(Request $request, Character $character)
     {
+        $form = $this->createForm(PersonaCreatorType::class);
 
-        return [];
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $character->generateCharacter($form->getData());
+
+
+            die();
+        }
+
+        return [
+          'form' => $form->createView(),
+        ];
     }
+
 }
