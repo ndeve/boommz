@@ -1,5 +1,19 @@
 {% extends "layout.html.twig" %}
 
+{% block breadcrumb %}
+    <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+        <ul>
+            <li>
+                <a href="{{ url('homepage') }}">
+                    <span class="icon is-small">{% include "/svg/home.html.twig" %}</span>
+                    <span>BOOMMZ!</span>
+                </a>
+            </li>
+            <li class="is-active" aria-current="page">{% trans %}All Comics{% endtrans %}</li>
+        </ul>
+    </nav>
+{% endblock %}
+
 {% block body %}
     <h1 class="title">All comics</h1>
 

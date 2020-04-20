@@ -1,13 +1,21 @@
 {% extends "layout.html.twig" %}
 
 {% block title %}{{ comic.title }} - BOOMMZ!{% endblock title %}
-{% block og_image %}{% if comic.imageUrl %}{{ comic.imageUrl('share') }}{% endif %}{% endblock og_image %}
-{% block metas %}
-    {% if url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) != url('comic', comic.routeParams) %}
-        <link rel="canonical" href="{{ url('comic', comic.routeParams) }}"/>
-    {% endif %}
-    <meta name="twitter:card" content="summary_large_image">
-{% endblock metas %}
+
+{% block breadcrumb %}
+    <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+        <ul>
+            <li>
+                <a href="{{ url('homepage') }}">
+                    <span class="icon is-small">{% include "/svg/home.html.twig" %}</span>
+                    <span>BOOMMZ!</span>
+                </a>
+            </li>
+            <li><a href="{{ url('comics') }}">All Comics</a></li>
+            <li class="is-active" aria-current="page">{{ comic.title }}</li>
+        </ul>
+    </nav>
+{% endblock %}
 
 {% block body %}
 

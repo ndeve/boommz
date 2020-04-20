@@ -1,5 +1,32 @@
 @import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
 
+.tabbar {
+    background-color: #67c57e;
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+}
+.tabbar ul {
+    list-style: none;
+}
+.tabbar li {
+    display: inline-block;
+    padding: 5px;
+}
+.tabbar svg {
+    color: #fafafa;
+    height: 2em!important;
+    width: 2em!important;
+}
+.breadcrumb a {
+    color: #67c57e;
+}
+.breadcrumb a:hover {
+    color: #266a38;
+}
+.breadcrumb li + li::before {
+    color: #84a08b;
+}
 .hero-head {
     background-color: #67c57e;
     border-bottom: 4px solid #3ea556;

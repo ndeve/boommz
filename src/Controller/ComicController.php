@@ -14,6 +14,19 @@ class ComicController extends Controller
 {
 
     /**
+     * @Route(  path="/{rewritten}-{id}",
+     *          name="comicRedirect",
+     *          requirements={"rewritten"="[a-z0-9-]+", "id"= "\d+"}
+     *      )
+     * @Template
+     */
+    public function comicRedirectAction(Comic $comic, $rewritten)
+    {
+        $url = $this->generateUrl('comic', $comic->getRouteParams());
+        return $this->redirect($url);
+    }
+
+    /**
      * @Route(  path="/comics/{rewritten}-{id}",
      *          name="comic",
      *          requirements={"rewritten"="[a-z0-9-]+", "id"= "\d+"}

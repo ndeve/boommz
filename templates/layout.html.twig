@@ -25,7 +25,7 @@
 </head>
 
 <body class="{% block body_class %}{% endblock body_class %}">
-<section class="hero is-fullheight is-default is-bold">
+<section class="hero is-default is-bold">
     <div class="hero-head">
         <nav class="navbar">
             <div class="container">
@@ -33,11 +33,6 @@
                     <a class="navbar-item" href="../">
                         <img src="{{ asset('build/images/boommzcom.png') }}" alt="BOOMMZ!">
                     </a>
-                    <span class="navbar-burger burger" data-target="navbarMenu">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
                 </div>
                 <div id="navbarMenu" class="navbar-menu">
                     <div class="navbar-end">
@@ -64,6 +59,8 @@
     </div>
     <div class="body">
         <div class="container">
+            {% block breadcrumb %}{% endblock breadcrumb %}
+
             {% block body %}{% endblock body %}
         </div>
     </div>
@@ -78,6 +75,23 @@
         </div>
     </div>
 </section>
+
+<div class="tabbar is-hidden-tablet">
+    <ul>
+        <li {% if app.request.attributes.get('_route') == 'homepage' %} class="is-active"{% endif %}><a href="{{ url('homepage') }}">{% include "/svg/home.html.twig" %}</a></li>
+        <li{% if  app.request.attributes.get('_route') == 'comics' or app.request.attributes.get('_route') == 'comic' %} class="is-active"{% endif %}><a href="{{ url('comics') }}">{% include "/svg/bubble_style.html.twig" %}</a></li>
+        <li{% if  app.request.attributes.get('_route') == 'comic_create' %} class="is-active"{% endif %}><a href="{{ url('comic_create') }}">{% include "/svg/bubble_add.html.twig" %}</a></li>
+        <li{% if  app.request.attributes.get('_route') == 'character_create' %} class="is-active"{% endif %}><a href="{{ url('character_create') }}">{% include "/svg/persona_add.html.twig" %}</a></li>
+        {% if is_granted ( 'IS_AUTHENTICATED_REMEMBERED' )  %}
+            <li>
+                {% trans with {'%username%': app.user.username} %}Welcome %username% !{% endtrans %}
+            </li>
+        {% else %}
+            <li{% if  app.request.attributes.get('_route') == 'app_register' %} class="is-active"{% endif %}><a href="{{ url('app_register') }}">{% trans %}Sign up{% endtrans %}</a></li>
+            <li{% if  app.request.attributes.get('_route') == 'fos_user_security_login' %} class="is-active"{% endif %}><a href="{{ url('fos_user_security_login') }}">{% trans %}Sign in{% endtrans %}</a></li>
+        {% endif %}
+    </ul>
+</div>
 
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
