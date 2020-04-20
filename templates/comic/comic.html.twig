@@ -13,7 +13,7 @@
 
     <h1 class="title">{{ comic.title }}</h1>
     {% if comic.author %}
-    <h2 class="subtitle">{{ comic.author.name }}</h2>
+    <h2 class="subtitle">{{ comic.author.username }}</h2>
     {% endif %}
     {% for page in comic.pages %}
         <section class="page">

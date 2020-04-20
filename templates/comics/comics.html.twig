@@ -2,28 +2,36 @@
 
 {% block body %}
     <h1 class="title">All comics</h1>
-    <p class="content">
-    {% for comic in comics %}
-        <a href="{{ url('comic', comic.routeParams) }}" class="has-text-black">{{ comic.title }}</a><br />
 
-            <section class="page">
-                <div class="columns is-multiline">
-                        <div class="column is-{{ comic.pages.0.boxes.0.size ?? 'one-quarter' }} {{ cycle(['c-1', 'c-2', ''], loop.index0) }} h-{{ comic.pages.0.boxes.0.height }}">
-                            <div {% if comic.pages.0.boxes.0.background %}style="background-image: url({{ comic.pages.0.boxes.0.background }})"{% endif %} class="ccolumn">
-                                {% for bubble in comic.pages.0.boxes.0.bubbles %}
-                                    <blockquote
-                                            class="{{ bubble.classes }} b-{{ loop.index0 }}"
-                                            style="{{ bubble.x ? 'botttom:' ~ bubble.y ~ 'px;' : '' }}{{ bubble.y ? 'left:' ~ bubble.x ~ 'px' : '' }}">
-                                        {{ bubble.text }}
-                                        {% if bubble.persona %}
-                                            <footer><img src="{{ bubble.persona.url }}" alt="{{ bubble.persona.name }}" /></footer>
-                                        {% endif %}
-                                    </blockquote>
-                                {% endfor %}
-                            </div>
-                        </div>
+    <section class="page">
+        <div class="columns is-multiline">
+            {% for comic in comics %}
+                <div class="column is-{{ comic.pages.0.boxes.0.size ?? 'one-quarter' }} {{ cycle(['c-1', 'c-2', ''], loop.index0) }} h-{{ comic.pages.0.boxes.0.height }}">
+                    <div {% if comic.pages.0.boxes.0.background %}style="background-image: url({{ comic.pages.0.boxes.0.background }})"{% endif %}
+                         class="ccolumn">
+                        <a href="{{ url('comic', comic.routeParams) }}" class="comic-title">
+                    <span class="ctitle">
+                                            <span class="title has-text-black">
+                                                {{ comic.title }}</span>
+                        {% if comic.user %}
+                            <span class="subtitle">de {{ comic.author.username }}</span>
+                        {% endif %}
+                    </span>
+                        </a>
+                        {% for bubble in comic.pages.0.boxes.0.bubbles %}
+                            <blockquote
+                                    class="{{ bubble.classes }} b-{{ loop.index0 }}"
+                                    style="{{ bubble.x ? 'botttom:' ~ bubble.y ~ 'px;' : '' }}{{ bubble.y ? 'left:' ~ bubble.x ~ 'px' : '' }}">
+                                {{ bubble.text }}
+                                {% if bubble.persona %}
+                                    <footer><img src="{{ bubble.persona.url }}" alt="{{ bubble.persona.name }}"/>
+                                    </footer>
+                                {% endif %}
+                            </blockquote>
+                        {% endfor %}
+                    </div>
                 </div>
-            </section>
-    {% endfor %}
-    </p>
+            {% endfor %}
+        </div>
+    </section>
 {% endblock body %}
