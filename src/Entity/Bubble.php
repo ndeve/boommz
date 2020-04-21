@@ -195,7 +195,7 @@ class Bubble
         $fs16 = 35;
 
         if (count($this->getBox()->getBubbles()) == 1) {
-            $classes .= ' alone';
+            $classes .= 'alone ';
             $fs12 = 115;
             $fs14 = 75;
             $fs16 = 55;
