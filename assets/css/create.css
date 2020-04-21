@@ -144,3 +144,13 @@
     font-size: 13px;
     color: #EC7532;
 }
+
+#clone {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 200px;
+    bottom: 0;
+}

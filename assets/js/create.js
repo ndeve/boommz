@@ -19,6 +19,19 @@ jQuery(document).ready(function () {
             'values': ['1', '2', '3']
         };
 
+    $(document).on('click', '#clone', function(e){
+        var box = $(this).parent().parent(),
+            previousBox = box.prev().html(),
+            previousBox = previousBox.replace(/comic_pages_(\d+)_boxes_(\d+)/g, box.attr('id')),
+            nums = box.attr('id').match(/[\d+]/g),
+            previousBox = previousBox.replace(/pages\]\[(\d+)\]\[boxes\]\[(\d+)\]/g, 'pages]['+ nums[0] +'][boxes]['+ nums[1] +']');
+        $(this).hide();
+        selectBox(box.next());
+        box.html(previousBox);
+        selectBox(box);
+        e.stopPropagation();
+    });
+
     $(document).on('click', '.column blockquote', function (event) {
         selectBox($(this).parent().parent());
         selectBubble($(this));

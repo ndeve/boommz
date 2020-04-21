@@ -108,7 +108,7 @@ class Background
     public function getUrl()
     {
         if ($this->getSelection()) {
-            return 'decor/selection/' . Transliterator::urlize($this->getTitle()) . '.webp';
+            return '/decor/selection/' . Transliterator::urlize($this->getTitle()) . '.webp';
         }
 
         return '';
