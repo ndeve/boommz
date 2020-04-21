@@ -58,6 +58,7 @@
 #slidePersona .slider-item {
     cursor: pointer;
     height: 50px;
+    width: 59px!important;
     outline: 0;
 }
 #slidePersona .slider-navigation-next,
