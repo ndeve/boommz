@@ -248,3 +248,10 @@
 .comic-title .ctitle .title {
     text-transform: capitalize;
 }
+
+.page .column .ccolumn blockquote.bubble.alone {
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-width: 60%;
+}

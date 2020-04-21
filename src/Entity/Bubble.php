@@ -189,17 +189,29 @@ class Bubble
     public function getClasses()
     {
         $classes = '';
+
+        $fs12 = 95;
+        $fs14 = 55;
+        $fs16 = 35;
+
+        if (count($this->getBox()->getBubbles()) == 1) {
+            $classes .= ' alone';
+            $fs12 = 115;
+            $fs14 = 75;
+            $fs16 = 55;
+        }
+
         if ($this->getText()) {
             $nbCar = strlen($this->getText());
             $classes .= 'bubble ' . ($this->getOrientation() ? 'left ': 'right ') . ($this->getStyle() ?? '') .' ';
 
-            if ($nbCar > 95) {
+            if ($nbCar > $fs12) {
                 $classes .= 'fs-12';
             }
-            else if ($nbCar > 55) {
+            else if ($nbCar > $fs14) {
                 $classes .= 'fs-14';
             }
-            else if ($nbCar > 35) {
+            else if ($nbCar > $fs16) {
                 $classes .= 'fs-16';
             }
             else {
