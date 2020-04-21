@@ -34,6 +34,19 @@ class ComicRepository extends ServiceEntityRepository
           ->getResult();
     }
 
+    /**
+     * @return int|mixed|string
+     */
+    public function findByHomepage()
+    {
+        return $this->createQueryBuilder('c')
+          ->orderBy('c.dateSelected', 'DESC')
+          ->setMaxResults(10)
+          ->andWhere('c.selected = 1')
+          ->getQuery()
+          ->getResult();
+    }
+
     /*
     public function findOneBySomeField($value): ?Comic
     {

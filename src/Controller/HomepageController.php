@@ -20,7 +20,7 @@ class HomepageController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $comics = $em->getRepository('App:Comic')->findBy(['selected' => true]);
+        $comics = $em->getRepository('App:Comic')->findByHomepage();
 
         return  [ 'comics' => $comics];
     }
