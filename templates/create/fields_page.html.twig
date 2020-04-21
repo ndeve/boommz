@@ -5,7 +5,7 @@
     </div>#}
     {% set total = 0 %}
     {% set nbBox = 0 %}
-    <section class="page edit" data-id="{{ form.vars.id }}" data-box-form="{{ form_row(form.boxes.vars.prototype)|e('html_attr') }}">
+    <section class="page edit" id="{{ form.vars.id }}" data-box-form="">
         <div class="columns is-multiline" data-nbBox="">
 
         {% for box in form.boxes %}

@@ -43,8 +43,8 @@ jQuery(document).ready(function () {
         $('#actionsPersona').removeClass('is-hidden');
 
         bulmaCarousel.attach('#slidePersona', {
-            slidesToScroll: 2,
-            slidesToShow: 4,
+            slidesToScroll: 6,
+            slidesToShow: 6,
             infinite: true,
             pagination: false
         });
@@ -52,7 +52,7 @@ jQuery(document).ready(function () {
 
     $('.persona').on('click', function () {
         $('.bubble.on img').attr('src', $(this).attr('src'));
-        $('#' + $('.bubble.on').attr('data-id') + '_persona').val($(this).attr('data-id'));
+        $('#' + $('.bubble.on').attr('id') + '_persona').val($(this).attr('data-id'));
         $('#actionsPersona').addClass('is-hidden');
     });
 
@@ -68,7 +68,7 @@ jQuery(document).ready(function () {
             $('.bubble.on').addClass('think');
             style = 'think';
         }
-        $('#' + $('.bubble.on').attr('data-id') + '_style').val(style);
+        $('#' + $('.bubble.on').attr('id') + '_style').val(style);
     });
 
     $('#changeBackground').on('click', function () {
@@ -109,16 +109,13 @@ jQuery(document).ready(function () {
 
     $('#addBox').on('click', function (e) {
         var page = $(this).parent().parent().parent().parent().parent(),
-            nbBox = page.find('.column').length;
+            numPage = page.attr('id').replace(/comic_pages_/g, ''),
+            numBox = page.find('.column').length,
+            formBox = $('#form_box_proto').html(),
+            formBox = formBox.replace(/__NUMPAGE__/g, numPage).replace(/__NUMBOX__/g, numBox);
 
-        var nameForm = page.attr('data-id').replace(/comic_pages_/g, 'comic[pages][') + ']';
-        var formBox = page.attr('data-box-form')
-            .replace(/comic_pages_0/g, page.attr('data-id'))
-            .replace(/__name__/g, nbBox);
-        formBox = formBox.replace(/comic\[pages\]\[0\]/g, nameForm);
         $('.column.on').after(formBox);
-        selectBox($('[data-id="'+ page.attr('data-id') +'_boxes_'+ nbBox +'"]'));
-        addPersona($('[data-id="'+ page.attr('data-id') +'_boxes_'+ nbBox +'"]'));
+        selectBox($('#comic_pages_'+ numPage +'_boxes_'+ numBox));
         orderBox();
         e.stopPropagation();
     });
@@ -179,16 +176,17 @@ jQuery(document).ready(function () {
     });
 
     function addPersona(box) {
-        var nbBubble = box.find('div blockquote').length;
+        var numBubble = box.find('div blockquote').length,
+            nums = box.attr('id').match(/[\d+]/g),
+            numBox = nums[1],
+            numPage = nums[0];
 
-        var nameForm = box.attr('data-id').replace(/comic_pages_/g, 'comic[pages][').replace(/_boxes_/g, '][boxes][') + ']';
-        var formBubble = box.attr('data-bubble-form')
-            .replace(/comic_pages_0_boxes_0/g, box.attr('data-id'))
-            .replace(/__name__/g, nbBubble);
-        formBubble = formBubble.replace(/comic\[pages\]\[0\]\[boxes\]\[0\]/g, nameForm);
+        var formBubble = $('#form_bubble_proto').html()
+            formBubble = formBubble.replace(/__NUMBUBBLE__/g, numBubble)
+                .replace(/__NUMBOX__/g, numBox)
+                .replace(/__NUMPAGE__/g, numPage);
+
         box.children('div:first').append(formBubble);
-
-        //$('[data-id="'+ box.attr('data-id') +'_boxes_'+ nbBox +'"]')
     }
 
     function selectBox(box) {
@@ -231,7 +229,7 @@ jQuery(document).ready(function () {
 
     function resizeBox(box, size, newValue) {
         var ok = 0,
-            formId = box.attr('data-id');
+            formId = box.attr('id');
 
         if (!newValue) {
             size.values.forEach(value => {

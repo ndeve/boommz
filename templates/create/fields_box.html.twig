@@ -1,6 +1,6 @@
 {% block box_row %}
     <div class="column is-{{ form.vars.value.size ?? 'one-third' }} h-{{ form.vars.value.height ?? '1' }} {{ ('comic_pages_0_boxes_0' == form.vars.id) ? 'on' : '' }}"
-         data-id="{{ form.vars.id }}"
+         id="{{ form.vars.id }}"
          data-bubble-form="{{ form_widget(form.bubbles.vars.prototype)|e('html_attr') }}">
         <div class="ccolumn">
             {% for bubble in form.bubbles %}
