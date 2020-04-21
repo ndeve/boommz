@@ -67,6 +67,11 @@ class Comic
      */
     private $selected = 0;
 
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $dateSelected;
+
     public function __construct()
     {
         $this->dateCreation = new \DateTime();
@@ -222,7 +227,21 @@ class Comic
 
     public function setSelected(bool $selected): self
     {
+        $this->setDateSelected($selected ? new \DateTime() : null);
+
         $this->selected = $selected;
+
+        return $this;
+    }
+
+    public function getDateSelected(): ?\DateTimeInterface
+    {
+        return $this->dateSelected;
+    }
+
+    public function setDateSelected(?\DateTimeInterface $dateSelected): self
+    {
+        $this->dateSelected = $dateSelected;
 
         return $this;
     }
