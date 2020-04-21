@@ -11,8 +11,7 @@
     border-radius: 7px;
     display: inline-block;
     height: auto;
-    margin: 0 5px;
-    padding: 5px;
+    padding: 4px;
 }
 .actions .button {
     text-align: center;
@@ -29,11 +28,11 @@
 #actions {
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 0 0 5px 5px;
-    padding-bottom: 10px;
-    padding-top: 5px;
     position: absolute;
-    width: 100%;
     z-index: 10;
+    padding: 5px 5px 10px 5px;
+    right: 0.30em;
+    left: 0.30em;
 }
 
 #actionsLine {
@@ -41,13 +40,13 @@
     right: 5px;
 }
 #actionsPersona {
+    position: absolute;
     height: 55px;
-    left: 5px;
     margin-top: 4px;
     padding: 4px;
-    position: absolute;
-    right: 5px;
-    width: 100%;
+    right: 10px;
+    left: 10px;
+    bottom: -104px;
     z-index: 20;
 }
 #actionsPersona #slidePersona {
@@ -60,8 +59,6 @@
     cursor: pointer;
     height: 50px;
     outline: 0;
-    text-align: center;
-    width: 55px!important;
 }
 #slidePersona .slider-navigation-next,
 #slidePersona .slider-navigation-previous {
@@ -71,6 +68,7 @@
     margin-top: 0;
     bottom: 0;
     height: 50px;
+    z-index: 100;
 }
 #slidePersona .slider-navigation-next svg,
 #slidePersona .slider-navigation-previous svg {
@@ -79,6 +77,9 @@
 #slidePersona .slider-navigation-next:hover svg,
 #slidePersona .slider-navigation-previous:hover svg {
     color: #76a094;
+}
+#slidePersona .slider-pagination {
+    display: none;
 }
 
 .page.edit .column {

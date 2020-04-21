@@ -15,16 +15,6 @@
         {% if 'comic_pages_0_boxes_0' == form.vars.id %}
             <div id="actions">
                 <div id="actionsBox" class="actions">
-                    {#<div class="button is-light" title="{% trans %}3 columns To 2{% endtrans %}" id="changeColumns">
-                        {% include "/svg/box_three.html.twig" %}
-                    </div>
-                    <div class="button is-light" title="{% trans %}Aggrandir{% endtrans %}" id="resizeV">
-                        {% include "/svg/box_height.html.twig" %}
-                    </div>
-                    <div class="button is-light" title="{% trans %}Aggrandir{% endtrans %}" id="resizeH">
-                        {% include "/svg/box_size.html.twig" %}
-                    </div>
-                    #}
                     <div class="button is-light" title="{% trans %}Change decor{% endtrans %}" id="changeBackground">
                         {% include "/svg/decor.html.twig" %}
                     </div>
@@ -34,19 +24,10 @@
                 </div>
 
                 <div id="actionsBubble" class="actions">
-                    <div class="button is-light" title="{% trans %}Remove bubble{% endtrans %}" id="removeBubble">
-                        {% include "/svg/bubble_remove.html.twig" %}
-                    </div>
-                    <div class="button is-light is-hidden" title="{% trans %}Add bubble{% endtrans %}" id="addBubble">
-                        {% include "/svg/bubble_add.html.twig" %}
-                    </div>
-                    <div class="button is-light" title="{% trans %}Change persona{% endtrans %}" id="editPersona">
-                        {% include "/svg/persona_edit.html.twig" %}
-                    </div>
-                    <div class="button is-light" title="{% trans %}Change style{% endtrans %}" id="styleBubble">
+                    <div class="button is-light" title="{% trans %}Change style/Remove Bubble{% endtrans %}" id="styleBubble">
                         {% include "/svg/bubble_style.html.twig" %}
                     </div>
-                    <div class="button is-light" title="{% trans %}Change style{% endtrans %}" id="carBubble">
+                    <div class="button is-light" title="" id="carBubble">
                         <div id="nbCar"></div>
                         <div id="circle"></div>
                     </div>

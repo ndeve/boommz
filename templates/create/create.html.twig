@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    <div id="actionsPersona" class="actions is-hidden">
+    <div id="actionsPersona" class="actions">
         <div id="slidePersona">
             {% for persona in personas %}
                 <div class="item-{{ loop.index }}">
@@ -33,7 +33,7 @@
 
             {% if app.user %}
                 {% for persona in app.user.personas %}
-                    <div class="item-{{ loop.index }}">
+                    <div class="item-{{ personas|length + loop.index }}">
                         <img src="{{ persona.url }}" data-id="{{ persona.id }}" title=""
                              class="persona"/>
                     </div>
@@ -41,6 +41,7 @@
             {% endif %}
         </div>
     </div>
+
     <div id="backgrounds" class="is-hidden" data-num="0" data-max="{{ backgrounds|length }}">
         <div data-num="bg-0" data-src="" data-id=""></div>
         {% for bg in backgrounds %}

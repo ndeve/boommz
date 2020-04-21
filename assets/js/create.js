@@ -1,6 +1,17 @@
 jQuery(document).ready(function () {
     orderBox();
 
+    if ($('#actionsPersona').length) {
+        var element = $('#actionsPersona').detach();
+        $('.column.on').append(element);
+        bulmaCarousel.attach('#slidePersona', {
+            slidesToScroll: 5,
+            slidesToShow: 7,
+            infinite: true,
+            pagination: false
+        });
+    }
+
     if ($('.columns').length) {
         $('.columns').each(function () {
             $(this).attr('data-nbBox', $(this).children('.column').length);
@@ -19,12 +30,12 @@ jQuery(document).ready(function () {
             'values': ['1', '2', '3']
         };
 
-    $(document).on('click', '#clone', function(e){
+    $(document).on('click', '#clone', function (e) {
         var box = $(this).parent().parent(),
             previousBox = box.prev().html(),
             previousBox = previousBox.replace(/comic_pages_(\d+)_boxes_(\d+)/g, box.attr('id')),
             nums = box.attr('id').match(/[\d+]/g),
-            previousBox = previousBox.replace(/pages\]\[(\d+)\]\[boxes\]\[(\d+)\]/g, 'pages]['+ nums[0] +'][boxes]['+ nums[1] +']');
+            previousBox = previousBox.replace(/pages\]\[(\d+)\]\[boxes\]\[(\d+)\]/g, 'pages][' + nums[0] + '][boxes][' + nums[1] + ']');
         $(this).hide();
         selectBox(box.next());
         box.html(previousBox);
@@ -46,27 +57,14 @@ jQuery(document).ready(function () {
         }
     });
 
-    $(document).on('click', '.column', function () {
-        selectBox($(this));
+    $(document).on('click', '.ccolumn', function () {
+        selectBox($(this).parent());
     });
 
-    $('#editPersona').on('click', function () {
-        var element = $('#actionsPersona').detach();
-        $('.column.on').append(element);
-        $('#actionsPersona').removeClass('is-hidden');
-
-        bulmaCarousel.attach('#slidePersona', {
-            slidesToScroll: 6,
-            slidesToShow: 6,
-            infinite: true,
-            pagination: false
-        });
-    });
-
-    $('.persona').on('click', function () {
+    $('.persona').on('click', function (e) {
         $('.bubble.on img').attr('src', $(this).attr('src'));
         $('#' + $('.bubble.on').attr('id') + '_persona').val($(this).attr('data-id'));
-        $('#actionsPersona').addClass('is-hidden');
+        e.stopPropagation();
     });
 
     $('#styleBubble').on('click', function () {
@@ -75,7 +73,14 @@ jQuery(document).ready(function () {
             $('.bubble.on').removeClass('think').addClass('yell');
             style = 'yell';
         } else if ($('.bubble.on').hasClass('yell')) {
-            $('.bubble.on').removeClass('yell');
+            $('.bubble.on').removeClass('yell bubble');
+            $('blockquote.on').attr('data-text', $('blockquote.on textarea').val());
+            $('blockquote.on textarea').val('');
+            style = '';
+        } else if (!$('blockquote.on').hasClass('bubble')) {
+            $('blockquote.on').addClass('bubble');
+            $('blockquote.on textarea').val($('blockquote.on').attr('data-text'));
+            $('blockquote.on').attr('data-text', '');
             style = '';
         } else {
             $('.bubble.on').addClass('think');
@@ -85,12 +90,12 @@ jQuery(document).ready(function () {
     });
 
     $('#changeBackground').on('click', function () {
-        var id = parseInt($('#backgrounds').attr('data-num')) +1,
+        var id = parseInt($('#backgrounds').attr('data-num')) + 1,
             max = parseInt($('#backgrounds').attr('data-max')),
             num = (id > max) ? 0 : id,
-            bg = $('#backgrounds div[data-num='+ num +']');
+            bg = $('#backgrounds div[data-num=' + num + ']');
         $('#backgrounds').attr('data-num', num);
-        $('.column.on .ccolumn').css('background-image', 'url('+ bg.attr('data-src') +')');
+        $('.column.on .ccolumn').css('background-image', 'url(' + bg.attr('data-src') + ')');
         $('.column.on input.bg').val(bg.attr('data-id'));
     });
 
@@ -111,8 +116,7 @@ jQuery(document).ready(function () {
         addPersona($(this).parent().parent().parent());
     });
 
-    $('#removeBox').on('click', function(e){
-
+    $('#removeBox').on('click', function (e) {
         var removeBpx = $('.column.on'),
             newSelectedBox = $('.column.on').next().length ? $('.column.on').next() : $('.column.on').prev();
         selectBox(newSelectedBox);
@@ -128,7 +132,7 @@ jQuery(document).ready(function () {
             formBox = formBox.replace(/__NUMPAGE__/g, numPage).replace(/__NUMBOX__/g, numBox);
 
         $('.column.on').after(formBox);
-        selectBox($('#comic_pages_'+ numPage +'_boxes_'+ numBox));
+        selectBox($('#comic_pages_' + numPage + '_boxes_' + numBox));
         orderBox();
         e.stopPropagation();
     });
@@ -155,7 +159,7 @@ jQuery(document).ready(function () {
             line.children('.column').each(function () {
                 resizeBox($(this), size, 'half');
             });
-            line.attr('data-nbBox', nbBox-1);
+            line.attr('data-nbBox', nbBox - 1);
         }
     })
 
@@ -195,9 +199,9 @@ jQuery(document).ready(function () {
             numPage = nums[0];
 
         var formBubble = $('#form_bubble_proto').html()
-            formBubble = formBubble.replace(/__NUMBUBBLE__/g, numBubble)
-                .replace(/__NUMBOX__/g, numBox)
-                .replace(/__NUMPAGE__/g, numPage);
+        formBubble = formBubble.replace(/__NUMBUBBLE__/g, numBubble)
+            .replace(/__NUMBOX__/g, numBox)
+            .replace(/__NUMPAGE__/g, numPage);
 
         box.children('div:first').append(formBubble);
     }
@@ -212,6 +216,7 @@ jQuery(document).ready(function () {
             $('blockquote').removeClass('on');
             $('#actionsBubble').hide();
         }
+        $('#actionsPersona').hide();
     }
 
     function selectBubble(bubble) {
@@ -227,8 +232,14 @@ jQuery(document).ready(function () {
 
         $('.bubble').removeClass('on');
         bubble.addClass('on');
+
         var element = $('#actions').detach();
         bubble.parent().parent().append(element);
+
+        var element = $('#actionsPersona').detach();
+        bubble.parent().parent().append(element);
+        $('#actionsPersona').show();
+
         $('#actionsBubble').show();
         bubble.children('textarea').focus();
         if (bubble.hasClass('bubble')) {
