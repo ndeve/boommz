@@ -1,6 +1,6 @@
 .page.edit {
     margin-bottom: 10px;
-    padding-bottom: 70px;
+    padding-bottom: 130px;
 }
 .page.edit .column.on .ccolumn {
     border:solid 5px #7eb7a6;
@@ -48,7 +48,7 @@
     left: 10px;
     bottom: -104px;
     z-index: 20;
-}
+}.page.edit
 #actionsPersona #slidePersona {
     height: 47px;
     margin: 0;

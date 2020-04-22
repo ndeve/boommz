@@ -196,13 +196,13 @@ class Bubble
 
         if (count($this->getBox()->getBubbles()) == 1) {
             $classes .= 'alone ';
-            $fs12 = 115;
-            $fs14 = 75;
-            $fs16 = 55;
+            $fs12 = 125;
+            $fs14 = 95;
+            $fs16 = 75;
         }
 
         if ($this->getText()) {
-            $nbCar = strlen($this->getText());
+            $nbCar = strlen(trim($this->getText()));
             $classes .= 'bubble ' . ($this->getOrientation() ? 'left ': 'right ') . ($this->getStyle() ?? '') .' ';
 
             if ($nbCar > $fs12) {

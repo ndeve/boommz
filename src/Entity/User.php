@@ -35,7 +35,7 @@ class User extends BaseUser
     private $personas;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Background", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\Background", mappedBy="author")
      */
     private $backgrounds;
 

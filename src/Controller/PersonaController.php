@@ -15,7 +15,21 @@ class PersonaController extends Controller
 {
 
     /**
-     * @Route(  path="character/create",
+     * @Route(  path="characters",
+     *          name="charactes"
+     *      )
+     * @Template
+     */
+    public function charactersAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $characters = $em->getRepository('App:Persona')->findBy();
+
+        return [ 'characters' => $characters ];
+    }
+
+    /**
+     * @Route(  path="characters/create",
      *          name="character_create"
      *      )
      * @Template
