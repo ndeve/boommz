@@ -19,22 +19,18 @@ class PersonaRepository extends ServiceEntityRepository
         parent::__construct($registry, Persona::class);
     }
 
-    // /**
-    //  * @return Persona[] Returns an array of Persona objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findAllPublic()
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('p.path = :path')
+            ->setParameter('path', 'stars/')
+            ->orderBy('p.path', 'desc')
+            ->setMaxResults(1000)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Persona

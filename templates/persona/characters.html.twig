@@ -15,5 +15,7 @@
 {% endblock %}
 
 {% block body %}
-
+    {% for persona in personas %}
+        <img src="{{ persona.url }}" title="{{ persona.name }}" />
+    {% endfor %}
 {% endblock body %}

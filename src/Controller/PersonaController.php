@@ -23,9 +23,9 @@ class PersonaController extends Controller
     public function charactersAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $characters = $em->getRepository('App:Persona')->findBy();
+        $personas = $em->getRepository('App:Persona')->findAllPublic([]);
 
-        return [ 'characters' => $characters ];
+        return [ 'personas' => $personas ];
     }
 
     /**
