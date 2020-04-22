@@ -19,6 +19,20 @@ class PersonaRepository extends ServiceEntityRepository
         parent::__construct($registry, Persona::class);
     }
 
+    public function findAllStars()
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.path = :path')
+            ->setParameter('path', 'stars/')
+            ->orWhere('p.name = :name')
+            ->setParameter('name', 'Name')
+            ->orderBy('p.path', 'desc')
+            ->setMaxResults(1000)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     public function findAllPublic()
     {
         return $this->createQueryBuilder('p')
