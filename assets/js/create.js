@@ -37,7 +37,8 @@ jQuery(document).ready(function () {
             nums = box.attr('id').match(/[\d+]/g),
             previousBox = previousBox.replace(/pages\]\[(\d+)\]\[boxes\]\[(\d+)\]/g, 'pages][' + nums[0] + '][boxes][' + nums[1] + ']');
         $(this).hide();
-        selectBox(box.next());
+        var element = $('#actions').detach();
+        $('#actionsHidden').append(element);
         box.html(previousBox);
         selectBox(box);
         e.stopPropagation();
