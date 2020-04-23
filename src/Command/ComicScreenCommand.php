@@ -53,7 +53,7 @@ class ComicScreenCommand extends Command
             echo $url ."\n";
             mkdir($dir, 0777, true);
 
-            $height = (count($comic->getPage()[0]->getBoxes())*260) + 210;
+            $height = (count($comic->getPages()[0]->getBoxes())*260) + 210;
             $command = 'node /home/wwwroot/boommz/assets/js/screen.js --url="'. $url
               .'" --outputDir="'. $dir
               .'" --output="-'. $comic->getRewritten() .'-'. $comic->getId() .'.png"'
