@@ -86,7 +86,9 @@ async function init() {
             fromSurface: true,
             clip: {
                 width: viewportWidth,
-                height: viewportHeight
+                height: viewportHeight,
+                x: 0,
+                y: 0
             }
         });
 
