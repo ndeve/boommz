@@ -88,7 +88,8 @@ async function init() {
                 width: viewportWidth,
                 height: viewportHeight,
                 x: 0,
-                y: 0
+                y: 0,
+                scale: 1,
             }
         });
 
