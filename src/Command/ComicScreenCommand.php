@@ -35,7 +35,7 @@ class ComicScreenCommand extends Command
             // ...
         }
 
-        $command = 'google-chrome --headless --hide-scrollbars --remote-debugging-port=9222 --disable-gpu --no-sandbox & node boommz/assets/js/screen.js --url="https://www.google.com" --outputDir="boommz/public/screen/"';
+        $command = 'google-chrome node boommz/assets/js/screen.js --url="https://www.google.com" --outputDir="boommz/public/screen/"';
 
         shell_exec($command);
 
