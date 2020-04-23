@@ -35,7 +35,7 @@ class ComicScreenCommand extends Command
             // ...
         }
 
-        $command = 'google-chrome node boommz/assets/js/screen.js --url="https://www.google.com" --outputDir="boommz/public/screen/"';
+        $command = 'node boommz/assets/js/screen.js --url="https://www.google.com" --outputDir="boommz/public/screen/"';
 
         shell_exec($command);
 
