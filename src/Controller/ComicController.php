@@ -22,14 +22,6 @@ class ComicController extends Controller
      */
     public function comicScreenAction(Comic $comic, $rewritten)
     {
-        if($comic->getRewritten() != $rewritten){
-            return $this->redirect($this->generateUrl('comic', $comic->getRouteParams() ));
-        }
-
-        if(!$comic->getOnline()) {
-            return $this->redirect($this->generateUrl('homepage'));
-        }
-
 
         return [ 'comic' => $comic, 'votes' => [] ];
     }
@@ -46,11 +38,6 @@ class ComicController extends Controller
         if($comic->getRewritten() != $rewritten){
             return $this->redirect($this->generateUrl('comic', $comic->getRouteParams() ));
         }
-
-        if(!$comic->getOnline()) {
-            return $this->redirect($this->generateUrl('homepage'));
-        }
-
 
         return [ 'comic' => $comic, 'votes' => [] ];
     }

@@ -11,7 +11,7 @@ class ComicsController extends Controller
 {
     
     /**
-     * @Route(  path="/comics",
+     * @Route(  path="/comics/",
      *          name="comics"
      *      )
      * @Template
