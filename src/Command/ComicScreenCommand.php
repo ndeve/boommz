@@ -53,10 +53,11 @@ class ComicScreenCommand extends Command
             echo $url ."\n";
             mkdir($dir, 0777, true);
 
+            $height = (count($comic->getPage()[0]->getBoxes())*260) + 210;
             $command = 'node /home/wwwroot/boommz/assets/js/screen.js --url="'. $url
               .'" --outputDir="'. $dir
               .'" --output="-'. $comic->getRewritten() .'-'. $comic->getId() .'.png"'
-            .'--viewportHeight=1000 --viewportWidth=450';
+            .'--viewportHeight='. $height .' --viewportWidth=450';
             shell_exec($command);
             $comic->setScreen(true);
             $em->persist($comic);
