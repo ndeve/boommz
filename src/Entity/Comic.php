@@ -263,4 +263,9 @@ class Comic
         return $this;
     }
 
+    public function getUrlScreen()
+    {
+        return 'comics/'. substr($this->getId(),-1) . '/'. substr($this->getId(), -2, 1) .'/';
+    }
+
 }
