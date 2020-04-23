@@ -26,6 +26,29 @@ class ComicController extends Controller
         return $this->redirect($url);
     }
 
+
+
+    /**
+     * @Route(  path="/comics/{rewritten}-{id}/screen",
+     *          name="comic_screen",
+     *          requirements={"rewritten"="[a-z0-9-]+", "id"= "\d+"}
+     *      )
+     * @Template
+     */
+    public function comicScreenAction(Comic $comic, $rewritten)
+    {
+        if($comic->getRewritten() != $rewritten){
+            return $this->redirect($this->generateUrl('comic', $comic->getRouteParams() ));
+        }
+
+        if(!$comic->getOnline()) {
+            return $this->redirect($this->generateUrl('homepage'));
+        }
+
+
+        return [ 'comic' => $comic, 'votes' => [] ];
+    }
+
     /**
      * @Route(  path="/comics/{rewritten}-{id}",
      *          name="comic",

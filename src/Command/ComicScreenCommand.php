@@ -47,7 +47,7 @@ class ComicScreenCommand extends Command
         $comics = $em->getRepository('App:Comic')->findByParams([ 'screen' => false]);// ['page' => $page] );
 
         foreach ($comics as $comic) {
-            $url = 'https://boommz.com/'. $this->container->get('router')->generate('comic', $comic->getRouteParams());
+            $url = 'https://boommz.com/'. $this->container->get('router')->generate('comic_screen', $comic->getRouteParams());
             echo $url ."\n";
             $command = 'node /home/wwwroot/boommz/assets/js/screen.js --url="'. $url
               .'" --outputDir="/home/wwwroot/boommz/public/screen/" --output="comic-'. $comic->getId() .'.png"';

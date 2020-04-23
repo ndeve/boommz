@@ -1,0 +1,43 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}{{ comic.title }} - BOOMMZ!{% endblock title %}
+
+{% block body %}
+    <style>
+        .hero-head, .hero-foot, h1 {display:none;}
+        section.hero, .container {width: 450px;max-width: 450px;}
+        .page .column {display: block;width: 100%;}
+    </style>
+
+    <h1 class="title">{{ comic.title }}</h1>
+    {% if comic.author %}
+    <h2 class="subtitle">{{ comic.author.username }}</h2>
+    {% endif %}
+    {% for page in comic.pages %}
+        <section class="page">
+            {% if page.title %}<h2 class="subtitle">{{ page.title }}</h2>{% endif %}
+            <div class="columns is-multiline">
+
+                {% for box in page.boxes %}
+                    <div class="column is-{{ box.size ?? 'one-quarter' }} {{ cycle(['c-1', 'c-2', ''], loop.index0) }} h-{{ box.height }}">
+                        <div {% if box.background %}style="background-image: url({{ box.background }})"{% endif %} class="ccolumn">
+                            {% for bubble in box.bubbles %}
+                                <blockquote
+                                        class="{{ bubble.classes }} b-{{ loop.index0 }}"
+                                        style="{{ bubble.x ? 'botttom:' ~ bubble.y ~ 'px;' : '' }}{{ bubble.y ? 'left:' ~ bubble.x ~ 'px' : '' }}">
+                                    {{ bubble.text }}
+                                    {% if bubble.persona %}
+                                        <footer><img src="{{ bubble.persona.url }}" alt="{{ bubble.persona.name }}" /></footer>
+                                    {% endif %}
+                                </blockquote>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    {% endfor %}
+    <div style="width: 100%;text-align: center">
+<img src="{{ asset('/build/images/logo.png') }}">
+    </div>
+{% endblock body %}
