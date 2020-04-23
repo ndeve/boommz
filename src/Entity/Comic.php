@@ -72,6 +72,11 @@ class Comic
      */
     private $dateSelected;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $screen;
+
     public function __construct()
     {
         $this->dateCreation = new \DateTime();
@@ -242,6 +247,18 @@ class Comic
     public function setDateSelected(?\DateTimeInterface $dateSelected): self
     {
         $this->dateSelected = $dateSelected;
+
+        return $this;
+    }
+
+    public function getScreen(): ?bool
+    {
+        return $this->screen;
+    }
+
+    public function setScreen(bool $screen): self
+    {
+        $this->screen = $screen;
 
         return $this;
     }

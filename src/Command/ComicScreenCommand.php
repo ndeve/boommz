@@ -44,7 +44,7 @@ class ComicScreenCommand extends Command
         }
 
         $em = $this->container->get('doctrine')->getManager();
-        $comics = $em->getRepository('App:Comic')->findByParams([]);// ['page' => $page] );
+        $comics = $em->getRepository('App:Comic')->findByParams([ 'screen' => false]);// ['page' => $page] );
 
         foreach ($comics as $comic) {
             $url = 'https://boommz.com/'. $this->container->get('router')->generate('comic', $comic->getRouteParams());
@@ -52,6 +52,9 @@ class ComicScreenCommand extends Command
             $command = 'node /home/wwwroot/boommz/assets/js/screen.js --url="'. $url
               .'" --outputDir="/home/wwwroot/boommz/public/screen/" --output="comic-'. $comic->getId() .'.png"';
             shell_exec($command);
+            $comic->setScreen(true);
+            $em->persist($comic);
+            $em->flush();
         }
 
 
