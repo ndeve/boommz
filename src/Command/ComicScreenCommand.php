@@ -51,9 +51,9 @@ class ComicScreenCommand extends Command
             echo $url ."\n";
             $command = 'node /home/wwwroot/boommz/assets/js/screen.js --url="'. $url
               .'" --outputDir="/home/wwwroot/boommz/public/screen/" --output="comic-'. $comic->getId() .'.png"';
+            shell_exec($command);
         }
 
-        shell_exec($command);
 
         $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
 
