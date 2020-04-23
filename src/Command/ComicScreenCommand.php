@@ -12,6 +12,13 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 class ComicScreenCommand extends Command
 {
     protected static $defaultName = 'app:comic-screen';
+    private $container;
+
+    public function __construct(ContainerInterface $container)
+    {
+        parent::__construct();
+        $this->container = $container;
+    }
 
     protected function configure()
     {
@@ -35,7 +42,7 @@ class ComicScreenCommand extends Command
             // ...
         }
 
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->container->get('doctrine')->getManager();
         $comics = $em->getRepository('App:Comic')->findByParams([]);// ['page' => $page] );
 
         foreach ($comics as $comic) {
