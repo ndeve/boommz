@@ -8,7 +8,7 @@
     <meta name="description" content="{% spaceless %}{% block metadescription %}{% endblock metadescription %}{% endspaceless %}" />
     <meta property="og:title" content="{% spaceless %}{{ block('title') }}{% endspaceless %}" />
     <meta property="og:description" content="{% spaceless %}{{ block('metadescription') }}{% endspaceless %}" />
-    <meta property="og:image" content="{% block og_image %}{% endblock %}" />
+    {% block metas %}{% endblock metas %}
     <meta property="og:type" content="{% block og_type %}article{% endblock %}" />
     <meta property="og:url" content="{% block og_url %}{{ app.request.uri }}{% endblock %}" />
     <link rel="manifest" href="/manifest.json">
