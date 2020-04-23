@@ -11,17 +11,10 @@
     <meta property="og:image" content="{% block og_image %}{% endblock %}" />
     <meta property="og:type" content="{% block og_type %}article{% endblock %}" />
     <meta property="og:url" content="{% block og_url %}{{ app.request.uri }}{% endblock %}" />
-    <meta name="twitter:site" content="@BoumzComics">
-    <meta name="twitter:title" content="{% spaceless %}{{ block('title') }}{% endspaceless %}">
-    <meta name="twitter:description" content="{% spaceless %}{{ block('metadescription') }}{% endspaceless %}">
-    <meta name="twitter:image" content="{% spaceless %}{{ block('og_image') }}{% endspaceless %}">
-    {% block metas %}{% endblock %}
+    <link rel="manifest" href="/manifest.json">
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
-    <link rel="icon" type="image/png" href="logo.png" />
-    <link rel="icon" sizes="192x192" href="favicon192x192.png">
-
 </head>
 
 <body class="{% block body_class %}{% endblock body_class %}">
