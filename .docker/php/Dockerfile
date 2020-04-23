@@ -18,7 +18,6 @@ RUN docker-php-ext-configure gd --with-gd --with-webp-dir --with-png-dir --with-
 
 RUN docker-php-ext-install gd
 
-
 COPY php.ini /usr/local/etc/php/php.ini
 COPY php-fpm-pool.conf 	/usr/local/etc/php/pool.d/www.conf
 
