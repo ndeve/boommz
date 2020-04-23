@@ -12,6 +12,7 @@
     {% block metas %}{% endblock metas %}
     <meta property="og:type" content="{% block og_type %}article{% endblock %}" />
     <meta property="og:url" content="{% block og_url %}{{ app.request.uri }}{% endblock %}" />
+    <meta name="twitter:card" content="summary" />
     <link rel="manifest" href="/manifest.json">
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
