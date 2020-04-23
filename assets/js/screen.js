@@ -4,10 +4,10 @@ const file = require('mz/fs');
 const timeout = require('delay');
 
 // CLI Args
-const url = argv.url || 'https://www.google.com';
+const url = argv.url || 'https://boomz.com/build/images/logo.png';
 const format = argv.format === 'jpeg' ? 'jpeg' : 'png';
 const viewportWidth = argv.viewportWidth || 1440;
-let viewportHeight = argv.viewportHeight || 900;
+const viewportHeight = argv.viewportHeight || 900;
 const delay = argv.delay || 0;
 const userAgent = argv.userAgent;
 const fullPage = argv.full;
