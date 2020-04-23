@@ -11,17 +11,16 @@ class ComicsController extends Controller
 {
     
     /**
-     * @Route(  path="/comics/{page}",
-     *          name="comics",
-     *          requirements={"page": "\d+"}
+     * @Route(  path="/comics",
+     *          name="comics"
      *      )
      * @Template
      */
-    public function comicsAction(int $page = 0)
+    public function comicsAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $comics = $em->getRepository('App:Comic')->findByParams([]);// ['page' => $page] );
+        $comics = $em->getRepository('App:Comic')->findByParams([]);
 
         return [ 'comics' => $comics ];
     }
