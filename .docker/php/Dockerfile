@@ -45,7 +45,6 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 
 RUN apt-get update && apt-get install -y yarn
 
-
 RUN groupadd dev -g 999
 RUN useradd dev -g dev -d /home/dev -m
 RUN passwd -d dev
