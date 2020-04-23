@@ -8,6 +8,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class ComicScreenCommand extends Command
 {
@@ -46,7 +47,8 @@ class ComicScreenCommand extends Command
         $comics = $em->getRepository('App:Comic')->findByParams([]);// ['page' => $page] );
 
         foreach ($comics as $comic) {
-            $command = 'node /home/wwwroot/boommz/assets/js/screen.js --url="'. $comic->getUrl()
+            $url = $this->container->get('router')->generate('comic', $comic->getRouteParams());
+            $command = 'node /home/wwwroot/boommz/assets/js/screen.js --url="'. $url
               .'" --outputDir="/home/wwwroot/boommz/public/screen/" --output="comic-'. $comic->getId() .'.png"';
         }
 
