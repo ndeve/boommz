@@ -62,9 +62,6 @@ terminator: purge
 #DESTROY EVERYTHING AND REBORN A NEW PROJECT ENVIRONMENT
 phoenix: terminator init
 
-
-
-
 # Shell command
 connect:
 	@echo "${CDC} exec ${C} ${S}"; \

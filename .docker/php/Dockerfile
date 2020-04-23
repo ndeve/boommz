@@ -9,6 +9,9 @@ RUN apt-get update \
     libfreetype6-dev \
     sudo
 
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
+
 RUN docker-php-ext-install pdo pdo_mysql
 
 #RUN apt-get update -y && apt-get install -y libwebp-dev libjpeg62-turbo-dev libpng-dev libxpm-dev \
