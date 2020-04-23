@@ -35,7 +35,13 @@ class ComicScreenCommand extends Command
             // ...
         }
 
-        $command = 'node /home/wwwroot/boommz/assets/js/screen.js --url="https://www.google.com" --outputDir="/home/wwwroot/boommz/public/screen/"';
+        $em = $this->getDoctrine()->getManager();
+        $comics = $em->getRepository('App:Comic')->findByParams([]);// ['page' => $page] );
+
+        foreach ($comics as $comic) {
+            $command = 'node /home/wwwroot/boommz/assets/js/screen.js --url="'. $comic->getUrl()
+              .'" --outputDir="/home/wwwroot/boommz/public/screen/" --output="comic-'. $comic->getId() .'.png"';
+        }
 
         shell_exec($command);
 
