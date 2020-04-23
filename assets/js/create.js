@@ -63,8 +63,8 @@ jQuery(document).ready(function () {
     });
 
     $('.persona').on('click', function (e) {
-        $('.bubble.on img').attr('src', $(this).attr('src'));
-        $('#' + $('.bubble.on').attr('id') + '_persona').val($(this).attr('data-id'));
+        $('blockquote.on img').attr('src', $(this).attr('src'));
+        $('#' + $('blockquote.on').attr('id') + '_persona').val($(this).attr('data-id'));
         e.stopPropagation();
     });
 
