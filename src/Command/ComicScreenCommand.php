@@ -44,7 +44,7 @@ class ComicScreenCommand extends Command
         }
 
         $em = $this->container->get('doctrine')->getManager();
-        $comics = $em->getRepository('App:Comic')->findByParams([ 'screen' => 0]);
+        $comics = $em->getRepository('App:Comic')->findBy([ 'screen' => 0]);
 
         foreach ($comics as $comic) {
             $url = 'https://boommz.com'. $this->container->get('router')->generate('comic_screen', $comic->getRouteParams());
