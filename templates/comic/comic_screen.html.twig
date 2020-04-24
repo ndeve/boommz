@@ -1,7 +1,9 @@
 {% extends "layout.html.twig" %}
 
 {% block title %}{{ comic.title }} - BOOMMZ!{% endblock title %}
-
+{% block metas %}
+    <link rel="canonical" href="{{ url('comic', comic.routeParams) }}">
+{% endblock metas %}
 {% block body %}
     <style>
         .hero-head, .hero-foot, .tabbar {
