@@ -1,0 +1,61 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}{{ comic.title }} - BOOMMZ!{% endblock title %}
+
+{% block body %}
+    <style>
+        .hero-head, .hero-foot, .tabbar {
+            display: none;
+        }
+        section.hero, .container {
+            width: 920px;
+            max-width: 920px;
+        }
+
+        .page .column {
+            display: block;
+            width: 450px;
+        }
+        .logoread {
+            margin: auto;
+            top: 0;
+            left: 0;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+
+    <section class="page">
+        <div class="columns is-multiline">
+            {% for box in comic.pages.0.boxes|slice(0, 5) %}
+                <div class="column is-{{ box.size ?? 'one-quarter' }} {{ cycle(['c-1', 'c-2', ''], loop.index0) }} h-{{ box.height }}">
+                    <div {% if box.background %}style="background-image: url({{ box.background }})"{% endif %}
+                         class="ccolumn">
+                        {% for bubble in box.bubbles %}
+                            <blockquote
+                                    class="{{ bubble.classes }} b-{{ loop.index0 }}"
+                                    style="{{ bubble.x ? 'botttom:' ~ bubble.y ~ 'px;' : '' }}{{ bubble.y ? 'left:' ~ bubble.x ~ 'px' : '' }}">
+                                {{ bubble.text }}
+                                {% if bubble.persona %}
+                                    <footer><img src="{{ bubble.persona.url }}" alt="{{ bubble.persona.name }}"/>
+                                    </footer>
+                                {% endif %}
+                            </blockquote>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+            {% if comic.pages.0.boxes|length == 3 or comic.pages.O.boxes|length == 5 %}
+            <div class="column h-1 is-one-third" style="text-align: center">
+                <img src="{{ asset('/build/images/logo.png') }}" class="logoread">
+                </div>
+            {% endif %}
+        </div>
+    </section>
+    {% if comic.pages.0.boxes|length != 3 and comic.pages.O.boxes|length != 5 %}
+    <div style="width: 100%;text-align: center">
+        <img src="{{ asset('/build/images/logo.png') }}">
+    </div>
+    {% endif %}
+{% endblock body %}

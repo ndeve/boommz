@@ -47,17 +47,29 @@ class ComicScreenCommand extends Command
         $comics = $em->getRepository('App:Comic')->findBy([ 'screen' => 0]);
 
         foreach ($comics as $comic) {
-            $url = 'https://boommz.com'. $this->container->get('router')->generate('comic_screen', $comic->getRouteParams());
-
             $dir = '/home/wwwroot/boommz/public/'. $comic->getUrlScreen();
-            echo $url ."\n";
             mkdir($dir, 0777, true);
 
+            $url = 'https://boommz.com'. $this->container->get('router')->generate('comic_screen', $comic->getRouteParams());
+            echo $url ."\n";
             $height = (count($comic->getPages()[0]->getBoxes())*260) + 210;
-
             $command = 'node /home/wwwroot/boommz/assets/js/screen.js --url="'. $url .'" --outputDir="'. $dir
               .'" --output="'. $comic->getRewritten() .'-'. $comic->getId() .'.png" --viewportHeight='. $height .' --viewportWidth=450';
             shell_exec($command);
+
+            $url = 'https://boommz.com'. $this->container->get('router')->generate('comic_screen_fb', $comic->getRouteParams());
+            echo $url ."\n";
+            if (count($comic->getPages()[0]->getBoxes()) <= 4) {
+                $height = 480;
+            }
+            else {
+                $height = 750;
+            }
+            $command = 'node /home/wwwroot/boommz/assets/js/screen.js --url="'. $url .'" --outputDir="'. $dir
+              .'" --output="fb-'. $comic->getRewritten() .'-'. $comic->getId() .'.png" --viewportHeight='. $height .' --viewportWidth=880';
+            shell_exec($command);
+
+
             $comic->setScreen(true);
             $em->persist($comic);
             $em->flush();

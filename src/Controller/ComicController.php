@@ -14,6 +14,19 @@ class ComicController extends Controller
 {
 
     /**
+     * @Route(  path="/comics/{rewritten}-{id}/screen-fb",
+     *          name="comic_screen_fb",
+     *          requirements={"rewritten"="[a-z0-9-]+", "id"= "\d+"}
+     *      )
+     * @Template
+     */
+    public function comicScreenFbAction(Comic $comic, $rewritten)
+    {
+
+        return [ 'comic' => $comic, 'votes' => [] ];
+    }
+
+    /**
      * @Route(  path="/comics/{rewritten}-{id}/screen",
      *          name="comic_screen",
      *          requirements={"rewritten"="[a-z0-9-]+", "id"= "\d+"}
