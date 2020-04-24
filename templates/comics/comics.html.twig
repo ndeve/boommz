@@ -10,7 +10,7 @@
                     <span>BOOMMZ!</span>
                 </a>
             </li>
-            <li class="is-active" aria-current="page">{% trans %}Toutes les BD'z!{% endtrans %}</li>
+            <li class="is-active" aria-current="page">{% trans %}Toutes les BDs{% endtrans %}</li>
         </ul>
     </nav>
 {% endblock %}
@@ -28,7 +28,7 @@
                     <span class="ctitle">
                             <span class="title is-4">{{ comic.title }}</span><br />
                         {% if comic.author %}
-                            <span class="subtitle">by {{ comic.author.username }}</span>
+                            <span class="subtitle">{{ comic.author.username }}</span>
                         {% endif %}
                                 </span>
                         </a>

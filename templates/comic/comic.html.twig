@@ -1,6 +1,6 @@
 {% extends "layout.html.twig" %}
 
-{% block title %}{{ comic.title }} - BOOMMZ!{% endblock title %}
+{% block title %}{{ comic.title }}, une BD {% if comic.author %}de {{ comic.author.username }}{% endif %} - BOOMMZ!{% endblock title %}
 {% block metas %}
     {% if comic.screen %}
     <meta property="og:image" content="https://boommz.com/{{ comic.urlScreen }}fb-{{ comic.rewritten }}-{{ comic.id }}.png" />
@@ -16,7 +16,7 @@
                     <span>BOOMMZ!</span>
                 </a>
             </li>
-            <li><a href="{{ url('comics') }}">All Comics</a></li>
+            <li><a href="{{ url('comics') }}">Toutes les BDs</a></li>
             <li class="is-active" aria-current="page">{{ comic.title }}</li>
         </ul>
     </nav>
@@ -26,7 +26,7 @@
 
     <h1 class="title">{{ comic.title }}</h1>
     {% if comic.author %}
-    <h2 class="subtitle">{{ comic.author.username }}</h2>
+    <h2 class="subtitle">de {{ comic.author.username }}</h2>
     {% endif %}
     {% for page in comic.pages %}
         <section class="page">
