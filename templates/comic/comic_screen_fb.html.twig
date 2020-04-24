@@ -46,9 +46,9 @@
                     </div>
                 </div>
             {% endfor %}
-            {% if comic.pages.0.boxes|length == 3 or comic.pages.O.boxes|length == 5 %}
-            <div class="column h-1 is-one-third" style="text-align: center">
-                <img src="{{ asset('/build/images/logo.png') }}" class="logoread">
+            {% if comic.pages.0.boxes|length == 3 or comic.pages.O.boxes|length >= 5 %}
+                <div class="column h-1 is-one-third" style="text-align: center">
+                    <img src="{{ asset('/build/images/logo.png') }}" class="logoread">
                 </div>
             {% endif %}
         </div>

@@ -69,7 +69,7 @@ class ComicScreenCommand extends Command
                 $height = 750;
             }
             $command = 'node /home/wwwroot/boommz/assets/js/screen.js --url="'. $url .'" --outputDir="'. $dir
-              .'" --output="fb-'. $comic->getRewritten() .'-'. $comic->getId() .'.png" --viewportHeight='. $height .' --viewportWidth=880';
+              .'" --output="fb-'. $comic->getRewritten() .'-'. $comic->getId() .'.png" --viewportHeight='. $height .' --viewportWidth=900';
             shell_exec($command);
 
 
