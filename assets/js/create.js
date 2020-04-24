@@ -2,8 +2,7 @@ jQuery(document).ready(function () {
     orderBox();
 
     if ($('#actionsPersona').length) {
-        var element = $('#actionsPersona').detach();
-        $('#actions').append(element);
+        var element = $('#actionsPersona').detach().appendTo('#actions');
         bulmaCarousel.attach('#slidePersona', {
             slidesToScroll: 5,
             slidesToShow: 7,
@@ -52,7 +51,7 @@ jQuery(document).ready(function () {
         e.stopPropagation();
     });
 
-    $('#styleBubble').on('click', function () {
+    $(document).on('click', '#styleBubble', function () {
         var style = '';
         if ($('.bubble.on').hasClass('think')) {
             $('.bubble.on').removeClass('think').addClass('yell');
@@ -74,7 +73,7 @@ jQuery(document).ready(function () {
         $('#' + $('.bubble.on').attr('id') + '_style').val(style);
     });
 
-    $('#changeBackground').on('click', function () {
+    $(document).on('click', '#changeBackground', function () {
         var id = parseInt($('#backgrounds').attr('data-num')) + 1,
             max = parseInt($('#backgrounds').attr('data-max')),
             num = (id > max) ? 0 : id,
@@ -84,18 +83,11 @@ jQuery(document).ready(function () {
         $('.column.on input.bg').val(bg.attr('data-id'));
     });
 
-    $('#removeBubble').on('click', function () {
-        $('blockquote.on').removeClass('bubble');
-        $('blockquote.on textarea').val('');
-        $('#addBubble').removeClass('is-hidden');
-        $('#removeBubble').addClass('is-hidden');
-    });
-
-    $('#addPersona').on('click', function () {
+    $(document).on('click', '#addPersona', function () {
         addPersona($(this).parent().parent().parent());
     });
 
-    $('#removeBox').on('click', function (e) {
+    $(document).on('click', '#removeBox', function (e) {
         var removeBpx = $('.column.on'),
             newSelectedBox = $('.column.on').next().length ? $('.column.on').next() : $('.column.on').prev();
         selectBox(newSelectedBox);
@@ -103,7 +95,7 @@ jQuery(document).ready(function () {
         orderBox();
     });
 
-    $('#addBox').on('click', function (e) {
+    $(document).on('click', '#addBox', function (e) {
         var page = $(this).parent().parent().parent().parent().parent(),
             numPage = page.attr('id').replace(/comic_pages_/g, ''),
             numBox = page.find('.column').length,
@@ -116,38 +108,12 @@ jQuery(document).ready(function () {
         e.stopPropagation();
     });
 
-    $('#resizeH').on('click', function () {
-        resizeBox($(this).parent().parent(), size)
-    });
-
-    $('#resizeV').on('click', function () {
-        resizeBox($(this).parent().parent(), height)
-    });
-
-    $('#changeColumns').on('click', function () {
-        var line = $(this).parent().parent().parent(),
-            next = line.next('.columns');
-
-        if (nbBox != '1') {
-            if (!next.length) {
-                line.after('<div class="columns" data-nbBox="1"></div>');
-            }
-            var lastBox = line.find('.column:last-child');
-            next = line.next('.columns');
-            next.append(lastBox);
-            line.children('.column').each(function () {
-                resizeBox($(this), size, 'half');
-            });
-            line.attr('data-nbBox', nbBox - 1);
-        }
-    })
-
-    $('textarea').on('keyup', function () {
+    $(document).on('keyup', 'textarea', function () {
         $(this).css('height', 'auto');
         $(this).css('height', this.scrollHeight + 'px');
     });
 
-    $('textarea').on('keydown', function () {
+    $(document).on('keydown', 'textarea', function () {
         var nbCar = $(this).val().length,
             perc = nbCar / nbCarMax;
 
@@ -186,27 +152,25 @@ jQuery(document).ready(function () {
     }
 
     function selectBox(box, selectFirstBubble = true) {
+        console.log('selectBox');
         box.find('#clone').remove();
 
         $('.column').removeClass('on');
 
         box.addClass('on');
 
-        var element = $('#actions').detach();
-        box.append(element);
+        $('#actions').detach().appendTo(box);
+
         if(selectFirstBubble) {
             selectBubble(box.find('blockquote').first());
         }
     }
 
     function selectBubble(bubble) {
+        console.log('selectBubble');
         $('.bubble').removeClass('on');
         bubble.addClass('on');
 
-        //var element = $('#actions').detach();
-        //bubble.parent().parent().append(element);
-
-        //$('#actionsBubble').show();
         bubble.children('textarea').focus();
         if (bubble.hasClass('bubble')) {
             $('#addBubble').addClass('is-hidden');
@@ -263,13 +227,15 @@ jQuery(document).ready(function () {
     }
 
     function cloneBox(box) {
+        $('#actions').detach().appendTo('#actionsHidden');
+
         var previousBox = box.prev().html(),
             previousBox = previousBox.replace(/comic_pages_(\d+)_boxes_(\d+)/g, box.attr('id')),
             nums = box.attr('id').match(/[\d+]/g),
             previousBox = previousBox.replace(/pages\]\[(\d+)\]\[boxes\]\[(\d+)\]/g, 'pages][' + nums[0] + '][boxes][' + nums[1] + ']');
-        var element = $('#actions').detach();
-        $('#actionsHidden').append(element);
+
         box.html(previousBox);
         selectBox(box, true);
+
     }
 });
