@@ -218,7 +218,7 @@ jQuery(document).ready(function () {
             $('blockquote').removeClass('on');
             $('#actionsBubble').hide();
         }
-        $('#actionsPersona').hide();
+        //$('#actionsPersona').hide();
     }
 
     function selectBubble(bubble) {
