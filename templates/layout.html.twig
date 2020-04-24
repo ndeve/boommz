@@ -33,17 +33,17 @@
                     <div class="navbar-end">
                         <div class="tabs is-right">
                             <ul>
-                                <li {% if app.request.attributes.get('_route') == 'homepage' %} class="is-active"{% endif %}><a href="{{ url('homepage') }}">Home</a></li>
-                                <li{% if  app.request.attributes.get('_route') == 'comics' or app.request.attributes.get('_route') == 'comic' %} class="is-active"{% endif %}><a href="{{ url('comics') }}">{% trans %}Comics{% endtrans %}</a></li>
-                                <li{% if  app.request.attributes.get('_route') == 'comic_create' %} class="is-active"{% endif %}><a href="{{ url('comic_create') }}">{% trans %}Create comic{% endtrans %}</a></li>
-                                <li{% if  app.request.attributes.get('_route') == 'character_create' %} class="is-active"{% endif %}><a href="{{ url('character_create') }}">{% trans %}Create character{% endtrans %}</a></li>
+                                <li {% if app.request.attributes.get('_route') == 'homepage' %} class="is-active"{% endif %}><a href="{{ url('homepage') }}">Accueil</a></li>
+                                <li{% if  app.request.attributes.get('_route') == 'comics' or app.request.attributes.get('_route') == 'comic' %} class="is-active"{% endif %}><a href="{{ url('comics') }}">{% trans %}Toutes les BDz!{% endtrans %}</a></li>
+                                <li{% if  app.request.attributes.get('_route') == 'comic_create' %} class="is-active"{% endif %}><a href="{{ url('comic_create') }}">{% trans %}Crée ta BD{% endtrans %}</a></li>
+                                <li{% if  app.request.attributes.get('_route') == 'character_create' %} class="is-active"{% endif %}><a href="{{ url('character_create') }}">{% trans %}Crée tes persos{% endtrans %}</a></li>
                                 {% if is_granted ( 'IS_AUTHENTICATED_REMEMBERED' )  %}
                                     <li>
-                                    {% trans with {'%username%': app.user.username} %}Welcome %username% !{% endtrans %}
+                                    {% trans with {'%username%': app.user.username} %}Bienvenue %username% !{% endtrans %}
                                     </li>
                                 {% else %}
-                                <li{% if  app.request.attributes.get('_route') == 'app_register' %} class="is-active"{% endif %}><a href="{{ url('app_register') }}">{% trans %}Sign up{% endtrans %}</a></li>
-                                <li{% if  app.request.attributes.get('_route') == 'fos_user_security_login' %} class="is-active"{% endif %}><a href="{{ url('fos_user_security_login') }}">{% trans %}Sign in{% endtrans %}</a></li>
+                                <li{% if  app.request.attributes.get('_route') == 'app_register' %} class="is-active"{% endif %}><a href="{{ url('app_register') }}">{% trans %}S'inscrire{% endtrans %}</a></li>
+                                <li{% if  app.request.attributes.get('_route') == 'fos_user_security_login' %} class="is-active"{% endif %}><a href="{{ url('fos_user_security_login') }}">{% trans %}S'identifier{% endtrans %}</a></li>
                                 {% endif %}
                             </ul>
                         </div>
@@ -79,7 +79,7 @@
         <li{% if  app.request.attributes.get('_route') == 'character_create' %} class="is-active"{% endif %}><a href="{{ url('character_create') }}">{% include "/svg/persona_add.html.twig" %}</a></li>
         {% if is_granted ( 'IS_AUTHENTICATED_REMEMBERED' )  %}
             <li>
-                {% trans with {'%username%': app.user.username} %}Welcome %username% !{% endtrans %}
+                {% trans with {'%username%': app.user.username} %}Bienvenue %username% !{% endtrans %}
             </li>
         {% else %}
             <li{% if  app.request.attributes.get('_route') == 'app_register' %} class="is-active"{% endif %}><a href="{{ url('app_register') }}">{% trans %}Sign up{% endtrans %}</a></li>

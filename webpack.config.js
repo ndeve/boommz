@@ -29,14 +29,6 @@ Encore
           pattern: /\.(png|jpg|jpeg|svg)$/,
     })
 
-    .copyFiles({
-        from: './node_modules/jquery-circle-progress/dist/',
-        // optional target path, relative to the output dir
-        to: './js/[path][name].[ext]',
-        // only copy files matching this pattern
-        pattern: /\.(js)$/,
-    })
-
     .autoProvidejQuery()
 
     //enables hashed filenames (e.g. app.abc123.css)

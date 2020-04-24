@@ -1,5 +1,5 @@
 {% extends "layout.html.twig" %}
-{% block title %}Create character | Boomz!{% endblock %}
+{% block title %}Création de personnages | Boomz!{% endblock %}
 
 {% block breadcrumb %}
     <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
@@ -11,39 +11,39 @@
                 </a>
             </li>
             <li>
-                <a href="{{ url('charactes') }}">{% trans %}All characters{% endtrans %}</a>
+                <a href="{{ url('charactes') }}">{% trans %}Tous les persos{% endtrans %}</a>
             </li>
-            <li class="is-active" aria-current="page">{% trans %}Create Characters{% endtrans %}</li>
+            <li class="is-active" aria-current="page">{% trans %}Crée tes persos{% endtrans %}</li>
 
         </ul>
     </nav>
 {% endblock %}
 
 {% block body %}
-    <h1 class="title">{% trans %}Create Characters{% endtrans %}</h1>
+    <h1 class="title">{% trans %}Crée tes persos{% endtrans %}</h1>
 
     {{ form_start(form) }}
 
     <div id="boommzcreator">
         <div class="actions actionsg">
             <div class="subc">
-                <div class="button is-light sex" data-src="/persona/creator/men/ID.png">
+                <div class="button is-light sex" data-src="/persona/creator/men/ID.png" title="{% trans %}Homme{% endtrans %}">
                     {% include "/svg/male.html.twig" %}
                 </div>
-                <div class="button is-light sex on" data-src="/persona/creator/women/ID.png">
+                <div class="button is-light sex on" data-src="/persona/creator/women/ID.png" title="{% trans %}Femme{% endtrans %}">
                     {% include "/svg/female.html.twig" %}
                 </div>
-                <div class="button is-light color on" data-color="0">
+                <div class="button is-light color on" data-color="0" title="{% trans %}Blanc{% endtrans %}">
                     <div class="color-0"></div>
                 </div>
-                <div class="button is-light color" data-color="1">
+                <div class="button is-light color" data-color="1" title="{% trans %}Noir{% endtrans %}">
                     <div class="color-1"></div>
                 </div>
             </div>
         </div>
 
         <div class="actions">
-            <div class="sub" title="{% trans %}Choose hair{% endtrans %}" id="hair" data-max="21" data-num="1"
+            <div class="sub" title="{% trans %}Choisis tes cheveux{% endtrans %}" id="hair" data-max="21" data-num="1"
                  data-sub="3"
                  data-src="/persona/creator/hair/ID.png">
                 <div class="button is-light previous is-hidden-mobile">
@@ -56,7 +56,7 @@
                     {% include "/svg/next.html.twig" %}
                 </div>
             </div>
-            <div class="sub" title="{% trans %}Choose eyes{% endtrans %}" id="eyes" data-max="24" data-num="1"
+            <div class="sub" title="{% trans %}Choisis tes yeux{% endtrans %}" id="eyes" data-max="24" data-num="1"
                  data-sub="12"
                  data-src="/persona/creator/eyes/ID.png">
                 <div class="button is-light previous is-hidden-mobile">
@@ -69,7 +69,7 @@
                     {% include "/svg/next.html.twig" %}
                 </div>
             </div>
-            <div class="sub" title="{% trans %}Choose nose{% endtrans %}" id="nose" data-max="7"
+            <div class="sub" title="{% trans %}Choisis ton nez{% endtrans %}" id="nose" data-max="7"
                  data-num="1"
                  data-sub="3"
                  data-src="/persona/creator/nose/ID.png">
@@ -84,7 +84,7 @@
                 </div>
             </div>
 
-            <div class="sub" title="{% trans %}Choose mouth{% endtrans %}" id="mouth" data-max="23"
+            <div class="sub" title="{% trans %}Choisis ta bouche{% endtrans %}" id="mouth" data-max="23"
                  data-num="1"
                  data-sub="2"
                  data-src="/persona/creator/mouth/ID.png">
@@ -104,7 +104,7 @@
         </div>
 
         <div class="actions">
-            <div class="sub" title="{% trans %}Choose hat{% endtrans %}" id="hat" data-max="10" data-num="0"
+            <div class="sub" title="{% trans %}Choisis ton chapeau{% endtrans %}" id="hat" data-max="10" data-num="0"
                  data-sub="3"
                  data-src="/persona/creator/hat/ID.png">
                 <div class="button is-light previous is-hidden-mobile">
@@ -117,7 +117,7 @@
                     {% include "/svg/next.html.twig" %}
                 </div>
             </div>
-            <div class="sub" title="{% trans %}Choose vest{% endtrans %}" id="vest" data-max="11" data-num="0"
+            <div class="sub" title="{% trans %}Choisis ta veste{% endtrans %}" id="vest" data-max="11" data-num="0"
                  data-src="/persona/creator/vest/ID.png">
                 <div class="button is-light previous is-hidden-mobile">
                     {% include "/svg/previous.html.twig" %}
@@ -130,7 +130,7 @@
                 </div>
             </div>
 
-            <div class="sub" title="{% trans %}Choose top{% endtrans %}" id="top" data-max="25" data-num="0"
+            <div class="sub" title="{% trans %}Choisis ton haut{% endtrans %}" id="top" data-max="25" data-num="0"
                  data-src="/persona/creator/top/ID.png">
                 <div class="button is-light previous is-hidden-mobile">
                     {% include "/svg/previous.html.twig" %}
@@ -143,7 +143,7 @@
                 </div>
             </div>
 
-            <div class="sub" title="{% trans %}Choose trousers{% endtrans %}" id="trousers" data-max="29"
+            <div class="sub" title="{% trans %}Choisis ton pantalon{% endtrans %}" id="trousers" data-max="29"
                  data-num="0"
                  data-src="/persona/creator/trousers/ID.png">
                 <div class="button is-light previous is-hidden-mobile">
@@ -160,7 +160,7 @@
 
     <div class="field is-grouped is-grouped-centered">
     <div class="control">
-        <button class="button is-primary is-clearfix is-medium">{% trans %}Submit{% endtrans %}</button>
+        <button class="button is-primary is-clearfix is-medium">{% trans %}C'est parti{% endtrans %}</button>
     </div></div>
     </div>
 

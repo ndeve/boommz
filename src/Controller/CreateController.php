@@ -51,6 +51,7 @@ class CreateController extends Controller
 
         $box2 = new Box();
         $box2->addBubble($bubble);
+        $box2->clone = true;
         $page->addBox($box2);
 
         $bubble = new Bubble();

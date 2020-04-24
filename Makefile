@@ -142,6 +142,9 @@ yarn-install:
 yarn-bz:
 	@${CDC} exec php bash -c 'cd boommz && yarn encore dev'
 
+yarn-bz-prod:
+	@${CDC} exec php bash -c 'cd boommz && yarn encore production'
+
 #watch assets of boommz directory
 yarn-watch-bz:
 	@${CDC} exec php bash -c 'cd boommz && yarn encore dev --watch'
