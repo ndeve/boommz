@@ -18,7 +18,7 @@
                 </a>
             </li>
             <li><a href="{{ url('comics') }}">Toutes les BDs</a></li>
-            <li class="is-active" aria-current="page">{{ comic.title }}</li>
+            <li class="is-active" aria-current="page"><a href="#">{{ comic.title }}</a></li>
         </ul>
     </nav>
 {% endblock %}
@@ -28,6 +28,14 @@
     <h1 class="title">{{ comic.title }}</h1>
     {% if comic.author %}
         <h2 class="subtitle">de {{ comic.author.username }}</h2>
+    {% endif %}
+    {% if app.user and comic.author and comic.author.id == app.user.id %}
+        <a href="{{ url('comic_edit', comic.routeParams) }}" class="button is-primary is-outlined is-small edit-comic">
+            <span class="icon is-small">
+              {% include "svg/comic_edit.html.twig" %}
+            </span>
+            <span>Edite ta BD</span>
+        </a>
     {% endif %}
     {% for page in comic.pages %}
         <section class="page">
@@ -40,8 +48,7 @@
                              class="ccolumn">
                             {% for bubble in box.bubbles %}
                                 <blockquote
-                                        class="{{ bubble.classes }} b-{{ loop.index0 }}"
-                                        style="{{ bubble.x ? 'botttom:' ~ bubble.y ~ 'px;' : '' }}{{ bubble.y ? 'left:' ~ bubble.x ~ 'px' : '' }}">
+                                        class="{{ bubble.classes }} b-{{ loop.index0 }}">
                                     {{ bubble.text }}
                                     {% if bubble.persona %}
                                         <footer><img src="{{ bubble.persona.url }}" alt="{{ bubble.persona.name }}"/>
@@ -63,7 +70,7 @@
 
     {% if comic.author %}
         <br/>
-        <h2 class="title">Les autres BDs de {{ comic.author.username }}</h2>
+        <h2 class="title is-4">Les autres BDs de {{ comic.author.username }}</h2>
         <section class="page">
             <div class="columns is-multiline">
                 {% for comic in comic.author.comics %}

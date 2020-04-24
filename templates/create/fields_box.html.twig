@@ -2,7 +2,7 @@
     <div class="column is-{{ form.vars.value.size ?? 'one-third' }} h-{{ form.vars.value.height ?? '1' }} {{ ('comic_pages_0_boxes_0' == form.vars.id) ? 'on' : '' }}"
          id="{{ form.vars.id }}"
          data-bubble-form="{{ form_widget(form.bubbles.vars.prototype)|e('html_attr') }}">
-        <div class="ccolumn">
+        <div class="ccolumn"{% if form.vars.value.background %} style="background-image: url({{ form.vars.value.background.url }})"{% endif %}>
             {% if form.vars.value.clone is defined %}
                 <div id="clone" class="button is-primary is-medium">{% trans %}Clône la case précédente{% endtrans %}</div>
             {% endif %}

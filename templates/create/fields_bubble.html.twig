@@ -1,6 +1,6 @@
 {% block bubble_widget %}
     <blockquote
-            class="bubble {{ form.vars.value.orientation ? 'left' : 'right' }} {{ (form.vars.id == 'comic_pages_0_boxes_0_bubbles_0') ? 'on' : '' }}"
+            class="bubble {{ form.vars.value.style }} {{ form.vars.value.orientation ? 'left' : 'right' }} {{ (form.vars.id == 'comic_pages_0_boxes_0_bubbles_0') ? 'on' : '' }}"
             id="{{ form.vars.id }}"
             style="">
         {{ form_widget(form.text,  { 'attr': { 'placeholder': 'Écris ici', 'class': 'autoExpand fs-18', 'rows': 1, 'data-min-rows': 1 }}) }}
@@ -9,6 +9,8 @@
         {{ form_widget(form.orientation) }}
         {{ form_widget(form.persona, {}) }}
         {{ form_widget(form.style) }}
-        <footer><img src="/persona/stars/donald-trump.png"/></footer>
+        <footer>
+            <img src="{{ form.vars.value.persona.url }}" />
+        </footer>
     </blockquote>
 {% endblock %}

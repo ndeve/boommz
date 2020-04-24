@@ -10,12 +10,13 @@
                     <span>BOOMMZ!</span>
                 </a>
             </li>
-            <li class="is-active" aria-current="page">{% trans %}All characters{% endtrans %}</li>
+            <li class="is-active" aria-current="page"><a href="#">{% trans %}Tous les persos{% endtrans %}</a></li>
         </ul>
     </nav>
 {% endblock %}
 
 {% block body %}
+    <h1 class="title">Tous les persos</h1>
     {% for persona in personas %}
         <img src="{{ persona.url }}" title="{{ persona.name }}" />
     {% endfor %}

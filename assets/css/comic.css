@@ -255,3 +255,8 @@
     margin: auto;
     max-width: 60%;
 }
+
+.edit-comic {
+    float: right;
+    margin-top: -40px;
+}

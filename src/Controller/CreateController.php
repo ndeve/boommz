@@ -80,61 +80,8 @@ class CreateController extends Controller
         return [
           'comic' => $comic,
           'form' => $form->createView(),
-          'personas' => $entityManager->getRepository('App:Persona')
-            ->findBy(['path' => 'stars/']),
-          'backgrounds' => $entityManager->getRepository('App:Background')
-            ->findBy(['selection' => true]),
-        ];
-    }
-
-    /**
-     * @Route(  path="/{rewritten}-{id}/edit",
-     *          name="comic_edit",
-     *          requirements={"id"= "\d+"}
-     *      )
-     * @Template
-     */
-    public function editAction(int $id, Request $request)
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-        if (null === $comic = $entityManager->getRepository('App:Comic')
-            ->findOneById($id)) {
-            throw $this->createNotFoundException('No comic found for id ' . $id);
-        }
-
-        $originalPages = new ArrayCollection();
-
-        // Create an ArrayCollection of the current Tag objects in the database
-        foreach ($comic->getPages() as $page) {
-            $originalPages->add($page);
-        }
-
-        $form = $this->createForm(ComicType::class, $comic);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            foreach ($originalPages as $page) {
-                if (false === $comic->getPages()->contains($page)) {
-                    $entityManager->remove($page);
-                }
-            }
-
-            $entityManager->persist($comic);
-            $entityManager->flush();
-
-            $url = $this->generateUrl('comic', $comic->getRouteParams());
-            return $this->redirect($url);
-        }
-
-        return [
-          'comic' => $comic,
-          'form' => $form->createView(),
-          'personas' => [],
-            //$em->getRepository('BoumzBoumzBundle:Persona')->findPersonas([ 'user' => $user ]),
-          'backgrounds' => [],
-            //$em->getRepository('BoumzBoumzBundle:Background')->findBackgrounds([ 'user' => $user ])
+          'personas' => $entityManager->getRepository('App:Persona')->findBy(['path' => 'stars/']),
+          'backgrounds' => $entityManager->getRepository('App:Background')->findBy(['selection' => true]),
         ];
     }
 
