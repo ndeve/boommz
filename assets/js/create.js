@@ -39,6 +39,8 @@ jQuery(document).ready(function () {
         $(this).hide();
         var element = $('#actions').detach();
         $('#actionsHidden').append(element);
+        var element = $('#actionsPersona').detach();
+        $('#actionsHidden').append(element);
         box.html(previousBox);
         selectBox(box);
         e.stopPropagation();
