@@ -186,7 +186,7 @@ jQuery(document).ready(function () {
     }
 
     function selectBox(box, selectFirstBubble = true) {
-        box.children('#clone').remove();
+        box.find('#clone').remove();
 
         $('.column').removeClass('on');
 
@@ -194,7 +194,6 @@ jQuery(document).ready(function () {
 
         var element = $('#actions').detach();
         box.append(element);
-console.log(box.children('blockquote'));
         if(selectFirstBubble) {
             selectBubble(box.find('blockquote').first());
         }

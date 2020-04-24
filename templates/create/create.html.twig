@@ -6,10 +6,10 @@
 
     {{ form_start(form) }}
 
-    <h1 class="title">{% trans %}Create comic{% endtrans %}</h1>
+    <h1 class="title">{% trans %}Crée ta BD{% endtrans %}</h1>
 
     <div class="field">
-        {{ form_label(form.title, 'Titre de la bédé', {'label_attr': {'class': 'label is-medium'}}) }}
+        {{ form_label(form.title, 'Titre de ta BD', {'label_attr': {'class': 'label is-medium'}}) }}
         {{ form_widget(form.title, {'attr': {'class': 'input is-medium'}}) }}
     </div>
 
@@ -19,7 +19,7 @@
 
     <div class="field is-grouped is-grouped-centered">
         <div class="control">
-            <input type="submit" class="button is-primary is-large" value="{% trans %}C'est parti{% endtrans %}">
+            <input type="submit" class="button is-primary is-large" value="{% trans %}C'est parti !{% endtrans %}">
         </div>
     </div>
 
