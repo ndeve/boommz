@@ -18,7 +18,7 @@ class EditController extends Controller
     /**
      * @Route(  path="/comics/{rewritten}-{id}/edit",
      *          name="comic_edit",
-     *          requirements={"id"= "\d+"}
+     *          requirements={"rewritten"="[a-z0-9-]+", "id"= "\d+"}
      *      )
      * @Template
      */
