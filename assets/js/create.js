@@ -50,12 +50,13 @@ jQuery(document).ready(function () {
         event.stopPropagation();
     });
 
-    $(document).on('focus', '.column textarea', function () {
+    $(document).on('focus', '.column textarea', function (event) {
         $(this).css('height', this.scrollHeight + 'px');
         if (!$(this).parent().hasClass('on')) {
             selectBox($(this).parent().parent().parent());
             selectBubble($(this).parent());
         }
+        event.stopPropagation();
     });
 
     $(document).on('click', '.ccolumn', function () {
