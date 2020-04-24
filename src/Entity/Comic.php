@@ -81,6 +81,7 @@ class Comic
     {
         $this->dateCreation = new \DateTime();
         $this->dateUpdate = new \DateTime();
+        $this->screen = 0;
         $this->pages = new ArrayCollection();
     }
 
