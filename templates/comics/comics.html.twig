@@ -21,30 +21,7 @@
     <section class="page">
         <div class="columns is-multiline">
             {% for comic in comics %}
-                <div class="column is-one-third h-1">
-                    <div {% if comic.pages.0.boxes.0.background %}style="background-image: url({{ comic.pages.0.boxes.0.background }})"{% endif %}
-                         class="ccolumn">
-                        <a href="{{ url('comic', comic.routeParams) }}" class="comic-title">
-                    <span class="ctitle">
-                            <span class="title is-4">{{ comic.title }}</span><br />
-                        {% if comic.author %}
-                            <span class="subtitle">{{ comic.author.username }}</span>
-                        {% endif %}
-                                </span>
-                        </a>
-                        {% for bubble in comic.pages.0.boxes.0.bubbles %}
-                            <blockquote
-                                    class="{{ bubble.classes }} b-{{ loop.index0 }}"
-                                    style="{{ bubble.x ? 'botttom:' ~ bubble.y ~ 'px;' : '' }}{{ bubble.y ? 'left:' ~ bubble.x ~ 'px' : '' }}">
-                                {{ bubble.text }}
-                                {% if bubble.persona %}
-                                    <footer><img src="{{ bubble.persona.url }}" alt="{{ bubble.persona.name }}"/>
-                                    </footer>
-                                {% endif %}
-                            </blockquote>
-                        {% endfor %}
-                    </div>
-                </div>
+                {% include "comic/block.html.twig" %}
             {% endfor %}
         </div>
     </section>

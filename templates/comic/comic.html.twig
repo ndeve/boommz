@@ -3,7 +3,8 @@
 {% block title %}{{ comic.title }}, une BD {% if comic.author %}de {{ comic.author.username }}{% endif %} - BOOMMZ!{% endblock title %}
 {% block metas %}
     {% if comic.screen %}
-    <meta property="og:image" content="https://boommz.com/{{ comic.urlScreen }}fb-{{ comic.rewritten }}-{{ comic.id }}.png" />
+        <meta property="og:image"
+              content="https://boommz.com/{{ comic.urlScreen }}fb-{{ comic.rewritten }}-{{ comic.id }}.png"/>
     {% endif %}
 {% endblock metas %}
 
@@ -26,7 +27,7 @@
 
     <h1 class="title">{{ comic.title }}</h1>
     {% if comic.author %}
-    <h2 class="subtitle">de {{ comic.author.username }}</h2>
+        <h2 class="subtitle">de {{ comic.author.username }}</h2>
     {% endif %}
     {% for page in comic.pages %}
         <section class="page">
@@ -35,14 +36,16 @@
 
                 {% for box in page.boxes %}
                     <div class="column is-{{ box.size ?? 'one-quarter' }} {{ cycle(['c-1', 'c-2', ''], loop.index0) }} h-{{ box.height }}">
-                        <div {% if box.background %}style="background-image: url({{ box.background }})"{% endif %} class="ccolumn">
+                        <div {% if box.background %}style="background-image: url({{ box.background }})"{% endif %}
+                             class="ccolumn">
                             {% for bubble in box.bubbles %}
                                 <blockquote
                                         class="{{ bubble.classes }} b-{{ loop.index0 }}"
                                         style="{{ bubble.x ? 'botttom:' ~ bubble.y ~ 'px;' : '' }}{{ bubble.y ? 'left:' ~ bubble.x ~ 'px' : '' }}">
                                     {{ bubble.text }}
                                     {% if bubble.persona %}
-                                        <footer><img src="{{ bubble.persona.url }}" alt="{{ bubble.persona.name }}" /></footer>
+                                        <footer><img src="{{ bubble.persona.url }}" alt="{{ bubble.persona.name }}"/>
+                                        </footer>
                                     {% endif %}
                                 </blockquote>
                             {% endfor %}
@@ -54,7 +57,20 @@
     {% endfor %}
 
     {% if comic.screen %}
-        <a href="https://boommz.com/{{ comic.urlScreen }}{{ comic.rewritten }}-{{ comic.id }}.png" target="_blank">Image</a>
+        <a href="https://boommz.com/{{ comic.urlScreen }}{{ comic.rewritten }}-{{ comic.id }}.png"
+           target="_blank">Image</a>
+    {% endif %}
+
+    {% if comic.author %}
+        <br/>
+        <h2 class="title">Les autres BDs de {{ comic.author.username }}</h2>
+        <section class="page">
+            <div class="columns is-multiline">
+                {% for comic in comic.author.comics %}
+                    {% include "comic/block.html.twig" %}
+                {% endfor %}
+            </div>
+        </section>
     {% endif %}
 
 {% endblock body %}
