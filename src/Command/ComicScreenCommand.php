@@ -48,7 +48,10 @@ class ComicScreenCommand extends Command
 
         foreach ($comics as $comic) {
             $dir = '/home/wwwroot/boommz/public/'. $comic->getUrlScreen();
-            mkdir($dir, 0777, true);
+
+            if (!is_dir($dir)) {
+                mkdir($dir, 0777, true);
+            }
 
             $url = 'https://boommz.com'. $this->container->get('router')->generate('comic_screen', $comic->getRouteParams());
             echo $url ."\n";
