@@ -80,7 +80,7 @@ class CreateController extends Controller
         return [
           'comic' => $comic,
           'form' => $form->createView(),
-          'personas' => $entityManager->getRepository('App:Persona')->findBy(['path' => 'stars/']),
+          'personas' => $entityManager->getRepository('App:Persona')->findAllStars(),
           'backgrounds' => $entityManager->getRepository('App:Background')->findBy(['selection' => true]),
         ];
     }
