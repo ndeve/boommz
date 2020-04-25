@@ -167,7 +167,7 @@
     bottom: 19px;
     right: -18px;
 }
-.on .removeBubble {
+blockquote.on .removeBubble {
     display: block;
 }
 .removeBubble svg {
