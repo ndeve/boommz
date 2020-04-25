@@ -7,10 +7,10 @@
     {{ form_start(form) }}
 
     <h1 class="title">
-        {% if comic.title is defined %}
+        {% if comic.title %}
             Modifie ta BD "{{ comic.title }}"
         {% else %}
-            {% trans %}Crée ta BD{% endtrans %}
+            {% trans %}Crée ta BD!{% endtrans %}
         {% endif %}
     </h1>
 
