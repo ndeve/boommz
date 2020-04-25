@@ -152,7 +152,6 @@ jQuery(document).ready(function () {
     }
 
     function selectBox(box, selectFirstBubble = true) {
-        console.log('selectBox');
         box.find('#clone').remove();
 
         $('.column').removeClass('on');
@@ -167,7 +166,6 @@ jQuery(document).ready(function () {
     }
 
     function selectBubble(bubble) {
-        console.log('selectBubble');
         $('.bubble').removeClass('on');
         bubble.addClass('on');
 
@@ -231,9 +229,8 @@ jQuery(document).ready(function () {
 
         var previousBox = box.prev().html(),
             previousBox = previousBox.replace(/comic_pages_(\d+)_boxes_(\d+)/g, box.attr('id')),
-            nums = box.attr('id').match(/[\d+]/g),
+            nums = box.attr('id').match(/\d+/g),
             previousBox = previousBox.replace(/pages\]\[(\d+)\]\[boxes\]\[(\d+)\]/g, 'pages][' + nums[0] + '][boxes][' + nums[1] + ']');
-
         box.html(previousBox);
         selectBox(box, true);
 
