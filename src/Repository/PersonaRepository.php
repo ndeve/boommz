@@ -26,7 +26,7 @@ class PersonaRepository extends ServiceEntityRepository
             ->setParameter('path', 'stars/')
             ->orWhere('p.name = :name')
             ->setParameter('name', 'Name')
-            ->orderBy('p.path', 'desc')
+            ->orderBy('p.category', 'desc')
             ->setMaxResults(1000)
             ->getQuery()
             ->getResult()
