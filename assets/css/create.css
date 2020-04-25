@@ -160,3 +160,18 @@
     padding: 20px;
     border: 5px solid #fff;
 }
+
+.removeBubble {
+    display: none;
+    position: absolute;
+    bottom: 19px;
+    right: -18px;
+}
+.on .removeBubble {
+    display: block;
+}
+.removeBubble svg {
+    width: 2em;
+    height: 2em;
+    color: #bd3535;
+}
