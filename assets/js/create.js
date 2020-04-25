@@ -35,6 +35,11 @@ jQuery(document).ready(function () {
         e.stopPropagation();
     });
 
+    $(document).on('dblclick', '.column blockquote', function (event) {
+        $(this).remove();
+        event.stopPropagation();
+    });
+
     $(document).on('click', '.column blockquote', function (event) {
         selectBox($(this).parent().parent(), false);
         selectBubble($(this));
