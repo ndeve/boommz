@@ -196,26 +196,55 @@ class Bubble
 
         if (count($this->getBox()->getBubbles()) == 1) {
             $classes .= 'alone ';
-            $fs12 = 200;
-            $fs14 = 150;
-            $fs16 = 105;
+            $alone = true;
         }
 
         if ($this->getText()) {
             $nbCar = strlen(trim($this->getText()));
-            $classes .= 'bubble ' . ($this->getOrientation() ? 'left ': 'right ') . ($this->getStyle() ?? '') .' ';
+            $classes .= 'bubble ' . ($this->getOrientation() ? 'left ' : 'right ') . ($this->getStyle() ?? '') . ' ';
+        }
 
-            if ($nbCar > $fs12) {
-                $classes .= 'fs-12';
+        if ($this->getText() && $alone) {
+            if ($nbCar <= 30) {
+                $classes .= 'fs-s7';
             }
-            else if ($nbCar > $fs14) {
-                $classes .= 'fs-14';
+            else if (30 < $nbCar && $nbCar <= 60) {
+                $classes .= 'fs-s6';
             }
-            else if ($nbCar > $fs16) {
-                $classes .= 'fs-16';
+            else if (60 < $nbCar && $nbCar <= 70) {
+                $classes .= 'fs-s5';
             }
-            else {
-                $classes .= 'fs-18';
+            else if (70 < $nbCar && $nbCar <= 80) {
+                $classes .= 'fs-s4';
+            }
+            else if (80 < $nbCar && $nbCar <= 100) {
+                $classes .= 'fs-s3';
+            }
+            else if (100 < $nbCar && $nbCar <= 120) {
+                $classes .= 'fs-s2';
+            }
+            else if (120 < $nbCar) {
+                $classes .= 'fs-s1';
+            }
+        }
+        else if($this->getText()) {
+            if ($nbCar <= 30) {
+                $classes .= 'fs-s7';
+            }
+            else if (30 < $nbCar && $nbCar <= 45) {
+                $classes .= 'fs-s6';
+            }
+            else if (45 < $nbCar && $nbCar <= 60) {
+                $classes .= 'fs-s3';
+            }
+            else if (60 < $nbCar && $nbCar <= 90) {
+                $classes .= 'fs-s2';
+            }
+            else if (90 < $nbCar && $nbCar <= 100) {
+                $classes .= 'fs-s1';
+            }
+            else if (100 < $nbCar) {
+                $classes .= 'fs-s0';
             }
         }
 

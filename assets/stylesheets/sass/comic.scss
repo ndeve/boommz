@@ -150,18 +150,29 @@
 .column div blockquote:last-child {
     right: 20px;
 }
-.fs-18 {
-    font-size: 18px;
+.fs-s7 {
+    font-size: 1.4em;
 }
-.fs-16 {
-    font-size: 16px;
+.fs-s6 {
+    font-size: 1.3em;
 }
-
-.fs-14 {
-    font-size: 14px;
+.fs-s5 {
+    font-size: 1.2em;
 }
-.fs-12 {
-    font-size: 12px;
+.fs-s4 {
+    font-size: 1.1em;
+}
+.fs-s3 {
+    font-size: 1em;
+}
+.fs-s2 {
+    font-size: 0.9em;
+}
+.fs-s1 {
+    font-size: 0.8em;
+}
+.fs-s0 {
+    font-size: 0.7em;
 }
 
 .comic-title {
@@ -202,7 +213,7 @@
     left: 0;
     right: 0;
     margin: auto;
-    max-width: 60%;
+    max-width: 70%;
 }
 
 .edit-comic {

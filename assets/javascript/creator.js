@@ -4,7 +4,7 @@ jQuery(document).ready(function () {
     if ($('#actionsPersona').length) {
         var element = $('#actionsPersona').detach().appendTo('#actions');
         bulmaCarousel.attach('#slidePersona', {
-            slidesToScroll: 5,
+            slidesToScroll: 6,
             slidesToShow: 7,
             infinite: true,
             pagination: false
