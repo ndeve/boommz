@@ -23,7 +23,7 @@
     overflow: visible;
 }
 .actions .button:hover svg {
-    color: #76a094;
+    color: $green-dark;
 }
 #actions {
     background-color: rgba(255, 255, 255, 0.9);
@@ -61,24 +61,41 @@
     height: 50px;
     width: 59px!important;
     outline: 0;
+    display: inline-block;
 }
 #slidePersona .slider-navigation-next,
 #slidePersona .slider-navigation-previous {
-    border-radius: 0;
+    background-color: $green;
+    color: white;
     width: 20px;
     top: 0;
     margin-top: 0;
+    position: absolute;
     bottom: 0;
-    height: 50px;
+    height: 53px;
     z-index: 100;
+    border-radius: 3px 0 0 3px;
+}
+#slidePersona .slider-navigation-previous {
+    left: 0;
+}
+#slidePersona .slider-navigation-next{
+    border-radius: 0 3px 3px 0;
+    right: 0;
 }
 #slidePersona .slider-navigation-next svg,
 #slidePersona .slider-navigation-previous svg {
     width: 10px;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    left: 0;
 }
-#slidePersona .slider-navigation-next:hover svg,
-#slidePersona .slider-navigation-previous:hover svg {
-    color: #76a094;
+#slidePersona .slider-navigation-next:hover,
+#slidePersona .slider-navigation-previous:hover {
+    background-color: $green-darkest;
 }
 #slidePersona .slider-pagination {
     display: none;
