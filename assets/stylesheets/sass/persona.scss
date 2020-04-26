@@ -55,7 +55,8 @@
     display: inline-block;
 }
 #boommzcreator .actions .button svg {
-    color: #5eb272;
+    color: $green;
+    width: 2em;
 }
 #boommzcreator .actions .button.on svg {
     color: #29863f;

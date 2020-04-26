@@ -15,7 +15,7 @@
     <meta name="twitter:card" content="summary" />
     <link rel="manifest" href="/manifest.json">
     {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_link_tags('main') }}
     {% endblock %}
 </head>
 
@@ -26,7 +26,7 @@
             <div class="container">
                 <div class="navbar-brand">
                     <a class="navbar-item" href="../">
-                        <img src="{{ asset('build/images/boommzcom.png') }}" alt="BOOMMZ!">
+                        <img src="{{ asset('build/images/boommz-com.png') }}" alt="BOOMMZ!">
                     </a>
                 </div>
                 <div id="navbarMenu" class="navbar-menu">
@@ -42,8 +42,8 @@
                                     {% trans with {'%username%': app.user.username} %}Bienvenue %username% !{% endtrans %}
                                     </li>
                                 {% else %}
-                                <li{% if  app.request.attributes.get('_route') == 'app_register' %} class="is-active"{% endif %}><a href="{{ url('app_register') }}">{% trans %}S'inscrire{% endtrans %}</a></li>
-                                <li{% if  app.request.attributes.get('_route') == 'fos_user_security_login' %} class="is-active"{% endif %}><a href="{{ url('fos_user_security_login') }}">{% trans %}S'identifier{% endtrans %}</a></li>
+                                <li{% if  app.request.attributes.get('_route') == 'fos_user_security_login' %} class="is-active"{% endif %}><a href="{{ url('fos_user_security_login') }}" class="login">{% trans %}S'identifier{% endtrans %}</a></li>
+                                <li{% if  app.request.attributes.get('_route') == 'app_register' %} class="is-active"{% endif %}><a href="{{ url('app_register') }}" class="register">{% trans %}S'inscrire{% endtrans %}</a></li>
                                 {% endif %}
                             </ul>
                         </div>
@@ -89,8 +89,7 @@
 </div>
 
 {% block javascripts %}
-    {{ encore_entry_script_tags('app') }}
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    {{ encore_entry_script_tags('main') }}
 {% endblock javascripts %}
 
 <!-- Global site tag (gtag.js) - Google Analytics -->

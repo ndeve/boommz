@@ -67,3 +67,8 @@
     <div id="actionsHidden">
     </div>
 {% endblock body %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('create') }}
+{% endblock javascripts %}

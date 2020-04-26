@@ -1,0 +1,96 @@
+@charset "utf-8";
+
+// Set your brand colors
+$green-lightest: #C6F0D1;
+$green-light: #94DCA7;
+$green: #67c57e;
+$green-dark: #42AB5E;
+$green-darkest: #259543;
+
+$blue-lightest: #C0E1E8;
+$blue-light: #8ABFCB;
+$blue: #5A99A8;
+$blue-dark: #397E8E;
+$blue-darkest: #226A7B;
+
+$gold-lightest: #FFE8D2;
+$gold-light: #FFD5AB;
+$gold: #FFC285;
+$gold-dark: #E59E59;
+$gold-darkest: #C77C32;
+
+// Update Bulma's global variables
+$primary: $green;
+$info: $blue;
+
+$navbar-height: 3rem;
+$navbar-item-img-max-height: 100%;
+
+$breadcrumb-item-color: $green;
+$breadcrumb-item-hover-color: $green-darkest;
+$breadcrumb-item-active-color: $blue;
+$breadcrumb-item-separator-color: $blue;
+
+// Import only what you need from Bulma
+@import "../../bulma/bulma.sass";
+
+.navbar-item {
+  padding: 0px;
+}
+.tabbar {
+  background-color: $green;
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+}
+.tabbar ul {
+  list-style: none;
+}
+.tabbar li {
+  display: inline-block;
+  padding: 5px;
+}
+.tabbar svg {
+  color: #fafafa;
+  height: 2em!important;
+  width: 2em!important;
+}
+
+.hero-head {
+  background-color: $green;
+  border-bottom: 4px solid $green-darkest;
+  margin-bottom: 10px;
+}
+.tabs li a {
+  border: 1px solid $green;
+  border-radius: 7px;
+  margin: 0 4px;
+}
+.tabs li.is-active a {
+  border: 1px solid #3ea556;
+  color: #4baf63;
+  background-color: #fff;
+}
+.tabs li a:hover {
+  background-color: $green-light;
+  border: solid 1px $green-dark;
+}
+.tabs li.is-active a {
+  background-color: $white;
+}
+
+.tabs li a.login {
+  background-color: $green-dark;
+  color: $white!important;
+}
+.tabs li a.register {
+  background-color: $gold-darkest;
+  color: $white!important;
+}
+.tabs li a.register:hover {
+  background-color: $gold-dark;
+}
+
+@import "comic.scss";
+@import "persona.scss";
+@import "creator.scss";
