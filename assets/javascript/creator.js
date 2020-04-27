@@ -157,7 +157,7 @@ jQuery(document).ready(function () {
                 .replace(/__NUMPAGE__/g, numPage);
 
         box.children('div:first').append(formBubble);
-        selectBubble($('comic_pages_'+ numPage +'_boxes_'+ numBox +'_bubbles_'+ numBubble));
+        selectBubble($('#comic_pages_'+ numPage +'_boxes_'+ numBox +'_bubbles_'+ numBubble));
     }
 
     function selectBox(box, selectFirstBubble = true) {
