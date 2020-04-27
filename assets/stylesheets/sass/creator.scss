@@ -1,6 +1,5 @@
 .page.edit {
     margin-bottom: 10px;
-    padding-bottom: 130px;
 }
 .page.edit .column.on .ccolumn {
     border:solid 5px #7eb7a6;
@@ -28,7 +27,6 @@
 #actions {
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 0 0 5px 5px;
-    position: absolute;
     z-index: 10;
     padding: 5px 5px 10px 5px;
     right: 0.30em;
@@ -40,14 +38,11 @@
     right: 5px;
 }
 #actionsPersona {
-    position: absolute;
     height: 55px;
     margin-top: 4px;
     padding: 4px;
-    right: 4px;
-    left: 6px;
-    bottom: -49px;
-    z-index: 40;
+    width: 100%;
+    position: relative;
 }
 
 #actionsPersona #slidePersona {

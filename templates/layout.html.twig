@@ -2,17 +2,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>{% spaceless %}{% block title %}{% trans %}Boommz! Be funny, make comics !{% endtrans %}{% endblock %}{% endspaceless %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{% spaceless %}{% block metadescription %}{% endblock metadescription %}{% endspaceless %}" />
-    <meta property="fb:app_id" content="2537519843181823" />
-    <meta property="og:title" content="{% spaceless %}{{ block('title') }}{% endspaceless %}" />
-    <meta property="og:description" content="{% spaceless %}{{ block('metadescription') }}{% endspaceless %}" />
+    <meta name="description"
+          content="{% spaceless %}{% block metadescription %}{% endblock metadescription %}{% endspaceless %}"/>
+    <meta property="fb:app_id" content="2537519843181823"/>
+    <meta property="og:title" content="{% spaceless %}{{ block('title') }}{% endspaceless %}"/>
+    <meta property="og:description" content="{% spaceless %}{{ block('metadescription') }}{% endspaceless %}"/>
     {% block metas %}{% endblock metas %}
-    <meta property="og:type" content="{% block og_type %}article{% endblock %}" />
-    <meta property="og:url" content="{% block og_url %}{{ app.request.uri }}{% endblock %}" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:type" content="{% block og_type %}article{% endblock %}"/>
+    <meta property="og:url" content="{% block og_url %}{{ app.request.uri }}{% endblock %}"/>
+    <meta name="twitter:card" content="summary"/>
     <link rel="manifest" href="/manifest.json">
     {% block stylesheets %}
         {{ encore_entry_link_tags('main') }}
@@ -20,38 +21,51 @@
 </head>
 
 <body class="{% block body_class %}{% endblock body_class %}">
-<section class="hero is-default is-bold">
-    <div class="hero-head">
-        <nav class="navbar">
-            <div class="container">
-                <div class="navbar-brand">
-                    <a class="navbar-item" href="../">
-                        <img src="{{ asset('build/images/boommz-com.png') }}" alt="BOOMMZ!">
-                    </a>
-                </div>
-                <div id="navbarMenu" class="navbar-menu">
-                    <div class="navbar-end">
-                        <div class="tabs is-right">
-                            <ul>
-                                <li {% if app.request.attributes.get('_route') == 'homepage' %} class="is-active"{% endif %}><a href="{{ url('homepage') }}">Accueil</a></li>
-                                <li{% if  app.request.attributes.get('_route') == 'comics' or app.request.attributes.get('_route') == 'comic' %} class="is-active"{% endif %}><a href="{{ url('comics') }}">{% trans %}Toutes les BDs{% endtrans %}</a></li>
-                                <li{% if  app.request.attributes.get('_route') == 'comic_create' %} class="is-active"{% endif %}><a href="{{ url('comic_create') }}">{% trans %}Crée ta BD!{% endtrans %}</a></li>
-                                <li{% if  app.request.attributes.get('_route') == 'character_create' %} class="is-active"{% endif %}><a href="{{ url('character_create') }}">{% trans %}Crée tes persos{% endtrans %}</a></li>
-                                {% if is_granted ( 'IS_AUTHENTICATED_REMEMBERED' )  %}
-                                    <li>
+<section class=" is-default is-bold">
+    <nav class="navbar is-fixed-top-desktop">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="../">
+                    <img src="{{ asset('build/images/boommz-com.png') }}" alt="BOOMMZ!">
+                </a>
+
+                <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div id="navbarMenu" class="navbar-menu">
+                <div class="navbar-end">
+                    <div class="tabs is-right">
+                        <ul>
+                            <li {% if app.request.attributes.get('_route') == 'homepage' %} class="is-active"{% endif %}>
+                                <a href="{{ url('homepage') }}">Accueil</a></li>
+                            <li{% if  app.request.attributes.get('_route') == 'comics' or app.request.attributes.get('_route') == 'comic' %} class="is-active"{% endif %}>
+                                <a href="{{ url('comics') }}">{% trans %}Toutes les BDs{% endtrans %}</a></li>
+                            <li{% if  app.request.attributes.get('_route') == 'comic_create' %} class="is-active"{% endif %}>
+                                <a href="{{ url('comic_create') }}">{% trans %}Crée ta BD!{% endtrans %}</a></li>
+                            <li{% if  app.request.attributes.get('_route') == 'character_create' %} class="is-active"{% endif %}>
+                                <a href="{{ url('character_create') }}">{% trans %}Crée tes persos{% endtrans %}</a>
+                            </li>
+                            {% if is_granted ( 'IS_AUTHENTICATED_REMEMBERED' ) %}
+                                <li>
                                     {% trans with {'%username%': app.user.username} %}Bienvenue %username% !{% endtrans %}
-                                    </li>
-                                {% else %}
-                                <li{% if  app.request.attributes.get('_route') == 'fos_user_security_login' %} class="is-active"{% endif %}><a href="{{ url('fos_user_security_login') }}" class="login">{% trans %}S'identifier{% endtrans %}</a></li>
-                                <li{% if  app.request.attributes.get('_route') == 'app_register' %} class="is-active"{% endif %}><a href="{{ url('app_register') }}" class="register">{% trans %}S'inscrire{% endtrans %}</a></li>
-                                {% endif %}
-                            </ul>
-                        </div>
+                                </li>
+                            {% else %}
+                                <li{% if  app.request.attributes.get('_route') == 'fos_user_security_login' %} class="is-active"{% endif %}>
+                                    <a href="{{ url('fos_user_security_login') }}"
+                                       class="login">{% trans %}S'identifier{% endtrans %}</a></li>
+                                <li{% if  app.request.attributes.get('_route') == 'app_register' %} class="is-active"{% endif %}>
+                                    <a href="{{ url('app_register') }}"
+                                       class="register">{% trans %}S'inscrire{% endtrans %}</a></li>
+                            {% endif %}
+                        </ul>
                     </div>
                 </div>
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
     <div class="body">
         <div class="container">
             {% block breadcrumb %}{% endblock breadcrumb %}
@@ -73,17 +87,23 @@
 
 <div class="tabbar is-hidden-tablet">
     <ul>
-        <li {% if app.request.attributes.get('_route') == 'homepage' %} class="is-active"{% endif %}><a href="{{ url('homepage') }}">{% include "/svg/home.html.twig" %}</a></li>
-        <li{% if  app.request.attributes.get('_route') == 'comics' or app.request.attributes.get('_route') == 'comic' %} class="is-active"{% endif %}><a href="{{ url('comics') }}">{% include "/svg/bubble_style.html.twig" %}</a></li>
-        <li{% if  app.request.attributes.get('_route') == 'comic_create' %} class="is-active"{% endif %}><a href="{{ url('comic_create') }}">{% include "/svg/bubble_add.html.twig" %}</a></li>
-        <li{% if  app.request.attributes.get('_route') == 'character_create' %} class="is-active"{% endif %}><a href="{{ url('character_create') }}">{% include "/svg/persona_add.html.twig" %}</a></li>
-        {% if is_granted ( 'IS_AUTHENTICATED_REMEMBERED' )  %}
+        <li {% if app.request.attributes.get('_route') == 'homepage' %} class="is-active"{% endif %}><a
+                    href="{{ url('homepage') }}">{% include "/svg/home.html.twig" %}</a></li>
+        <li{% if  app.request.attributes.get('_route') == 'comics' or app.request.attributes.get('_route') == 'comic' %} class="is-active"{% endif %}>
+            <a href="{{ url('comics') }}">{% include "/svg/bubble_style.html.twig" %}</a></li>
+        <li{% if  app.request.attributes.get('_route') == 'comic_create' %} class="is-active"{% endif %}><a
+                    href="{{ url('comic_create') }}">{% include "/svg/bubble_add.html.twig" %}</a></li>
+        <li{% if  app.request.attributes.get('_route') == 'character_create' %} class="is-active"{% endif %}><a
+                    href="{{ url('character_create') }}">{% include "/svg/persona_add.html.twig" %}</a></li>
+        {% if is_granted ( 'IS_AUTHENTICATED_REMEMBERED' ) %}
             <li>
                 {% trans with {'%username%': app.user.username} %}Bienvenue %username% !{% endtrans %}
             </li>
         {% else %}
-            <li{% if  app.request.attributes.get('_route') == 'app_register' %} class="is-active"{% endif %}><a href="{{ url('app_register') }}">{% trans %}Sign up{% endtrans %}</a></li>
-            <li{% if  app.request.attributes.get('_route') == 'fos_user_security_login' %} class="is-active"{% endif %}><a href="{{ url('fos_user_security_login') }}">{% trans %}Sign in{% endtrans %}</a></li>
+            <li{% if  app.request.attributes.get('_route') == 'app_register' %} class="is-active"{% endif %}><a
+                        href="{{ url('app_register') }}">{% trans %}Sign up{% endtrans %}</a></li>
+            <li{% if  app.request.attributes.get('_route') == 'fos_user_security_login' %} class="is-active"{% endif %}>
+                <a href="{{ url('fos_user_security_login') }}">{% trans %}Sign in{% endtrans %}</a></li>
         {% endif %}
     </ul>
 </div>
@@ -96,7 +116,11 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-61678023-1"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
     gtag('js', new Date());
 
     gtag('config', 'UA-61678023-1');

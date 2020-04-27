@@ -23,8 +23,11 @@ $gold-darkest: #C77C32;
 $primary: $green;
 $info: $blue;
 
+$navbar-background-color: $green;
 $navbar-height: 3rem;
 $navbar-item-img-max-height: 100%;
+
+$tabs-border-bottom-width: 0;
 
 $breadcrumb-item-color: $green;
 $breadcrumb-item-hover-color: $green-darkest;
@@ -56,8 +59,7 @@ $breadcrumb-item-separator-color: $blue;
   width: 2em!important;
 }
 
-.hero-head {
-  background-color: $green;
+.navbar {
   border-bottom: 4px solid $green-darkest;
   margin-bottom: 10px;
 }
@@ -91,6 +93,11 @@ $breadcrumb-item-separator-color: $blue;
   background-color: $gold-dark;
 }
 
+.navbar-burger span {
+  background-color: #fff;
+  height: 2px;
+  width: 18px;
+}
 @import "comic.scss";
 @import "persona.scss";
 @import "creator.scss";

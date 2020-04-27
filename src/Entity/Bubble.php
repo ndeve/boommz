@@ -190,10 +190,7 @@ class Bubble
     {
         $classes = '';
 
-        $fs12 = 95;
-        $fs14 = 55;
-        $fs16 = 35;
-
+        $alone = false;
         if (count($this->getBox()->getBubbles()) == 1) {
             $classes .= 'alone ';
             $alone = true;

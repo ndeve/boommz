@@ -7,11 +7,10 @@
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.06);
 }
 .page .column {
-    height: 200px;
     padding: 0.30rem;
     position: relative;
 }
-.page .column.h-1 {
+.page .column.h-1 .ccolumn {
     height: 250px;
 }
 .page .column.h-2 {
@@ -26,7 +25,6 @@
     background-position: bottom;
     border-radius: 755px 15px 225px 10px/10px 625px 10px 255px;
     border: solid 3px #4f4f4f;
-    height: 100%;
     padding: 5px;
     position: relative;
     overflow: hidden;
@@ -184,7 +182,7 @@
     right: 0;
     background-color: rgba(255, 255, 255, 0.65);
     text-align: center;
-    z-index: 30;
+    z-index: 20;
     transition: all .05s ease-out;
 }
 .comic-title .ctitle {

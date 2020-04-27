@@ -162,7 +162,7 @@ jQuery(document).ready(function () {
 
     function selectBox(box, selectFirstBubble = true) {
         box.find('#clone').remove();
-
+        location.href = '#'+ box.attr('id');
         $('.column').removeClass('on');
 
         box.addClass('on');
