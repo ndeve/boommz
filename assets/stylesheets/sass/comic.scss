@@ -10,6 +10,19 @@
     padding: 0.30rem;
     position: relative;
 }
+
+.page .column .ccolumn {
+    background-color: #ffffff;
+    background-size: cover;
+    background-position: bottom;
+    border-radius: 755px 15px 225px 10px/10px 625px 10px 255px;
+    border: solid 3px #4f4f4f;
+    height: 190px;
+    padding: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
 .page .column.h-1 .ccolumn {
     height: 250px;
 }
@@ -19,16 +32,7 @@
 .page .column.h-3 {
     height: 320px;
 }
-.page .column .ccolumn {
-    background-color: #ffffff;
-    background-size: cover;
-    background-position: bottom;
-    border-radius: 755px 15px 225px 10px/10px 625px 10px 255px;
-    border: solid 3px #4f4f4f;
-    padding: 5px;
-    position: relative;
-    overflow: hidden;
-}
+
 .page .column.c-1 .ccolumn {
     border-radius: 10px 625px 10px 255px/755px 15px 225px 10px;
 }
