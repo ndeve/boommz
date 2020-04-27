@@ -148,28 +148,28 @@ jQuery(document).ready(function () {
 
     function addPersona(box) {
         var numBubble = box.find('div blockquote').length,
-            nums = box.attr('id').match(/[\d+]/g),
+            nums = box.attr('id').match(/\d+/g),
             numBox = nums[1],
-            numPage = nums[0];
-
-        var formBubble = $('#form_bubble_proto').html()
-        formBubble = formBubble.replace(/__NUMBUBBLE__/g, numBubble)
-            .replace(/__NUMBOX__/g, numBox)
-            .replace(/__NUMPAGE__/g, numPage);
+            numPage = nums[0],
+            formBubble = $('#form_bubble_proto').html(),
+            formBubble = formBubble.replace(/__NUMBUBBLE__/g, numBubble)
+                .replace(/__NUMBOX__/g, numBox)
+                .replace(/__NUMPAGE__/g, numPage);
 
         box.children('div:first').append(formBubble);
+        selectBubble($('comic_pages_'+ numPage +'_boxes_'+ numBox +'_bubbles_'+ numBubble));
     }
 
     function selectBox(box, selectFirstBubble = true) {
         box.find('#clone').remove();
-        location.href = '#'+ box.attr('id');
+        location.href = '#' + box.attr('id');
         $('.column').removeClass('on');
 
         box.addClass('on');
 
         $('#actions').detach().appendTo(box);
 
-        if(selectFirstBubble) {
+        if (selectFirstBubble) {
             selectBubble(box.find('blockquote').first());
         }
     }
