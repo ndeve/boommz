@@ -46,7 +46,7 @@
                             <li{% if  app.request.attributes.get('_route') == 'comic_create' %} class="is-active"{% endif %}>
                                 <a href="{{ url('comic_create') }}">{% trans %}Crée ta BD!{% endtrans %}</a></li>
                             <li{% if  app.request.attributes.get('_route') == 'character_create' %} class="is-active"{% endif %}>
-                                <a href="{{ url('character_create') }}">{% trans %}Crée tes persos{% endtrans %}</a>
+                                <a href="{{ url('character_create') }}#boommzcreator">{% trans %}Crée tes persos{% endtrans %}</a>
                             </li>
                             {% if is_granted ( 'IS_AUTHENTICATED_REMEMBERED' ) %}
                                 <li>

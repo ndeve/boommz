@@ -17,7 +17,7 @@ jQuery(document).ready(function () {
         });
     }
 
-    var nbCarMax = 140,
+    var nbCarMax = 130,
         size = {
             'prefix': 'is-',
             'key': 'size',
@@ -124,24 +124,41 @@ jQuery(document).ready(function () {
 
     $(document).on('keydown', 'textarea', function () {
         var nbCar = $(this).val().length,
-            perc = nbCar / nbCarMax;
+            perc = nbCar / nbCarMax,
+            classSize = '',
+            fill = {fill: {gradient: ["#9cd3c6", "#76a094"]}};
 
-        if (nbCar > 100) {
+        if (nbCar <= 30) {
+            classSize = 'fs-s7';
+        }
+        else if (30 < nbCar && nbCar <= 45) {
+            classSize = 'fs-s6';
+        }
+        else if (45 < nbCar && nbCar <= 60) {
+            classSize = 'fs-s3';
+            fill = {'fill': {gradient: ["#76a094", "#e8793a"]}};
+        }
+        else if (60 < nbCar && nbCar <= 90) {
+            classSize = 'fs-s2';
+            fill = {'fill': {gradient: ["#76a094", "#e8793a"]}};
+
+        }
+        else if (90 < nbCar && nbCar <= 100) {
+            classSize = 'fs-s1';
+            fill = {'fill': {gradient: ["#e8793a", "#ff5900"]}};
+        }
+        else if (100 < nbCar) {
+            classSize = 'fs-s0';
+            fill = {'fill': {gradient: ["#e8793a", "#ff5900"]}};
+        }
+        if (nbCar > 90) {
             $('#nbCar').html(nbCarMax - nbCar);
         }
-        if (nbCar > 95) {
-            $(this).removeClass('fs-14 fs-16 fs-18').addClass('fs-12').attr('data-height-row', 14);
-            $('#circle').circleProgress({'fill': {gradient: ["#e8793a", "#ff5900"]}});
-        } else if (nbCar > 55) {
-            $('#nbCar').html('');
-            $(this).removeClass('fs-12 fs-16 fs-18').addClass('fs-14').attr('data-height-row', 16);
-            $('#circle').circleProgress({'fill': {gradient: ["#76a094", "#e8793a"]}});
-        } else if (nbCar > 35) {
-            $(this).removeClass('fs-14 fs-12 fs-18').addClass('fs-16').attr('data-height-row', 18);
-            $('#circle').circleProgress({fill: {gradient: ["#9cd3c6", "#76a094"]}});
-        } else {
-            $(this).removeClass('fs-12 fs-14 fs-16').addClass('fs-18').attr('data-height-row', 23);
+
+        if (fill) {
+            $('#circle').circleProgress(fill);
         }
+        $(this).removeClass('fs-s0 fs-s1 fs-s2 fs-s3 fs-s4 fs-s5 fs-s6 fs-s7').addClass(classSize);//.attr('data-height-row', 14);
 
         $('#circle').circleProgress('value', perc);
     });
