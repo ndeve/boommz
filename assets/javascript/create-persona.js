@@ -86,6 +86,9 @@ jQuery(document).ready(function () {
     })
 
     function randomPersona() {
+        $('.actions-main .color').attr('data-color', Math.floor(Math.random() * Math.floor(11)));
+        reloadPersona();
+
         $('.sub').each(function() {
             var max = parseInt($(this).attr('data-max')),
                 rand = ('000' + Math.floor(Math.random() * Math.floor(max))).slice(-4),
