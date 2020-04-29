@@ -9,7 +9,9 @@
 
         <div class="control has-icons-left has-icons-right">
             {{ form_widget(registrationForm.email, { 'attr': {'class': 'input'}}) }}
-            <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
+            <span class="icon is-small is-left">
+                {% include '/svg/at.html.twig' %}
+            </span>
         </div>
         <p class="help is-danger">{{ form_errors(registrationForm.email) }}</p>
     </div>
@@ -19,7 +21,9 @@
 
         <div class="control has-icons-left has-icons-right">
             {{ form_widget(registrationForm.username, { 'attr': {'class': 'input'}}) }}
-            <span class="icon is-small is-left"><i class="fas fa-user"></i></span>
+            <span class="icon is-small is-left">
+                {% include '/svg/user.html.twig' %}
+            </span>
         </div>
         <p class="help is-danger">{{ form_errors(registrationForm.username) }}</p>
     </div>
@@ -29,7 +33,9 @@
 
         <div class="control has-icons-left has-icons-right">
             {{ form_widget(registrationForm.plainPassword, { 'attr': {'class': 'input'}}) }}
-            <span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
+            <span class="icon is-small is-left">
+                {% include '/svg/lock.html.twig' %}
+            </span>
         </div>
         <p class="help is-danger">{{ form_errors(registrationForm.plainPassword) }}</p>
     </div>

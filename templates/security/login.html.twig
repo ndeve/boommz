@@ -19,7 +19,9 @@
         <label class="label">{% trans %}Pseudo{% endtrans %}</label>
         <div class="control has-icons-left has-icons-right">
             <input type="text" value="{{ last_username }}" name="username" id="inputUsername" required autofocus class="input">
-            <span class="icon is-small is-left"><i class="fas fa-user"></i></span>
+            <span class="icon is-small is-left">
+                {% include '/svg/user.html.twig' %}
+            </span>
         </div>
     </div>
 
@@ -27,7 +29,9 @@
         <label class="label">{% trans %}Mot de passe{% endtrans %}</label>
         <div class="control has-icons-left has-icons-right">
             <input type="password" name="password" id="inputPassword" required class="input">
-            <span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
+            <span class="icon is-small is-left">
+                {% include '/svg/lock.html.twig' %}
+            </span>
         </div>
     </div>
 
