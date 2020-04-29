@@ -14,6 +14,8 @@
     <meta property="og:type" content="{% block og_type %}article{% endblock %}"/>
     <meta property="og:url" content="{% block og_url %}{{ app.request.uri }}{% endblock %}"/>
     <meta name="twitter:card" content="summary"/>
+    <meta name="theme-color" content="#259543"/>
+    <link rel="apple-touch-icon" href="/build/images/logo-192.png">
     <link rel="manifest" href="/manifest.json">
     {% block stylesheets %}
         {{ encore_entry_link_tags('main') }}
