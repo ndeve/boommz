@@ -1,6 +1,4 @@
 jQuery(document).ready(function () {
-    randomPersona();
-
     $('.actions-main .plus').on('click', function () {
         $('.actions-main').addClass('is-hidden');
         $('.actions-main.'+ $(this).attr('data-sect')).removeClass('is-hidden');
@@ -51,18 +49,24 @@ jQuery(document).ready(function () {
     $('.sub').each(function(){
         var max = parseInt($(this).attr('data-max')),
             src = $(this).attr('data-src'),
-            sect = $(this).attr('data-sect');
+            sect = $(this).attr('data-sect'),
+            type = $(this).attr('data-type');
 
-        $('#persona').after('<div class="actions actionsg '+ $(this).attr('data-type') +' is-hidden"></div>');
+        $('#persona').after('<div class="actions actionsg '+ type +' is-hidden"></div>');
 
         for(var i = 0; i <= max; i++) {
             var fullId = ('000' + i).slice(-4),
-                html = '<div class="button is-light '+ sect +'" data-type="'+ $(this).attr('data-type') +'" data-id="'+ fullId +'">'
+                html = '<div class="button is-light '+ sect +'" data-type="'+ type +'" data-id="'+ fullId +'">'
                     + ((sect == 'head') ? '<img src="/persona/creator/head.png"/>' : '<img src="/persona/creator/women/0000.png"/>')
                     +'<img src="'+ src.replace(/ID/g, fullId) +'" /></div>';
 
-            $('.actionsg.'+ $(this).attr('data-type')).append(html);
+            $('.actionsg.'+ type).append(html);
         }
+
+        var id = (sect == 'head' && type != 'hat') ? '0002' : '0000';
+        $('#persona_creator_' + type).val(id);
+        $('#persona').append('<img src="' + $(this).attr('data-src').replace(/ID/g, id) + '" class="' + type + '"/>');
+
     });
 
     $('.sub').on('click', function () {
@@ -89,12 +93,7 @@ jQuery(document).ready(function () {
 
             $('#persona_creator_' + $(this).attr('data-type')).val(rand);
 
-            if ($('#persona img.'+ $(this).attr('data-type')).length) {
-                $('#persona img.'+ $(this).attr('data-type')).attr('src', src);
-            }
-            else {
-                $('#persona').append('<img src="' + src + '" class="' + $(this).attr('data-type') + '"/>');
-            }
+            $('#persona img.'+ $(this).attr('data-type')).attr('src', src);
         });
     }
 });

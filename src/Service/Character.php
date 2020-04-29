@@ -18,7 +18,6 @@ class Character {
         $dest_img = imagecreatetruecolor(35, 86);
 
         imagesavealpha($dest_img, true);
-        //create a fully transparent background (127 means fully transparent)
         $trans_background = imagecolorallocatealpha($dest_img, 0, 0, 0, 127);
 
         //fill the image with a transparent background
@@ -31,11 +30,17 @@ class Character {
         unset($data['persona']);
 
         foreach ($data as $key => $value) {
-            $img_bo = imagecreatefrompng(getcwd() . '/persona/creator/' . $key . '/' . $value . '.png');
-            imagecopy($dest_img, $img_bo, 0, 0, 0, 0, 35, 86);
-            $name = $name . $value .'-';
-            $dir = $dir . $value .'/';
+            if(file_exists(getcwd() . '/persona/creator/' . $key . '/' . $value . '.png') && $value != '0000') {
+                //if ($key === 'mouth' || $key === 'nose' || $key === 'hair' || $key === 'eyes' || $key === 'top' || $key === 'vest' || $key === 'trousers') {
+                    $img_bo = imagecreatefrompng(getcwd() . '/persona/creator/' . $key . '/' . $value . '.png');
+                    imagecopy($dest_img, $img_bo, 0, 0, 0, 0, 35, 86);
+                //}
+            }
+
+            $name = $name . $value . '-';
+                $dir = $dir . $value . '/';
         }
+
         $name = substr($name, 0, -1);
         $dir = getcwd() .'/persona/creator/p/'. substr($dir, 0, 15);
 
