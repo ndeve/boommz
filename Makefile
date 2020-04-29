@@ -124,6 +124,10 @@ composer: composer-bz
 composer-bz:
 	@${CDC} exec php bash -c 'cd boommz && composer install'
 
+#install vendor of boommz directory
+comic-screen:
+	@${CDC} exec php bash -c 'cd boommz && php bin/console app:comic_screen'
+
 
 cache: cache-bz
 
