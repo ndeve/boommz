@@ -84,10 +84,17 @@ jQuery(document).ready(function () {
     function randomPersona() {
         $('.sub').each(function() {
             var max = parseInt($(this).attr('data-max')),
-                rand = ('000' + Math.floor(Math.random() * Math.floor(max))).slice(-4);
+                rand = ('000' + Math.floor(Math.random() * Math.floor(max))).slice(-4),
+                src = $(this).attr('data-src').replace(/ID/g, rand);
 
             $('#persona_creator_' + $(this).attr('data-type')).val(rand);
-            $('#persona').append('<img src="' + $(this).attr('data-src').replace(/ID/g, rand) + '" class="' + $(this).attr('data-type') + '"/>');
+
+            if ($('#persona img.'+ $(this).attr('data-type')).length) {
+                $('#persona img.'+ $(this).attr('data-type')).attr('src', src);
+            }
+            else {
+                $('#persona').append('<img src="' + src + '" class="' + $(this).attr('data-type') + '"/>');
+            }
         });
     }
 });
