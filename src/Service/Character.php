@@ -27,12 +27,12 @@ class Character {
         $name = '';
         $dir = '';
         $img_bo = imagecreatefrompng(getcwd() . $data['persona']);
-        imagecopy($dest_img, $img_bo, 0, 0, 0, 0, 36, 83);
+        imagecopy($dest_img, $img_bo, 0, 0, 0, 0, 35, 86);
         unset($data['persona']);
 
         foreach ($data as $key => $value) {
             $img_bo = imagecreatefrompng(getcwd() . '/persona/creator/' . $key . '/' . $value . '.png');
-            imagecopy($dest_img, $img_bo, 0, 0, 0, 0, 36, 83);
+            imagecopy($dest_img, $img_bo, 0, 0, 0, 0, 35, 86);
             $name = $name . $value .'-';
             $dir = $dir . $value .'/';
         }
