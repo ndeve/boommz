@@ -39,6 +39,11 @@ class User extends BaseUser
      */
     private $backgrounds;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Persona", cascade={"persist", "remove"})
+     */
+    private $avatar;
+
     public function __construct()
     {
         parent::__construct();
@@ -139,6 +144,18 @@ class User extends BaseUser
                 $background->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAvatar(): ?Persona
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(?Persona $avatar): self
+    {
+        $this->avatar = $avatar;
 
         return $this;
     }

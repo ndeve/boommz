@@ -179,7 +179,7 @@
 
     <div class="has-text-centered">
         {% for persona in app.user.personas %}
-            <img src="{{ persona.url }}"/>
+            <a href="/avatar/{{ persona.id }}"><img src="{{ persona.url }}"/></a>
         {% endfor %}
     </div>
 

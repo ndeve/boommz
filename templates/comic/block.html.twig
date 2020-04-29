@@ -5,7 +5,7 @@
                     <span class="ctitle">
                             <span class="title is-4">{{ comic.title }}</span><br />
                         {% if comic.author %}
-                            <span class="subtitle">{{ comic.author.username }}</span>
+                            <span class="subtitle"><img src="{{ comic.author.avatar.urlHead }}"/> {{ comic.author.username }}</span>
                         {% endif %}
                                 </span>
         </a>
