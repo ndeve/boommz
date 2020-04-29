@@ -38,7 +38,7 @@ jQuery(document).ready(function () {
         reloadPersona();
     });
 
-    $('.dice').on(function () {
+    $('.dice').on('click', function () {
         randomPersona();
     })
 

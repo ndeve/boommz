@@ -15,7 +15,7 @@ class Character {
     public function generateCharacter($data)
     {
         //alpha & transparency
-        $dest_img = imagecreatetruecolor(36, 83);
+        $dest_img = imagecreatetruecolor(35, 86);
 
         imagesavealpha($dest_img, true);
         //create a fully transparent background (127 means fully transparent)
