@@ -101,3 +101,8 @@ $breadcrumb-item-separator-color: $blue;
 @import "comic.scss";
 @import "persona.scss";
 @import "creator.scss";
+
+.icon.is-small svg {
+  height: 1em;
+  width: 1em;
+}

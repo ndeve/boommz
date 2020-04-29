@@ -31,7 +31,7 @@
     {% endif %}
     {% if app.user and comic.author and comic.author.id == app.user.id %}
         <a href="{{ url('comic_edit', comic.routeParams) }}" class="button is-primary is-outlined is-small edit-comic">
-            <span class="icon is-small">
+            <span class="icon is-small fa-2x">
               {% include "svg/comic_edit.html.twig" %}
             </span>
             <span>Edite ta BD</span>
