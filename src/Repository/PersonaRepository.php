@@ -24,8 +24,6 @@ class PersonaRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('p')
             ->andWhere('p.path = :path')
             ->setParameter('path', 'stars/')
-            ->orWhere('p.name = :name')
-            ->setParameter('name', 'Name')
             ->orderBy('p.category', 'asc')
             ->setMaxResults(1000)
             ->getQuery()
@@ -36,13 +34,15 @@ class PersonaRepository extends ServiceEntityRepository
     public function findAllPublic()
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.path = :path')
-            ->setParameter('path', 'stars/')
-            ->orderBy('p.path', 'desc')
-            ->setMaxResults(1000)
-            ->getQuery()
-            ->getResult()
-        ;
+          ->andWhere('p.path = :path')
+          ->setParameter('path', 'stars/')
+          ->orWhere('p.name = :name')
+          ->setParameter('name', 'Name')
+          ->orderBy('p.category', 'asc')
+          ->setMaxResults(1000)
+          ->getQuery()
+          ->getResult()
+          ;
     }
 
 
