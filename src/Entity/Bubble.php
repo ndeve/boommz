@@ -201,7 +201,7 @@ class Bubble
             $classes .= 'bubble ' . ($this->getOrientation() ? 'left ' : 'right ') . ($this->getStyle() ?? '') . ' ';
         }
 
-        if ($this->getText() && $alone) {
+        if ($alone) {
             if ($nbCar <= 30) {
                 $classes .= 'fs-s7';
             }
@@ -224,7 +224,7 @@ class Bubble
                 $classes .= 'fs-s1';
             }
         }
-        else if($this->getText()) {
+        else {
             if ($nbCar <= 30) {
                 $classes .= 'fs-s7';
             }
@@ -245,6 +245,6 @@ class Bubble
             }
         }
 
-        return $classes;
+        return $classes . ' c-'. $nbCar;
     }
 }
