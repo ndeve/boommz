@@ -37,6 +37,14 @@
             <span>Edite ta BD</span>
         </a>
     {% endif %}
+
+    <div class="button share is-hidden is-primary is-outlined is-small edit-comic">
+        <span class="icon is-small fa-2x">
+          {% include "svg/share.html.twig" %}
+        </span>
+    <span>Paratage cette BD!</span>
+    </div>
+
     {% for page in comic.pages %}
         <section class="page">
             {% if page.title %}<h2 class="subtitle">{{ page.title }}</h2>{% endif %}
