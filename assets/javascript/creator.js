@@ -35,10 +35,6 @@ jQuery(document).ready(function () {
         e.stopPropagation();
     });
 
-    $(document).on('dblclick', '.column blockquote', function (event) {
-        $(this).remove();
-        event.stopPropagation();
-    });
     $(document).on('click', '.removeBubble', function (event) {
         $(this).parent().parent().remove();
         event.stopPropagation();
