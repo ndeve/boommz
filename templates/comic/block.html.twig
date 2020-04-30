@@ -4,7 +4,7 @@
         <a href="{{ url('comic', comic.routeParams) }}" class="comic-title">
                     <span class="ctitle">
                             <span class="title is-4">{{ comic.title }}</span><br />
-                        {% if comic.author and author is defined and author %}
+                        {% if comic.author and displayAuthor is defined and displayAuthor %}
                             <span class="subtitle"><img src="{{ comic.author.avatar.urlHead }}"/> {{ comic.author.username }}</span>
                         {% endif %}
                                 </span>

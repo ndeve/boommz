@@ -21,7 +21,7 @@
     <section class="page">
         <div class="columns is-multiline">
             {% for comic in comics %}
-                {% include "comic/block.html.twig" with {'author': 1} %}
+                {% include "comic/block.html.twig" with {'displayAuthor': 1} %}
             {% endfor %}
         </div>
     </section>

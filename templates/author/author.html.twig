@@ -21,12 +21,26 @@
 {% endblock %}
 
 {% block body %}
-    <h1 class="title">{{ author.username }}</h1>
+
+
+    <div class="media">
+        {% if author.avatar %}
+            <div class="media-left">
+                <figure class="image circle">
+                    <img src="{{ author.avatar.urlHead }}"/>
+                </figure>
+            </div>
+        {% endif %}
+        <div class="media-content">
+            <h1 class="title">{{ author.username }}</h1>
+        </div>
+    </div>
+
 
     <section class="page">
         <div class="columns is-multiline">
             {% for comic in author.comics %}
-                {% include "comic/block.html.twig" with {'small': 1} %}
+                {% include "comic/block.html.twig" with {'small': 1, 'displayAuthor': 0} %}
             {% endfor %}
         </div>
     </section>
