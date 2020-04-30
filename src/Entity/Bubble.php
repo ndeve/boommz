@@ -214,13 +214,13 @@ class Bubble
             else if (70 < $nbCar && $nbCar <= 80) {
                 $classes .= 'fs-s4';
             }
-            else if (80 < $nbCar && $nbCar <= 100) {
+            else if (90 < $nbCar && $nbCar <= 100) {
                 $classes .= 'fs-s3';
             }
-            else if (100 < $nbCar && $nbCar <= 120) {
+            else if (120 < $nbCar && $nbCar <= 120) {
                 $classes .= 'fs-s2';
             }
-            else if (120 < $nbCar) {
+            else if (140 < $nbCar) {
                 $classes .= 'fs-s1';
             }
         }
