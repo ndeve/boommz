@@ -3,8 +3,8 @@
          class="ccolumn">
         <a href="{{ url('comic', comic.routeParams) }}" class="comic-title">
                     <span class="ctitle">
-                            <span class="title is-4">{{ comic.title }}</span><br />
-                        {% if comic.author %}
+                            <span class="title is-4">{{ comic.title }}</span><br /> }}
+                        {% if comic.author and author is defined and author %}
                             <span class="subtitle"><img src="{{ comic.author.avatar.urlHead }}"/> {{ comic.author.username }}</span>
                         {% endif %}
                                 </span>

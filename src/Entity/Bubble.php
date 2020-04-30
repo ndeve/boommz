@@ -189,6 +189,7 @@ class Bubble
     public function getClasses()
     {
         $classes = '';
+        $nbCar = 0;
 
         $alone = false;
         if (count($this->getBox()->getBubbles()) == 1) {
@@ -232,15 +233,21 @@ class Bubble
                 $classes .= 'fs-s6';
             }
             else if (45 < $nbCar && $nbCar <= 60) {
+                $classes .= 'fs-s5';
+            }
+            else if (60 < $nbCar && $nbCar <= 75) {
+                $classes .= 'fs-s4';
+            }
+            else if (75 < $nbCar && $nbCar <= 90) {
                 $classes .= 'fs-s3';
             }
-            else if (60 < $nbCar && $nbCar <= 90) {
+            else if (90 < $nbCar && $nbCar <= 105) {
                 $classes .= 'fs-s2';
             }
-            else if (90 < $nbCar && $nbCar <= 100) {
+            else if (105 < $nbCar && $nbCar <= 120) {
                 $classes .= 'fs-s1';
             }
-            else if (100 < $nbCar) {
+            else if (120 < $nbCar) {
                 $classes .= 'fs-s0';
             }
         }
