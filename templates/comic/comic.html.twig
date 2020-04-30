@@ -26,8 +26,8 @@
 {% block body %}
 
     <h1 class="title">{{ comic.title }}</h1>
-    {% if comic.author %}
-        <h2 class="subtitle"><img src="{{ comic.author.avatar.urlHead }}"/> de {{ comic.author.username }}</h2>
+    {% if comic.author %}<img src="{{ comic.author.avatar.urlHead }}"/>
+        <h2 class="subtitle">de <a href="{{ url('author', comic.author.routeParams) }}">{{ comic.author.username }}</a></h2>
     {% endif %}
     {% if app.user and comic.author and comic.author.id == app.user.id %}
         <a href="{{ url('comic_edit', comic.routeParams) }}" class="button is-primary is-outlined is-small edit-comic">

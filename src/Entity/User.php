@@ -3,6 +3,7 @@
 
 namespace App\Entity;
 
+use Behat\Transliterator\Transliterator;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use FOS\UserBundle\Model\User as BaseUser;
@@ -158,5 +159,15 @@ class User extends BaseUser
         $this->avatar = $avatar;
 
         return $this;
+    }
+
+    public function getRewritten()
+    {
+        return Transliterator::urlize($this->getUsername());
+    }
+
+    public function getRouteParams()
+    {
+        return ['id' => $this->getId(), 'rewritten' => $this->getRewritten()];
     }
 }

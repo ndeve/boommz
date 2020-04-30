@@ -1,0 +1,33 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}{{ author.username }} - BOOMMZ!{% endblock title %}
+
+
+{% block breadcrumb %}
+    <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+        <ul>
+            <li>
+                <a href="{{ url('homepage') }}">
+                    <span class="icon is-small">{% include "/svg/home.html.twig" %}</span>
+                    <span>BOOMMZ!</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('authors') }}">Tous les auteurs</a>
+            </li>
+            <li class="is-active" aria-current="page"><a href="#">{{ author.username }}</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block body %}
+    <h1 class="title">{{ author.username }}</h1>
+
+    <section class="page">
+        <div class="columns is-multiline">
+            {% for comic in author.comics %}
+                {% include "comic/block.html.twig" with {'small': 1} %}
+            {% endfor %}
+        </div>
+    </section>
+{% endblock body %}

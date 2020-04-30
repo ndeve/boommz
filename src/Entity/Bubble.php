@@ -165,6 +165,7 @@ class Bubble
     public function getPersona(): ?Persona
     {
         return $this->persona;
+        return null;
     }
 
     public function setPersona(?Persona $persona): self
