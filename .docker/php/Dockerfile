@@ -21,6 +21,10 @@ RUN docker-php-ext-configure gd --with-gd --with-webp-dir --with-png-dir --with-
 
 RUN docker-php-ext-install gd
 
+RUN apt-get install -y libicu-dev g++ \
+&& docker-php-ext-configure intl \
+&& docker-php-ext-install intl
+
 COPY php.ini /usr/local/etc/php/php.ini
 COPY php-fpm-pool.conf 	/usr/local/etc/php/pool.d/www.conf
 

@@ -24,11 +24,24 @@
 {% endblock %}
 
 {% block body %}
+    <h1 class="title is-marginless">{{ comic.title }}</h1>
 
-    <h1 class="title">{{ comic.title }}</h1>
-    {% if comic.author %}<img src="{{ comic.author.avatar.urlHead }}"/>
-        <h2 class="subtitle">de <a href="{{ url('author', comic.author.routeParams) }}">{{ comic.author.username }}</a></h2>
-    {% endif %}
+    <div class="media">
+        {% if comic.author %}
+        <div class="media-left">
+            <figure class="image circle">
+                <img src="{{ comic.author.avatar.urlHead }}"/>
+            </figure>
+        </div>
+        {% endif %}
+        <div class="media-content">
+            {% if comic.author %}
+                <h2 class="subtitle is-marginless"><a href="{{ url('author', comic.author.routeParams) }}" class="has-text-dark">{{ comic.author.username }}</a></h2>
+            {% endif %}
+            <span class="has-text-grey	is-size-7">{{ comic.dateCreation|localizeddate('long', 'short') }}</span>
+        </div>
+    </div>
+
     {% if app.user and comic.author and comic.author.id == app.user.id %}
         <a href="{{ url('comic_edit', comic.routeParams) }}" class="button is-primary is-outlined is-small edit-comic">
             <span class="icon is-small fa-2x">

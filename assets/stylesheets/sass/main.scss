@@ -106,3 +106,22 @@ $breadcrumb-item-separator-color: $blue;
   height: 1em;
   width: 1em;
 }
+
+.image.circle {
+  background: $green-darkest;
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+  border-radius: 420%;
+}
+.image.circle img {
+  display: block;
+  height: auto;
+  width: 28px;
+  position: absolute;
+  top: 7px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
