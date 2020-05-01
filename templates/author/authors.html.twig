@@ -16,7 +16,9 @@
 
 {% block body %}
     {% for author in authors %}
-        {{ author.username }}
+        <a href="{{ url('author', author.routeParams) }}">
+            {{ author.username }}
+        </a>
         <br />
     {% endfor %}
 {% endblock body %}

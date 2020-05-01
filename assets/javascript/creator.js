@@ -58,11 +58,11 @@ jQuery(document).ready(function () {
 
     $(document).on('click', '#styleBubble', function () {
         var style = '';
-        if ($('.bubble.on').hasClass('think')) {
-            $('.bubble.on').removeClass('think').addClass('yell');
+        if ($('blockquote.on').hasClass('think')) {
+            $('blockquote.on').removeClass('think').addClass('yell');
             style = 'yell';
-        } else if ($('.bubble.on').hasClass('yell')) {
-            $('.bubble.on').removeClass('yell bubble');
+        } else if ($('blockquote.on').hasClass('yell')) {
+            $('blockquote.on').removeClass('yell bubble');
             $('blockquote.on').attr('data-text', $('blockquote.on textarea').val());
             $('blockquote.on textarea').val('');
             style = '';
@@ -72,10 +72,10 @@ jQuery(document).ready(function () {
             $('blockquote.on').attr('data-text', '');
             style = '';
         } else {
-            $('.bubble.on').addClass('think');
+            $('blockquote.on').addClass('think');
             style = 'think';
         }
-        $('#' + $('.bubble.on').attr('id') + '_style').val(style);
+        $('#' + $('blockquote.on').attr('id') + '_style').val(style);
     });
 
     $(document).on('click', '#changeBackground', function () {
@@ -188,7 +188,7 @@ jQuery(document).ready(function () {
     }
 
     function selectBubble(bubble) {
-        $('.bubble').removeClass('on');
+        $('blockquote').removeClass('on');
         bubble.addClass('on');
 
         bubble.children('textarea').focus();
