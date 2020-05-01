@@ -2,10 +2,9 @@
 
 {% block body %}
 
-
-    {% for comic in comics %}
-        <a href="{{ url('comic', comic.routeParams) }}" class="title">{{ comic.title }}</a>
-        {% for page in comic.pages %}
+    {% if dayComics %}
+        <h2 class="title is-size-3 is-marginless">La BD du jour</h2>
+        {% for page in dayComics.0.pages %}
             <section class="page">
                 <div class="columns is-multiline">
 
@@ -24,13 +23,40 @@
                                         {% endif %}
                                     </blockquote>
                                 {% endfor %}
+                                {% if page.boxes|length > 3 and loop.index == 3 %}
+                                    <a href="{{ url('comic', dayComics.0.routeParams) }}" class="more">
+                                        {% include "svg/more.html.twig" %}
+                                    </a>
+                                {% endif %}
                             </div>
                         </div>
                     {% endfor %}
                 </div>
             </section>
+            <section class="author">
+                <a href="{{ url('comic', dayComics.0.routeParams) }}" class="title">{{ dayComics.0.title }}</a>
+                {% include "comic/block_author.html.twig" with {'comic': dayComics.0} %}
+            </section>
         {% endfor %}
-    {% endfor %}
 
+        <h2 class="title is-size-4">Les BDs du jour précédentes</h2>
+        <section class="page">
+            <div class="columns is-multiline">
+                {% for comic in dayComics|slice(1, 4) %}
+                    {% include "comic/block.html.twig" with {'displayAuthor': 1, 'small': 1} %}
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+
+
+    <h2 class="title is-size-4">Les dernières BDs</h2>
+    <section class="page">
+        <div class="columns is-multiline">
+            {% for comic in lastComics %}
+                {% include "comic/block.html.twig" with {'displayAuthor': 1, 'small': 1} %}
+            {% endfor %}
+        </div>
+    </section>
 
 {% endblock body %}

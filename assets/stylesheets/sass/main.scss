@@ -125,3 +125,34 @@ $breadcrumb-item-separator-color: $blue;
   right: 0;
   margin: auto;
 }
+
+.more {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: $green;
+  right: 0;
+  width: 100px;
+  opacity: .85;
+}
+.more svg {
+  transition: all .1s ease-out;
+  bottom: 0;
+  color: #ffffff;
+  display: block;
+  left: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  height: 50px;
+  margin: auto;
+}
+.more:active svg,
+.more:hover svg {
+  height: 70px;
+}
+.more:hover {
+  opacity: .7;
+}

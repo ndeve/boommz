@@ -1,5 +1,5 @@
 <?php
-
+//google-chrome --headless --hide-scrollbars --remote-debugging-port=9222 --disable-gpu --no-sandbox &
 namespace App\Command;
 
 use Symfony\Component\Console\Command\Command;

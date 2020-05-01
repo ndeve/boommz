@@ -26,21 +26,7 @@
 {% block body %}
     <h1 class="title is-marginless">{{ comic.title }}</h1>
 
-    <div class="media">
-        {% if comic.author %}
-        <div class="media-left">
-            <figure class="image circle">
-                <img src="{{ comic.author.avatar.urlHead }}"/>
-            </figure>
-        </div>
-        {% endif %}
-        <div class="media-content">
-            {% if comic.author %}
-                <h2 class="is-marginless"><a href="{{ url('author', comic.author.routeParams) }}" class="subtitle has-text-dark">{{ comic.author.username }}</a></h2>
-            {% endif %}
-            <span class="has-text-grey	is-size-7">{{ comic.dateCreation|localizeddate('long', 'short') }}</span>
-        </div>
-    </div>
+    {% include "comic/block_author.html.twig" %}
 
     {% if app.user and comic.author and comic.author.id == app.user.id %}
         <a href="{{ url('comic_edit', comic.routeParams) }}" class="button is-primary is-outlined is-small edit-comic">
@@ -55,7 +41,7 @@
         <span class="icon is-small fa-2x">
           {% include "svg/share.html.twig" %}
         </span>
-    <span>Partage!</span>
+        <span>Partage!</span>
     </div>
 
     {% for page in comic.pages %}
