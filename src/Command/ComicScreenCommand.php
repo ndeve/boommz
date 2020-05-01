@@ -58,6 +58,7 @@ class ComicScreenCommand extends Command
             $height = (count($comic->getPages()[0]->getBoxes())*260) + 210;
             $command = 'node /home/wwwroot/boommz/assets/js/screen.js --url="'. $url .'" --outputDir="'. $dir
               .'" --output="'. $comic->getRewritten() .'-'. $comic->getId() .'.png" --viewportHeight='. $height .' --viewportWidth=450';
+            echo $command;
             shell_exec($command);
 
             $url = 'https://boommz.com'. $this->container->get('router')->generate('comic_screen_fb', $comic->getRouteParams());
