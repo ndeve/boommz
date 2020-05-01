@@ -7,7 +7,8 @@ RUN apt-get update \
     zlib1g-dev \
     libwebp-dev libjpeg62-turbo-dev libpng-dev libxpm-dev \
     libfreetype6-dev \
-    sudo
+    sudo \
+    nodejs
 
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
