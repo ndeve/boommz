@@ -36,7 +36,7 @@
         {% endif %}
         <div class="media-content">
             {% if comic.author %}
-                <h2 class="subtitle is-marginless"><a href="{{ url('author', comic.author.routeParams) }}" class="has-text-dark">{{ comic.author.username }}</a></h2>
+                <h2 class="is-marginless"><a href="{{ url('author', comic.author.routeParams) }}" class="subtitle has-text-dark">{{ comic.author.username }}</a></h2>
             {% endif %}
             <span class="has-text-grey	is-size-7">{{ comic.dateCreation|localizeddate('long', 'short') }}</span>
         </div>

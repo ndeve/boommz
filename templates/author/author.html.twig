@@ -45,6 +45,8 @@
         </div>
     </div>
 
+    <h2 class="title is-4">Toutes les BDs de {{ author.username }}</h2>
+
     <section class="page">
         <div class="columns is-multiline">
             {% for comic in author.comics %}
@@ -52,4 +54,11 @@
             {% endfor %}
         </div>
     </section>
+
+    <h2 class="title is-4">Les persos créés par {{ author.username }}</h2>
+
+    {% for perso in author.personas %}
+        <img src="{{ perso.url }}" />
+    {% endfor %}
+
 {% endblock body %}
