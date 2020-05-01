@@ -35,8 +35,8 @@ jQuery(document).ready(function () {
         e.stopPropagation();
     });
 
-    $(document).on('click', '.removeBubble', function (event) {
-        $(this).parent().parent().remove();
+    $(document).on('click', '#removeBubble', function (event) {
+        $('blockquote.on').remove();
         event.stopPropagation();
     })
 
@@ -121,8 +121,7 @@ jQuery(document).ready(function () {
     $(document).on('keydown', 'textarea', function () {
         var nbCar = $(this).val().length,
             perc = nbCar / nbCarMax,
-            classSize = '',
-            fill = {fill: {gradient: ["#9cd3c6", "#76a094"]}};
+            classSize = '';
 
         if (nbCar <= 30) {
             classSize = 'fs-s7';
@@ -132,31 +131,18 @@ jQuery(document).ready(function () {
         }
         else if (45 < nbCar && nbCar <= 60) {
             classSize = 'fs-s3';
-            fill = {'fill': {gradient: ["#76a094", "#e8793a"]}};
         }
         else if (60 < nbCar && nbCar <= 90) {
             classSize = 'fs-s2';
-            fill = {'fill': {gradient: ["#76a094", "#e8793a"]}};
-
         }
         else if (90 < nbCar && nbCar <= 100) {
             classSize = 'fs-s1';
-            fill = {'fill': {gradient: ["#e8793a", "#ff5900"]}};
         }
         else if (100 < nbCar) {
             classSize = 'fs-s0';
-            fill = {'fill': {gradient: ["#e8793a", "#ff5900"]}};
-        }
-        if (nbCar > 90) {
-            $('#nbCar').html(nbCarMax - nbCar);
-        }
-
-        if (fill) {
-            $('#circle').circleProgress(fill);
         }
         $(this).removeClass('fs-s0 fs-s1 fs-s2 fs-s3 fs-s4 fs-s5 fs-s6 fs-s7').addClass(classSize);//.attr('data-height-row', 14);
 
-        $('#circle').circleProgress('value', perc);
     });
 
     function addPersona(box) {
@@ -199,16 +185,6 @@ jQuery(document).ready(function () {
             $('#addBubble').removeClass('is-hidden');
             $('#removeBubble').addClass('is-hidden');
         }
-
-        $('#circle').circleProgress({
-            value: 0,
-            size: 30,
-            thickness: 3,
-            animation: false,
-            fill: {
-                gradient: ["#9cd3c6", "#76a094"]
-            }
-        });
     }
 
     function resizeBox(box, size, newValue) {

@@ -26,12 +26,11 @@
                 </div>
 
                 <div id="actionsBubble" class="actions">
-                    <div class="button is-light" title="{% trans %}Changer de style/Supprimer la bulle{% endtrans %}" id="styleBubble">
+                    <div class="button is-light" title="{% trans %}Changer de style de la bulle ou la cacher{% endtrans %}" id="styleBubble">
                         {% include "/svg/bubble_style.html.twig" %}
                     </div>
-                    <div class="button is-light" title="" id="carBubble">
-                        <div id="nbCar"></div>
-                        <div id="circle"></div>
+                    <div class="button is-light" title="{% trans %}Supprimer le personnage{% endtrans %}" id="removeBubble">
+                        {% include "/svg/persona_remove.html.twig" %}
                     </div>
                 </div>
 

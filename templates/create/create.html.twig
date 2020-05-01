@@ -14,6 +14,15 @@
         {% endif %}
     </h1>
 
+    {% if not(app.user) %}
+        <article class="message is-warning">
+            <div class="message-body">
+                Tu vas créé une BD sans être identifié, tu ne pourras pas la modifier.
+                <a href="{{ url('app_register') }}">Crée-toi un compte</a> ou <a href="{{ url('fos_user_security_login') }}">identifie-toi</a> :)
+            </div>
+        </article>
+    {% endif %}
+
     <div class="field">
         {{ form_label(form.title, 'Titre de ta BD', {'label_attr': {'class': 'label is-medium'}}) }}
         {{ form_widget(form.title, {'attr': {'class': 'input is-medium'}}) }}
