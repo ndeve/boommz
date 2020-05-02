@@ -29,6 +29,34 @@ class PersonaController extends Controller
     }
 
     /**
+     * @Route(  path="characters/head",
+     *          name="character_head"
+     *      )
+     * @Template
+     */
+    public function generateHeadAction(Request $request, Character $character)
+    {
+
+        $query = $request->query->get('query');
+
+        $data = explode('-', $query);
+
+        $newData = [];
+        $newData['persona'] = 'women';
+        $newData['hair'] = $data[0];
+        $newData['eyes'] = $data[1];
+        $newData['nose'] = $data[2];
+        $newData['hat'] = $data[3];
+        $newData['trousers'] = $data[4];
+        $newData['top'] = $data[5];
+        $newData['vest'] = $data[6];
+        $newData['mouth'] = $data[7];
+
+        $url = $character->generateHeadCharacter($newData);
+        die();
+    }
+
+    /**
      * @Route(  path="characters/create",
      *          name="character_create"
      *      )

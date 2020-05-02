@@ -24,7 +24,7 @@ class Character {
         //fill the image with a transparent background
         imagefill($dest_img, 0, 0, $trans_background);
 
-        $name = '';
+        $name = substr($data['persona'], 0, 1);
         $dir = '';
         $img_bo = imagecreatefrompng(getcwd() . $data['persona']);
         imagecopy($dest_img, $img_bo, 0, 0, 0, 0, 35, 86);
