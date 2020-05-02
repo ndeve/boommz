@@ -2,7 +2,7 @@
     {% if comic.author and hiddenAuthor is not defined %}
         <div class="media-left">
             <figure class="image circle">
-                <img src="{{ comic.author.avatar.urlHead }}"/>
+                <img src="{{ comic.author.avatar.urlHead ?? 'persona/creator/head/0000.png' }}"/>
             </figure>
         </div>
     {% endif %}
