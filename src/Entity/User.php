@@ -27,6 +27,7 @@ class User extends BaseUser
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comic", mappedBy="author", orphanRemoval=true)
+     * @ORM\OrderBy({"dateCreation" = "DESC"})
      */
     private $comics;
 

@@ -42,7 +42,7 @@ class ComicRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('c')
           ->orderBy('c.dateSelected', 'DESC')
-          ->setMaxResults(5)
+          ->setMaxResults(4)
           ->andWhere('c.selected = 1')
           ->getQuery()
           ->getResult();

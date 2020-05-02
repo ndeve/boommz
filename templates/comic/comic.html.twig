@@ -88,13 +88,13 @@
            target="_blank">Image</a>
     {% endif %}
 
-    {% if comic.author %}
+    {% if comic.author and comic.author.comics|length > 1 %}
         <br/>
         <h2 class="title is-4 title-gold">Les autres BDs de {{ comic.author.username }}</h2>
-        <section class="page comics">
+        <section class="page comics opacity">
             <div class="columns is-multiline">
-                {% for comic in comic.author.comics %}
-                    {% include "comic/block.html.twig" with {'small': 1, 'hiddenAuthor': 0} %}
+                {% for item in comic.author.comics if item.id != comic.id %}
+                    {% include "comic/block.html.twig" with {'comic': item, 'small': 1, 'hiddenAuthor': 0} %}
                 {% endfor %}
             </div>
         </section>
