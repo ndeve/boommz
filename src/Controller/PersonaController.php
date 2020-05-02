@@ -42,7 +42,7 @@ class PersonaController extends Controller
         $data = explode('-', $query);
 
         $newData = [];
-        $newData['persona'] = 'women';
+        $newData['persona'] = '/persona/creator/women/0000.png';
         $newData['hair'] = $data[0];
         $newData['eyes'] = $data[1];
         $newData['nose'] = $data[2];
