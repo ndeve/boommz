@@ -1,5 +1,5 @@
 <div class="media comic-infos">
-    {% if comic.author %}
+    {% if comic.author and hiddenAuthor is not defined %}
         <div class="media-left">
             <figure class="image circle">
                 <img src="{{ comic.author.avatar.urlHead }}"/>
@@ -8,7 +8,7 @@
     {% endif %}
     <div class="media-content">
         <a href="{{ url('comic', comic.routeParams) }}" class="title is-size-{{ (isDayComic is defined) ? 4 : 5 }} is-marginless">{{ comic.title }}</a><br/>
-        {% if comic.author %}
+        {% if comic.author and hiddenAuthor is not defined %}
             <a href="{{ url('author', comic.author.routeParams) }}"
                class="has-text-dark is-size-6 is-marginless">{{ comic.author.username }}</a><br />
         {% endif %}

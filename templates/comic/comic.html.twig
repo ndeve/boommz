@@ -26,6 +26,20 @@
 {% block body %}
     <h1 class="title is-marginless">{{ comic.title }}</h1>
 
+    {% if comic.author %}
+    <div class="media comic-infos">
+            <div class="media-left">
+                <figure class="image circle">
+                    <img src="{{ comic.author.avatar.urlHead }}"/>
+                </figure>
+            </div>
+        <div class="media-content">
+                <a href="{{ url('author', comic.author.routeParams) }}"
+                   class="has-text-dark is-size-6 is-marginless">{{ comic.author.username }}</a><br />
+            <span class="has-text-grey	is-size-7">{{ comic.dateCreation|localizeddate('long', 'short') }}</span>
+        </div>
+    </div>
+    {% endif %}
 
     {% if app.user and comic.author and comic.author.id == app.user.id %}
         <a href="{{ url('comic_edit', comic.routeParams) }}" class="button is-primary is-outlined is-small edit-comic">
@@ -49,7 +63,7 @@
             <div class="columns is-multiline">
 
                 {% for box in page.boxes %}
-                    <div class="column box is-{{ box.size ?? 'one-quarter' }} {{ cycle(['c-1', 'c-2', ''], loop.index0) }} h-{{ box.height }}">
+                    <div class="column cbox is-{{ box.size ?? 'one-quarter' }} {{ cycle(['c-1', 'c-2', ''], loop.index0) }} h-{{ box.height }}">
                         <div {% if box.background %}style="background-image: url({{ box.background }})"{% endif %}
                              class="ccolumn">
                             {% for bubble in box.bubbles %}
@@ -80,7 +94,7 @@
         <section class="page">
             <div class="columns is-multiline">
                 {% for comic in comic.author.comics %}
-                    {% include "comic/block.html.twig" with {'small': 1, 'author': 0} %}
+                    {% include "comic/block.html.twig" with {'small': 1, 'hiddenAuthor': 0} %}
                 {% endfor %}
             </div>
         </section>
