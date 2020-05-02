@@ -9,50 +9,53 @@
 }
 section.author {
     margin-top: -10px;
-    background-color: #f9f6f2;
+    background-color: #fdf9f7;
     margin-bottom: 10px;
     padding: 10px 20px;
 }
-.page .column {
+.column.cbox {
     padding: 0.30rem;
     position: relative;
 }
 
-.page .column .ccolumn {
+.column .ccolumn {
     background-color: #ffffff;
     background-size: cover;
     background-position: bottom;
     border-radius: 755px 15px 225px 10px/10px 625px 10px 255px;
-    border: solid 3px #4f4f4f;
+    border: solid 3px $grey-dark;
+    color: $grey-dark;
+    display: block;
     height: 190px;
     padding: 5px;
     position: relative;
     overflow: hidden;
 }
 
-.page .column.h-1 .ccolumn {
+.column.h-1 .ccolumn {
     height: 250px;
 }
-.page .column.h-2 {
+.column.h-2 .ccolumn {
     height: 280px;
 }
-.page .column.h-3 {
+.column.h-3 .ccolumn {
     height: 320px;
 }
 
-.page .column.c-1 .ccolumn {
+.column.c-1 .ccolumn {
     border-radius: 10px 625px 10px 255px/755px 15px 225px 10px;
 }
-.page .column.c-2 .ccolumn {
+.column.c-2 .ccolumn {
     border-radius: 455px 15px 725px 10px/10px 425px 10px 655px;
 }
-.page .column .ccolumn blockquote {
+.column .ccolumn blockquote {
     bottom: 0;
     display: block;
     position: absolute;
 }
-.page .column .ccolumn blockquote.bubble {
+.column .ccolumn blockquote.bubble {
     bottom: 83px;
+    line-height: 1.2;
     max-width: 44%;
     min-width: 115px;
     text-align: center;
@@ -60,7 +63,7 @@ section.author {
 }
 .bubble {
     background: white;
-    border: 3px solid black;
+    border: 3px solid $grey-dark;
     border-radius: 10px;
     font-family: "Permanent Marker";
     padding: 2px;
@@ -219,7 +222,7 @@ section.author {
     text-transform: capitalize;
 }
 
-.page .column .ccolumn blockquote.bubble.alone {
+.column .ccolumn blockquote.bubble.alone {
     left: 0;
     right: 0;
     margin: auto;

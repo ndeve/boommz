@@ -50,7 +50,7 @@
             <div class="columns is-multiline">
 
                 {% for box in page.boxes %}
-                    <div class="column is-{{ box.size ?? 'one-quarter' }} {{ cycle(['c-1', 'c-2', ''], loop.index0) }} h-{{ box.height }}">
+                    <div class="column box is-{{ box.size ?? 'one-quarter' }} {{ cycle(['c-1', 'c-2', ''], loop.index0) }} h-{{ box.height }}">
                         <div {% if box.background %}style="background-image: url({{ box.background }})"{% endif %}
                              class="ccolumn">
                             {% for bubble in box.bubbles %}

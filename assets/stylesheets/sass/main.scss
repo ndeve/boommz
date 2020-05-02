@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+//$body-line-height: 1;
 // Set your brand colors
 $green-lightest: #C6F0D1;
 $green-light: #94DCA7;
@@ -106,9 +107,19 @@ $breadcrumb-item-separator-color: $blue;
   height: 1em;
   width: 1em;
 }
+.comics {
+  margin-bottom: 20px;
+}
+.comics .cbox {
 
+}
+
+.comic-infos {
+  line-height: 1;
+  margin: 4px 4px 0;
+}
 .image.circle {
-  background: $primary;
+  background: $gold-dark;
   height: 40px;
   width: 40px;
   display: inline-block;
@@ -155,4 +166,30 @@ $breadcrumb-item-separator-color: $blue;
 }
 .more:hover {
   opacity: .7;
+}
+
+.title-gold {
+  background-color: $gold-dark;
+  display: inline-block;
+  padding: 5px;
+}
+
+.title-green {
+  background-color: $green;
+  display: inline-block;
+  padding: 5px;
+}
+.page.comics {
+  background-color: #fff;
+  box-shadow: none;
+  padding: 0;
+}
+
+.ccbox {
+  background: #fffbf5;
+  margin-bottom: 2px;
+  padding: 5px 5px 10px;
+}
+.ccbox.odd {
+  background: #faf3E9;
 }
