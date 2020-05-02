@@ -162,7 +162,10 @@ class Persona
             return '/persona/'. $this->getPath() . Transliterator::urlize($this->getName()) .'.png';
         }
 
-        return '/persona/creator/p/'. substr(str_replace('-', '/', $this->getPath()), 1, 15) . $this->getPath() .'.png';
+        $dir = substr(str_replace('-', '/', $this->getPath()), 0, 15);
+        $dir = str_replace('w', '', $dir);
+        $dir = str_replace('m', '', $dir);
+        return '/persona/creator/p/'.  $dir . $this->getPath() .'.png';
     }
 
     public function getUrlHead()
@@ -171,7 +174,11 @@ class Persona
             return '/persona/'. $this->getPath() . Transliterator::urlize($this->getName()) .'.png';
         }
 
-        return '/persona/creator/p/'. substr(str_replace('-', '/', $this->getPath()), 1, 15) . 'head-'. $this->getPath() .'.png';
+        $dir = substr(str_replace('-', '/', $this->getPath()), 0, 15);
+        $dir = str_replace('w', '', $dir);
+        $dir = str_replace('m', '', $dir);
+
+        return '/persona/creator/p/'. $dir . 'head-'. $this->getPath() .'.png';
     }
 
     public function getPath(): ?string
