@@ -23,8 +23,8 @@ class Character {
 
         //fill the image with a transparent background
         imagefill($dest_img, 0, 0, $trans_background);
-
-        $name = substr($data['persona'], 0, 1);
+        $name = str_replace('/persona/creator/', '', $data['persona']);
+        $name = substr($name, 0, 1);
         $dir = '';
         $img_bo = imagecreatefrompng(getcwd() . $data['persona']);
         imagecopy($dest_img, $img_bo, 0, 0, 0, 0, 35, 86);
@@ -32,16 +32,13 @@ class Character {
 
         foreach ($data as $key => $value) {
             if(file_exists(getcwd() . '/persona/creator/' . $key . '/' . $value . '.png') && $value != '0000') {
-                //if ($key === 'mouth' || $key === 'nose' || $key === 'hair' || $key === 'eyes' || $key === 'top' || $key === 'vest' || $key === 'trousers') {
                     $img_bo = imagecreatefrompng(getcwd() . '/persona/creator/' . $key . '/' . $value . '.png');
                     imagecopy($dest_img, $img_bo, 0, 0, 0, 0, 35, 86);
-                //}
             }
 
             $name = $name . $value . '-';
                 $dir = $dir . $value . '/';
         }
-
         $name = substr($name, 0, -1);
         $dir = getcwd() .'/persona/creator/p/'. substr($dir, 0, 15);
 
