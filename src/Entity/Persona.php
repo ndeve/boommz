@@ -176,12 +176,13 @@ class Persona
             return '/persona/'. $this->getPath() . Transliterator::urlize($this->getName()) .'.png';
         }
 
-        $dir = str_replace('-', '/', $this->getPath());
-        $dir = str_replace('w', '', $dir);
-        $dir = str_replace('m', '', $dir);
+        $path = str_replace('w', '', $this->getPath());
+        $path = str_replace('m', '', $path);
+
+        $dir = str_replace('-', '/', $path);
         $dir = substr($dir, 0, 15);
 
-        return '/persona/creator/p/'. $dir . 'head-'. $this->getPath() .'.png';
+        return '/persona/creator/p/'. $dir . 'head-'. $path .'.png';
     }
 
     public function getPath(): ?string
