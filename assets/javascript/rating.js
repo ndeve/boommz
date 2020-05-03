@@ -28,7 +28,13 @@ $(document).ready(function () {
 
     $(document).on('click', '.rating.enable span', function () {
         var url = $(this).parent().attr('data-url');
-        $.get( url, { rate: $(this).attr('data-rate')} );
+        var value = $(this).attr('data-rate');
+        $.get( url, { rate: value} );
+
+        $('.rating.enable span').removeClass('one hover')
+        for (var i = 1; i <= value; i++) {
+            $('.rating.enable span[data-rate="'+ i+'"]').addClass('one');
+        }
     });
 
 });
