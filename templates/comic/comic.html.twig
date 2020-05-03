@@ -27,34 +27,36 @@
     <h1 class="title is-marginless">{{ comic.title }}</h1>
 
     {% if comic.author %}
-    <div class="media comic-infos">
+        <div class="media comic-infos">
             <div class="media-left">
                 <figure class="image circle">
                     <img src="{{ comic.author.avatar.urlHead }}"/>
                 </figure>
             </div>
-        <div class="media-content">
+            <div class="media-content">
                 <a href="{{ url('author', comic.author.routeParams) }}"
-                   class="has-text-dark is-size-6 is-marginless">{{ comic.author.username }}</a><br />
-            <span class="has-text-grey	is-size-7">{{ comic.dateCreation|localizeddate('long', 'short') }}</span>
+                   class="has-text-dark is-size-6 is-marginless">{{ comic.author.username }}</a><br/>
+                <span class="has-text-grey	is-size-7">{{ comic.dateCreation|localizeddate('long', 'short') }}</span>
+            </div>
         </div>
-    </div>
     {% endif %}
 
-    {% if app.user and comic.author and comic.author.id == app.user.id %}
-        <a href="{{ url('comic_edit', comic.routeParams) }}" class="button is-primary is-outlined is-small edit-comic">
+    <div class="edit-comic">
+        {% if app.user and comic.author and comic.author.id == app.user.id %}
+            <a href="{{ url('comic_edit', comic.routeParams) }}" class="button is-primary is-outlined is-small">
             <span class="icon is-small fa-2x">
               {% include "svg/comic_edit.html.twig" %}
             </span>
-            <span>Edite ta BD</span>
-        </a>
-    {% endif %}
+                <span>Edite ta BD</span>
+            </a>
+        {% endif %}
 
-    <div class="button share is-hidden is-primary is-outlined is-small edit-comic">
+        <div class="button share is-hidden is-primary is-outlined is-small">
         <span class="icon is-small fa-2x">
           {% include "svg/share.html.twig" %}
         </span>
-        <span>Partage!</span>
+            <span>Partage!</span>
+        </div>
     </div>
 
     {% for page in comic.pages %}
@@ -83,10 +85,7 @@
         </section>
     {% endfor %}
 
-    {% if comic.screen %}
-        <a href="https://boommz.com/{{ comic.urlScreen }}{{ comic.rewritten }}-{{ comic.id }}.png"
-           target="_blank">Image</a>
-    {% endif %}
+    {% include "comic/block_rating.html.twig" %}
 
     {% if comic.author and comic.author.comics|length > 1 %}
         <br/>

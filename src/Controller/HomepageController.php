@@ -15,7 +15,7 @@ class HomepageController extends Controller
      *      )
      * @Template
      */
-    public function homeAction()
+    public function home()
     {
 
         $em = $this->getDoctrine()->getManager();

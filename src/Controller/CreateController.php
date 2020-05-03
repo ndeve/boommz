@@ -22,7 +22,7 @@ class CreateController extends Controller
      *      )
      * @Template
      */
-    public function createAction(Request $request)
+    public function create(Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
 

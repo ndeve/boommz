@@ -35,6 +35,7 @@ $breadcrumb-item-hover-color: $green-darkest;
 $breadcrumb-item-active-color: $blue;
 $breadcrumb-item-separator-color: $blue;
 
+$star-color: $green;
 // Import only what you need from Bulma
 @import "../../bulma/bulma.sass";
 
@@ -100,6 +101,7 @@ $breadcrumb-item-separator-color: $blue;
   width: 18px;
 }
 @import "comic.scss";
+@import "rating.scss";
 @import "persona.scss";
 @import "creator.scss";
 

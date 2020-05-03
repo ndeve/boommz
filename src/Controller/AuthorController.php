@@ -20,7 +20,7 @@ class AuthorController extends Controller
      *      )
      * @Template
      */
-    public function authorsAction()
+    public function authors()
     {
         $em = $this->getDoctrine()->getManager();
         $authors = $em->getRepository('App:User')->findAll();
@@ -35,7 +35,7 @@ class AuthorController extends Controller
      *      )
      * @Template
      */
-    public function authorAction(User $user)
+    public function author(User $user)
     {
 
 

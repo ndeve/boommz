@@ -1,0 +1,18 @@
+<div>
+    <div class="brate average">
+        <div class="rating is-block-touch" data-rate="{{ comic.averageRate }}"></div>
+        <b>{{ comic.averageRate }}</b>
+        <span>({{ comic.rates|length }} votes)</span>
+    </div>
+    <div class="brate myrate">
+        <b class="is-hidden-touch">Note cette BD!</b>
+        <div class="rating{% if app.user %} enable{% endif %}" data-rate="{{ userRate.value }}" data-url="{{ url('comic_rating', comic.routeParams) }}"></div>
+    </div>
+
+    {% if comic.id %}
+        <a href="https://boommz.com/{{ comic.urlScreen }}{{ comic.rewritten }}-{{ comic.id }}.png" target="_blank" class="button is-primary is-outlined is-small">
+            Partage l'aperçu !
+        </a>
+    {% endif %}
+
+</div>

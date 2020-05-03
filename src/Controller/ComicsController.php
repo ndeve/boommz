@@ -16,7 +16,7 @@ class ComicsController extends Controller
      *      )
      * @Template
      */
-    public function comicsAction()
+    public function comics()
     {
         $em = $this->getDoctrine()->getManager();
 

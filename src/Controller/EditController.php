@@ -22,7 +22,7 @@ class EditController extends Controller
      *      )
      * @Template
      */
-    public function editAction(int $id, Request $request)
+    public function edit(int $id, Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
         if (null === $comic = $entityManager->getRepository('App:Comic')->findOneById($id)) {

@@ -1,0 +1,75 @@
+.brate {
+  border-right: 1px solid #dbdbdb;
+  display: inline-block;
+  vertical-align: top;
+  padding-right: 20px;
+  margin-right: 20px;
+  line-height: 1.5rem;
+}
+
+.average {
+  b {
+    color: $gold;
+    font-size: 1.04rem;
+    line-height: 1.2rem;
+    vertical-align: middle;
+  }
+  span {
+    color: #dbdbdb;
+    font-size: .9rem;
+    line-height: 1.3rem;
+    vertical-align: middle;
+  }
+}
+
+.rating {
+  display: inline-block;
+  font-size: 1em;
+  line-height: 1.2rem;
+
+  span {
+    content: url("../../images/rate-0.svg");
+    height: 1.2rem;
+    width: 1.2rem;
+  }
+  span.one {
+    content: url("../../images/rate-1.svg");
+  }
+  span.half {
+    content: url("../../images/rate-half.svg");
+  }
+}
+
+.rating.enable {
+  span {
+    content: url("../../images/rate-0.svg");
+    cursor: pointer;
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+  span.one {
+    content: url("../../images/rate-green-1.svg");
+  }
+}
+
+.rating.enable:hover {
+  span,
+  span.one{
+    content: url("../../images/rate-0.svg");
+  }
+  span.hover {
+    content: url("../../images/rate-green-1.svg");
+  }
+}
+
+.myrate {
+  display: inline-block;
+  b {
+    line-height: 1.5rem;
+    vertical-align: middle;
+  }
+  .rating {
+    line-height: 1.5rem;
+    vertical-align: middle;
+  }
+}

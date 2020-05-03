@@ -77,12 +77,18 @@ class Comic
      */
     private $screen;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Rate", mappedBy="comic")
+     */
+    private $rates;
+
     public function __construct()
     {
         $this->dateCreation = new \DateTime();
         $this->dateUpdate = new \DateTime();
         $this->screen = 0;
         $this->pages = new ArrayCollection();
+        $this->rates = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -267,6 +273,63 @@ class Comic
     public function getUrlScreen()
     {
         return 'comics/'. substr($this->getId(),-1) . '/'. substr($this->getId(), -2, 1) .'/';
+    }
+
+    /**
+     * @return Collection|Rate[]
+     */
+    public function getRates(): Collection
+    {
+        return $this->rates;
+    }
+
+    public function getTotalRate()
+    {
+        $sum = 0;
+        foreach ($this->rates as $rate) {
+            $sum += $rate->getValue();
+        }
+
+        return $sum;
+    }
+
+    public function getAverageRate()
+    {
+        $average = 0;
+
+        if (count($this->rates)) {
+            $sum = 0;
+            foreach ($this->rates as $rate) {
+                $sum += $rate->getValue();
+            }
+
+            $average =  $sum / count($this->rates);
+        }
+
+        return sprintf("%.1f", $average);
+    }
+
+    public function addRate(Rate $rate): self
+    {
+        if (!$this->rates->contains($rate)) {
+            $this->rates[] = $rate;
+            $rate->setComic($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRate(Rate $rate): self
+    {
+        if ($this->rates->contains($rate)) {
+            $this->rates->removeElement($rate);
+            // set the owning side to null (unless already changed)
+            if ($rate->getComic() === $this) {
+                $rate->setComic(null);
+            }
+        }
+
+        return $this;
     }
 
 }

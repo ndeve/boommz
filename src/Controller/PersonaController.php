@@ -34,7 +34,7 @@ class PersonaController extends Controller
      *      )
      * @Template
      */
-    public function generateHeadAction(Request $request, Character $character)
+    public function generateHead(Request $request, Character $character)
     {
 
         $query = $request->query->get('query');
@@ -62,7 +62,7 @@ class PersonaController extends Controller
      *      )
      * @Template
      */
-    public function createAction(Request $request, Character $character)
+    public function create(Request $request, Character $character)
     {
         $form = $this->createForm(PersonaCreatorType::class);
         $form->handleRequest($request);

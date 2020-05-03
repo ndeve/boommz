@@ -46,12 +46,18 @@ class User extends BaseUser
      */
     private $avatar;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Rate", mappedBy="user")
+     */
+    private $rates;
+
     public function __construct()
     {
         parent::__construct();
         $this->comics = new ArrayCollection();
         $this->personas = new ArrayCollection();
         $this->backgrounds = new ArrayCollection();
+        $this->rates = new ArrayCollection();
         // your own logic
     }
 
@@ -170,5 +176,36 @@ class User extends BaseUser
     public function getRouteParams()
     {
         return ['id' => $this->getId(), 'rewritten' => $this->getRewritten()];
+    }
+
+    /**
+     * @return Collection|Rate[]
+     */
+    public function getRates(): Collection
+    {
+        return $this->rates;
+    }
+
+    public function addRate(Rate $rate): self
+    {
+        if (!$this->rates->contains($rate)) {
+            $this->rates[] = $rate;
+            $rate->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRate(Rate $rate): self
+    {
+        if ($this->rates->contains($rate)) {
+            $this->rates->removeElement($rate);
+            // set the owning side to null (unless already changed)
+            if ($rate->getUser() === $this) {
+                $rate->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }
