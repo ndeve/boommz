@@ -87,8 +87,8 @@
     <ul>
         <li{% if  app.request.attributes.get('_route') == 'comics' or app.request.attributes.get('_route') == 'comic' %} class="is-active"{% endif %}>
             <a href="{{ url('homepage') }}">
-                <img src="{{ asset('build/images/home.png') }}" title="{% trans %}Toutes les BDs!{% endtrans %}"/>
-                <span>Les BDs</span>
+                <img src="{{ asset('build/images/home.png') }}" title="{% trans %}Accueil!{% endtrans %}"/>
+                <span>Accueil</span>
             </a>
         </li>
         <li{% if  app.request.attributes.get('_route') == 'comics' or app.request.attributes.get('_route') == 'comic' %} class="is-active"{% endif %}>
