@@ -25,6 +25,7 @@ $(document).ready(function () {
             data: form.serialize(),
             success: function(data)
             {
+                $('#comment form textarea').val('');
                 $('#comments form').after(data);
             }
         });
