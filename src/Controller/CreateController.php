@@ -77,6 +77,7 @@ class CreateController extends Controller
             $url = $this->generateUrl('comic', $comic->getRouteParams());
             return $this->redirect($url);
         }
+
         return [
           'comic' => $comic,
           'form' => $form->createView(),

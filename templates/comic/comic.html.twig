@@ -87,8 +87,12 @@
 
     {% include "comic/block_rating.html.twig" %}
 
+    <hr/>
+
+    {% include "comment/block_comments.html.twig" %}
+
     {% if comic.author and comic.author.comics|length > 1 %}
-        <br/>
+        <hr/>
         <h2 class="title is-4 title-gold">Les autres BDs de {{ comic.author.username }}</h2>
         <section class="page comics opacity">
             <div class="columns is-multiline">
@@ -98,5 +102,6 @@
             </div>
         </section>
     {% endif %}
+
 
 {% endblock body %}

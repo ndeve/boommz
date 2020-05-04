@@ -1,0 +1,7 @@
+<h2 class="title is-4 title-gold">Commentaires</h2>
+<section id="comments" data-url="{{ url('comment_form_comic', comic.routeParams) }}">
+
+    {% for comment in comic.comments %}
+        {% include "comment/block_comment.html.twig" %}
+    {% endfor %}
+</section>

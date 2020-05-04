@@ -82,6 +82,36 @@ class Comic
      */
     private $rates;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $contestDescription;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $contest;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Comic", inversedBy="comics")
+     */
+    private $idContest;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comic", mappedBy="idContest")
+     */
+    private $comics;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $endDate;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="comic")
+     */
+    private $comments;
+
     public function __construct()
     {
         $this->dateCreation = new \DateTime();
@@ -89,6 +119,8 @@ class Comic
         $this->screen = 0;
         $this->pages = new ArrayCollection();
         $this->rates = new ArrayCollection();
+        $this->comics = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -326,6 +358,116 @@ class Comic
             // set the owning side to null (unless already changed)
             if ($rate->getComic() === $this) {
                 $rate->setComic(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getContestDescription(): ?string
+    {
+        return $this->contestDescription;
+    }
+
+    public function setContestDescription(?string $contestDescription): self
+    {
+        $this->contestDescription = $contestDescription;
+
+        return $this;
+    }
+
+    public function getContest(): ?bool
+    {
+        return $this->contest;
+    }
+
+    public function setContest(bool $contest): self
+    {
+        $this->contest = $contest;
+
+        return $this;
+    }
+
+    public function getIdContest(): ?self
+    {
+        return $this->idContest;
+    }
+
+    public function setIdContest(?self $idContest): self
+    {
+        $this->idContest = $idContest;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|self[]
+     */
+    public function getComics(): Collection
+    {
+        return $this->comics;
+    }
+
+    public function addComic(self $comic): self
+    {
+        if (!$this->comics->contains($comic)) {
+            $this->comics[] = $comic;
+            $comic->setIdContest($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComic(self $comic): self
+    {
+        if ($this->comics->contains($comic)) {
+            $this->comics->removeElement($comic);
+            // set the owning side to null (unless already changed)
+            if ($comic->getIdContest() === $this) {
+                $comic->setIdContest(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getEndDate(): ?\DateTimeInterface
+    {
+        return $this->endDate;
+    }
+
+    public function setEndDate(?\DateTimeInterface $endDate): self
+    {
+        $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setComic($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->contains($comment)) {
+            $this->comments->removeElement($comment);
+            // set the owning side to null (unless already changed)
+            if ($comment->getComic() === $this) {
+                $comment->setComic(null);
             }
         }
 

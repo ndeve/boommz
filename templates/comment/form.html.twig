@@ -1,0 +1,14 @@
+{{ form_start(form) }}
+
+<div class="field">
+    {{ form_widget(form.text, {'attr': {'placeholder': 'Ajoute un commentaire', 'rows': 1, 'class': 'textarea'}}) }}
+</div>
+
+<div class="field is-grouped is-grouped-right">
+    <div class="control">
+        <button class="button is-primary">{% trans %}Envoyer mon commentaire!{% endtrans %}</button>
+    </div>
+    </div>
+</div>
+
+{{ form_end(form) }}

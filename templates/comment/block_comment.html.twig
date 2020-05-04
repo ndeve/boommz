@@ -1,0 +1,12 @@
+<div class="media comic-infos">
+    <div class="media-left">
+        <figure class="image circle">
+            <img src="{{ comment.author.avatar.urlHead }}"/>
+        </figure>
+    </div>
+    <div class="media-content">
+        <a href="{{ url('author', comment.author.routeParams) }}" class="has-text-dark is-size-6 is-marginless has-text-weight-bold	">{{ comment.author.username }}</a>
+        <span class="has-text-grey is-size-7">{{ comment.dateCreation|time_diff|trans }}</span><br/>
+        <p>{{ comment.text }}</p>
+    </div>
+</div>
