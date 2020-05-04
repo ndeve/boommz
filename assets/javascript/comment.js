@@ -25,12 +25,25 @@ $(document).ready(function () {
             data: form.serialize(),
             success: function(data)
             {
-                $('#comment form textarea').val('');
-                $('#comments form').after(data);
+                if (data.success) {
+                    $('#comment form textarea').val('');
+                    $('#comments form').after(data.html);
+                }
             }
         });
 
         return false;
+    });
+
+    $(document).on('click', '#comments .delete', function (e) {
+        e.preventDefault();
+        var url = $(this).attr('href'),
+            comment = $(this).parent().parent();
+
+        $.get( url )
+            .done(function() {
+                comment.remove();
+            });
     });
 
 });

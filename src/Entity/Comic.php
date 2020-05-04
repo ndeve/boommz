@@ -109,6 +109,7 @@ class Comic
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="comic")
+     * @ORM\OrderBy({"dateCreation" = "DESC"})
      */
     private $comments;
 

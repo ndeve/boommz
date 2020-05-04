@@ -37,7 +37,8 @@ class CommentController extends AbstractController
                 $entityManager->persist($comment);
                 $entityManager->flush();
 
-                return $this->json(['msg' => 'ok']);
+                $html = $this->renderView('comment/block_comment.html.twig', ['comment' => $comment]);
+                return $this->json(['success' => 1, 'html' => $html]);
             }
 
             return [
@@ -47,7 +48,27 @@ class CommentController extends AbstractController
         }
 
         return $this->render('comment/nouser.html.twig');
+    }
 
+    /**
+     * @Route("/comment/{id}/delete",
+     *     name="comment_delete",
+     *     requirements={"id"= "\d+"})
+     *
+     * @Template
+     */
+    public function delete(Comment $comment)
+    {
+        $comic = $comment->getComic();
+
+        if($this->getUser() === $comment->getAuthor()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($comment);
+            $entityManager->flush();
+        }
+
+        $url = $this->generateUrl('comic', $comic->getRouteParams());
+        return $this->redirect($url);
     }
 
 }

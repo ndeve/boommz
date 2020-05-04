@@ -6,7 +6,13 @@
     </div>
     <div class="media-content">
         <a href="{{ url('author', comment.author.routeParams) }}" class="has-text-dark is-size-6 is-marginless has-text-weight-bold	">{{ comment.author.username }}</a>
-        <span class="has-text-grey is-size-7">{{ comment.dateCreation|time_diff|trans }}</span><br/>
+        <span class="has-text-grey is-size-7">{{ comment.dateCreation|localizeddate('long', 'short') }}</span>
+        <br/>
         <p>{{ comment.text }}</p>
+    </div>
+    <div class="media-right">
+        {% if app.user == comment.author %}
+        <a href="{{ url('comment_delete', { 'id': comment.id }) }}" class="delete"></a>
+        {% endif %}
     </div>
 </div>
