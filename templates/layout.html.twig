@@ -81,40 +81,44 @@
             {% block body %}{% endblock body %}
         </div>
     </div>
-
-    <div class="hero-foot">
-        <div class="container">
-            <div class="tabs is-centered">
-                <ul>
-                    <li>Fais des BDs!</li>
-                </ul>
-            </div>
-        </div>
-    </div>
 </section>
 
 <div class="tabbar is-hidden-tablet">
     <ul>
-        <li {% if app.request.attributes.get('_route') == 'homepage' %} class="is-active"{% endif %}><a
-                    href="{{ url('homepage') }}">{% include "/svg/home.html.twig" %}</a></li>
         <li{% if  app.request.attributes.get('_route') == 'comics' or app.request.attributes.get('_route') == 'comic' %} class="is-active"{% endif %}>
-            <a href="{{ url('comics') }}">{% include "/svg/bubble_style.html.twig" %}</a></li>
-        <li{% if  app.request.attributes.get('_route') == 'comic_create' %} class="is-active"{% endif %}><a
-                    href="{{ url('comic_create') }}">{% include "/svg/bubble_add.html.twig" %}</a></li>
-        <li{% if  app.request.attributes.get('_route') == 'character_create' %} class="is-active"{% endif %}><a
-                    href="{{ url('character_create') }}">{% include "/svg/persona_add.html.twig" %}</a></li>
-        {% if is_granted ( 'IS_AUTHENTICATED_REMEMBERED' ) %}
-            <li>
-                {% trans with {'%username%': app.user.username} %}Bienvenue %username% !{% endtrans %}
-            </li>
-        {% else %}
-            <li{% if  app.request.attributes.get('_route') == 'app_register' %} class="is-active"{% endif %}><a
-                        href="{{ url('app_register') }}">{% trans %}Sign up{% endtrans %}</a></li>
-            <li{% if  app.request.attributes.get('_route') == 'fos_user_security_login' %} class="is-active"{% endif %}>
-                <a href="{{ url('fos_user_security_login') }}">{% trans %}Sign in{% endtrans %}</a></li>
-        {% endif %}
+            <a href="{{ url('homepage') }}">
+                <img src="{{ asset('build/images/home.png') }}" title="{% trans %}Toutes les BDs!{% endtrans %}"/>
+                <span>Les BDs</span>
+            </a>
+        </li>
+        <li{% if  app.request.attributes.get('_route') == 'comics' or app.request.attributes.get('_route') == 'comic' %} class="is-active"{% endif %}>
+            <a href="{{ url('comics') }}">
+                <img src="{{ asset('build/images/comic.png') }}" title="{% trans %}Toutes les BDs!{% endtrans %}"/>
+                <span>Les BDs</span>
+            </a>
+        </li>
+        <li{% if  app.request.attributes.get('_route') == 'comic_create' %} class="is-active"{% endif %}>
+            <a href="{{ url('comic_create') }}">
+                <img src="{{ asset('build/images/create-comic.png') }}" title="{% trans %}Créer une BD!{% endtrans %}"/>
+                <span>Crée une BD</span>
+            </a>
+        </li>
+        <li{% if  app.request.attributes.get('_route') == 'character_create' %} class="is-active"{% endif %}>
+            <a href="{{ url('character_create') }}">
+                <img src="{{ asset('build/images/avatar.png') }}" title="{% trans %}Créer un avatar!{% endtrans %}"/>
+                <span>Crée persos</span>
+            </a>
+        </li>
     </ul>
 </div>
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>BOOMMZ!</strong> by Nicolas Deve & Jean-Yves Lemesle
+        </p>
+    </div>
+</footer>
 
 {% block javascripts %}
     {{ encore_entry_script_tags('main') }}
