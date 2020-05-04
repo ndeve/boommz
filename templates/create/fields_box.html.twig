@@ -1,6 +1,7 @@
 {% block box_row %}
-    <div class="column cbox is-{{ form.vars.value.size ?? 'one-third' }} h-{{ form.vars.value.height ?? '1' }} {{ ('comic_pages_0_boxes_0' == form.vars.id) ? 'on' : '' }}"
+    <div class="column writable cbox is-{{ form.vars.value.size ?? 'one-third' }} h-{{ form.vars.value.height ?? '1' }} {{ ('comic_pages_0_boxes_0' == form.vars.id) ? 'on' : '' }}"
          id="{{ form.vars.id }}">
+
         <div class="ccolumn"{% if form.vars.value.background %} style="background-image: url({{ form.vars.value.background.url }})"{% endif %}>
             {% if form.vars.value.clone is defined %}
                 <div id="clone" class="button is-primary">{% trans %}Clône la case précédente{% endtrans %}</div>

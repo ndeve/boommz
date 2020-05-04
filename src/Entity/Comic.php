@@ -88,14 +88,14 @@ class Comic
     private $contestDescription;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $contest;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Comic", inversedBy="comics")
      */
-    private $idContest;
+    private $comicContest;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comic", mappedBy="idContest")
@@ -389,14 +389,14 @@ class Comic
         return $this;
     }
 
-    public function getIdContest(): ?self
+    public function getComicContest(): ?self
     {
-        return $this->idContest;
+        return $this->comicContest;
     }
 
-    public function setIdContest(?self $idContest): self
+    public function setComicContest(?self $comicContest): self
     {
-        $this->idContest = $idContest;
+        $this->comicContest = $comicContest;
 
         return $this;
     }

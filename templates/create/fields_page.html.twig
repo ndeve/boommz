@@ -5,27 +5,13 @@
     </div>#}
     {% set total = 0 %}
     {% set nbBox = 0 %}
-    <section class="page edit" id="{{ form.vars.id }}" data-box-form="">
-        <div class="columns is-multiline" data-nbBox="">
 
-        {% for box in form.boxes %}
+    {% for box in form.boxes %}
 
-            {#{% if total == 0 or total == 1 %}
-                <div class="columns is-multiline" data-nbBox="">
-            {% endif %}
-#}
-            {% set total = total+box.vars.value.size|nbSize %}
-            {% set nbBox = nbBox +1 %}
+        {% set total = total+box.vars.value.size|nbSize %}
+        {% set nbBox = nbBox +1 %}
+        {{ form_row(box) }}
 
-            {{ form_row(box) }}
-{#
-            {% if total == 1 %}
-                </div>
-            {% endif %}
-#}
-        {% endfor %}
-            </div>
-
-    </section>
+    {% endfor %}
 
 {% endblock %}

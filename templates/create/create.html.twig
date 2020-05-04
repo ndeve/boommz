@@ -7,12 +7,21 @@
     {{ form_start(form) }}
 
     <h1 class="title">
-        {% if comic.title %}
+        {% if comicContest is defined %}
+            {{ comicContest.title }}
+
+        {% elseif comic.title %}
             Modifie ta BD "{{ comic.title }}"
         {% else %}
             {% trans %}Crée ta BD!{% endtrans %}
         {% endif %}
     </h1>
+
+    {% if comicContest is defined %}
+    <p>
+        {{ comicContest.contestDescription }}
+    </p>
+    {% endif %}
 
     {% if not(app.user) %}
         <article class="message is-warning">
@@ -28,9 +37,18 @@
         {{ form_widget(form.title, {'attr': {'class': 'input is-medium'}}) }}
     </div>
 
-    {% for page in form.pages %}
-        {{ form_row(page) }}
-    {% endfor %}
+    <section class="page edit" id="{{ form.vars.id }}" data-box-form="">
+        <div class="columns is-multiline" data-nbBox="">
+
+            {% if comicContest is defined %}
+                {% include "comic/block_boxes.html.twig" with { 'boxes': comicContest.pages.0.boxes } %}
+            {% endif %}
+
+            {% for page in form.pages %}
+                {{ form(page) }}
+            {% endfor %}
+        </div>
+    </section>
 
     <div class="field is-grouped is-grouped-centered">
         <div class="control">

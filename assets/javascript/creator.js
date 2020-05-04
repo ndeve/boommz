@@ -13,7 +13,7 @@ jQuery(document).ready(function () {
 
     if ($('.columns').length) {
         $('.columns').each(function () {
-            $(this).attr('data-nbBox', $(this).children('.column').length);
+            $(this).attr('data-nbBox', $(this).children('.column.writable').length);
         });
     }
 
@@ -40,13 +40,13 @@ jQuery(document).ready(function () {
         event.stopPropagation();
     })
 
-    $(document).on('click', '.column blockquote', function (event) {
+    $(document).on('click', '.column.writable blockquote', function (event) {
         selectBox($(this).parent().parent(), false);
         selectBubble($(this));
         event.stopPropagation();
     });
 
-    $(document).on('click', '.ccolumn', function () {
+    $(document).on('click', '.writable .ccolumn', function () {
         selectBox($(this).parent(), true);
     });
 
@@ -103,7 +103,7 @@ jQuery(document).ready(function () {
     $(document).on('click', '#addBox', function (e) {
         var page = $(this).parent().parent().parent().parent().parent(),
             numPage = page.attr('id').replace(/comic_pages_/g, ''),
-            numBox = page.find('.column').length,
+            numBox = page.find('.column.writable').length,
             formBox = $('#form_box_proto').html(),
             formBox = formBox.replace(/__NUMPAGE__/g, numPage).replace(/__NUMBOX__/g, numBox);
 

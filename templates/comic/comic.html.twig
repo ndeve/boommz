@@ -64,23 +64,7 @@
             {% if page.title %}<h2 class="subtitle">{{ page.title }}</h2>{% endif %}
             <div class="columns is-multiline">
 
-                {% for box in page.boxes %}
-                    <div class="column cbox is-{{ box.size ?? 'one-quarter' }} {{ cycle(['c-1', 'c-2', ''], loop.index0) }} h-{{ box.height }}">
-                        <div {% if box.background %}style="background-image: url({{ box.background }})"{% endif %}
-                             class="ccolumn">
-                            {% for bubble in box.bubbles %}
-                                <blockquote
-                                        class="{{ bubble.classes }} b-{{ loop.index0 }}">
-                                    {{ bubble.text }}
-                                    {% if bubble.persona %}
-                                        <footer><img src="{{ bubble.persona.url }}" alt="{{ bubble.persona.name }}"/>
-                                        </footer>
-                                    {% endif %}
-                                </blockquote>
-                            {% endfor %}
-                        </div>
-                    </div>
-                {% endfor %}
+                {% include "comic/block_boxes.html.twig" with { 'boxes': page.boxes } %}
             </div>
         </section>
     {% endfor %}
