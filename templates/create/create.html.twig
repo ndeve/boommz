@@ -18,9 +18,9 @@
     </h1>
 
     {% if comicContest is defined %}
-    <p>
-        {{ comicContest.contestDescription }}
-    </p>
+    <div class="content">
+        {{ comicContest.contestDescription|raw }}
+    </div>
     {% endif %}
 
     {% if not(app.user) %}
