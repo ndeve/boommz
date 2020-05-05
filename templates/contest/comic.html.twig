@@ -1,6 +1,6 @@
 {% extends "layout.html.twig" %}
 
-{% block title %}{{ comic.title }}, Concours de BD - BOOMMZ!{% endblock title %}
+{% block title %}{{ comic.title }}, une BD {% if comic.author %}de {{ comic.author.username }}{% endif %} - BOOMMZ!{% endblock title %}
 {% block metas %}
     {% if comic.screen %}
         <meta property="og:image"
@@ -17,7 +17,7 @@
                     <span>BOOMMZ!</span>
                 </a>
             </li>
-            <li><a href="{{ url('comics') }}">Toutes les BDs</a></li>
+            <li><a href="{{ url(comicContest.routeName, comicContest.routeParams) }}">{{ comicContest.title }}</a></li>
             <li class="is-active" aria-current="page"><a href="#">{{ comic.title }}</a></li>
         </ul>
     </nav>
@@ -25,7 +25,7 @@
 
 {% block body %}
     <h1 class="title is-marginless">{{ comic.title }}</h1>
-
+    <h2 class="title is-size-5 is-marginless is-italic"> une participation au concours "<a href="{{ url(comicContest.routeName, comicContest.routeParams) }}">{{ comicContest.title }}</a>"</h2>
     {% if comic.author %}
         <div class="media comic-infos">
             <div class="media-left">
@@ -40,18 +40,6 @@
             </div>
         </div>
     {% endif %}
-
-    <br />
-    <h2 class="title is-5 is-marginless">Description du concours</h2>
-    <div class="content">{{ comic.contestDescription|raw }}</div>
-
-    <div class="field is-grouped is-grouped-centered">
-        <p class="control">
-            <a href="{{ url('contest_participate', comic.routeParams) }}" class="button is-primary is-medium">
-                Je participe !
-            </a>
-        </p>
-    </div>
 
     <div class="edit-comic">
         {% if app.user and comic.author and comic.author.id == app.user.id %}
@@ -71,22 +59,49 @@
         </div>
     </div>
 
-    {% if comic.comics %}
+    {% for page in comic.pages %}
+        <section class="page">
+            {% if page.title %}<h2 class="subtitle">{{ page.title }}</h2>{% endif %}
+            <div class="columns is-multiline">
+
+                {% if comic.comicContest is defined %}
+                    {% include "comic/block_boxes.html.twig" with { 'boxes': comic.comicContest.pages.0.boxes } %}
+                {% endif %}
+
+                {% include "comic/block_boxes.html.twig" with { 'boxes': page.boxes } %}
+            </div>
+        </section>
+    {% endfor %}
+
+    {% include "comic/block_rating.html.twig" %}
+
+    <hr/>
+
+    {% include "comment/block_comments.html.twig" %}
+
+    {% if comicContest.comics %}
         <hr/>
-        <h2 class="title is-4 title-gold">Les BDs du concours</h2>
+        <h2 class="title is-4 title-green">Les autres BDs du concours "{{ comicContest.title }}"</h2>
         <section class="page comics opacity">
             <div class="columns is-multiline">
-                {% for item in comic.comics %}
+                {% for item in comicContest.comics if item.id != comic.id %}
                     {% include "comic/block.html.twig" with {'comic': item, 'small': 1} %}
                 {% endfor %}
             </div>
         </section>
     {% endif %}
 
-    <hr/>
-
-    {% include "comment/block_comments.html.twig" %}
-
+    {% if comic.author and comic.author.comics|length > 1 %}
+        <hr/>
+        <h2 class="title is-4 title-gold">Les autres BDs de {{ comic.author.username }}</h2>
+        <section class="page comics opacity">
+            <div class="columns is-multiline">
+                {% for item in comic.author.comics if item.id != comic.id %}
+                    {% include "comic/block.html.twig" with {'comic': item, 'small': 1, 'hiddenAuthor': 0} %}
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
 
 
 {% endblock body %}

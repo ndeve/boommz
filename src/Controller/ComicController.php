@@ -56,14 +56,12 @@ class ComicController extends Controller
             return $this->redirect($this->generateUrl($comic->getRouteName(), $comic->getRouteParams() ));
         }
 
-        $rate = null;
         if ($this->getUser()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $rate = $entityManager->getRepository('App:Rate')
+            $rate = $this->getDoctrine()->getManager()->getRepository('App:Rate')
               ->findOneByCriteria(['user' => $this->getUser(), 'comic' => $comic]);
         }
 
-        return [ 'comic' => $comic, 'userRate' => $rate ];
+        return [ 'comic' => $comic, 'userRate' => $rate ?? null ];
     }
 
 

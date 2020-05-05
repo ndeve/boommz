@@ -8,10 +8,11 @@ use App\Entity\Comic;
 use App\Entity\Page;
 use App\Form\ComicType;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 
 class ContestController extends Controller
 {
@@ -27,6 +28,35 @@ class ContestController extends Controller
     {
         return ['comic' => $contest];
     }
+
+
+    /**
+     * @Route(  path="/contest/{rewritten_contest}-{id_contest}/{rewritten}-{id}",
+     *          name="contest_comic",
+     *          requirements={
+     *                  "rewritten_contest"="[a-z0-9-]+", "id_contest"= "\d+",
+     *                  "rewritten"="[a-z0-9-]+", "id"= "\d+"}
+     *      )
+     *
+     * @Entity("comicContest", expr="repository.find(id_contest)")
+     * @Entity("comic", expr="repository.find(id)")
+     *
+     * @Template
+     */
+    public function comic(Comic $comicContest, Comic $comic, string $rewritten, string $rewritten_contest)
+    {
+        if($comicContest->getRewritten() != $rewritten_contest || $rewritten != $comic->getRewritten() ){
+            return $this->redirect($this->generateUrl($comic->getRouteName(), $comic->getRouteParams() ));
+        }
+
+        if ($this->getUser()) {
+            $rate = $this->getDoctrine()->getManager()->getRepository('App:Rate')
+              ->findOneByCriteria(['user' => $this->getUser(), 'comic' => $comic]);
+        }
+
+        return [ 'comic' => $comic, 'comicContest' => $comicContest, 'userRate' => $rate ?? null ];
+    }
+
 
     /**
      * @Route(  path="/contest/{rewritten}-{id}/participate",

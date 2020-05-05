@@ -225,7 +225,10 @@ class Comic
 
     public function getRouteName()
     {
-        if ($this->getContest()) {
+        if ($this->getComicContest()) {
+            return 'contest_comic';
+        }
+        else if ($this->getContest()) {
             return 'contest';
         }
 
@@ -234,6 +237,13 @@ class Comic
 
     public function getRouteParams()
     {
+        if ($this->getComicContest()) {
+            return [
+              'id_contest' => $this->getComicContest()->getId(), 'rewritten_contest' => $this->getComicContest()->getRewritten(),
+              'id' => $this->getId(), 'rewritten' => $this->getRewritten()
+            ];
+        }
+
         return ['id' => $this->getId(), 'rewritten' => $this->getRewritten()];
     }
 
