@@ -1,0 +1,46 @@
+.wiki {
+  .c-left {
+    background: linear-gradient(0deg, rgba(246,246,246,1) 80%, rgba(255,255,255,0.9) 100%);
+    border-right: 1px solid #A7D7F9;
+  }
+
+
+  .card {
+    background-color: #F9F9F9;
+    border: 1px solid #aaa;
+    box-shadow: none;
+    width: 220px;
+    table {
+      background-color: transparent;
+    }
+    .card-header {
+      padding: 3px;
+      box-shadow: none;
+      .card-header-title {
+        background-color: #EEEEFF;
+      }
+    }
+
+    .card-image {
+      height: 180px;
+      background: $green;
+      background: linear-gradient(34deg, rgba(199,124,50,1) 39%, rgba(229,158,89,1) 96%);
+      margin: 3px 20px;
+      img {
+        height: auto;
+        width: auto;
+        transform: scale(2);
+        image-rendering: -moz-crisp-edges;
+        image-rendering: -o-crisp-edges;
+        -ms-interpolation-mode: nearest-neighbor;
+        image-rendering: pixelated;
+        bottom: 0;
+        top: 0;
+        position: absolute;
+        margin: auto;
+        right: 0;
+        left: 0;
+      }
+    }
+  }
+}

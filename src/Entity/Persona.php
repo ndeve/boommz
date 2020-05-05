@@ -25,7 +25,7 @@ class Persona
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $description;
 
@@ -53,6 +53,26 @@ class Persona
      * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="personas")
      */
     private $users;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $job;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $birthday;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $nationality;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $biography;
 
     public function __construct()
     {
@@ -193,6 +213,66 @@ class Persona
     public function setPath(string $path): self
     {
         $this->path = $path;
+
+        return $this;
+    }
+
+    public function getRewritten()
+    {
+        return Transliterator::urlize($this->getName());
+    }
+
+    public function getRouteParams()
+    {
+        if ('stars/' === $this->getPath()) {
+            return [ 'id' => $this->getId(), 'rewritten' => $this->getRewritten() ];
+        }
+    }
+
+    public function getJob(): ?string
+    {
+        return $this->job;
+    }
+
+    public function setJob(string $job): self
+    {
+        $this->job = $job;
+
+        return $this;
+    }
+
+    public function getBirthday(): ?\DateTimeInterface
+    {
+        return $this->birthday;
+    }
+
+    public function setBirthday(?\DateTimeInterface $birthday): self
+    {
+        $this->birthday = $birthday;
+
+        return $this;
+    }
+
+    public function getNationality(): ?string
+    {
+        return $this->nationality;
+    }
+
+    public function setNationality(?string $nationality): self
+    {
+        $this->nationality = $nationality;
+
+        return $this;
+    }
+
+    public function getBiography(): ?string
+    {
+        return $this->biography;
+    }
+
+    public function setBiography(?string $biography): self
+    {
+        $this->biography = $biography;
 
         return $this;
     }

@@ -1,0 +1,71 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}{{ persona.name }} - BOOMMZ!{% endblock title %}
+
+{% block breadcrumb %}
+    <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+        <ul>
+            <li>
+                <a href="{{ url('homepage') }}">
+                    <span class="icon is-small">{% include "/svg/home.html.twig" %}</span>
+                    <span>BOOMMZ!</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('charactes') }}">Tous les personnages</a>
+            </li>
+            <li class="is-active" aria-current="page"><a href="#">{{ persona.name }}</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block body %}
+    <div class="columns wiki">
+        <div class="column is-narrow c-left">
+            <img src="/build/images/wiki.png"/>
+        </div>
+        <div class="column">
+            <div class="content">
+                <h1 class="title is-bold is-marginless">{{ persona.name }}</h1>
+                <hr/>
+                {{ persona.description|raw }}
+            </div>
+        </div>
+        <div class="column is-narrow c-right">
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        {{ persona.name }}
+                    </p>
+                </header>
+                <figure class="card-image">
+                    <img src="{{ persona.url }}"/>
+                </figure>
+                <div class="card-content">
+                    <table class="table">
+                        <tbody>
+                        {% if persona.birthday %}
+                        <tr class="is-size-7">
+                            <th>Naissance</th>
+                            <td class="has-text-link">{{ persona.birthday|localizeddate('short') }}</td>
+                        </tr>
+                        {% endif %}
+                        {% if persona.nationality %}
+                        <tr class="is-size-7">
+                            <th>Nationalité</th>
+                            <td class="has-text-link">{{ persona.nationality }}</td>
+                        </tr>
+                        {% endif %}
+                        {% if persona.jobs %}
+                        <tr class="is-size-7">
+                            <th>Profession</th>
+                            <td class="has-text-link">{{ persona.jobs }}</td>
+                        </tr>
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

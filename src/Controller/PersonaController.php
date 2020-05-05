@@ -15,6 +15,17 @@ class PersonaController extends Controller
 {
 
     /**
+     * @Route(  path="vipz/{rewritten}-{id}",
+     *          name="vipz",
+     *          requirements={"rewritten"="[a-z0-9-]+", "id"= "\d+"})
+     * @Template
+     */
+    public function vipz(Persona $persona)
+    {
+        return [ 'persona' => $persona ];
+    }
+
+    /**
      * @Route(  path="characters",
      *          name="charactes"
      *      )
@@ -36,7 +47,6 @@ class PersonaController extends Controller
      */
     public function generateHead(Request $request, Character $character)
     {
-
         $query = $request->query->get('query');
 
         $data = explode('-', $query);

@@ -115,6 +115,7 @@ $star-color: $green;
 @import "rating.scss";
 @import "persona.scss";
 @import "creator.scss";
+@import "vipz.scss";
 
 .icon.is-small svg {
   height: 1em;
@@ -138,10 +139,14 @@ $star-color: $green;
   display: inline-block;
   border-radius: 420%;
 }
+.image.circle.big {
+  height: 110px;
+  width: 110px;
+}
 .image.circle img {
   display: block;
   height: auto;
-  width: 28px;
+  width: auto;
   position: absolute;
   top: 0px;
   bottom: 0;

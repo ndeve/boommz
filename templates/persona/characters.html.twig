@@ -18,6 +18,8 @@
 {% block body %}
     <h1 class="title">Tous les persos</h1>
     {% for persona in personas %}
-        <img src="{{ persona.url }}" title="{{ persona.name }}" />
+        <a href="{% if persona.routeParams %}{{ url('vipz', persona.routeParams) }}{% endif %}">
+            <img src="{{ persona.url }}" title="{{ persona.name }}" />
+        </a>
     {% endfor %}
 {% endblock body %}
