@@ -25,28 +25,28 @@
     <div class="section profile-heading">
         <div class="columns is-mobile is-multiline">
             {% if author.avatar %}
-            <div class="column is-2">
+            <div class="column is-1 is-2-mobile">
                 <span class="header-icon user-profile-image">
                     <img src="{{ author.avatar.url }}"/>
                 </span>
             </div>
             {% endif %}
-            <div class="column is-4-tablet is-10-mobile name">
+            <div class="column is-3-tablet is-10-mobile name">
                 <h1 class="title is-bold is-marginless">{{ author.username }}</h1>
             </div>
-            <div class="column is-2-tablet is-4-mobile has-text-centered">
+            <div class="column is-2-tablet is-5-mobile has-text-centered">
                 <p class="is-size-1 is-block title">{{ author.comics|length }}</p>
                 <p class="">BDs!</p>
             </div>
-            <div class="column is-2-tablet is-4-mobile has-text-centered">
+            <div class="column is-2-tablet is-5-mobile has-text-centered">
                 <p class="is-size-1 is-block title">{{ author.personas|length }}</p>
                 <p class="stat-key">Persos créés</p>
             </div>
-            <div class="column is-2-tablet is-4-mobile has-text-centered">
+            <div class="column is-2-tablet is-5-mobile has-text-centered">
                 <p class="is-size-1 is-block title">{{ author.comments|length }}</p>
                 <p class="stat-key">Commentaires</p>
             </div>
-            <div class="column is-2-tablet is-4-mobile has-text-centered">
+            <div class="column is-2-tablet is-5-mobile has-text-centered">
                 <p class="is-size-1 is-block title">{{ author.rates|length }}</p>
                 <p class="stat-key">BDs notées</p>
             </div>
