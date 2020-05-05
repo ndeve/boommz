@@ -223,6 +223,15 @@ class Comic
         return Transliterator::urlize($this->getTitle());
     }
 
+    public function getRouteName()
+    {
+        if ($this->getContest()) {
+            return 'contest';
+        }
+
+        return 'comic';
+    }
+
     public function getRouteParams()
     {
         return ['id' => $this->getId(), 'rewritten' => $this->getRewritten()];

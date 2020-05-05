@@ -66,14 +66,24 @@ class Bubble
         $this->dateCreation = new \DateTime();
     }
 
-    public function getId(): ?int
+    public function __clone()
     {
-        return $this->id;
+        $new = $this;
+
+        $new->id = null;
+        $new->text = "";
+
+        return $new;
     }
 
     public function __toString()
     {
         return 'bubble_'. $this->getId();
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
     }
 
     public function getBox(): ?box

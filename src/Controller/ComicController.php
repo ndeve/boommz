@@ -24,10 +24,10 @@ class ComicController extends Controller
      *      )
      * @Template
      */
-    public function comicScreenFb(Comic $comic, $rewritten)
+    public function comicScreenFb(Comic $comic, string $rewritten)
     {
 
-        return [ 'comic' => $comic, 'votes' => [] ];
+        return [ 'comic' => $comic ];
     }
 
     /**
@@ -37,10 +37,10 @@ class ComicController extends Controller
      *      )
      * @Template
      */
-    public function comicScreen(Comic $comic, $rewritten)
+    public function comicScreen(Comic $comic, string $rewritten)
     {
 
-        return [ 'comic' => $comic, 'votes' => [] ];
+        return [ 'comic' => $comic ];
     }
 
     /**
@@ -50,10 +50,10 @@ class ComicController extends Controller
      *      )
      * @Template
      */
-    public function comic(Comic $comic, $rewritten)
+    public function comic(Comic $comic, string $rewritten)
     {
-        if($comic->getRewritten() != $rewritten){
-            return $this->redirect($this->generateUrl('comic', $comic->getRouteParams() ));
+        if($comic->getRewritten() != $rewritten || $comic->getRouteName() != 'comic'){
+            return $this->redirect($this->generateUrl($comic->getRouteName(), $comic->getRouteParams() ));
         }
 
         $rate = null;

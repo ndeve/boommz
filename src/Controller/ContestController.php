@@ -13,25 +13,34 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class CreateContestController extends Controller
+class ContestController extends Controller
 {
 
     /**
-     * @Route(  path="/contest/{id}",
-     *          name="comic_contest_create",
-     *          requirements={"id"= "\d+"}
+     * @Route(  path="/contest/{rewritten}-{id}",
+     *          name="contest",
+     *          requirements={"rewritten"="[a-z0-9-]+", "id"= "\d+"}
      *      )
      * @Template
      */
-    public function create(Comic $comicContest, Request $request)
+    public function create(Comic $comicContest, string $rewritten, Request $request)
     {
+        if ($comicContest->getRewritten() != $rewritten) {
+            return $this->redirect($this->generateUrl('contest', $comicContest->getRouteParams() ));
+        }
+
         $entityManager = $this->getDoctrine()->getManager();
 
         $comic = new Comic();
 
         $page = new Page();
 
-        $box1 = new Box();
+        $nbBoxes = count($comicContest->getPages()[0]->getBoxes())-1;
+        $box1 = clone($comicContest->getPages()[0]->getBoxes()[$nbBoxes]);
+
+        foreach ($box1->getBubbles() as $bubble) {
+            dump($bubble);
+        }
         $page->addBox($box1);
         $comic->addPage($page);
 

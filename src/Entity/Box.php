@@ -70,6 +70,24 @@ class Box
         return 'bubble_'. $this->getId();
     }
 
+    public function __clone()
+    {
+        $new = $this;
+        $new->id = null;
+
+        $newBubbles = new ArrayCollection();
+
+        foreach ($this->getBubbles() as $bubble) {
+            $newBubble = clone($bubble);
+            $newBubble->setBox($new);
+            $newBubbles->add($newBubble);
+        }
+
+        $new->bubbles = $newBubbles;
+
+        return $new;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
