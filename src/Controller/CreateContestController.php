@@ -37,7 +37,7 @@ class CreateContestController extends Controller
 
         $comic->setLocale($request->getLocale())
             ->setPublic(1)
-            ->setComicContest($comic);
+            ->setComicContest($comicContest);
 
         if ($user = $this->getUser()) {
             $comic->setAuthor($this->getUser());
