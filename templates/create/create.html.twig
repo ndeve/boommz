@@ -37,18 +37,20 @@
         {{ form_widget(form.title, {'attr': {'class': 'input is-medium'}}) }}
     </div>
 
-    <section class="page edit" id="{{ form.vars.id }}" data-box-form="">
-        <div class="columns is-multiline" data-nbBox="">
 
-            {% if comicContest is defined %}
-                {% include "comic/block_boxes.html.twig" with { 'boxes': comicContest.pages.0.boxes } %}
-            {% endif %}
 
-            {% for page in form.pages %}
+    {% for page in form.pages %}
+        <section class="page edit" id="{{ page.vars.id }}">
+            <div class="columns is-multiline" data-nbBox="">
+
+                {% if comicContest is defined %}
+                    {% include "comic/block_boxes.html.twig" with { 'boxes': comicContest.pages.0.boxes } %}
+                {% endif %}
+
                 {{ form_widget(page) }}
-            {% endfor %}
-        </div>
-    </section>
+            </div>
+        </section>
+    {% endfor %}
 
     <div class="field is-grouped is-grouped-centered">
         <div class="control">

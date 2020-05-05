@@ -74,6 +74,7 @@ class Box
     {
         $new = $this;
         $new->id = null;
+        $new->page = null;
 
         $newBubbles = new ArrayCollection();
 

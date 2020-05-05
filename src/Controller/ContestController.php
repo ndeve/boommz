@@ -92,11 +92,9 @@ class ContestController extends Controller
         }
 
         $form = $this->createForm(ComicType::class, $comic);
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $entityManager->persist($comic);
             $entityManager->flush();
 
