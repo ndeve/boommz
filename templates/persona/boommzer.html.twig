@@ -26,9 +26,13 @@
         </div>
         <div class="column">
             <div class="content">
-                <h1 class="title is-bold is-marginless">{{ persona.name }}</h1>
+                <h1 class="title is-bold is-marginless">{{ persona.alias }}</h1>
                 <hr/>
                 {{ persona.description|raw }}
+                {% if persona.biography %}
+                    <h2>Biographie</h2>
+                    {{ persona.biography|raw }}
+                {% endif %}
             </div>
         </div>
         <div class="column is-narrow c-right">

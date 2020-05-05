@@ -74,6 +74,11 @@ class Persona
      */
     private $biography;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $alias;
+
     public function __construct()
     {
         $this->dateCreation = new \DateTime();
@@ -273,6 +278,18 @@ class Persona
     public function setBiography(?string $biography): self
     {
         $this->biography = $biography;
+
+        return $this;
+    }
+
+    public function getAlias(): ?string
+    {
+        return $this->alias;
+    }
+
+    public function setAlias(string $alias): self
+    {
+        $this->alias = $alias;
 
         return $this;
     }
