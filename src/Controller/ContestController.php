@@ -50,9 +50,6 @@ class ContestController extends Controller
         $nbBoxes = count($comicContest->getPages()[0]->getBoxes())-1;
         $box1 = clone($comicContest->getPages()[0]->getBoxes()[$nbBoxes]);
 
-        foreach ($box1->getBubbles() as $bubble) {
-            dump($bubble);
-        }
         $page->addBox($box1);
         $comic->addPage($page);
 
