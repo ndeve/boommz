@@ -51,7 +51,7 @@
                         {% if persona.birthday %}
                         <tr class="is-size-7">
                             <th>Naissance</th>
-                            <td class="has-text-link">{{ persona.birthday|localizeddate('short') }}</td>
+                            <td class="has-text-link">{{ persona.birthday|localizeddate('medium', 'none') }}</td>
                         </tr>
                         {% endif %}
                         {% if persona.nationality %}
