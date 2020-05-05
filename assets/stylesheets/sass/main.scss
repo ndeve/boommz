@@ -199,7 +199,7 @@ $star-color: $green;
 }
 
 .ccbox {
-  background: #fffbf5;
+  background-color: #fffbf5;
   margin-bottom: 2px;
   padding: 5px 5px 10px;
 }
@@ -208,4 +208,8 @@ $star-color: $green;
 }
 .opacity .ccolumn {
   opacity: .4;
+}
+
+.contest .ccbox {
+  background-color: $gold;
 }

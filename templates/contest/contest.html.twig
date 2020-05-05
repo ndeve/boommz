@@ -1,0 +1,92 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}{{ comic.title }}, Concours de BD - BOOMMZ!{% endblock title %}
+{% block metas %}
+    {% if comic.screen %}
+        <meta property="og:image"
+              content="https://boommz.com/{{ comic.urlScreen }}fb-{{ comic.rewritten }}-{{ comic.id }}.png"/>
+    {% endif %}
+{% endblock metas %}
+
+{% block breadcrumb %}
+    <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+        <ul>
+            <li>
+                <a href="{{ url('homepage') }}">
+                    <span class="icon is-small">{% include "/svg/home.html.twig" %}</span>
+                    <span>BOOMMZ!</span>
+                </a>
+            </li>
+            <li><a href="{{ url('comics') }}">Toutes les BDs</a></li>
+            <li class="is-active" aria-current="page"><a href="#">{{ comic.title }}</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block body %}
+    <h1 class="title is-marginless">{{ comic.title }}</h1>
+
+    {% if comic.author %}
+        <div class="media comic-infos">
+            <div class="media-left">
+                <figure class="image circle">
+                    <img src="{{ comic.author.avatar.urlHead }}"/>
+                </figure>
+            </div>
+            <div class="media-content">
+                <a href="{{ url('author', comic.author.routeParams) }}"
+                   class="has-text-dark is-size-6 is-marginless">{{ comic.author.username }}</a><br/>
+                <span class="has-text-grey	is-size-7">{{ comic.dateCreation|localizeddate('long', 'short') }}</span>
+            </div>
+        </div>
+    {% endif %}
+
+    <br />
+    <h2 class="title is-5 is-marginless">Description du concours</h2>
+    <p>{{ comic.contestDescription }}</p>
+
+    <div class="field is-grouped is-grouped-centered">
+        <p class="control">
+            <a href="{{ url('contest_participate', comic.routeParams) }}" class="button is-primary is-medium">
+                Je participe !
+            </a>
+        </p>
+    </div>
+
+    <div class="edit-comic">
+        {% if app.user and comic.author and comic.author.id == app.user.id %}
+            <a href="{{ url('comic_edit', comic.routeParams) }}" class="button is-primary is-outlined is-small">
+            <span class="icon is-small fa-2x">
+              {% include "svg/comic_edit.html.twig" %}
+            </span>
+                <span>Edite ta BD</span>
+            </a>
+        {% endif %}
+
+        <div class="button share is-hidden is-primary is-outlined is-small">
+        <span class="icon is-small fa-2x">
+          {% include "svg/share.html.twig" %}
+        </span>
+            <span>Partage!</span>
+        </div>
+    </div>
+
+    {% if comic.comics %}
+        <hr/>
+        <h2 class="title is-4 title-gold">Les BDs du concours</h2>
+        <section class="page comics opacity">
+            <div class="columns is-multiline">
+                {% for item in comic.comics %}
+                    {% include "comic/block.html.twig" with {'comic': item, 'small': 1, 'hiddenAuthor': 0} %}
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+
+    <hr/>
+
+    {% include "comment/block_comments.html.twig" %}
+
+
+
+{% endblock body %}

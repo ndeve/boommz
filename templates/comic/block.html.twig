@@ -1,4 +1,4 @@
-<div class="column cbox {% if small is defined and small %}is-one-quarter{% else %}is-one-third h-1{% endif %}">
+<div class="column cbox {% if small is defined and small %}is-one-quarter{% else %}is-one-third h-1{% endif %}{{ comic.contest ? ' contest' : '' }}">
     <div class="ccbox {{ color }}">
         <a href="{{ url(comic.routeName, comic.routeParams) }}" {% if comic.pages.0.boxes.0.background %}style="background-image: url({{ comic.pages.0.boxes.0.background }})"{% endif %}
              class="ccolumn">

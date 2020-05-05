@@ -23,6 +23,18 @@ class ContestController extends Controller
      *      )
      * @Template
      */
+    public function contest(Comic $contest, string $rewritten, Request $request)
+    {
+        return ['comic' => $contest];
+    }
+
+    /**
+     * @Route(  path="/contest/{rewritten}-{id}/participate",
+     *          name="contest_participate",
+     *          requirements={"rewritten"="[a-z0-9-]+", "id"= "\d+"}
+     *      )
+     * @Template
+     */
     public function create(Comic $comicContest, string $rewritten, Request $request)
     {
         if ($comicContest->getRewritten() != $rewritten) {

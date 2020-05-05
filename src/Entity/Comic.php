@@ -57,8 +57,7 @@ class Comic
     private $locale = 'fr';
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Page", mappedBy="comic",
-     *   orphanRemoval=true, cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Page", mappedBy="comic", orphanRemoval=true, cascade={"persist"})
      */
     private $pages;
 
@@ -110,6 +109,7 @@ class Comic
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comic", mappedBy="comicContest")
+     * @ORM\OrderBy({"dateCreation" = "DESC"})
      */
     private $comics;
 
