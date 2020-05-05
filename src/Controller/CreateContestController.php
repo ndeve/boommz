@@ -17,7 +17,7 @@ class CreateContestController extends Controller
 {
 
     /**
-     * @Route(  path="/create/{id}",
+     * @Route(  path="/contest/{id}",
      *          name="comic_contest_create",
      *          requirements={"id"= "\d+"}
      *      )
