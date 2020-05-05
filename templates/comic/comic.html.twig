@@ -64,6 +64,10 @@
             {% if page.title %}<h2 class="subtitle">{{ page.title }}</h2>{% endif %}
             <div class="columns is-multiline">
 
+                {% if comic.comicContest is defined %}
+                    {% include "comic/block_boxes.html.twig" with { 'boxes': comic.comicContest.pages.0.boxes } %}
+                {% endif %}
+
                 {% include "comic/block_boxes.html.twig" with { 'boxes': page.boxes } %}
             </div>
         </section>
