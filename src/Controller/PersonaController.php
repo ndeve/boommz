@@ -15,12 +15,12 @@ class PersonaController extends Controller
 {
 
     /**
-     * @Route(  path="vipz/{rewritten}-{id}",
-     *          name="vipz",
+     * @Route(  path="boommzers/{rewritten}-{id}",
+     *          name="boommzer",
      *          requirements={"rewritten"="[a-z0-9-]+", "id"= "\d+"})
      * @Template
      */
-    public function vipz(Persona $persona)
+    public function boommzer(Persona $persona)
     {
         return [ 'persona' => $persona ];
     }
