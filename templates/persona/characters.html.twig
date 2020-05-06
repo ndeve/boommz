@@ -19,7 +19,7 @@
     <h1 class="title">Tous les persos</h1>
     {% for persona in personas %}
         <a href="{% if persona.routeParams %}{{ url('boommzer', persona.routeParams) }}{% endif %}">
-            <img src="{{ persona.url }}" title="{{ persona.name }}" />
+            <img src="{{ persona.url }}" title="{{ persona.name }}" alt="{{ persona.name }}" />
         </a>
     {% endfor %}
 {% endblock body %}

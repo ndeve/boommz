@@ -27,7 +27,7 @@
             {% if author.avatar %}
             <div class="column is-1 is-2-mobile">
                 <span class="header-icon user-profile-image">
-                    <img src="{{ author.avatar.url }}"/>
+                    <img src="{{ author.avatar.url }}" alt="{{ author.username }}"/>
                 </span>
             </div>
             {% endif %}
@@ -66,7 +66,7 @@
     <h2 class="title is-4">Les persos créés par {{ author.username }}</h2>
 
     {% for perso in author.personas %}
-        <img src="{{ perso.url }}" />
+        <img src="{{ perso.url }}" alt="{{ perso.name }}" />
     {% endfor %}
 
 {% endblock body %}

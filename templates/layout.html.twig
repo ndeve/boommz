@@ -87,25 +87,25 @@
     <ul>
         <li{% if  app.request.attributes.get('_route') == 'comics' or app.request.attributes.get('_route') == 'comic' %} class="is-active"{% endif %}>
             <a href="{{ url('homepage') }}">
-                <img src="{{ asset('build/images/home.png') }}" title="{% trans %}Accueil!{% endtrans %}"/>
+                <img src="{{ asset('build/images/home.png') }}" alt="Accueil" title="{% trans %}Accueil!{% endtrans %}"/>
                 <span>Accueil</span>
             </a>
         </li>
         <li{% if  app.request.attributes.get('_route') == 'comics' or app.request.attributes.get('_route') == 'comic' %} class="is-active"{% endif %}>
             <a href="{{ url('comics') }}">
-                <img src="{{ asset('build/images/comic.png') }}" title="{% trans %}Toutes les BDs!{% endtrans %}"/>
+                <img src="{{ asset('build/images/comic.png') }}" alt="Toutes les Bds" title="{% trans %}Toutes les BDs!{% endtrans %}"/>
                 <span>Les BDs</span>
             </a>
         </li>
         <li{% if  app.request.attributes.get('_route') == 'comic_create' %} class="is-active"{% endif %}>
             <a href="{{ url('comic_create') }}">
-                <img src="{{ asset('build/images/create-comic.png') }}" title="{% trans %}Créer une BD!{% endtrans %}"/>
+                <img src="{{ asset('build/images/create-comic.png') }}" alt="Créer une BD!" title="{% trans %}Créer une BD!{% endtrans %}"/>
                 <span>Crée une BD</span>
             </a>
         </li>
         <li{% if  app.request.attributes.get('_route') == 'character_create' %} class="is-active"{% endif %}>
             <a href="{{ url('character_create') }}">
-                <img src="{{ asset('build/images/avatar.png') }}" title="{% trans %}Créer un avatar!{% endtrans %}"/>
+                <img src="{{ asset('build/images/avatar.png') }}" alt="Créer un avatar" title="{% trans %}Créer un avatar!{% endtrans %}"/>
                 <span>Crée persos</span>
             </a>
         </li>
