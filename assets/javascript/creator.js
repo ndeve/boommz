@@ -19,7 +19,7 @@ jQuery(document).ready(function () {
             slidesToShow: 3,
             infinite: true,
             pagination: false,
-            breakpoints: [{ changePoint: 480, slidesToShow: 5, slidesToScroll: 4 }, { changePoint: 768, slidesToShow: 8, slidesToScroll: 7 } ]
+            breakpoints: [{ changePoint: 480, slidesToShow: 3, slidesToScroll: 2 }, { changePoint: 768, slidesToShow: 4, slidesToScroll: 3 } ]
         });
         $('#actionsBg').addClass('is-hidden');
     }
