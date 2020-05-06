@@ -19,6 +19,16 @@
     {% block stylesheets %}
         {{ encore_entry_link_tags('main') }}
     {% endblock %}
+
+    <script type="application/ld+json">
+        {% block jsonld %}
+        {
+            "@context": "http://schema.org",
+            "@type": "WebSite",
+            "url": "http://boommz.com/"
+        }
+        {% endblock jsonld %}
+    </script>
 </head>
 
 <body class="{% block body_class %}{% endblock body_class %}">

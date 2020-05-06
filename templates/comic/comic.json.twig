@@ -1,0 +1,38 @@
+[
+    {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "url": "http://boommz.com/"
+    },
+    {
+        "@context": "http://schema.org/",
+        "@type": [
+            "CreativeWork",
+            "ComicStory"
+        ],
+        "name": "{{ comic.title }}",
+        {% if comic.author %}
+        "creator": {
+            "@type": "Person",
+            "name": "Boommz.com"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "{{ comic.author.username }}"
+        }
+        {% endif %}
+    }
+    {#
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "{{ comic.averageRate }}",
+            "reviewCount": "{{ comic.rates|length }}"
+        },
+        "character": [
+        {% for box in comic.pages.0.boxes %}{
+            "@type": "Person",
+            "name": "{{ comic.pages.0.boxes.0.bubbles.0.persona.name }}"
+        }]
+    }
+    #}
+]

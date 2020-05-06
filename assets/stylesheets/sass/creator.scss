@@ -1,9 +1,11 @@
 .page.edit {
     margin-bottom: 10px;
+
+    .column.on .ccolumn {
+        border: solid 5px #7eb7a6;
+    }
 }
-.page.edit .column.on .ccolumn {
-    border:solid 5px #7eb7a6;
-}
+
 .actions {
     background-color: #ffffff;
     border: solid 1px #76a094;
@@ -11,16 +13,19 @@
     display: inline-block;
     height: auto;
     padding: 4px;
+
+    .button {
+        text-align: center;
+        width: 40px;
+
+        svg {
+            width: 22px;
+            height: 22px;
+            overflow: visible;
+        }
+    }
 }
-.actions .button {
-    text-align: center;
-    width: 40px;
-}
-.actions .button svg {
-    width: 22px;
-    height: 22px;
-    overflow: visible;
-}
+
 .actions .button:hover svg {
     color: $green-dark;
 }
@@ -32,86 +37,93 @@
 
 #actionsLine {
     position: absolute;
-    right: 5px;
+    right: 10px;
 }
 #actionsPersona {
-    height: 55px;
+    height: 95px;
     margin-top: 4px;
     padding: 4px;
     width: 100%;
     position: relative;
-}
 
-#actionsPersona #slidePersona {
-    height: 47px;
-    margin: 0;
-    overflow: hidden;
-    padding: 0;
-}
-#slidePersona .slider-item {
-    cursor: pointer;
-    height: 50px;
-    width: 59px!important;
-    outline: 0;
-    display: inline-block;
-}
-#slidePersona .slider-navigation-next,
-#slidePersona .slider-navigation-previous {
-    background-color: $green;
-    color: white;
-    width: 20px;
-    top: 0;
-    margin-top: 0;
-    position: absolute;
-    bottom: 0;
-    height: 53px;
-    z-index: 100;
-    border-radius: 3px 0 0 3px;
-}
-#slidePersona .slider-navigation-previous {
-    left: 0;
-}
-#slidePersona .slider-navigation-next{
-    border-radius: 0 3px 3px 0;
-    right: 0;
-}
-#slidePersona .slider-navigation-next svg,
-#slidePersona .slider-navigation-previous svg {
-    width: 10px;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    position: absolute;
-    right: 0;
-    left: 0;
-}
-#slidePersona .slider-navigation-next:hover,
-#slidePersona .slider-navigation-previous:hover {
-    background-color: $green-darkest;
-}
-#slidePersona .slider-pagination {
-    display: none;
+    #slidePersona {
+        height: 90px;
+        margin: 0;
+        overflow: hidden;
+        padding: 0;
+
+        .slider-item {
+            cursor: pointer;
+            height: 90px;
+            width: 59px !important;
+            outline: 0;
+            display: inline-block;
+        }
+
+        .slider-navigation-next,
+        .slider-navigation-previous {
+            background-color: $green;
+            color: white;
+            width: 20px;
+            top: 0;
+            margin-top: 0;
+            position: absolute;
+            bottom: 0;
+            height: 93px;
+            z-index: 100;
+            border-radius: 3px 0 0 3px;
+
+            &:hover {
+                background-color: $green-darkest;
+            }
+
+            svg {
+                width: 10px;
+                margin: auto;
+                top: 0;
+                bottom: 0;
+                position: absolute;
+                right: 0;
+                left: 0;
+            }
+        }
+
+        .slider-navigation-previous {
+            left: 0;
+        }
+
+        .slider-navigation-next {
+            border-radius: 0 3px 3px 0;
+            right: 0;
+        }
+
+        .slider-pagination {
+            display: none;
+        }
+    }
 }
 
 .page.edit .column {
     transition: all 1s ease-out;
-}
-.page.edit .column blockquote {
-    cursor: pointer;
-}
-.page.edit .column blockquote textarea {
-    display: none;
-}
 
-.page.edit .column blockquote.bubble textarea {
-    border: 0;
-    display: block;
-    font-family: "Permanent Marker";
-    outline: none;
-    overflow: hidden;
-    resize: none;
-    text-align: center;
-    width: 100%;
+    blockquote {
+        cursor: pointer;
+
+        textarea {
+            display: none;
+        }
+    }
+
+    blockquote.bubble textarea {
+        border: 0;
+        display: block;
+        font-family: "Permanent Marker";
+        outline: none;
+        overflow: hidden;
+        resize: none;
+        text-align: center;
+        width: 100%;
+    }
 }
 .page.edit .column blockquote.bubble textarea:focus::placeholder {
     color: transparent;
@@ -148,15 +160,6 @@
     box-shadow: 3px -2px 0 0 #7eb7a6 inset, 14px 0 0 0 #fff inset, 17px -2px 0 0 #7eb7a6 inset;
 }
 
-#circle {
-    margin-top: 6px;
-}
-#nbCar {
-    position: absolute;
-    font-size: 13px;
-    color: #EC7532;
-}
-
 #clone {
     position: absolute;
     margin: auto;
@@ -168,19 +171,4 @@
     bottom: 0;
     padding: 20px;
     border: 5px solid #fff;
-}
-
-.removeBubble {
-    display: none;
-    position: absolute;
-    bottom: 19px;
-    right: -18px;
-}
-blockquote.on .removeBubble {
-    display: block;
-}
-.removeBubble svg {
-    width: 2em;
-    height: 2em;
-    color: #bd3535;
 }
