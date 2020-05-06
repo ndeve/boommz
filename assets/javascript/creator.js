@@ -7,7 +7,8 @@ jQuery(document).ready(function () {
             slidesToScroll: 6,
             slidesToShow: 7,
             infinite: true,
-            pagination: false
+            pagination: false,
+            breakpoints: [{ changePoint: 480, slidesToShow: 5, slidesToScroll: 4 }, { changePoint: 768, slidesToShow: 8, slidesToScroll: 7 } ]
         });
     }
 
