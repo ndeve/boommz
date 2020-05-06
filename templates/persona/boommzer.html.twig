@@ -1,7 +1,7 @@
 {% extends "layout.html.twig" %}
 
-{% block title %}{{ persona.name }}{% if persona.job %}, {{ persona.job}}{% endif %} - BOOMMZ!{% endblock title %}
-{% block metadescription %}{{ persona.name }}. {{ comic.contestDescription|raw|striptags }}{% endblock metadescription %}
+{% block title %}{{ persona.alias ?? persona.name }}{% if persona.job %}, {{ persona.job}}{% endif %} - BOOMMZ!{% endblock title %}
+{% block metadescription %}{{ persona.alias ?? persona.name }}. {{ comic.contestDescription|raw|striptags }}{% endblock metadescription %}
 
 {% block breadcrumb %}
     <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
@@ -15,7 +15,7 @@
             <li>
                 <a href="{{ url('charactes') }}">Tous les personnages</a>
             </li>
-            <li class="is-active" aria-current="page"><a href="#">{{ persona.name }}</a></li>
+            <li class="is-active" aria-current="page"><a href="#">{{ persona.alias ?? persona.name }}</a></li>
         </ul>
     </nav>
 {% endblock %}
@@ -29,6 +29,7 @@
             <div class="content">
                 <h1 class="title is-bold is-marginless">{{ persona.alias ?? persona.name }}</h1>
                 <hr class="is-marginless"/><br/>
+                <p>Aussi connu sous le nom de {{ persona.name }}</p>
                 {{ persona.description|raw }}
                 {% if persona.biography %}
                     <h2 class="title is-bold is-marginless is-size-4">Biographie</h2>
@@ -41,7 +42,7 @@
             <div class="card">
                 <header class="card-header">
                     <p class="card-header-title">
-                        {{ persona.name }}
+                        {{ persona.alias ?? persona.name }}
                     </p>
                 </header>
                 <figure class="card-image">
