@@ -49,18 +49,31 @@ section.author {
     border-radius: 455px 15px 725px 10px/10px 425px 10px 655px;
 }
 .column .ccolumn blockquote {
-    bottom: 0;
+    bottom: -5px;
     display: block;
     position: absolute;
 }
 .column .ccolumn blockquote.bubble {
-    bottom: 83px;
+    bottom: 86px;
     line-height: 1.2;
     max-width: 44%;
     min-width: 115px;
     text-align: center;
     word-break: break-word;
 }
+
+.column .ccolumn blockquote.bubble.top-1 {
+    bottom: 128px;
+    &:before {
+        bottom: -70px;
+        height: 70px;
+        width: 55px;
+    }
+    footer {
+        bottom: -132px;
+    }
+}
+
 .bubble {
     background: white;
     border: 3px solid $grey-dark;
