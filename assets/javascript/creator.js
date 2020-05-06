@@ -3,13 +3,25 @@ jQuery(document).ready(function () {
 
     if ($('#actionsPersona').length) {
         var element = $('#actionsPersona').detach().appendTo('#actions');
-        bulmaCarousel.attach('#slidePersona', {
+        bulmaCarousel.attach('#sliderPersona', {
             slidesToScroll: 6,
             slidesToShow: 7,
             infinite: true,
             pagination: false,
             breakpoints: [{ changePoint: 480, slidesToShow: 5, slidesToScroll: 4 }, { changePoint: 768, slidesToShow: 8, slidesToScroll: 7 } ]
         });
+    }
+
+    if ($('#actionsBg').length) {
+        var element = $('#actionsBg').detach().appendTo('#actions');
+        bulmaCarousel.attach('#sliderBg', {
+            slidesToScroll: 2,
+            slidesToShow: 3,
+            infinite: true,
+            pagination: false,
+            breakpoints: [{ changePoint: 480, slidesToShow: 5, slidesToScroll: 4 }, { changePoint: 768, slidesToShow: 8, slidesToScroll: 7 } ]
+        });
+        $('#actionsBg').addClass('is-hidden');
     }
 
     if ($('.columns').length) {
@@ -57,6 +69,12 @@ jQuery(document).ready(function () {
         e.stopPropagation();
     });
 
+    $('.bg').on('click', function (e) {
+        $('.column.on .ccolumn').css('background-image', 'url(' + $(this).attr('data-src') + ')');
+        $('.column.on input.bg').val($(this).attr('data-id'));
+        e.stopPropagation();
+    });
+
     $(document).on('click', '#styleBubble', function () {
         var style = '';
         if ($('blockquote.on').hasClass('think')) {
@@ -79,14 +97,9 @@ jQuery(document).ready(function () {
         $('#' + $('blockquote.on').attr('id') + '_style').val(style);
     });
 
-    $(document).on('click', '#changeBackground', function () {
-        var id = parseInt($('#backgrounds').attr('data-num')) + 1,
-            max = parseInt($('#backgrounds').attr('data-max')),
-            num = (id > max) ? 0 : id,
-            bg = $('#backgrounds div[data-num=' + num + ']');
-        $('#backgrounds').attr('data-num', num);
-        $('.column.on .ccolumn').css('background-image', 'url(' + bg.attr('data-src') + ')');
-        $('.column.on input.bg').val(bg.attr('data-id'));
+    $(document).on('click', '#displayBackground', function () {
+        $('.actionsSlider').addClass('is-hidden');
+        $('#actionsBg').removeClass('is-hidden');
     });
 
     $(document).on('click', '#addPersona', function () {
@@ -161,6 +174,9 @@ jQuery(document).ready(function () {
     }
 
     function selectBox(box, selectFirstBubble = true) {
+        $('.actionsSlider').removeClass('is-hidden');
+        $('#actionsBg').addClass('is-hidden');
+
         box.find('#clone').remove();
         location.href = '#' + box.attr('id');
         $('.column').removeClass('on');

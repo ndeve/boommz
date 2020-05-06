@@ -18,16 +18,17 @@
     </h1>
 
     {% if comicContest is defined %}
-    <div class="content">
-        {{ comicContest.contestDescription|raw }}
-    </div>
+        <div class="content">
+            {{ comicContest.contestDescription|raw }}
+        </div>
     {% endif %}
 
     {% if not(app.user) %}
         <article class="message is-warning">
             <div class="message-body">
                 Tu vas créé une BD sans être identifié, tu ne pourras pas la modifier.
-                <a href="{{ url('app_register') }}">Crée-toi un compte</a> ou <a href="{{ url('fos_user_security_login') }}">identifie-toi</a> :)
+                <a href="{{ url('app_register') }}">Crée-toi un compte</a> ou <a
+                        href="{{ url('fos_user_security_login') }}">identifie-toi</a> :)
             </div>
         </article>
     {% endif %}
@@ -58,8 +59,8 @@
         </div>
     </div>
 
-    <div id="actionsPersona" class="actions">
-        <div id="slidePersona">
+    <div id="actionsPersona" class="actions actionsSlider">
+        <div id="sliderPersona" class="slider">
             {% for persona in personas %}
                 <div class="item-{{ loop.index }}">
                     <img src="{{ persona.url }}" data-id="{{ persona.id }}" title="{{ persona.name }}" class="persona"/>
@@ -69,19 +70,21 @@
             {% if app.user %}
                 {% for persona in app.user.personas %}
                     <div class="item-{{ personas|length + loop.index }}">
-                        <img src="{{ persona.url }}" data-id="{{ persona.id }}" title=""
-                             class="persona"/>
+                        <img src="{{ persona.url }}" data-id="{{ persona.id }}" title="" class="persona"/>
                     </div>
                 {% endfor %}
             {% endif %}
         </div>
     </div>
 
-    <div id="backgrounds" class="is-hidden" data-num="0" data-max="{{ backgrounds|length }}">
-        <div data-num="bg-0" data-src="" data-id=""></div>
-        {% for bg in backgrounds %}
-            <div data-num="{{ loop.index }}" data-src="{{ bg.url }}" data-id="{{ bg.id }}"></div>
-        {% endfor %}
+    <div id="actionsBg" class="actions actionsSlider">
+        <div id="sliderBg" class="slider">
+            {% for bg in backgrounds %}
+                <div class="item-{{ loop.index }}">
+                    <img src="{{ bg.smallUrl }}" data-id="{{ bg.id }}" data-src="{{ bg.url }}" class="bg"/>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 
     {{ form_end(form) }}

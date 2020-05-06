@@ -114,6 +114,15 @@ class Background
         return '';
     }
 
+    public function getSmallUrl()
+    {
+        if ($this->getSelection()) {
+            return '/decor/selection/small/' . Transliterator::urlize($this->getTitle()) . '.png';//.webp';
+        }
+
+        return '';
+    }
+
     public function getDescription(): ?string
     {
         return $this->description;
