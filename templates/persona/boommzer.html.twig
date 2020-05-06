@@ -1,6 +1,7 @@
 {% extends "layout.html.twig" %}
 
-{% block title %}{{ persona.name }} - BOOMMZ!{% endblock title %}
+{% block title %}{{ persona.name }}{% if persona.job %}, {{ persona.job}}{% endif %} - BOOMMZ!{% endblock title %}
+{% block metadescription %}{{ persona.name }}. {{ comic.contestDescription|raw|striptags }}{% endblock metadescription %}
 
 {% block breadcrumb %}
     <nav class="breadcrumb is-centered" aria-label="breadcrumbs">

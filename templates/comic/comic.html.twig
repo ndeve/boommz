@@ -1,6 +1,8 @@
 {% extends "layout.html.twig" %}
 
 {% block title %}{{ comic.title }}, une BD {% if comic.author %}de {{ comic.author.username }}{% endif %} - BOOMMZ!{% endblock title %}
+{% block metadescription %}{{ comic.title }}, une BD {% if comic.author %}de {{ comic.author.username }}{% endif %}. {{ comic.pages.0.boxes.0.bubbles.0.text }}{% endblock metadescription %}
+
 {% block metas %}
     {% if comic.screen %}
         <meta property="og:image"
