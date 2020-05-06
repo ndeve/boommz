@@ -3,41 +3,16 @@
 {% block body %}
 
     {% if dayComics %}
-        {% for page in dayComics.0.pages %}
-            <section class="page">
-                <h2 class="title is-size-3">La BD du jour d'aujourd'hui !</h2>
+        <section class="page">
+            <h2 class="title is-size-3">La BD du jour d'aujourd'hui !</h2>
 
-                <div class="columns is-multiline">
-
-                    {% for box in page.boxes|slice(0, 3) %}
-                        <div class="column is-{{ box.size ?? 'one-quarter' }} {{ cycle(['c-1', 'c-2', ''], loop.index0) }} h-{{ box.height }}">
-                            <div {% if box.background %}style="background-image: url({{ box.background }})"{% endif %}
-                                 class="ccolumn">
-                                {% for bubble in box.bubbles %}
-                                    <blockquote
-                                            class="{{ bubble.classes }} b-{{ loop.index0 }}"
-                                            style="{{ bubble.x ? 'botttom:' ~ bubble.y ~ 'px;' : '' }}{{ bubble.y ? 'left:' ~ bubble.x ~ 'px' : '' }}">
-                                        {{ bubble.text }}
-                                        {% if bubble.persona %}
-                                            <footer><img src="{{ bubble.persona.url }}"
-                                                         alt="{{ bubble.persona.name }}"/></footer>
-                                        {% endif %}
-                                    </blockquote>
-                                {% endfor %}
-                                {% if page.boxes|length > 3 and loop.index == 3 %}
-                                    <a href="{{ url('comic', dayComics.0.routeParams) }}" class="more">
-                                        {% include "svg/more.html.twig" %}
-                                    </a>
-                                {% endif %}
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </section>
-            <section class="author">
-                {% include "comic/block_infos.html.twig" with {'comic': dayComics.0, 'isDayComic': 1} %}
-            </section>
-        {% endfor %}
+            <div class="columns is-multiline">
+                {% include "comic/block_boxes.html.twig" with { 'boxes': dayComics.0.pages.0.boxes|slice(0, 3)} %}
+            </div>
+        </section>
+        <section class="author">
+            {% include "comic/block_infos.html.twig" with {'comic': dayComics.0, 'isDayComic': 1} %}
+        </section>
 
         <hr />
 
@@ -49,9 +24,12 @@
                 {% endfor %}
             </div>
         </section>
+
+        <div class="link-more">
+            <a href="{{ url('day_comics') }}">Toutes les BDs du jour</a>
+        </div>
     {% endif %}
 
-    <hr />
 
     <h2 class="title is-size-4 title-green">Les dernières BDs</h2>
     <section class="page comics">
@@ -61,5 +39,8 @@
             {% endfor %}
         </div>
     </section>
+    <div class="link-more green">
+        <a href="{{ url('comics') }}">Toutes les BDs</a>
+    </div>
 
 {% endblock body %}

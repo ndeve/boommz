@@ -24,4 +24,19 @@ class ComicsController extends Controller
 
         return [ 'comics' => $comics ];
     }
+
+    /**
+     * @Route(  path="/comics/bds-du-jour/",
+     *          name="day_comics"
+     *      )
+     * @Template
+     */
+    public function dayComics()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $comics = $em->getRepository('App:Comic')->findByParams(['selected' => 1, 'orderBy' => 'dateSelected']);
+
+        return [ 'comics' => $comics ];
+    }
 }

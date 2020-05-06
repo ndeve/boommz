@@ -27,12 +27,15 @@ class ComicRepository extends ServiceEntityRepository
 
     public function findByParams($params)
     {
+        $query = $this->createQueryBuilder('c')
+          ->orderBy('c.'. ($params['orderBy'] ?? 'id'), 'DESC')
+          ->setMaxResults($params['limit'] ?? 100);
 
-        return $this->createQueryBuilder('c')
-          ->orderBy('c.id', 'DESC')
-          ->setMaxResults($params['limit'] ?? 100)
-          ->getQuery()
-          ->getResult();
+        if (isset($params['selected'])) {
+            $query->andWhere('c.selected = 1');
+        }
+
+        return $query->getQuery()->getResult();
     }
 
     /**

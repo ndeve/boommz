@@ -218,3 +218,23 @@ $star-color: $green;
 .contest .ccbox {
   background-color: $gold;
 }
+
+.link-more {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid $gold-light;
+  line-height: 0.1em;
+  margin: 40px 0 40px;
+  a {
+    background:#fff;
+    color: $gold-darkest;
+    padding:0 30px;
+  }
+}
+
+.link-more.green {
+  border-bottom: 1px solid $green-lightest;
+  a {
+    color: $green;
+  }
+}
