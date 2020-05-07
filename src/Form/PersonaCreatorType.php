@@ -17,8 +17,8 @@ class PersonaCreatorType extends AbstractType
           ->add('eyes', HiddenType::class)
           ->add('nose', HiddenType::class)
           ->add('hat', HiddenType::class)
-          ->add('trousers', HiddenType::class)
           ->add('top', HiddenType::class)
+          ->add('trousers', HiddenType::class)
           ->add('vest', HiddenType::class)
           ->add('mouth', HiddenType::class)
         ;
