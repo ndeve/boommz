@@ -57,7 +57,7 @@ class Comic
     private $locale = 'fr';
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Page", mappedBy="comic", orphanRemoval=true, cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Page", mappedBy="comic", orphanRemoval=true, cascade={"persist", "remove"})
      */
     private $pages;
 
@@ -77,7 +77,7 @@ class Comic
     private $screen;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Rate", mappedBy="comic")
+     * @ORM\OneToMany(targetEntity="App\Entity\Rate", mappedBy="comic", orphanRemoval=true, cascade={"remove"})
      */
     private $rates;
 
@@ -97,7 +97,7 @@ class Comic
     private $endDate;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="comic")
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="comic", orphanRemoval=true, cascade={"remove"})
      * @ORM\OrderBy({"dateCreation" = "DESC"})
      */
     private $comments;

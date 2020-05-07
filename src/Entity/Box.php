@@ -29,7 +29,7 @@ class Box
     private $dateCreation;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Bubble", mappedBy="box", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Bubble", mappedBy="box", cascade={"persist", "remove"})
      */
     private $bubbles;
 

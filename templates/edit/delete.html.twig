@@ -1,0 +1,71 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}{{ comic.title }}, une BD {% if comic.author %}de {{ comic.author.username }}{% endif %} - BOOMMZ!{% endblock title %}
+{% block metadescription %}{{ comic.title }}, une BD {% if comic.author %}de {{ comic.author.username }}{% endif %}. {{ comic.pages.0.boxes.0.bubbles.0.text }}{% endblock metadescription %}
+
+{% block metas %}
+    {% if comic.screen %}
+        <meta property="og:image" content="https://boommz.com/{{ comic.urlScreen }}fb-{{ comic.rewritten }}-{{ comic.id }}.png"/>
+    {% endif %}
+{% endblock metas %}
+
+{% block jsonld %}
+    {% include "comic/comic.json.twig" %}
+{% endblock jsonld %}
+
+{% block breadcrumb %}
+    <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+        <ul>
+            <li>
+                <a href="{{ url('homepage') }}">
+                    <span class="icon is-small">{% include "/svg/home.html.twig" %}</span>
+                    <span>BOOMMZ!</span>
+                </a>
+            </li>
+            <li><a href="{{ url('comics') }}">Toutes les BDs</a></li>
+            <li class="is-active" aria-current="page"><a href="#">{{ comic.title }}</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block body %}
+    <h1 class="title is-marginless">{{ comic.title }}</h1>
+
+    {% if comic.author %}
+        <div class="media comic-infos">
+            <div class="media-left">
+                <figure class="image circle">
+                    <img src="{{ comic.author.avatar.urlHead }}" alt="{{ comic.author.username }}"/>
+                </figure>
+            </div>
+            <div class="media-content">
+                <a href="{{ url('author', comic.author.routeParams) }}"
+                   class="has-text-dark is-size-6 is-marginless">{{ comic.author.username }}</a><br/>
+                <span class="has-text-grey	is-size-7">{{ comic.dateCreation|localizeddate('long', 'short') }}</span>
+            </div>
+        </div>
+    {% endif %}
+<br />
+<br />
+    <article class="message is-danger">
+        <div class="message-body">
+            Es-tu bien sûr de vouloir supprimer définitivement ta BD ?
+
+            <div class="field is-grouped">
+                <p class="control">
+                    <a href="{{ url('comic_delete_confirm', comic.routeParams) }}" class="button is-danger">
+                        Oui
+                    </a>
+                </p>
+                <p class="control">
+                    <a href="{{ url('comic', comic.routeParams) }}"  class="button">
+                        Annuler
+                    </a>
+                </p>
+            </div>
+        </div>
+    </article>
+    <br/>
+    <br/>
+
+{% endblock body %}

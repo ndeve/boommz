@@ -16,18 +16,50 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class EditController extends Controller
 {
     /**
+     * @Route(  path="/comics/{rewritten}-{id}/delete",
+     *          name="comic_delete",
+     *          requirements={"rewritten"="[a-z0-9-]+", "id"= "\d+"}
+     *      )
+     * @Template
+     */
+    public function delete(Comic $comic, Request $request)
+    {
+        if(!$comic->getAuthor() || ($comic->getAuthor() && $comic->getAuthor()->getId() != $this->getUser()->getId())) {
+            return $this->redirect($this->generateUrl('comic', $comic->getRouteParams() ));
+        }
+    }
+
+    /**
+     * @Route(  path="/comics/{rewritten}-{id}/delete-confirm",
+     *          name="comic_delete_confirm",
+     *          requirements={"rewritten"="[a-z0-9-]+", "id"= "\d+"}
+     *      )
+     * @Template
+     */
+    public function deleteConfirm(Comic $comic, Request $request)
+    {
+        if(!$comic->getAuthor() || ($comic->getAuthor() && $comic->getAuthor()->getId() != $this->getUser()->getId())) {
+            return $this->redirect($this->generateUrl('comic', $comic->getRouteParams() ));
+        }
+
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $entityManager->remove($comic);
+        $entityManager->flush();
+
+        return $this->redirect($this->generateUrl('comics'));
+    }
+
+    /**
      * @Route(  path="/comics/{rewritten}-{id}/edit",
      *          name="comic_edit",
      *          requirements={"rewritten"="[a-z0-9-]+", "id"= "\d+"}
      *      )
      * @Template
      */
-    public function edit(int $id, Request $request)
+    public function edit(Comic $comic, Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
-        if (null === $comic = $entityManager->getRepository('App:Comic')->findOneById($id)) {
-            return $this->redirect($this->generateUrl('comic', $comic->getRouteParams() ));
-        }
 
         if(!$comic->getAuthor() || ($comic->getAuthor() && $comic->getAuthor()->getId() != $this->getUser()->getId())) {
             return $this->redirect($this->generateUrl('comic', $comic->getRouteParams() ));
