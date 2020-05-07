@@ -95,8 +95,8 @@ class EditController extends Controller
           'comic' => $comic,
           'form' => $form->createView(),
           'personas' => $entityManager->getRepository('App:Persona')->findBy(['path' => 'stars/']),
-          'backgrounds' => $entityManager->getRepository('App:Background')->findBy(['selection' => true])
-        ]);
+          'backgrounds' => $entityManager->getRepository('App:Background')->findByCriteria(['selection' => true, 'image' => true]),
+          'colors' => $entityManager->getRepository('App:Background')->findByCriteria(['selection' => true, 'color' => true]),        ]);
     }
 
 }
