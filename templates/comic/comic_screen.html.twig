@@ -23,24 +23,7 @@
 
     <section class="page">
         <div class="columns is-multiline">
-            {% for box in comic.pages.0.boxes|slice(0, 3) %}
-                <div class="column is-{{ box.size ?? 'one-quarter' }} {{ cycle(['c-1', 'c-2', ''], loop.index0) }} h-{{ box.height }}">
-                    <div {% if box.background %}style="background-image: url({{ box.background }})"{% endif %}
-                         class="ccolumn">
-                        {% for bubble in box.bubbles %}
-                            <blockquote
-                                    class="{{ bubble.classes }} b-{{ loop.index0 }}"
-                                    style="{{ bubble.x ? 'botttom:' ~ bubble.y ~ 'px;' : '' }}{{ bubble.y ? 'left:' ~ bubble.x ~ 'px' : '' }}">
-                                {{ bubble.text }}
-                                {% if bubble.persona %}
-                                    <footer><img src="{{ bubble.persona.url }}" alt="{{ bubble.persona.name }}"/>
-                                    </footer>
-                                {% endif %}
-                            </blockquote>
-                        {% endfor %}
-                    </div>
-                </div>
-            {% endfor %}
+            {% include "comic/block_boxes.html.twig" with {'boxes': comic.pages.0.boxes|slice(0, 3)} %}
         </div>
     </section>
     <div style="width: 100%;text-align: center">
