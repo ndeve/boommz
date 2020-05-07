@@ -87,6 +87,16 @@
         </div>
     </div>
 
+    <div id="actionsColor" class="actions actionsSlider">
+        <div id="sliderColor" class="slider">
+            {% for color in colors %}
+                <div class="item-{{ loop.index }} color" data-id="{{ color.id }}" style="{% if color.color %}background-color:#{{ color.color }}{% endif %}">
+                    <img />
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
     {{ form_end(form) }}
 
     <div id="form_box_proto" class="is-hidden">

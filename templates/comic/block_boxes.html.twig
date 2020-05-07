@@ -1,6 +1,6 @@
 {% for box in boxes %}
     <div class="column cbox is-{{ box.size ?? 'one-quarter' }} {{ cycle(['c-1', 'c-2', ''], loop.index0) }} h-{{ box.height }}">
-        <div {% if box.background %}style="background-image: url({{ box.background }})"{% endif %}
+        <div {% if box.background %}style="{% if box.background.color %}background: #{{ box.background.color }}{% else %}background-image: url({{ box.background }}){% endif %}"{% endif %}
              class="ccolumn">
             {% for bubble in box.bubbles %}
                 <blockquote

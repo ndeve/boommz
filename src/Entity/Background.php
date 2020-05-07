@@ -47,6 +47,16 @@ class Background
      */
     private $selection;
 
+    /**
+     * @ORM\Column(type="string", length=6, nullable=true)
+     */
+    private $color;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $css;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -143,6 +153,30 @@ class Background
     public function setSelection(bool $selection): self
     {
         $this->selection = $selection;
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(?string $color): self
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    public function getCss(): ?string
+    {
+        return $this->css;
+    }
+
+    public function setCss(?string $css): self
+    {
+        $this->css = $css;
 
         return $this;
     }

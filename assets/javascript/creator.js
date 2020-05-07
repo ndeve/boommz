@@ -1,8 +1,9 @@
 jQuery(document).ready(function () {
     orderBox();
 
+    $('.actionsSlider').detach().appendTo('#actions');
+
     if ($('#actionsPersona').length) {
-        var element = $('#actionsPersona').detach().appendTo('#actions');
         bulmaCarousel.attach('#sliderPersona', {
             slidesToScroll: 6,
             slidesToShow: 7,
@@ -13,7 +14,6 @@ jQuery(document).ready(function () {
     }
 
     if ($('#actionsBg').length) {
-        var element = $('#actionsBg').detach().appendTo('#actions');
         bulmaCarousel.attach('#sliderBg', {
             slidesToScroll: 2,
             slidesToShow: 3,
@@ -22,6 +22,15 @@ jQuery(document).ready(function () {
             breakpoints: [{ changePoint: 480, slidesToShow: 3, slidesToScroll: 2 }, { changePoint: 768, slidesToShow: 4, slidesToScroll: 3 } ]
         });
         $('#actionsBg').addClass('is-hidden');
+
+        bulmaCarousel.attach('#sliderColor', {
+            slidesToScroll: 2,
+            slidesToShow: 6,
+            infinite: false,
+            pagination: false,
+            breakpoints: [{ changePoint: 480, slidesToShow: 3, slidesToScroll: 2 }, { changePoint: 768, slidesToShow: 4, slidesToScroll: 3 } ]
+        });
+        $('#actionsColor').addClass('is-hidden');
     }
 
     if ($('.columns').length) {
@@ -75,6 +84,12 @@ jQuery(document).ready(function () {
         e.stopPropagation();
     });
 
+    $('.color').on('click', function (e) {
+        $('.column.on .ccolumn').attr('style', $(this).attr('style'));
+        $('.column.on input.bg').val($(this).attr('data-id'));
+        e.stopPropagation();
+    });
+
     $(document).on('click', '#styleBubble', function () {
         var style = '';
         if ($('blockquote.on').hasClass('think')) {
@@ -100,6 +115,15 @@ jQuery(document).ready(function () {
     $(document).on('click', '#displayBackground', function () {
         $('.actionsSlider').addClass('is-hidden');
         $('#actionsBg').removeClass('is-hidden');
+        $(this).addClass('is-hidden');
+        $('#displayColor').removeClass('is-hidden');
+    });
+
+    $(document).on('click', '#displayColor', function () {
+        $('.actionsSlider').addClass('is-hidden');
+        $('#actionsColor').removeClass('is-hidden');
+        $(this).addClass('is-hidden');
+        $('#displayBackground').removeClass('is-hidden');
     });
 
     $(document).on('click', '#addPersona', function () {
@@ -174,8 +198,8 @@ jQuery(document).ready(function () {
     }
 
     function selectBox(box, selectFirstBubble = true) {
-        $('.actionsSlider').removeClass('is-hidden');
-        $('#actionsBg').addClass('is-hidden');
+        $('.actionsSlider').addClass('is-hidden');
+        $('#actionsPersona').removeClass('is-hidden');
 
         box.find('#clone').remove();
         location.href = '#' + box.attr('id');

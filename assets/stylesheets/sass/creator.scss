@@ -102,6 +102,28 @@
         }
     }
 }
+#actionsColor {
+    height: 55px;
+
+    .slider {
+        height: 50px;
+
+        .slider-item {
+            height: 50px;
+        }
+
+        .slider-navigation-next,
+        .slider-navigation-previous {
+            height: 53px;
+        }
+    }
+
+    .color {
+        width: 45px;
+        height: 45px;
+        border-radius: 3px;
+    }
+}
 
 .page.edit .column {
     transition: all 1s ease-out;

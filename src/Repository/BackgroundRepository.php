@@ -19,32 +19,27 @@ class BackgroundRepository extends ServiceEntityRepository
         parent::__construct($registry, Background::class);
     }
 
-    // /**
-    //  * @return Background[] Returns an array of Background objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findByCriteria(array $criteria)
     {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('b.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $query = $this->createQueryBuilder('b')
+          ->where('1 = 1');
 
-    /*
-    public function findOneBySomeField($value): ?Background
-    {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
+        if (isset($criteria['selection'])) {
+            $query->andWhere('b.selection = 1');
+        }
+
+        if (isset($criteria['image'])) {
+            $query->andWhere('b.color is NULL')
+              ->andWhere('b.css is NULL');
+        }
+        elseif (isset($criteria['color'])) {
+
+        }
+
+        return $query->orderBy('b.id', 'ASC')
+            ->setMaxResults($criteria['limit'] ?? 100)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getResult();
     }
-    */
+
 }
