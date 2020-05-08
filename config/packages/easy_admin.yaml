@@ -21,6 +21,7 @@ easy_admin:
                     - nationality
                     - description
                     - biography
+                    - friends
         Background:
             class: App\Entity\Background
 

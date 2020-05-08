@@ -57,6 +57,14 @@
             height: 90px;
             outline: 0;
             display: inline-block;
+            div {
+                height: 90px;
+                position: relative;
+                img {
+                    position: absolute;
+                    bottom: 4px;
+                }
+            }
         }
 
         .slider-navigation-next,

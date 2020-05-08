@@ -79,10 +79,22 @@ class Persona
      */
     private $alias;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Persona", inversedBy="personas")
+     */
+    private $friends;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Persona", mappedBy="friends")
+     */
+    private $personas;
+
     public function __construct()
     {
         $this->dateCreation = new \DateTime();
         $this->users = new ArrayCollection();
+        $this->friends = new ArrayCollection();
+        $this->personas = new ArrayCollection();
     }
 
     public function __toString()
@@ -290,6 +302,60 @@ class Persona
     public function setAlias(string $alias): self
     {
         $this->alias = $alias;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|self[]
+     */
+    public function getFriends(): Collection
+    {
+        return $this->friends;
+    }
+
+    public function addFriend(self $friend): self
+    {
+        if (!$this->friends->contains($friend)) {
+            $this->friends[] = $friend;
+        }
+
+        return $this;
+    }
+
+    public function removeFriend(self $friend): self
+    {
+        if ($this->friends->contains($friend)) {
+            $this->friends->removeElement($friend);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|self[]
+     */
+    public function getPersonas(): Collection
+    {
+        return $this->personas;
+    }
+
+    public function addPersona(self $persona): self
+    {
+        if (!$this->personas->contains($persona)) {
+            $this->personas[] = $persona;
+            $persona->addFriend($this);
+        }
+
+        return $this;
+    }
+
+    public function removePersona(self $persona): self
+    {
+        if ($this->personas->contains($persona)) {
+            $this->personas->removeElement($persona);
+            $persona->removeFriend($this);
+        }
 
         return $this;
     }

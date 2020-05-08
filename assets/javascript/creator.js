@@ -24,11 +24,11 @@ jQuery(document).ready(function () {
         $('#actionsBg').addClass('is-hidden');
 
         bulmaCarousel.attach('#sliderColor', {
-            slidesToScroll: 2,
-            slidesToShow: 6,
-            infinite: false,
+            slidesToScroll: 5,
+            slidesToShow: 7,
+            infinite: true,
             pagination: false,
-            breakpoints: [{ changePoint: 480, slidesToShow: 3, slidesToScroll: 2 }, { changePoint: 768, slidesToShow: 4, slidesToScroll: 3 } ]
+            breakpoints: [{ changePoint: 480, slidesToShow: 6, slidesToScroll: 4 }, { changePoint: 768, slidesToShow: 4, slidesToScroll: 3 } ]
         });
         $('#actionsColor').addClass('is-hidden');
     }
