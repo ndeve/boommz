@@ -25,7 +25,7 @@ jQuery(document).ready(function () {
 
         bulmaCarousel.attach('#sliderColor', {
             slidesToScroll: 5,
-            slidesToShow: 7,
+            slidesToShow: 8,
             infinite: true,
             pagination: false,
             breakpoints: [{ changePoint: 480, slidesToShow: 6, slidesToScroll: 4 }, { changePoint: 768, slidesToShow: 4, slidesToScroll: 3 } ]
