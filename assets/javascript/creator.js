@@ -39,6 +39,13 @@ jQuery(document).ready(function () {
         });
     }
 
+    if ($('textarea').length) {
+        $('textarea').each(function () {
+            $(this).css('height', 'auto');
+            $(this).css('height', this.scrollHeight + 'px');
+        });
+    }
+
     var nbCarMax = 130,
         size = {
             'prefix': 'is-',
