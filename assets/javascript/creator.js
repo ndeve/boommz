@@ -90,14 +90,13 @@ jQuery(document).ready(function () {
         e.stopPropagation();
     });
 
-    $(document).on('click', '#upBubble', function () {
-        var up = parseInt(($('.bubble.on').attr('data-up') == '') ? 0 :  $('.bubble.on').attr('data-up'));
+    $(document).on('click', '#levelBubble', function () {
+        var lv = parseInt($('.bubble.on input.lv').val()),
+            lv = (lv+1 >= 4) ? 0 : lv+1;
 
-        up = (up+1 >= 4) ? 0 : up+1;
+        $('.bubble.on').removeClass('lv-0 lv-1 lv-2 lv-3').addClass('lv-'+ lv);
 
-        $('.bubble.on').attr('data-up', up);
-        $('.bubble.on').removeClass('up-0 up-1 up-2 up-3').addClass('up-'+ up);
-
+        $('.bubble.on input.lv').val(lv);
     });
 
     $(document).on('click', '#styleBubble', function () {

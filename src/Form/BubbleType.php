@@ -25,7 +25,7 @@ class BubbleType extends AbstractType
           ->add('persona', HiddenType::class, ['empty_data' => 2105])
           ->add('x', HiddenType::class, ['empty_data' => 0])
           ->add('y', HiddenType::class, ['empty_data' => 0])
-          ->add('orientation', HiddenType::class, ['empty_data' => 0])
+          ->add('level', HiddenType::class, ['empty_data' => 0])
           ->add('style', HiddenType::class)
           ->get('persona')->addModelTransformer($this->transformer);
     }

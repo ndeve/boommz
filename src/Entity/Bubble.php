@@ -37,9 +37,9 @@ class Bubble
     private $dateCreation;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="integer")
      */
-    private $orientation = 1;
+    private $level = 0;
 
     /**
      * @ORM\Column(type="integer")
@@ -136,14 +136,14 @@ class Bubble
         return $this;
     }
 
-    public function getOrientation(): ?bool
+    public function getLevel(): ?int
     {
-        return $this->orientation;
+        return $this->level;
     }
 
-    public function setOrientation(bool $orientation): self
+    public function setLevel(int $level): self
     {
-        $this->orientation = $orientation;
+        $this->level = $level;
 
         return $this;
     }
@@ -220,6 +220,10 @@ class Bubble
             else if (30 <= $nbCar) {
                 $classes .= ' w-4';
             }
+        }
+
+        if ($this->getLevel()) {
+            $classes .= ' lv-'. $this->getLevel();
         }
 
         if ($this->order == '1') {

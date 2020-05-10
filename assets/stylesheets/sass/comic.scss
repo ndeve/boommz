@@ -150,7 +150,7 @@ section.author {
 
         &.w-4 {
             p {
-                width: 180px;
+                width: 220px;
             }
             &.left p {
                 left: 10px;
@@ -191,7 +191,7 @@ section.author {
             width: 42px;
         }
 
-        &.up-1 {
+        &.lv-1 {
             p {
                 bottom: 120px;
             }
@@ -205,7 +205,7 @@ section.author {
                 height: 60px;
             }
         }
-        &.up-2 {
+        &.lv-2 {
             p {
                 bottom: 140px;
             }
@@ -219,7 +219,7 @@ section.author {
                 height: 80px;
             }
         }
-        &.up-2 {
+        &.lv-2 {
             p {
                 bottom: 160px;
             }
@@ -233,7 +233,7 @@ section.author {
                 height: 100px;
             }
         }
-        &.up-3 {
+        &.lv-3 {
             p {
                 bottom: 180px;
             }
@@ -293,15 +293,6 @@ section.author {
             }
         }
     }
-}
-.column div blockquote:first-child {
-    left: 0;
-}
-.column div blockquote.b-1 {
-    right: 33%;
-}
-.column div blockquote:last-child {
-    right: 0;
 }
 
 .comic-title {
