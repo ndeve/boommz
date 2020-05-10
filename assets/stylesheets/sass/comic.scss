@@ -166,10 +166,15 @@ section.author {
                 width: 280px;
             }
             &.left p {
-                left: -4px!important;
+                left: -4px;
             }
             &.right p {
-                right: -4px!important;
+                right: -4px;
+            }
+            &.p-2-4 {
+                &.right p {
+                    right: -125px!important;
+                }
             }
         }
 
