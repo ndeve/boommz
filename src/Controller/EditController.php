@@ -59,7 +59,7 @@ class EditController extends Controller
      */
     public function edit(Comic $comic, Request $request)
     {
-        if(!$this->isGranted('ROLE_ADMIN') && !$comic->getAuthor() || ($comic->getAuthor() && $comic->getAuthor()->getId() != $this->getUser()->getId())) {
+        if(!$this->isGranted('ROLE_ADMIN') && ($comic->getAuthor() != $this->getUser())) {
             return $this->redirect($this->generateUrl('comic', $comic->getRouteParams() ));
         }
 
