@@ -125,6 +125,10 @@ class Box
      */
     public function getBubbles(): Collection
     {
+        $i = 1;
+        foreach ($this->bubbles as &$bubble) {
+            $bubble->order = $i++;
+        }
         return $this->bubbles;
     }
 

@@ -206,24 +206,31 @@ class Bubble
         if ($this->getText()) {
             $nbCar = strlen(trim($this->getText()));
 
-            $classes .= 'bubble ' . ($this->getOrientation() ? 'left ' : 'right ') . ($this->getStyle() ?? '') . ' ';
+            $classes .= 'bubble ' . ($this->getStyle() ?? '');
 
             if (6 <= $nbCar && $nbCar < 10) {
-                $classes .= 'w-1';
+                $classes .= ' w-1';
             }
             else if (10 <= $nbCar && $nbCar < 20) {
-                $classes .= 'w-2';
+                $classes .= ' w-2';
             }
             else if (20 <= $nbCar && $nbCar < 30) {
-                $classes .= 'w-3';
+                $classes .= ' w-3';
             }
             else if (30 <= $nbCar) {
-                $classes .= 'w-4';
+                $classes .= ' w-4';
             }
-
-            $classes .= ' c-'. $nbCar;
         }
 
-        return $classes . ' b-'. $nbBubbles;
+        if ($this->order == '1') {
+            $classes .= ' left';
+        }
+        else {
+            $classes .= ' right';
+        }
+
+        $classes .= ' p-'. $this->order. '-'. $nbBubbles;
+
+        return $classes;
     }
 }
