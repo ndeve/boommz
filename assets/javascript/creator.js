@@ -112,7 +112,7 @@ jQuery(document).ready(function () {
         }
         else {
             $('.column.on').removeClass('lvl');
-            $('input.levelBox').val(0);
+            $('.column.on input.levelBox').val(0);
         }
 
         $('.bubble.on').removeClass('lv-0 lv-1 lv-2 lv-3').addClass('lv-'+ lv);
