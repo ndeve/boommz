@@ -159,6 +159,27 @@ section.author {
                 right: 10px;
             }
         }
+        &.p-1-1, &.w-5 {
+            p {
+                width: 220px;
+            }
+            &.left p {
+                left: 10px;
+            }
+            &.right p {
+                right: 10px;
+            }
+        }
+
+        &.p-1-1 {
+            left: 30%;
+            p {
+                width: 280px;
+            }
+            &.left p {
+                left: -50px;
+            }
+        }
 
         footer:after {
             content: '';
