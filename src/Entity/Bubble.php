@@ -217,8 +217,11 @@ class Bubble
             else if (20 <= $nbCar && $nbCar < 30) {
                 $classes .= ' w-3';
             }
-            else if (30 <= $nbCar) {
+            else if (30 <= $nbCar && $nbCar < 50) {
                 $classes .= ' w-4';
+            }
+            else if (50 <= $nbCar) {
+                $classes .= ' w-5';
             }
         }
 

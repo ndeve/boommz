@@ -194,10 +194,23 @@ jQuery(document).ready(function () {
         else if (30 <= nbCar && nbCar < 50) {
             classSize = 'w-4';
         }
+        else if (50 <= nbCar) {
+            classSize = 'w-5';
+        }
 
         $('.bubble.on').removeClass('w-1 w-2 w-3 w-4').addClass(classSize);
 
     });
+
+    function orderBubble() {
+        var nb = $('.column.on blockquote').length,
+            num = 1;
+
+        $('.column.on blockquote').each(function(){
+
+            $(this).removeClass('p-1-1 p-1-2 p-2-2 p-1-3 p-2-3 p-3-3 p-1-4 p-2-4 p-3-4 p-4-4 p-1-5 p-2-5 p-3-5 p-4-5 p-5-5').addClass('p-'+ (num++) +'-'+ nb);
+        });
+    }
 
     function addPersona(box) {
         var numBubble = box.find('div blockquote').length,
@@ -210,6 +223,7 @@ jQuery(document).ready(function () {
                 .replace(/__NUMPAGE__/g, numPage);
 
         box.children('div:first').append(formBubble);
+        orderBubble();
         selectBubble($('#comic_pages_'+ numPage +'_boxes_'+ numBox +'_bubbles_'+ numBubble));
     }
 
