@@ -1,6 +1,6 @@
 {% block bubble_widget %}
     <blockquote
-            class="{{ form.vars.value.classes }} {{ (form.vars.id == 'comic_pages_0_boxes_0_bubbles_0') ? 'on' : '' }}"
+            class="bubble {{ form.vars.value.classes }} {{ (form.vars.id == 'comic_pages_0_boxes_0_bubbles_0') ? 'on' : '' }}"
             id="{{ form.vars.id }}">
         <p>
             {{ form_widget(form.text,  { 'attr': { 'placeholder': 'Bla bla bla', 'rows': 1, 'data-min-rows': 1 }}) }}

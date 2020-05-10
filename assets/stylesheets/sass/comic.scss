@@ -269,6 +269,11 @@ section.author {
     }
 }
 
+@media screen and (min-width: $tablet) {
+     .column .ccolumn blockquote.bubble.sb p {
+         width: 200px;
+     }
+}
 
 .column div blockquote:first-child {
     left: 0;

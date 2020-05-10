@@ -217,8 +217,6 @@ class Bubble
             }
         }
 
-
-
         if ($this->order == '1') {
             $classes .= ' left';
         }
