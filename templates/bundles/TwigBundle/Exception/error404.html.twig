@@ -1,0 +1,36 @@
+{% extends "layout.html.twig" %}
+{% block title %}Toutes les BDs sont sur Boomz!{% endblock %}
+
+{% block breadcrumb %}
+    <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+        <ul>
+            <li>
+                <a href="{{ url('homepage') }}">
+                    <span class="icon is-small">{% include "/svg/home.html.twig" %}</span>
+                    <span>BOOMMZ!</span>
+                </a>
+            </li>
+            <li class="is-active" aria-current="page"><a href="#">{% trans %}Erreur : Page introuvable{% endtrans %}</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block body %}
+    <h1 class="title">Page introuvable</h1>
+    <section class="page comics">
+        <div class="columns is-multiline">
+
+            <div class="column cbox h-1">
+                <div style="background: #6d686d"
+                     class="ccolumn">
+                    <blockquote
+                            class="bubble yell alone w-4">
+                        <p>Circulez, y'a rien à voir !</p>
+                        <footer><img src="/persona/stars/didier-lallement.png" alt=""/></footer>
+                    </blockquote>
+                </div>
+            </div>
+
+        </div>
+    </section>
+{% endblock body %}

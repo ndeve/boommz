@@ -1,0 +1,36 @@
+{% extends "layout.html.twig" %}
+{% block title %}Toutes les BDs sont sur Boomz!{% endblock %}
+
+{% block breadcrumb %}
+    <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+        <ul>
+            <li>
+                <a href="{{ url('homepage') }}">
+                    <span class="icon is-small">{% include "/svg/home.html.twig" %}</span>
+                    <span>BOOMMZ!</span>
+                </a>
+            </li>
+            <li class="is-active" aria-current="page"><a href="#">{% trans %}Boommz revient rapidement{% endtrans %}</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block body %}
+    <h1 class="title">Boommz! revient rapidement</h1>
+    <section class="page comics">
+        <div class="columns is-multiline">
+
+            <div class="column cbox h-1">
+                <div style="background: #cd8dca"
+                     class="ccolumn">
+                    <blockquote
+                            class="bubble alone w-4">
+                        <p>Patientez, patientez</p>
+                        <footer><img src="/persona/stars/mathieu-chedid-m.png" alt=""/></footer>
+                    </blockquote>
+                </div>
+            </div>
+
+        </div>
+    </section>
+{% endblock body %}
