@@ -141,40 +141,42 @@ section.author {
                 width: 180px;
             }
             &.left p {
-                left: 15px;
+                left: 15px!important;
             }
             &.right p {
-                right: 15px;
+                right: 15px!important;
             }
         }
 
         &.w-4 {
             p {
                 width: 220px;
+                font-size: 1.3rem;
             }
             &.left p {
-                left: 10px;
+                left: 10px!important;
             }
             &.right p {
-                right: 10px;
+                right: 10px!important;
             }
         }
         &.p-1-1, &.w-5 {
             p {
-                width: 220px;
+                font-size: 1.2rem;
+                width: 280px;
             }
             &.left p {
-                left: 10px;
+                left: -4px!important;
             }
             &.right p {
-                right: 10px;
+                right: -4px!important;
             }
         }
 
         &.p-1-1 {
             left: 30%;
             p {
-                width: 280px;
+                width: 260px;
             }
             &.left p {
                 left: -50px!important;
