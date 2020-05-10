@@ -59,11 +59,11 @@ class EditController extends Controller
      */
     public function edit(Comic $comic, Request $request)
     {
-        $entityManager = $this->getDoctrine()->getManager();
-
-        if(!$comic->getAuthor() || ($comic->getAuthor() && $comic->getAuthor()->getId() != $this->getUser()->getId())) {
+        if(!$this->isGranted('ROLE_ADMIN') && !$comic->getAuthor() || ($comic->getAuthor() && $comic->getAuthor()->getId() != $this->getUser()->getId())) {
             return $this->redirect($this->generateUrl('comic', $comic->getRouteParams() ));
         }
+
+        $entityManager = $this->getDoctrine()->getManager();
 
         $originalPages = new ArrayCollection();
         $originalBoxes = new ArrayCollection();
