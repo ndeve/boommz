@@ -295,6 +295,15 @@ section.author {
     }
 }
 
+
+.column div blockquote:first-child {
+    left: 0;
+}
+.column div blockquote:last-child {
+    right: 0;
+}
+
+
 .comic-title {
     display:flex;
     position: absolute;
