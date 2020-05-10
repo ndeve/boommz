@@ -1,5 +1,5 @@
 {% block box_row %}
-    <div class="column writable cbox is-{{ form.vars.value.size ?? 'one-third' }} h-{{ form.vars.value.height ?? '1' }} {{ ('comic_pages_0_boxes_0' == form.vars.id) ? 'on' : '' }}"
+    <div class="column writable cbox is-{{ form.vars.value.size ?? 'one-third' }} {{ form.vars.value.level ? 'level':'' }} h-{{ form.vars.value.height ?? '1' }} {{ ('comic_pages_0_boxes_0' == form.vars.id) ? 'on' : '' }}"
          id="{{ form.vars.id }}">
         <div class="ccolumn"{% if form.vars.value.background %} style="{% if form.vars.value.background.color %}background: #{{ form.vars.value.background.color }}{% else %}background-image: url({{ form.vars.value.background.url }}){% endif %}"{% endif %}>
             {% if form.vars.value.clone is defined %}
