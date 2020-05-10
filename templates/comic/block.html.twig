@@ -7,7 +7,7 @@
                 <blockquote
                         class="{{ bubble.classes }} b-{{ loop.index0 }}"
                         style="{{ bubble.x ? 'botttom:' ~ bubble.y ~ 'px;' : '' }}{{ bubble.y ? 'left:' ~ bubble.x ~ 'px' : '' }}">
-                    {{ bubble.text }}
+                    <p>{{ bubble.text }}</p>
                     {% if bubble.persona %}
                         <footer><img src="{{ bubble.persona.url }}" alt="{{ bubble.persona.name }}"/>
                         </footer>

@@ -12,16 +12,23 @@
     border-radius: 7px;
     display: inline-block;
     height: auto;
-    padding: 4px;
+    padding: 3px;
 
     .button {
         text-align: center;
-        width: 40px;
+        width: 38px;
 
         svg {
+            color: #7f9384;
             width: 22px;
             height: 22px;
             overflow: visible;
+        }
+
+        &.has-text-primary {
+            svg {
+                color: $green;
+            }
         }
     }
 }
@@ -142,29 +149,61 @@
         textarea {
             display: none;
         }
-    }
 
-    blockquote.bubble textarea {
-        border: 0;
-        display: block;
-        font-family: "Permanent Marker";
-        outline: none;
-        overflow: hidden;
-        resize: none;
-        text-align: center;
-        width: 100%;
+        &.bubble textarea {
+            border: 0;
+            display: block;
+            font-family: 'Caveat Brush', cursive;
+            font-size: 1.4rem;
+            line-height: 1;
+            outline: none;
+            overflow: hidden;
+            resize: none;
+            text-align: center;
+            width: 100%;
+
+            &:focus::placeholder {
+                color: transparent;
+            }
+        }
+
+        &.bubble.on {
+            p {
+                border-color: #7eb7a6;
+                z-index: 10;
+            }
+            footer {
+                &:after {
+                    background-image: url("../../images/bubble-edit.svg");
+                    z-index: 11;
+                }
+            }
+
+            &.think {
+                footer {
+                    &:after {
+                        background-image: url("../../images/bubble-think-edit.svg");
+                        z-index: 9;
+                    }
+                }
+            }
+
+            &.yell {
+                footer {
+                    &:after {
+                        background-image: url("../../images/bubble-yell-edit.svg");
+                    }
+                }
+            }
+        }
     }
 }
-.page.edit .column blockquote.bubble textarea:focus::placeholder {
-    color: transparent;
-}
+
 .bubble {
     z-index: auto;
 }
-.bubble.on {
-    border-color: #7eb7a6;
-    z-index: 10;
-}
+
+
 .bubble.on.left:before {
     box-shadow: -2px -2px 0 0 #7eb7a6 inset, -14px 0 0 0 #fff inset, -16px -2px 0 0 #7eb7a6 inset;
 }
@@ -191,14 +230,15 @@
 }
 
 #clone {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 30;
-    width: 220px;
-    bottom: 0;
-    padding: 20px;
     border: 5px solid #fff;
+    border-radius: 10px;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    padding: 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 220px;
+    z-index: 30;
 }

@@ -220,7 +220,8 @@ class Comic
 
     public function getRewritten()
     {
-        return Transliterator::urlize($this->getTitle());
+        $rewritten = Transliterator::urlize($this->getTitle());
+        return  $rewritten ? $rewritten : 'bd';
     }
 
     public function getRouteName()

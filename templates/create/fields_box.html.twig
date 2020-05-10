@@ -18,33 +18,33 @@
             <div id="actions">
                 <div id="actionsBox" class="actions">
                     <div class="button is-light" title="{% trans %}Changer de décor{% endtrans %}" id="displayBackground">
-                        {% include "/svg/decor.html.twig" %}
+                        {% include "/svg/decor.svg.twig" %}
                     </div>
                     <div class="button is-light is-hidden" title="{% trans %}Changer de couleur{% endtrans %}" id="displayColor">
-                        {% include "/svg/color.html.twig" %}
+                        {% include "/svg/color.svg.twig" %}
                     </div>
-                    <div class="button is-light" title="{% trans %}Ajouter un personnage{% endtrans %}" id="addPersona">
-                        {% include "/svg/persona_add.html.twig" %}
+                    <div class="button is-light" title="{% trans %}Ajouter une bulle{% endtrans %}" id="addPersona">
+                        {% include "/svg/bubble_add.svg.twig" %}
                     </div>
-                </div>
-
-                <div id="actionsBubble" class="actions">
+                    <div class="button is-light" title="{% trans %}Supprimer la bulle{% endtrans %}" id="removeBubble">
+                        {% include "/svg/bubble_remove.svg.twig" %}
+                    </div>
                     <div class="button is-light" title="{% trans %}Changer de style de la bulle ou la cacher{% endtrans %}" id="styleBubble">
-                        {% include "/svg/bubble_style.html.twig" %}
+                        {% include "/svg/bubble_style.svg.twig" %}
                     </div>
-                    <div class="button is-light" title="{% trans %}Supprimer le personnage{% endtrans %}" id="removeBubble">
-                        {% include "/svg/persona_remove.html.twig" %}
+                    <div class="button is-light" title="{% trans %}ee{% endtrans %}" id="upBubble">
+                        {% include "/svg/bubble_up.svg.twig" %}
                     </div>
                 </div>
 
                 <div id="actionsLine" class="actions">
                     <div class="button is-light" title="{% trans %}Supprimer cette case{% endtrans %}" id="removeBox"
                          data-box-form="">
-                        {% include "/svg/delete.html.twig" %}
+                        {% include "/svg/delete.svg.twig" %}
                     </div>
                     <div class="button is-light" title="{% trans %}Ajouter une case{% endtrans %}" id="addBox"
                          data-box-form="">
-                        {% include "/svg/box_add.html.twig" %}
+                        {% include "/svg/box_add.svg.twig" %}
                     </div>
                 </div>
             </div>

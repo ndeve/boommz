@@ -90,6 +90,16 @@ jQuery(document).ready(function () {
         e.stopPropagation();
     });
 
+    $(document).on('click', '#upBubble', function () {
+        var up = parseInt(($('.bubble.on').attr('data-up') == '') ? 0 :  $('.bubble.on').attr('data-up'));
+
+        up = (up+1 >= 4) ? 0 : up+1;
+
+        $('.bubble.on').attr('data-up', up);
+        $('.bubble.on').removeClass('up-0 up-1 up-2 up-3').addClass('up-'+ up);
+
+    });
+
     $(document).on('click', '#styleBubble', function () {
         var style = '';
         if ($('blockquote.on').hasClass('think')) {
@@ -109,6 +119,7 @@ jQuery(document).ready(function () {
             $('blockquote.on').addClass('think');
             style = 'think';
         }
+
         $('#' + $('blockquote.on').attr('id') + '_style').val(style);
     });
 
@@ -157,29 +168,35 @@ jQuery(document).ready(function () {
     });
 
     $(document).on('keydown', 'textarea', function () {
+        var max = 0;
+
+        if ($(this).parent().parent().attr('data-order') == '') {
+            $('.column.on blockquote.bubble').each(function () {
+                if (max < $(this).attr('data-order')) {
+                    max = $(this).attr('data-order');
+                }
+            });
+            $(this).parent().parent().attr('data-order', parseInt(max) + 1);
+        }
+
+        //if ($(this).parent())
         var nbCar = $(this).val().length,
-            perc = nbCar / nbCarMax,
             classSize = '';
 
-        if (nbCar <= 30) {
-            classSize = 'fs-s7';
+        if (6 <= nbCar && nbCar < 10) {
+            classSize = 'w-1';
         }
-        else if (30 < nbCar && nbCar <= 45) {
-            classSize = 'fs-s6';
+        else if (10 <= nbCar && nbCar < 20) {
+            classSize = 'w-2';
         }
-        else if (45 < nbCar && nbCar <= 60) {
-            classSize = 'fs-s3';
+        else if (20 <= nbCar && nbCar < 30) {
+            classSize = 'w-3';
         }
-        else if (60 < nbCar && nbCar <= 90) {
-            classSize = 'fs-s2';
+        else if (30 <= nbCar && nbCar < 50) {
+            classSize = 'w-4';
         }
-        else if (90 < nbCar && nbCar <= 100) {
-            classSize = 'fs-s1';
-        }
-        else if (100 < nbCar) {
-            classSize = 'fs-s0';
-        }
-        $(this).removeClass('fs-s0 fs-s1 fs-s2 fs-s3 fs-s4 fs-s5 fs-s6 fs-s7').addClass(classSize);//.attr('data-height-row', 14);
+
+        $('.bubble.on').removeClass('w-1 w-2 w-3 w-4').addClass(classSize);
 
     });
 
@@ -218,7 +235,7 @@ jQuery(document).ready(function () {
         $('blockquote').removeClass('on');
         bubble.addClass('on');
 
-        bubble.children('textarea').focus();
+        bubble.find('textarea').focus();
         if (bubble.hasClass('bubble')) {
             $('#addBubble').addClass('is-hidden');
             $('#removeBubble').removeClass('is-hidden');
@@ -226,33 +243,6 @@ jQuery(document).ready(function () {
             $('#addBubble').removeClass('is-hidden');
             $('#removeBubble').addClass('is-hidden');
         }
-    }
-
-    function resizeBox(box, size, newValue) {
-        var ok = 0,
-            formId = box.attr('id');
-
-        if (!newValue) {
-            size.values.forEach(value => {
-                if (ok == 1) {
-                    newValue = value;
-                    ok = 'end';
-                }
-                if (box.hasClass(size.prefix + value) && ok == 0) {
-                    ok = 1;
-                }
-            });
-            if (ok != 'end') {
-                newValue = size.values[0];
-            }
-        }
-
-        size.values.forEach(value => {
-            box.removeClass(size.prefix + value);
-        });
-
-        box.addClass(size.prefix + newValue);
-        $('#' + formId + '_' + size.key).val(newValue);
     }
 
     function orderBox() {
