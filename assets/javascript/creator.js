@@ -107,7 +107,7 @@ jQuery(document).ready(function () {
 
         if (lv > 0) {
             $('.column.on').addClass('lvl');
-            $('input.levelBox').val('1');
+            $('.column.on input.levelBox').val('1');
             autoHeight();
         }
         else {
