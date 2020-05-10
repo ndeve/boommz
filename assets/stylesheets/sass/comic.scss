@@ -120,10 +120,10 @@ section.author {
                 width: 160px;
             }
             &.left p {
-                left: 10px;
+                left: 5px;
             }
             &.right p {
-                right: 10px;
+                right: 5px;
             }
         }
 
@@ -167,7 +167,7 @@ section.author {
 
         &.lv-1 {
             p {
-                bottom: 120px;
+                bottom: 135px;
             }
             &.left p {
                 left: 25px;
@@ -176,12 +176,12 @@ section.author {
                 right: 25px;
             }
             footer:after {
-                height: 60px;
+                height: 75px;
             }
         }
         &.lv-2 {
             p {
-                bottom: 140px;
+                bottom: 165px;
             }
             &.left p {
                 left: 20px;
@@ -190,26 +190,12 @@ section.author {
                 right: 20px;
             }
             footer:after {
-                height: 80px;
-            }
-        }
-        &.lv-2 {
-            p {
-                bottom: 160px;
-            }
-            &.left p {
-                left: 15px;
-            }
-            &.right p {
-                right: 15px;
-            }
-            footer:after {
-                height: 100px;
+                height: 105px;
             }
         }
         &.lv-3 {
             p {
-                bottom: 180px;
+                bottom: 195px;
             }
             &.left p {
                 left: 10px;
@@ -218,7 +204,7 @@ section.author {
                 right: 10px;
             }
             footer:after {
-                height: 120px;
+                height: 135px;
             }
         }
 
@@ -265,6 +251,13 @@ section.author {
                     transform: scaleX(-1);
                 }
             }
+        }
+    }
+}
+.column.lvl .ccolumn blockquote {
+    &.bubble {
+        p {
+            width: 300px;
         }
     }
 }

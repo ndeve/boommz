@@ -58,6 +58,11 @@ class Box
      */
     private $author;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $level = 0;
+
     public function __construct()
     {
         $this->dateCreation = new \DateTime();
@@ -256,6 +261,18 @@ class Box
     public function setAuthor(?User $author): self
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+    public function getLevel(): ?bool
+    {
+        return $this->level;
+    }
+
+    public function setLevel(?bool $level): self
+    {
+        $this->level = $level;
 
         return $this;
     }

@@ -40,6 +40,10 @@ jQuery(document).ready(function () {
     }
 
     if ($('textarea').length) {
+        autoHeight()
+    }
+
+    function autoHeight() {
         $('textarea').each(function () {
             $(this).css('height', 'auto');
             $(this).css('height', this.scrollHeight + 'px');
@@ -100,6 +104,16 @@ jQuery(document).ready(function () {
     $(document).on('click', '#levelBubble', function () {
         var lv = parseInt($('.bubble.on input.lv').val()),
             lv = (lv+1 >= 4) ? 0 : lv+1;
+
+        if (lv > 0) {
+            $('.column.on').addClass('lvl');
+            $('input.levelBox').val('1');
+            autoHeight();
+        }
+        else {
+            $('.column.on').removeClass('lvl');
+            $('input.levelBox').val(0);
+        }
 
         $('.bubble.on').removeClass('lv-0 lv-1 lv-2 lv-3').addClass('lv-'+ lv);
 
@@ -185,12 +199,9 @@ jQuery(document).ready(function () {
             $(this).parent().parent().attr('data-order', parseInt(max) + 1);
         }
 
-        //if ($(this).parent())
-        var nbCar = $(this).val().length,
-            classSize = '';
-
-        $('.bubble.on').removeClass('w-1 w-2 w-3 w-4').addClass('sb');
-
+        if (10 <= $(this).val().length) {
+            $('.bubble.on').addClass('sb');
+        }
     });
 
     function orderBubble() {
@@ -247,6 +258,7 @@ jQuery(document).ready(function () {
             $('#addBubble').removeClass('is-hidden');
             $('#removeBubble').addClass('is-hidden');
         }
+        autoHeight();
     }
 
     function orderBox() {

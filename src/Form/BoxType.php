@@ -29,6 +29,7 @@ class BoxType extends AbstractType
           ->add('size', HiddenType::class, ['empty_data' => 'one-third'])
           ->add('height', HiddenType::class, ['empty_data' => '1'])
           ->add('background', HiddenType::class)
+          ->add('level', HiddenType::class)
           ->add('bubbles', CollectionType::class, [
             'entry_type' => BubbleType::class,
             'entry_options' => ['label' => false],
