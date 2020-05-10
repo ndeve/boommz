@@ -268,13 +268,9 @@ section.author {
          width: 200px;
      }
 
-    .column.lvl .ccolumn blockquote {
-        &.bubble {
-            p {
-                width: 300px;
-                font-size: 1.2rem;
-            }
-        }
+    .column.lvl .ccolumn blockquote.bubble.sb p {
+        width: 300px;
+        font-size: 1.2rem;
     }
 }
 
