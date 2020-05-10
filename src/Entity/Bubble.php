@@ -208,26 +208,22 @@ class Bubble
 
             $classes .= 'bubble ' . ($this->getStyle() ?? '');
 
-            if (6 <= $nbCar && $nbCar < 10) {
-                $classes .= ' w-1';
+            if ($this->getLevel()) {
+                $classes .= ' w-5 lv-'. $this->getLevel();
+
             }
-            else if (10 <= $nbCar && $nbCar < 20) {
+            else {
                 $classes .= ' w-2';
             }
-            else if (20 <= $nbCar && $nbCar < 30) {
-                $classes .= ' w-3';
-            }
-            else if (30 <= $nbCar && $nbCar < 50) {
-                $classes .= ' w-4';
+            if (6 <= $nbCar && $nbCar < 50) {
+                $classes .= ' w-2';
             }
             else if (50 <= $nbCar) {
                 $classes .= ' w-5';
             }
         }
 
-        if ($this->getLevel()) {
-            $classes .= ' lv-'. $this->getLevel();
-        }
+
 
         if ($this->order == '1') {
             $classes .= ' left';
