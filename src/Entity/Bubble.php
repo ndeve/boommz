@@ -213,13 +213,7 @@ class Bubble
 
             }
             else {
-                $classes .= ' w-2';
-            }
-            if (6 <= $nbCar && $nbCar < 50) {
-                $classes .= ' w-2';
-            }
-            else if (50 <= $nbCar) {
-                $classes .= ' w-5';
+                $classes .= ' sb';
             }
         }
 

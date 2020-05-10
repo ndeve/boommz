@@ -189,23 +189,7 @@ jQuery(document).ready(function () {
         var nbCar = $(this).val().length,
             classSize = '';
 
-        if (6 <= nbCar && nbCar < 10) {
-            classSize = 'w-1';
-        }
-        else if (10 <= nbCar && nbCar < 20) {
-            classSize = 'w-2';
-        }
-        else if (20 <= nbCar && nbCar < 30) {
-            classSize = 'w-3';
-        }
-        else if (30 <= nbCar && nbCar < 50) {
-            classSize = 'w-4';
-        }
-        else if (50 <= nbCar) {
-            classSize = 'w-5';
-        }
-
-        $('.bubble.on').removeClass('w-1 w-2 w-3 w-4').addClass(classSize);
+        $('.bubble.on').removeClass('w-1 w-2 w-3 w-4').addClass('sb');
 
     });
 

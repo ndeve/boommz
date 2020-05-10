@@ -108,22 +108,22 @@ section.author {
             bottom: 95px;
             display: block;
             font-family: 'Caveat Brush', cursive;
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             line-height: 1;
             padding: 3px;
             position: absolute;
             text-align: center;
             width: 100px;
         }
-        &.w-2 {
+        &.sb {
             p {
-                width: 150px;
+                width: 160px;
             }
             &.left p {
-                left: 20px;
+                left: 10px;
             }
             &.right p {
-                right: 20px;
+                right: 10px;
             }
         }
 
