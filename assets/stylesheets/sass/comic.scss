@@ -254,18 +254,20 @@ section.author {
         }
     }
 }
-.column.lvl .ccolumn blockquote {
-    &.bubble {
-        p {
-            width: 300px;
-        }
-    }
-}
+
 
 @media screen and (min-width: $tablet) {
      .column .ccolumn blockquote.bubble.sb p {
          width: 200px;
      }
+}
+
+.column.lvl .ccolumn blockquote {
+    &.bubble {
+        p {
+            width: 280px;
+        }
+    }
 }
 
 .column div blockquote:first-child {
