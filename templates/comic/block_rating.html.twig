@@ -1,4 +1,4 @@
-<div>
+<div class="container">
     <div class="brate average">
         <div class="rating is-block-touch" data-rate="{{ comic.averageRate }}"></div>
         <b>{{ comic.averageRate }}</b>
@@ -11,7 +11,7 @@
 
     {% if comic.id %}
         <a href="https://boommz.com/{{ comic.urlScreen }}{{ comic.rewritten }}-{{ comic.id }}.png" target="_blank" class="button is-primary is-outlined is-small">
-            Partage l'aperçu !
+            Partage !
         </a>
     {% endif %}
 
