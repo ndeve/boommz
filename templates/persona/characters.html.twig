@@ -10,16 +10,21 @@
                     <span>BOOMMZ!</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ url('charactes') }}">{% trans %}Tous les persos{% endtrans %}</a>
+            </li>
             <li class="is-active" aria-current="page"><a href="#">{% trans %}Tous les persos{% endtrans %}</a></li>
         </ul>
     </nav>
 {% endblock %}
 
 {% block body %}
-    <h1 class="title">Tous les persos</h1>
-    {% for persona in personas %}
-        <a href="{% if persona.routeParams %}{{ url('boommzer', persona.routeParams) }}{% endif %}">
-            <img src="{{ persona.url }}" title="{{ persona.name }}" alt="{{ persona.name }}" />
-        </a>
-    {% endfor %}
+    <h1 class="title is-size-4 title-gold">Tous les persos</h1>
+    <div class="content">
+        {% for persona in personas %}
+            <a href="{% if persona.routeParams %}{{ url('boommzer', persona.routeParams) }}{% endif %}">
+                <img src="{{ persona.url }}" title="{{ persona.name }}" alt="{{ persona.name }}" />
+            </a>
+        {% endfor %}
+    </div>
 {% endblock body %}

@@ -9,6 +9,7 @@ use App\Entity\Page;
 use App\Form\ComicType;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -82,9 +83,19 @@ class EditController extends Controller
         }
 
         $form = $this->createForm(ComicType::class, $comic);
+        $form->add('publish', SubmitType::class)
+          ->add('draft', SubmitType::class);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            if ($form->get('publish')->isClicked()) {
+                $comic->setDatePublication(new \DateTime());
+            }
+            else if ($form->get('draft')->isClicked()) {
+                $comic->setDatePublication(null);
+            }
 
             $finalPages = new ArrayCollection();
             $finalBoxes = new ArrayCollection();

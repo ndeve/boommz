@@ -1,4 +1,19 @@
 jQuery(document).ready(function () {
+    var persona = $('#persona_creator_persona').val();
+
+    if (persona) {
+        var color = parseInt(persona.slice(-8, -4)),
+            sex = persona.slice(17, 18);
+
+        $('.sex').removeClass('on');
+        $('.sex.'+ sex).addClass('on');
+
+
+        setColor(color);
+
+        reloadPersona();
+    }
+
     $('.actions-main .plus').on('click', function () {
         $('.actions-main').addClass('is-hidden');
         $('.actions-main.'+ $(this).attr('data-sect')).removeClass('is-hidden');
@@ -22,13 +37,18 @@ jQuery(document).ready(function () {
         $('.actionsg.colors').removeClass('is-hidden');
     });
 
-    $('.color').on('click', function () {
-        var color = $(this).attr('data-color');
-        $('.actions-main .color div').attr('class', 'color-'+ color).parent().attr('data-color', color);
-        $('.actionsg .color').removeClass('on');
-        $(this).addClass('on');
+    $('.color').on('click', function (e) {
+        e.stopPropagation();
+
+        setColor($(this).attr('data-color'));
         reloadPersona();
     });
+
+    function setColor(color) {
+        $('.actions-main .color div').attr('class', 'color-'+ color).parent().attr('data-color', color);
+        $('.actionsg .color').removeClass('on');
+        $('.color[data-color="'+ color +'"]').addClass('on');
+    }
 
     $('.sex').on('click', function () {
         $('.sex').removeClass('on');
@@ -63,7 +83,9 @@ jQuery(document).ready(function () {
             $('.actionsg.'+ type).append(html);
         }
 
-        var id = (sect == 'head' && type != 'hat') ? '0002' : '0000';
+        var id = $('#persona_creator_' + type).val(),
+            id = id ? id : ((sect == 'head' && type != 'hat') ? '0002' : '0000');
+
         $('#persona_creator_' + type).val(id);
         $('#persona').append('<img src="' + $(this).attr('data-src').replace(/ID/g, id) + '" class="' + type + '"/>');
 
@@ -77,10 +99,13 @@ jQuery(document).ready(function () {
     });
 
     $(document).on('click', '.actionsg .button', function () {
+        if ($(this).hasClass('color')) {
+            return;
+        }
         var type = '#persona .'+ $(this).attr('data-type'),
             id = $(this).attr('data-id'),
             src = $(type).attr('src').replace(/\d+/g, id);
-
+console.log(id);
         $(type).attr('src', src);
         $('#persona_creator_'+ $(this).attr('data-type')).val(id);
     })

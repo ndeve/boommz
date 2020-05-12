@@ -6,7 +6,7 @@
 
     {{ form_start(form) }}
 
-    <h1 class="title">
+    <h1 class="title is-size-4 title-gold">
         {% if comicContest is defined %}
             {{ comicContest.title }}
 
@@ -55,7 +55,10 @@
 
     <div class="field is-grouped is-grouped-centered">
         <div class="control">
-            <input type="submit" class="button is-primary is-large" value="{% trans %}C'est parti !{% endtrans %}">
+            {{ form_widget(form.publish, { 'label': "C'est parti !", 'attr': { 'class': 'button is-medium is-primary'}}) }}
+        </div>
+        <div class="control">
+            {{ form_widget(form.draft, { 'label': 'Brouillon', 'attr': { 'class': 'button is-medium has-text-grey is-light'}}) }}
         </div>
     </div>
 

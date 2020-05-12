@@ -1,5 +1,5 @@
 {% extends "layout.html.twig" %}
-{% block title %}Toutes les BDs sont sur Boomz!{% endblock %}
+{% block title %}Mes brouillons!{% endblock %}
 
 {% block breadcrumb %}
     <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
@@ -10,17 +10,17 @@
                     <span>BOOMMZ!</span>
                 </a>
             </li>
-            <li class="is-active" aria-current="page"><a href="#">{% trans %}Toutes les BDs{% endtrans %}</a></li>
+            <li class="is-active" aria-current="page"><a href="#">{% trans %}Mes brouillons{% endtrans %}</a></li>
         </ul>
     </nav>
 {% endblock %}
 
 {% block body %}
-    <h1 class="title">Toutes les BDs</h1>
+    <h1 class="title is-size-4 title-gold">Mes brouillons</h1>
     <section class="page comics">
         <div class="columns is-multiline">
             {% for comic in comics %}
-                {% include "comic/block.html.twig" with {'small': ((loop.index0 >2) ? 1 : 0), 'color': cycle(['odd', ''], loop.index0)} %}
+                {% include "comic/block.html.twig" with {'hiddenAuthor': 1, 'small': 1, 'color': cycle(['odd', ''], loop.index0)} %}
             {% endfor %}
         </div>
     </section>

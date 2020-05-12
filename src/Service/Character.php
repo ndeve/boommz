@@ -24,8 +24,11 @@ class Character {
         //fill the image with a transparent background
         imagefill($dest_img, 0, 0, $trans_background);
         $name = str_replace('/persona/creator/', '', $data['persona']);
-        $name = substr($name, 0, 1);
-        $dir = '';
+        $color = substr($name, -8, 4);
+
+        $name = substr($name, 0, 1) . $color .'-';
+
+        $dir = $color.'/';
         $img_bo = imagecreatefrompng(getcwd() . $data['persona']);
         imagecopy($dest_img, $img_bo, 0, 0, 0, 0, 35, 86);
         unset($data['persona']);
@@ -39,6 +42,7 @@ class Character {
             $name = $name . $value . '-';
                 $dir = $dir . $value . '/';
         }
+
         $name = substr($name, 0, -1);
         $dir = getcwd() .'/persona/creator/p/'. substr($dir, 0, 15);
 
@@ -63,8 +67,12 @@ class Character {
         //fill the image with a transparent background
         imagefill($dest_img, 0, 0, $trans_background);
 
-        $name = '';
-        $dir = '';
+        $name = str_replace('/persona/creator/', '', $data['persona']);
+        $color = substr($name, -8, 4);
+
+        $name = 'head-' . $color .'-';
+        $dir = $color .'/';
+
         $head = str_replace('women', 'head', $data['persona']);
         $head = str_replace('men', 'head', $head);
 
@@ -92,7 +100,7 @@ class Character {
         }
 
         //save the png image
-        imagepng($dest_img, $dir .'/head-'. $name .'.png');
+        imagepng($dest_img, $dir . $name .'.png');
 
         return $name;
     }

@@ -26,7 +26,10 @@ $info: $blue;
 
 $navbar-background-color: $green;
 $navbar-height: 3rem;
+$navbar-item-active-background-color: #fff;
 $navbar-item-img-max-height: 100%;
+$navbar-dropdown-boxed-radius: 0;
+$navbar-dropdown-offset: 0;
 
 $tabs-border-bottom-width: 0;
 
@@ -39,9 +42,7 @@ $star-color: $green;
 // Import only what you need from Bulma
 @import "../../bulma/bulma.sass";
 
-.navbar-item {
-  padding: 0px;
-}
+
 .tabbar {
   background-color: $green;
   background: linear-gradient(126deg, rgba(103,197,126,0.95) 36%, rgba(90,153,168,0.9) 100%);
@@ -76,35 +77,71 @@ $star-color: $green;
   border-bottom: 4px solid $green-darkest;
   margin-bottom: 10px;
 }
-.tabs li a {
-  border: 1px solid $green;
-  border-radius: 7px;
-  margin: 0 4px;
-}
-.tabs li.is-active a {
-  border: 1px solid #3ea556;
-  color: #4baf63;
-  background-color: #fff;
-}
-.tabs li a:hover {
-  background-color: $green-light;
-  border: solid 1px $green-dark;
-}
-.tabs li.is-active a {
-  background-color: $white;
+.navbar-brand .navbar-item {
+  padding: 0px;
 }
 
-.tabs li a.login {
-  background-color: $green-dark;
-  color: $white!important;
+.navbar-menu {
+  a.navbar-item {
+    border: 1px solid $green;
+    border-radius: 7px;
+    margin: 5px 3px;
+    padding: 0px 14px;
+
+    &.is-active {
+      border: 1px solid #3ea556;
+      color: #4baf63;
+    }
+
+    &:hover {
+      background-color: $green-light;
+      border: solid 1px $green-dark;
+      color: $green-darkest;
+    }
+
+    &.login {
+      background-color: $green-dark;
+      color: $white!important;
+    }
+
+    &.register {
+      background-color: $gold-darkest;
+      color: $white!important;
+      &:hover {
+        background-color: $gold-dark;
+      }
+    }
+  }
+
+  .navbar-link {
+    padding-left: 48px;
+
+    .circle {
+      padding: 0;
+      margin: 0;
+      position: absolute;
+      left: 0;
+      background: $gold-dark;
+      border-radius: 640px;
+      width: 43px;
+      height: 43px;
+      text-align: center;
+    }
+  }
+
+  .navbar-dropdown .navbar-item {
+    border: 0;
+    border-radius: 0;
+
+    &:hover {
+      background-color: $grey-lightest;
+      color: $grey-darker;
+      border: 0;
+      border-radius: 0;
+    }
+  }
 }
-.tabs li a.register {
-  background-color: $gold-darkest;
-  color: $white!important;
-}
-.tabs li a.register:hover {
-  background-color: $gold-dark;
-}
+
 
 .navbar-burger span {
   background-color: #fff;
@@ -236,5 +273,27 @@ $star-color: $green;
   border-bottom: 1px solid $green-lightest;
   a {
     color: $green;
+  }
+}
+
+.footer {
+  margin-top: 20px;
+}
+
+.draft {
+  background: $gold-light;
+}
+.odd.draft {
+  background: $gold-lightest;
+}
+
+button.is-gold {
+  background-color: $gold;
+  border-color: transparent;
+  color: #fff;
+  &:hover {
+    background-color: $gold-dark;
+    border-color: transparent;
+    color: #fff;
   }
 }

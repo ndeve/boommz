@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class CreateController extends Controller
 {
@@ -66,10 +67,19 @@ class CreateController extends Controller
         $comic->addPage($page);
 
         $form = $this->createForm(ComicType::class, $comic);
+        $form->add('publish', SubmitType::class)
+          ->add('draft', SubmitType::class);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            if ($form->get('publish')->isClicked()) {
+                $comic->setDatePublication(new \DateTime());
+            }
+            else if ($form->get('draft')->isClicked()) {
+                $comic->setDatePublication(null);
+            }
 
             $entityManager->persist($comic);
             $entityManager->flush();

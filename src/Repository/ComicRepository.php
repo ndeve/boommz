@@ -35,6 +35,18 @@ class ComicRepository extends ServiceEntityRepository
             $query->andWhere('c.selected = 1');
         }
 
+        if (isset($params['author'])) {
+            $query->andWhere('c.author = :author')
+                ->setParameter('author', $params['author']);
+        }
+
+        if (isset($params['draft'])) {
+            $query->andWhere('c.datePublication IS NULL');
+        }
+        else {
+            $query->andWhere('c.datePublication IS NOT NULL');
+        }
+
         return $query->getQuery()->getResult();
     }
 
@@ -50,16 +62,4 @@ class ComicRepository extends ServiceEntityRepository
           ->getQuery()
           ->getResult();
     }
-
-    /*
-    public function findOneBySomeField($value): ?Comic
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

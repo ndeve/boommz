@@ -56,6 +56,10 @@ class ComicController extends Controller
             return $this->redirect($this->generateUrl($comic->getRouteName(), $comic->getRouteParams() ));
         }
 
+        if (!$comic->getDatePublication() && $this->getUser() != $comic->getAuthor()) {
+            return $this->redirect($this->generateUrl('comics'));
+        }
+
         if ($this->getUser()) {
             $rate = $this->getDoctrine()->getManager()->getRepository('App:Rate')
               ->findOneByCriteria(['user' => $this->getUser(), 'comic' => $comic]);

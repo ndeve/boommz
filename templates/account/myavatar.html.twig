@@ -1,0 +1,40 @@
+{% extends "layout.html.twig" %}
+{% block title %}{% trans %}Mon avatar{% endtrans %} | Boomz!{% endblock %}
+
+{% block breadcrumb %}
+    <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+        <ul>
+            <li>
+                <a href="{{ url('homepage') }}">
+                    <span class="icon is-small">{% include "/svg/home.html.twig" %}</span>
+                    <span>BOOMMZ!</span>
+                </a>
+            </li>
+            <li class="is-active" aria-current="page"><a href="#">{% trans %}Mon avatar{% endtrans %}</a></li>
+
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block body %}
+    <h1 class="title is-size-4 title-gold">{% trans %}Modifier mon avatar{% endtrans %}</h1>
+
+    <div id="boommzcreator">
+        {{ form_start(form) }}
+
+        {% include "persona/form.html.twig" %}
+
+        <div class="field is-grouped is-grouped-centered">
+            <div class="control">
+                <button class="button is-primary is-clearfix is-medium">C'est mon avatar!</button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('persona') }}
+{% endblock javascripts %}

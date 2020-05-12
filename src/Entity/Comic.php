@@ -175,8 +175,8 @@ class Comic
         return $this->datePublication;
     }
 
-    public function setDatePublication(?\DateTimeInterface $datePublication
-    ): self {
+    public function setDatePublication(?\DateTimeInterface $datePublication): self
+    {
         $this->datePublication = $datePublication;
 
         return $this;

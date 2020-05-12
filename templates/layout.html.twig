@@ -54,32 +54,54 @@
             </div>
             <div id="navbarMenu" class="navbar-menu">
                 <div class="navbar-end">
-                    <div class="tabs is-right">
-                        <ul>
-                            <li {% if app.request.attributes.get('_route') == 'homepage' %} class="is-active"{% endif %}>
-                                <a href="{{ url('homepage') }}">Accueil</a></li>
-                            <li{% if  app.request.attributes.get('_route') == 'comics' or app.request.attributes.get('_route') == 'comic' %} class="is-active"{% endif %}>
-                                <a href="{{ url('comics') }}">{% trans %}Toutes les BDs{% endtrans %}</a></li>
-                            <li{% if  app.request.attributes.get('_route') == 'comic_create' %} class="is-active"{% endif %}>
-                                <a href="{{ url('comic_create') }}">{% trans %}Crée ta BD!{% endtrans %}</a></li>
-                            <li{% if  app.request.attributes.get('_route') == 'character_create' %} class="is-active"{% endif %}>
-                                <a href="{{ url('character_create') }}#boommzcreator">{% trans %}Crée tes persos{% endtrans %}</a>
-                            </li>
-                            {% if is_granted ( 'IS_AUTHENTICATED_REMEMBERED' ) %}
-                                <li>
-                                    {% trans with {'%username%': app.user.username} %}Bienvenue %username% !{% endtrans %}
-                                </li>
-                            {% else %}
-                                <li{% if  app.request.attributes.get('_route') == 'fos_user_security_login' %} class="is-active"{% endif %}>
-                                    <a href="{{ url('fos_user_security_login') }}"
-                                       class="login">{% trans %}S'identifier{% endtrans %}</a></li>
-                                <li{% if  app.request.attributes.get('_route') == 'app_register' %} class="is-active"{% endif %}>
-                                    <a href="{{ url('app_register') }}"
-                                       class="register">{% trans %}S'inscrire{% endtrans %}</a></li>
-                            {% endif %}
-                        </ul>
+                    <a href="{{ url('homepage') }}" class="navbar-item{% if app.request.attributes.get('_route') == 'homepage' %} is-active{% endif %}">
+                        {% trans %}Accueil{% endtrans %}
+                    </a>
+                    <a href="{{ url('comics') }}" class="navbar-item{% if  app.request.attributes.get('_route') == 'comics' or app.request.attributes.get('_route') == 'comic' %} is-active{% endif %}">
+                        {% trans %}Toutes les BDs{% endtrans %}
+                    </a>
+                    <a href="{{ url('comic_create') }}" class="navbar-item{% if  app.request.attributes.get('_route') == 'comic_create' %} is-active{% endif %}">
+                        {% trans %}Crée ta BD!{% endtrans %}
+                    </a>
+                    <a href="{{ url('character_create') }}#boommzcreator" class="navbar-item{% if  app.request.attributes.get('_route') == 'character_create' %} is-active{% endif %}">
+                        {% trans %}Crée tes persos{% endtrans %}
+                    </a>
+                    {% if is_granted ( 'IS_AUTHENTICATED_REMEMBERED' ) %}
+                        <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link" href="">
+                                <span class="circle">
+                                    <img src="{{ app.user.avatar.urlHead }}" alt="" />
+                                </span>
+                                 {{ app.user.username }}
+                            </a>
+                            <div class="navbar-dropdown is-boxed">
+                                <a class="navbar-item" href="{{ url('mycomics') }}">
+                                    {% trans %}Mes BDs{% endtrans %}
+                                </a>
+                                <a class="navbar-item" href="{{ url('mydrafts') }}">
+                                    Mes brouillons
+                                </a>
+                                <a class="navbar-item" href="{{ url('myavatar') }}">
+                                    Mon avatar
+                                </a>
+                                <a class="navbar-item" href="{{ url('character_create') }}">
+                                    Mes persos
+                                </a>{#
+                                <hr class="navbar-divider">
+                                <a class="navbar-item" href="https://bulma.io/documentation/elements/box/">
+                                    Elements
+                                </a>#}
+                            </div>
+                        </div>
+                    {% else %}
+                        <a href="{{ url('fos_user_security_login') }}" class="navbar-item login{% if  app.request.attributes.get('_route') == 'fos_user_security_login' %} is-active{% endif %}">
+                            {% trans %}S'identifier{% endtrans %}
+                        </a>
+                        <a href="{{ url('app_register') }}" class="navbar-item register{% if  app.request.attributes.get('_route') == 'app_register' %} is-active{% endif %}">
+                            {% trans %}S'inscrire{% endtrans %}
+                        </a>
+                    {% endif %}
                     </div>
-                </div>
             </div>
         </div>
     </nav>

@@ -20,7 +20,7 @@ class ComicsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $comics = $em->getRepository('App:Comic')->findByParams([]);
+        $comics = $em->getRepository('App:Comic')->findByParams(['publish' => true]);
 
         return [ 'comics' => $comics ];
     }

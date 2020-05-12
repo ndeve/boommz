@@ -81,23 +81,30 @@
         </section>
     {% endfor %}
 
-    {% include "comic/block_rating.html.twig" %}
-
-    <hr/>
-
-    {% include "comment/block_comments.html.twig" %}
-
-    {% if comic.author and comic.author.comics|length > 1 %}
-        <hr/>
-        <h2 class="title is-4 title-gold">Les autres BDs de {{ comic.author.username }}</h2>
-        <section class="page comics opacity">
-            <div class="columns is-multiline">
-                {% for item in comic.author.comics if item.id != comic.id %}
-                    {% include "comic/block.html.twig" with {'comic': item, 'small': 1, 'hiddenAuthor': 0} %}
-                {% endfor %}
+    {% if not(comic.datePublication) %}
+        <article class="message is-warning">
+            <div class="message-body">
+                Cette BD est toujours en brouillon, <a href="{{ url('comic_edit', comic.routeParams) }}"> édite-la ou publie-la !</a>
             </div>
-        </section>
-    {% endif %}
+        </article>
+    {% else %}
+        {% include "comic/block_rating.html.twig" %}
 
+        <hr/>
+
+        {% include "comment/block_comments.html.twig" %}
+
+        {% if comic.author and comic.author.comics|length > 1 %}
+            <hr/>
+            <h2 class="title is-4 title-gold">Les autres BDs de {{ comic.author.username }}</h2>
+            <section class="page comics opacity">
+                <div class="columns is-multiline">
+                    {% for item in comic.author.comics if item.id != comic.id %}
+                        {% include "comic/block.html.twig" with {'comic': item, 'small': 1, 'hiddenAuthor': 0} %}
+                    {% endfor %}
+                </div>
+            </section>
+        {% endif %}
+    {% endif %}
 
 {% endblock body %}

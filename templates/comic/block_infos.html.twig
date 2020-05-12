@@ -12,6 +12,6 @@
             <a href="{{ url('author', comic.author.routeParams) }}"
                class="has-text-dark is-size-6 is-marginless">{{ comic.author.username }}</a><br />
         {% endif %}
-        <span class="has-text-grey	is-size-7">{{ comic.dateCreation|localizeddate('long', 'short') }}</span>
+        <span class="has-text-grey	is-size-7">{{ comic.dateCreation|localizeddate('long', 'short') }}{% if not(comic.datePublication) %} | <b>Brouillon</b>{% endif %}</span>
     </div>
 </div>
