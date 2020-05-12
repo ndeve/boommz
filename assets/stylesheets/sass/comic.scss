@@ -168,6 +168,7 @@ section.author {
         &.lv-1 {
             p {
                 bottom: 135px;
+                z-index: 11;
             }
             &.left p {
                 left: 25px;
@@ -182,6 +183,7 @@ section.author {
         &.lv-2 {
             p {
                 bottom: 165px;
+                z-index: 12;
             }
             &.left p {
                 left: 20px;
@@ -196,6 +198,7 @@ section.author {
         &.lv-3 {
             p {
                 bottom: 195px;
+                z-index: 13;
             }
             &.left p {
                 left: 10px;
@@ -259,6 +262,7 @@ section.author {
         p {
             width: 280px;
             font-size: 1.2rem;
+            z-index: 10;
         }
     }
 }

@@ -84,9 +84,9 @@ class PersonaController extends Controller
         if ($persona) {
             $aPersona = explode('-', $persona->getPath());
 
-            $p = '/persona/creator/' . ((substr($aPersona[0], 0, 1) == 'm') ? 'men' : 'women') . '/' . substr($aPersona[0], 1) . '.png';
-
             if (count($aPersona) == 9) {
+                $p = '/persona/creator/' . ((substr($aPersona[0], 0, 1) == 'm') ? 'men' : 'women') . '/' . substr($aPersona[0], 1) . '.png';
+
                 $form->get('persona')->setData($p);
                 $form->get('eyes')->setData($aPersona[1]);
                 $form->get('nose')->setData($aPersona[2]);
