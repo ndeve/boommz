@@ -94,12 +94,12 @@
 
         {% include "comment/block_comments.html.twig" %}
 
-        {% if comic.author and comic.author.comics|length > 1 %}
+        {% if comic.author and comic.author.publicComics|length > 1 %}
             <hr/>
             <h2 class="title is-4 title-gold">Les autres BDs de {{ comic.author.username }}</h2>
             <section class="page comics opacity">
                 <div class="columns is-multiline">
-                    {% for item in comic.author.comics if item.id != comic.id %}
+                    {% for item in comic.author.publicComics if item.id != comic.id %}
                         {% include "comic/block.html.twig" with {'comic': item, 'small': 1, 'hiddenAuthor': 0} %}
                     {% endfor %}
                 </div>
