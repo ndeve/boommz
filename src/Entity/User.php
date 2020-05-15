@@ -75,6 +75,19 @@ class User extends BaseUser
         return $this->comics;
     }
 
+    public function getPublicComics(): Collection
+    {
+        $comics = new ArrayCollection();
+
+        foreach ($this->comics as $comic) {
+            if ($comic->getDatePublication()) {
+                $comics->add($comic);
+            }
+        }
+
+        return $comics;
+    }
+
     public function addComic(Comic $comic): self
     {
         if (!$this->comics->contains($comic)) {
