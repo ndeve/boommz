@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use PhpParser\Node\Scalar\String_;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -178,6 +179,15 @@ class User extends BaseUser
     public function getAvatar(): ?Persona
     {
         return $this->avatar;
+    }
+
+    public function getHeadAvatar(): String
+    {
+        if ($this->avatar) {
+            return $this->avatar->getUrlHead();
+        }
+
+        return '/persona/creator/p/0001/0000/0000/head-0001-0000-0000-0000-0000-0000-0000-0000.png';
     }
 
     public function setAvatar(?Persona $avatar): self
