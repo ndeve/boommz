@@ -38,8 +38,6 @@
         {{ form_widget(form.title, {'attr': {'class': 'input is-medium'}}) }}
     </div>
 
-
-
     {% for page in form.pages %}
         <section class="page edit" id="{{ page.vars.id }}">
             <div class="columns is-multiline" data-nbBox="">
@@ -57,9 +55,11 @@
         <div class="control">
             {{ form_widget(form.publish, { 'label': "C'est parti !", 'attr': { 'class': 'button is-medium is-primary'}}) }}
         </div>
+        {% if form.draft %}
         <div class="control">
             {{ form_widget(form.draft, { 'label': 'Brouillon', 'attr': { 'class': 'button is-medium has-text-grey is-light'}}) }}
         </div>
+        {% endif %}
     </div>
 
     <div id="actionsPersona" class="actions actionsSlider">

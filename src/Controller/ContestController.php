@@ -8,6 +8,7 @@ use App\Entity\Comic;
 use App\Entity\Page;
 use App\Form\ComicType;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -74,7 +75,6 @@ class ContestController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
 
         $comic = new Comic();
-
         $page = new Page();
 
         $nbBoxes = count($comicContest->getPages()[0]->getBoxes())-1;
@@ -92,6 +92,10 @@ class ContestController extends Controller
         }
 
         $form = $this->createForm(ComicType::class, $comic);
+
+        $form->add('publish', SubmitType::class)
+            ->add('draft', SubmitType::class);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
