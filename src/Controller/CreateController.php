@@ -91,7 +91,7 @@ class CreateController extends Controller
         return [
           'comic' => $comic,
           'form' => $form->createView(),
-          'personas' => $entityManager->getRepository('App:Persona')->findAllStars(),
+          'personas' => $entityManager->getRepository('App:Persona')->findByParams([ 'star' => 1]),
           'backgrounds' => $entityManager->getRepository('App:Background')->findByCriteria(['selection' => true, 'image' => true]),
           'colors' => $entityManager->getRepository('App:Background')->findByCriteria(['selection' => true, 'color' => true]),
         ];

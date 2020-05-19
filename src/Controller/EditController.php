@@ -137,7 +137,7 @@ class EditController extends Controller
         return $this->render('create/create.html.twig', [
           'comic' => $comic,
           'form' => $form->createView(),
-          'personas' => $entityManager->getRepository('App:Persona')->findBy(['path' => 'stars/']),
+          'personas' => $entityManager->getRepository('App:Persona')->findByParams(['star' => 1]),
           'backgrounds' => $entityManager->getRepository('App:Background')->findByCriteria(['selection' => true, 'image' => true]),
           'colors' => $entityManager->getRepository('App:Background')->findByCriteria(['selection' => true, 'color' => true]),        ]);
     }

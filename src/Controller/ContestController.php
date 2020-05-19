@@ -106,7 +106,7 @@ class ContestController extends Controller
           'comic' => $comic,
           'comicContest' => $comicContest,
           'form' => $form->createView(),
-          'personas' => $entityManager->getRepository('App:Persona')->findBy(['path' => 'stars/']),
+          'personas' => $entityManager->getRepository('App:Persona')->findByParams(['star' => 1]),
           'backgrounds' => $entityManager->getRepository('App:Background')->findBy(['selection' => true])
         ]);
     }
