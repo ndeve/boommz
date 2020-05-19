@@ -25,7 +25,9 @@ class PersonaRepository extends ServiceEntityRepository
 
         if (isset($params['star']) && $params['star']) {
             $query->andWhere('p.path = :path')
-                ->setParameter('path', 'stars/');
+                ->setParameter('path', 'stars/')
+                ->andWhere('p.public = 1');
+
         }
         elseif (isset($params['star']) && !$params['star']) {
             $query->andWhere('p.path != :path')
@@ -33,13 +35,6 @@ class PersonaRepository extends ServiceEntityRepository
             ->andWhere('p.name = :name')
                 ->setParameter('name', 'Name');
 
-        }
-
-        if (isset($params['public'])) {
-            $query->andWhere('p.path = :path')
-                ->setParameter('path', 'stars/')
-                ->orWhere('p.name = :name')
-                ->setParameter('name', 'Name');
         }
 
         $query->orderBy('p.category', 'asc')
