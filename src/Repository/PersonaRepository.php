@@ -19,42 +19,30 @@ class PersonaRepository extends ServiceEntityRepository
         parent::__construct($registry, Persona::class);
     }
 
-    public function findAllStars()
+    public function findByParams($params)
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.path = :path')
-            ->setParameter('path', 'stars/')
-            ->orderBy('p.category', 'asc')
+        $query = $this->createQueryBuilder('p');
+
+        if (isset($params['star']) && $params['star']) {
+            $query->andWhere('p.path = :path')
+                ->setParameter('path', 'stars/');
+        }
+        elseif (isset($params['star']) && !$params['star']) {
+            $query->andWhere('p.path != :path')
+                ->setParameter('path', 'stars/');
+        }
+
+        if (isset($params['public'])) {
+            $query->andWhere('p.path = :path')
+                ->setParameter('path', 'stars/')
+                ->orWhere('p.name = :name')
+                ->setParameter('name', 'Name');
+        }
+
+        $query->orderBy('p.category', 'asc')
             ->setMaxResults(1000)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
+            ->getQuery();
 
-    public function findAllPublic()
-    {
-        return $this->createQueryBuilder('p')
-          ->andWhere('p.path = :path')
-          ->setParameter('path', 'stars/')
-          ->orWhere('p.name = :name')
-          ->setParameter('name', 'Name')
-          ->orderBy('p.category', 'asc')
-          ->setMaxResults(1000)
-          ->getQuery()
-          ->getResult()
-          ;
+        return $query->getResult();
     }
-
-
-    /*
-    public function findOneBySomeField($value): ?Persona
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

@@ -19,7 +19,16 @@
 {% endblock %}
 
 {% block body %}
-    <h1 class="title is-size-4 title-gold">Tous les persos</h1>
+    <h1 class="title is-size-4 title-gold">Toutes les starz</h1>
+    <div class="content">
+        {% for persona in stars %}
+            <a href="{% if persona.routeParams %}{{ url('boommzer', persona.routeParams) }}{% endif %}">
+                <img src="{{ persona.url }}" title="{{ persona.name }}" alt="{{ persona.name }}" />
+            </a>
+        {% endfor %}
+    </div>
+
+    <h2 class="title is-size-4 title-gold">Tous les persos</h2>
     <div class="content">
         {% for persona in personas %}
             <a href="{% if persona.routeParams %}{{ url('boommzer', persona.routeParams) }}{% endif %}">
