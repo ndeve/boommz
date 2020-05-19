@@ -40,9 +40,8 @@ class PersonaRepository extends ServiceEntityRepository
         }
 
         $query->orderBy('p.category', 'asc')
-            ->setMaxResults(1000)
-            ->getQuery();
+            ->setMaxResults(1000);
 
-        return $query->getResult();
+        return $query->getQuery()->getResult();
     }
 }
