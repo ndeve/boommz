@@ -202,6 +202,7 @@ class Bubble
         $classes = '';
 
         $nbBubbles = count($this->getBox()->getBubbles());
+        $nbCar = 0;
 
         if ($this->getText()) {
             $nbCar = strlen(trim($this->getText()));
@@ -215,6 +216,10 @@ class Bubble
             else {
                 $classes .= ' sb';
             }
+        }
+
+        if ($nbCar > 200 && $this->order == 1 && $nbBubbles == 1) {
+            $classes .= ' alone';
         }
 
         if ($this->order == '1') {
