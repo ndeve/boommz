@@ -127,6 +127,13 @@ section.author {
             }
         }
 
+        &.alone {
+            p {
+                width: 300px;
+                left: -70px!important;
+            }
+        }
+
         &.p-1-1, &.w-5 {
             p {
                 font-size: 1.2rem;
@@ -268,9 +275,14 @@ section.author {
 }
 
 @media screen and (min-width: $tablet) {
-     .column .ccolumn blockquote.bubble.sb p {
-         width: 200px;
-     }
+    .column .ccolumn blockquote.bubble.sb p {
+        width: 200px;
+    }
+
+    .column .ccolumn blockquote.bubble.alone p {
+        width: 320px;
+        left: -100px!important;
+    }
 
     .column.lvl .ccolumn blockquote.bubble.sb p {
         width: 300px;
@@ -317,13 +329,6 @@ section.author {
 }
 .comic-title .ctitle .title {
     text-transform: capitalize;
-}
-
-.column .ccolumn blockquote.bubble.alone {
-    left: 0;
-    right: 0;
-    margin: auto;
-    max-width: 70%;
 }
 
 .edit-comic {
