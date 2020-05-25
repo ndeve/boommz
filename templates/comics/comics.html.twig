@@ -25,7 +25,7 @@
     <section class="page comics">
         <div class="columns is-multiline">
             {% for comic in comics %}
-                {% include "comic/block.html.twig" with {'small': (((currentPage is defined and currentPage > 0) or loop.index0 >2) ? 1 : 0), 'color': cycle(['odd', ''], loop.index0)} %}
+                {% include "comic/block.html.twig" with {'small': (((currentPage is defined and currentPage > 1) or loop.index0 >2) ? 1 : 0), 'color': cycle(['odd', ''], loop.index0)} %}
             {% endfor %}
         </div>
     </section>
