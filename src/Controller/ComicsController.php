@@ -11,18 +11,35 @@ class ComicsController extends Controller
 {
     
     /**
-     * @Route(  path="/comics/{page}",
+     * @Route(  path="/comics/",
      *          name="comics"
+     *      ),
+     * @Route(  path="/comics/{page}/",
+     *          name="comics_page",
+     *          requirements={"page"= "\d+"}
      *      )
      * @Template
      */
-    public function comics(int $page = 0)
+    public function comics(int $page = 1)
     {
         $em = $this->getDoctrine()->getManager();
-        $limit = 40;
-        $comics = $em->getRepository('App:Comic')->findByParams(['publish' => true, 'offset'=>$page*$limit, 'limit'=> $limit]);
 
-        return [ 'comics' => $comics ];
+        $page = $page -1;
+
+        $nb = $em->getRepository('App:Comic')->findByParams(['publish' => true, 'get_count' => 1]);
+
+        if ($page == 0) {
+            $limit = 35;
+            $offset = 0;
+        } else {
+            $limit = 40;
+            $offset = 35 + (($page-1)*$limit);
+        }
+
+        $maxPage = ceil((($nb-35)/40)+1);
+        $comics = $em->getRepository('App:Comic')->findByParams(['publish' => true, 'offset' => $offset, 'limit' => $limit]);
+
+        return [ 'comics' => $comics , 'currentPage' => $page+1, 'maxPage' => $maxPage ];
     }
 
     /**

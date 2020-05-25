@@ -25,12 +25,16 @@ class ComicRepository extends ServiceEntityRepository
      * @return mixed
      */
 
-    public function findByParams($params)
+    public function findByParams(array $params)
     {
-        $query = $this->createQueryBuilder('c')
-            ->orderBy('c.'. ($params['orderBy'] ?? 'id'), 'DESC')
-            ->setFirstResult($params['offset'] ?? 0)
-            ->setMaxResults($params['limit'] ?? 100);
+        $query = $this->createQueryBuilder('c');
+
+        if(isset($params['get_count'])) {
+            $query->select('count(c) as count');
+        }
+        else {
+            $query->select();
+        }
 
         if (isset($params['selected'])) {
             $query->andWhere('c.selected = 1');
@@ -47,6 +51,15 @@ class ComicRepository extends ServiceEntityRepository
         else {
             $query->andWhere('c.datePublication IS NOT NULL');
         }
+
+        if(isset($params['get_count'])) {
+            $count = $query->getQuery()->getResult();
+            return (int)$count[0]['count'];
+        }
+
+        $query->orderBy('c.'. ($params['orderBy'] ?? 'id'), 'DESC')
+            ->setFirstResult($params['offset'] ?? 0)
+            ->setMaxResults($params['limit'] ?? 100);
 
         return $query->getQuery()->getResult();
     }

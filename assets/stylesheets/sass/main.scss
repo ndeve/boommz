@@ -39,6 +39,9 @@ $breadcrumb-item-active-color: $blue;
 $breadcrumb-item-separator-color: $blue;
 
 $star-color: $green;
+
+$pagination-current-background-color: $green;
+
 // Import only what you need from Bulma
 @import "../../bulma/bulma.sass";
 

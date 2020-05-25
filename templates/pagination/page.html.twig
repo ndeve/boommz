@@ -1,0 +1,17 @@
+<nav class="pagination is-centered" role="navigation" aria-label="pagination">
+    {% if currentPage > 1 %}<a href="{% if currentPage == 2 %}{{ url('comics') }}{% else %}{{ url('comics_page', {'page': currentPage-1}) }}{% endif %}" class="pagination-previous">Précédente</a>{% endif %}
+    {% if maxPage > currentPage %}<a href="{{ url('comics_page', {'page': currentPage+1}) }}" class="pagination-next">Suivante</a>{% endif %}
+    <ul class="pagination-list">
+        {% for i in 1..maxPage %}
+            <li>
+            <a
+            class="pagination-link {% if currentPage == i %} is-current"  aria-current="page"{% else %}"
+            href="{% if i == 1 %}{{ url('comics') }}{% else %}{{ url('comics_page', {'page': i}) }}{% endif %}"
+            {% endif %}
+            aria-label="Goto page {{ i }}">
+            {{ i }}
+            </a>
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

@@ -1,5 +1,5 @@
 {% extends "layout.html.twig" %}
-{% block title %}Toutes les BDs sont sur Boomz!{% endblock %}
+{% block title %}{% if currentPage > 1 %}Les BDs du moment - Page {{ currentPage }}{% else %}Toutes les BDs sont sur Boomz!{% endif %}{% endblock %}
 
 {% block breadcrumb %}
     <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
@@ -10,18 +10,26 @@
                     <span>BOOMMZ!</span>
                 </a>
             </li>
-            <li class="is-active" aria-current="page"><a href="#">{% trans %}Toutes les BDs{% endtrans %}</a></li>
+            {% if currentPage > 1 %}
+                <li><a href="{{ url('comics') }}">{% trans %}Toutes les BDs{% endtrans %}</a></li>
+                <li class="is-active" aria-current="page"><a href="#">Page {{ currentPage }}</a></li>
+            {% else %}
+                <li class="is-active" aria-current="page"><a href="#">{% trans %}Toutes les BDs{% endtrans %}</a></li>
+            {% endif %}
         </ul>
     </nav>
 {% endblock %}
 
 {% block body %}
-    <h1 class="title">Toutes les BDs</h1>
+    <h1 class="title">Toutes les BDs{% if currentPage > 1 %} - Page {{ currentPage }}{% endif %}</h1>
     <section class="page comics">
         <div class="columns is-multiline">
             {% for comic in comics %}
-                {% include "comic/block.html.twig" with {'small': ((loop.index0 >2) ? 1 : 0), 'color': cycle(['odd', ''], loop.index0)} %}
+                {% include "comic/block.html.twig" with {'small': (((currentPage is defined and currentPage > 0) or loop.index0 >2) ? 1 : 0), 'color': cycle(['odd', ''], loop.index0)} %}
             {% endfor %}
         </div>
     </section>
+
+    {% include "pagination/page.html.twig" %}
+
 {% endblock body %}
