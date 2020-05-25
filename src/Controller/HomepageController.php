@@ -20,7 +20,7 @@ class HomepageController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $dayComics = $em->getRepository('App:Comic')->findByHomepage();
+        $dayComics = $em->getRepository('App:Comic')->findByParams(['selected' => 1, 'orderBy' => 'dateSelected']);
 
         $lastComics = $em->getRepository('App:Comic')->findByParams(['limit' => 12]);
 

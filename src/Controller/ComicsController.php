@@ -11,16 +11,17 @@ class ComicsController extends Controller
 {
     
     /**
-     * @Route(  path="/comics/",
-     *          name="comics"
+     * @Route(  path="/comics/{page}",
+     *          name="comics",
+     *          requirements={"page"= "\d*"}
      *      )
      * @Template
      */
-    public function comics()
+    public function comics(int $page = 0)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $comics = $em->getRepository('App:Comic')->findByParams(['publish' => true]);
+        $limit = 40;
+        $comics = $em->getRepository('App:Comic')->findByParams(['publish' => true, 'offset'=>$page*$limit, 'limit'=> $limit]);
 
         return [ 'comics' => $comics ];
     }

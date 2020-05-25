@@ -66,7 +66,7 @@
                     <a href="{{ url('character_create') }}#boommzcreator" class="navbar-item{% if  app.request.attributes.get('_route') == 'character_create' %} is-active{% endif %}">
                         {% trans %}Crée tes avatars{% endtrans %}
                     </a>
-                    <a href="{{ url('charactes') }}#boommzcreator" class="navbar-item{% if  app.request.attributes.get('_route') == 'charactes' %} is-active{% endif %}">
+                    <a href="{{ url('characters') }}#boommzcreator" class="navbar-item{% if  app.request.attributes.get('_route') == 'characters' %} is-active{% endif %}">
                         {% trans %}Toutes les starz{% endtrans %}
                     </a>
                     {% if is_granted ( 'IS_AUTHENTICATED_REMEMBERED' ) %}

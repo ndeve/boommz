@@ -28,11 +28,11 @@ class PersonaController extends Controller
 
     /**
      * @Route(  path="characters",
-     *          name="charactes"
+     *          name="characters"
      *      )
      * @Template
      */
-    public function charactersAction()
+    public function characters()
     {
         $em = $this->getDoctrine()->getManager();
         $stars = $em->getRepository('App:Persona')->findByParams(['star' => 1]);
