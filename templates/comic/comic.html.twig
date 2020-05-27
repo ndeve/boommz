@@ -90,6 +90,12 @@
     {% else %}
         {% include "comic/block_rating.html.twig" %}
 
+        {% if comic.persos %}
+            <b>Les Starz de la BD :</b>
+            {% for perso in comic.persos %}
+                <a href="{{ url('boommzer', perso.routeParams) }}" class="image circle starz"><img src="{{ perso.urlHead }}" alt="{{ perso.name }}" title="{{ perso.alias ?? perso.name }}" /></a>
+            {% endfor %}
+        {% endif %}
         <hr/>
 
         {% include "comment/block_comments.html.twig" %}

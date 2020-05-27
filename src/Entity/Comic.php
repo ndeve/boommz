@@ -495,4 +495,21 @@ class Comic
         return $this;
     }
 
+    public function getPersos()
+    {
+		$persos = [];
+    	foreach ($this->getPages() as $page) {
+    		foreach ($page->getBoxes() as $box) {
+    			foreach ($box->getBubbles() as $bubble) {
+				    $perso = $bubble->getPersona();
+    				if ($perso->isStar()) {
+						$persos[$perso->getId()] = $perso;
+				    }
+			    }
+		    }
+	    }
+
+    	return array_values($persos);
+    }
+
 }

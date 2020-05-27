@@ -210,7 +210,7 @@ class Persona
     public function getUrlHead()
     {
         if ('stars/' === $this->getPath()) {
-            return '/persona/'. $this->getPath() . Transliterator::urlize($this->getName()) .'.png';
+            return '/persona/'. $this->getPath() . 'head/'. Transliterator::urlize($this->getName()) .'.png';
         }
 
         $path = str_replace('w', '', $this->getPath());
@@ -358,5 +358,19 @@ class Persona
         }
 
         return $this;
+    }
+
+	public function getComic(): ?comic
+	{
+		return $this->comic;
+	}
+
+    public function isStar(): bool
+    {
+    	if ('stars/' === $this->getPath()) {
+    		return true;
+	    }
+
+    	return false;
     }
 }

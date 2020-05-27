@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Comic;
+use App\Entity\Persona;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -24,7 +25,6 @@ class ComicRepository extends ServiceEntityRepository
      *
      * @return mixed
      */
-
     public function findByParams(array $params)
     {
         $query = $this->createQueryBuilder('c');
@@ -58,6 +58,31 @@ class ComicRepository extends ServiceEntityRepository
         }
 
         $query->orderBy('c.'. ($params['orderBy'] ?? 'id'), 'DESC')
+            ->setFirstResult($params['offset'] ?? 0)
+            ->setMaxResults($params['limit'] ?? 100);
+
+        return $query->getQuery()->getResult();
+    }
+
+    /**
+     * @param $value
+     *
+     * @return mixed
+     */
+    public function findFromPerso(Persona $perso)
+    {
+        $query = $this->createQueryBuilder('c');
+
+	    $query->leftJoin('c.pages', 'page')
+	    ->leftJoin('page.boxes', 'box')
+	    ->leftJoin('box.bubbles', 'bubble')
+	    ->leftJoin('bubble.persona', 'persona')
+	    ->where('persona.id = :id')
+	    ->setParameter('id', $perso->getId());
+
+
+        $query->andWhere('c.datePublication IS NOT NULL')
+	        ->orderBy('c.'. ($params['orderBy'] ?? 'id'), 'DESC')
             ->setFirstResult($params['offset'] ?? 0)
             ->setMaxResults($params['limit'] ?? 100);
 

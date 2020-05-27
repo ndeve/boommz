@@ -16,7 +16,7 @@ $blue-darkest: #226A7B;
 
 $gold-lightest: #FFE8D2;
 $gold-light: #FFD5AB;
-$gold: #FFC285;
+$gold: #e8e6c9;
 $gold-dark: #E59E59;
 $gold-darkest: #C77C32;
 
@@ -178,21 +178,31 @@ $pagination-current-background-color: $green;
   width: 40px;
   display: inline-block;
   border-radius: 420%;
+
+  img {
+    display: block;
+    height: auto;
+    width: auto;
+    position: absolute;
+    top: 0px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  &.starz {
+    overflow: hidden;
+    vertical-align: middle;
+    background: #f7edb9;
+    img {
+      top: 43px;
+    }
+  }
 }
 .image.circle.big {
   height: 110px;
   width: 110px;
-}
-.image.circle img {
-  display: block;
-  height: auto;
-  width: auto;
-  position: absolute;
-  top: 0px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
 }
 
 .more {

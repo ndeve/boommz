@@ -23,7 +23,11 @@ class PersonaController extends Controller
      */
     public function boommzer(Persona $persona)
     {
-        return [ 'persona' => $persona ];
+
+    	$em = $this->getDoctrine()->getManager();
+    	$comics = $em->getRepository('App:Comic')->findFromPerso($persona);
+
+        return [ 'persona' => $persona, 'comics' => $comics ];
     }
 
     /**
