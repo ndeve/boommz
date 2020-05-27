@@ -38,15 +38,17 @@
                 {% endif %}
             </div>
 
-            <h2 class="title is-4">Toutes les BDs avec {{ persona.alias ?? persona.name }}</h2>
+            {% if comics %}
+                <h2 class="title is-4">Toutes les BDs avec {{ persona.alias ?? persona.name }}</h2>
 
-            <section class="page comics">
-                <div class="columns is-multiline">
-                    {% for comic in comics %}
-                        {% include "comic/block.html.twig" %}
-                    {% endfor %}
-                </div>
-            </section>
+                <section class="page comics">
+                    <div class="columns is-multiline">
+                        {% for comic in comics %}
+                            {% include "comic/block.html.twig" with {'medium' : true} %}
+                        {% endfor %}
+                    </div>
+                </section>
+            {% endif %}
 
         </div>
         <div class="column is-narrow c-right">
