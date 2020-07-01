@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200503065121 extends AbstractMigration
+final class Version20200529211054 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,9 +22,10 @@ final class Version20200503065121 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE TABLE rate (id INT AUTO_INCREMENT NOT NULL, comic_id INT DEFAULT NULL, user_id INT DEFAULT NULL, rate INT NOT NULL, INDEX IDX_DFEC3F39D663094A (comic_id), INDEX IDX_DFEC3F39A76ED395 (user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('ALTER TABLE rate ADD CONSTRAINT FK_DFEC3F39D663094A FOREIGN KEY (comic_id) REFERENCES comic (id)');
-        $this->addSql('ALTER TABLE rate ADD CONSTRAINT FK_DFEC3F39A76ED395 FOREIGN KEY (user_id) REFERENCES fos_user (id)');
+        $this->addSql('ALTER TABLE persona ADD has_head TINYINT(1) NOT NULL, ADD color INT NOT NULL');
+        $this->addSql('ALTER TABLE bubble ADD CONSTRAINT FK_EB20F1F7D8177B3F FOREIGN KEY (box_id) REFERENCES box (id)');
+        $this->addSql('ALTER TABLE bubble ADD CONSTRAINT FK_EB20F1F7F5F88DB9 FOREIGN KEY (persona_id) REFERENCES persona (id)');
+        $this->addSql('ALTER TABLE bubble ADD CONSTRAINT FK_EB20F1F7F675F31B FOREIGN KEY (author_id) REFERENCES fos_user (id)');
     }
 
     public function down(Schema $schema) : void
@@ -32,6 +33,9 @@ final class Version20200503065121 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('DROP TABLE rate');
+        $this->addSql('ALTER TABLE bubble DROP FOREIGN KEY FK_EB20F1F7D8177B3F');
+        $this->addSql('ALTER TABLE bubble DROP FOREIGN KEY FK_EB20F1F7F5F88DB9');
+        $this->addSql('ALTER TABLE bubble DROP FOREIGN KEY FK_EB20F1F7F675F31B');
+        $this->addSql('ALTER TABLE persona DROP has_head, DROP color');
     }
 }

@@ -49,6 +49,9 @@
 .mouth {
     z-index: 7;
 }
+#persona .star {
+    z-index: 6;
+}
 #boommzcreator .actions {
     background-color: #ffffff;
     border: solid 1px #76a094;
@@ -58,15 +61,11 @@
     position: relative;
     display: inline-block;
 }
-#boommzcreator .actions-sex {
-    float: left;
-}
 #boommzcreator .actions-main {
     float: none;
     width: auto;
     margin-bottom: 4px;
     display: block;
-    margin-left: 100px;
 }
 
 #boommzcreator .actions .button {

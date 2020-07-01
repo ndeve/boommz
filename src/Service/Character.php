@@ -34,13 +34,20 @@ class Character {
         unset($data['persona']);
 
         foreach ($data as $key => $value) {
-            if(file_exists(getcwd() . '/persona/creator/' . $key . '/' . $value . '.png') && $value != '0000') {
+            if ('starz' === $key) {
+                $img_bo = imagecreatefrompng(getcwd() . $value->getUrlHead());
+                imagecopy($dest_img, $img_bo, 0, 0, 0, 0, 35, 86);
+                $value = $value->getId();
+            }
+            else {
+                if (file_exists(getcwd() . '/persona/creator/' . $key . '/' . $value . '.png') && $value != '0000') {
                     $img_bo = imagecreatefrompng(getcwd() . '/persona/creator/' . $key . '/' . $value . '.png');
                     imagecopy($dest_img, $img_bo, 0, 0, 0, 0, 35, 86);
+                }
             }
 
             $name = $name . $value . '-';
-                $dir = $dir . $value . '/';
+            $dir = $dir . $value . '/';
         }
 
         $name = substr($name, 0, -1);
@@ -58,6 +65,7 @@ class Character {
 
     public function generateHeadCharacter($data)
     {
+        return;
         //alpha & transparency
         $dest_img = imagecreatetruecolor(35, 42);
 

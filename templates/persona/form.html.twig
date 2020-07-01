@@ -1,4 +1,4 @@
-<div class="actions actions-sex">
+<div class="actions actions-main" data-id="main">
     <div class="button is-light sex m" data-src="/persona/creator/men/ID.png"
          title="{% trans %}Homme{% endtrans %}">
         {% include "/svg/male.html.twig" %}
@@ -7,8 +7,6 @@
          title="{% trans %}Femme{% endtrans %}">
         {% include "/svg/female.html.twig" %}
     </div>
-</div>
-<div class="actions actions-main" data-id="main">
     <div class="button is-light color on" title="{% trans %}Choisis ta couleur{% endtrans %}" data-color="0">
         <div class="color-0"></div>
     </div>
@@ -17,6 +15,9 @@
     </div>
     <div class="button is-light clothes plus" title="{% trans %}Choisis tes habits{% endtrans %}" data-sect="clothes">
         <img src="/persona/creator/vest.png"/>
+    </div>
+    <div class="button is-light starz">
+        <img src="{{ asset('persona/stars/head/donald-trump.png') }}">
     </div>
     <div class="button is-light dice">
         {% include "/svg/dice.html.twig" %}
@@ -30,32 +31,28 @@
     <div class="button is-light sub on" title="{% trans %}Choisis tes cheveux{% endtrans %}"
          data-type="hair"
          data-max="36"
-         data-sect="head"
-         data-src="/persona/creator/hair/ID.png">
+         data-sect="head">
         <img src="/persona/creator/head.png"/>
         <img src="/persona/creator/hair/0026.png"/>
     </div>
     <div class="button is-light sub" title="{% trans %}Choisis tes yeux{% endtrans %}"
          data-type="eyes"
          data-max="29"
-         data-sect="head"
-         data-src="/persona/creator/eyes/ID.png">
+         data-sect="head">
         <img src="/persona/creator/head.png"/>
         <img src="/persona/creator/eyes/0001.png"/>
     </div>
     <div class="button is-light sub" title="{% trans %}Choisis ton nez{% endtrans %}"
          data-type="nose"
          data-max="8"
-         data-sect="head"
-         data-src="/persona/creator/nose/ID.png">
+         data-sect="head">
         <img src="/persona/creator/head.png"/>
         <img src="/persona/creator/nose/0001.png"/>
     </div>
     <div class="button is-light sub" title="{% trans %}Choisis ta bouche{% endtrans %}"
          data-type="mouth"
          data-max="30"
-         data-sect="head"
-         data-src="/persona/creator/mouth/ID.png">
+         data-sect="head">
         <img src="/persona/creator/head.png"/>
         <img src="/persona/creator/mouth/0001.png"/>
     </div>
@@ -68,34 +65,31 @@
     <div class="button is-light sub top" title="{% trans %}Choisis ton haut{% endtrans %}"
          data-type="top"
          data-max="40"
-         data-sect="clothes"
-         data-src="/persona/creator/top/ID.png">
+         data-sect="clothes">
         <img src="/persona/creator/top/0001.png"/>
     </div>
     <div class="button is-light sub vest" title="{% trans %}Choisis ta veste{% endtrans %}"
          data-type="vest"
          data-max="27"
-         data-sect="clothes"
-         data-src="/persona/creator/vest/ID.png">
+         data-sect="clothes">
         <img src="/persona/creator/vest/0001.png"/>
     </div>
     <div class="button is-light sub trousers" title="{% trans %}Choisis ton pantalon{% endtrans %}"
          data-type="trousers"
-         data-max="57"
-         data-sect="clothes"
-         data-src="/persona/creator/trousers/ID.png">
+         data-max="58"
+         data-sect="clothes">
         <img src="/persona/creator/trousers/0001.png"/>
     </div>
     <div class="button is-light sub hat" title="{% trans %}Choisis ton chapeau{% endtrans %}"
          data-type="hat"
          data-max="17"
-         data-sect="head"
-         data-src="/persona/creator/hat/ID.png">
+         data-sect="head">
         <img src="/persona/creator/hat/0003.png"/>
     </div>
 </div>
 
 <div id="persona">
+    <img src="{{ asset('persona/creator/eyes/0000.png') }}" class="star"/>
     <img src="/persona/creator/women/0000.png" class="persona"/>
 </div>
 
@@ -136,6 +130,14 @@
     <div class="button is-light color" data-color="9">
         <div class="color-9"></div>
     </div>
+</div>
+
+<div class="actions actionsg starz is-hidden">
+    {% for perso in personas %}
+        <div class="button is-light star" data-id="{{ perso.id }}" data-sex="{{ perso.sex }}" data-color="{{ perso.color }}" data-src="{{ perso.urlHead }}">
+            <img src="{{ perso.urlHead }}" alt="{{ perso.alias ?? perso.name }}" title="{{ perso.alias ?? perso.name }}" />
+        </div>
+    {% endfor %}
 </div>
 
 <div class="actions actionsg head is-hidden"></div>

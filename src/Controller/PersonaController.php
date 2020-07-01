@@ -5,14 +5,14 @@ namespace App\Controller;
 use App\Entity\Persona;
 use App\Form\PersonaCreatorType;
 use App\Service\Character;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 
-class PersonaController extends Controller
+class PersonaController extends AbstractController
 {
 
     /**
@@ -84,7 +84,9 @@ class PersonaController extends Controller
      */
     public function create(Persona $persona = null, Request $request, Character $character)
     {
-        $form = $this->createForm(PersonaCreatorType::class);
+	    $em = $this->getDoctrine()->getManager();
+
+	    $form = $this->createForm(PersonaCreatorType::class);
 
         if ($persona) {
             $aPersona = explode('-', $persona->getPath());
@@ -127,7 +129,8 @@ class PersonaController extends Controller
                 ->setPath($url)
                 ->setCategory('B!')
                 ->setPublic(1)
-                ->setName('Name');
+                ->setName('Name')
+                ->setHasHead(true);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($persona);
@@ -139,6 +142,7 @@ class PersonaController extends Controller
 
         return [
           'form' => $form->createView(),
+        'personas' => $em->getRepository('App:Persona')->findByParams([ 'star' => 1, 'hasHead' => true]),
         ];
     }
 

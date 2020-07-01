@@ -23,6 +23,11 @@ class PersonaRepository extends ServiceEntityRepository
     {
         $query = $this->createQueryBuilder('p');
 
+        if (isset($params['hasHead']) && $params['hasHead']) {
+            $query->andWhere('p.hasHead = :hasHead')
+                ->setParameter('hasHead', $params['hasHead']);
+        }
+
         if (isset($params['star']) && $params['star']) {
             $query->andWhere('p.path = :path')
                 ->setParameter('path', 'stars/')

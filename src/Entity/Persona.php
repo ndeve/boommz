@@ -89,6 +89,21 @@ class Persona
      */
     private $personas;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $hasHead;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $color;
+
+    /**
+     * @ORM\Column(type="string", length=1, nullable=true)
+     */
+    private $sex;
+
     public function __construct()
     {
         $this->dateCreation = new \DateTime();
@@ -361,9 +376,9 @@ class Persona
     }
 
 	public function getComic(): ?comic
-	{
-		return $this->comic;
-	}
+                           	{
+                           		return $this->comic;
+                           	}
 
     public function isStar(): bool
     {
@@ -372,5 +387,41 @@ class Persona
 	    }
 
     	return false;
+    }
+
+    public function getHasHead(): ?bool
+    {
+        return $this->hasHead;
+    }
+
+    public function setHasHead(bool $hasHead): self
+    {
+        $this->hasHead = $hasHead;
+
+        return $this;
+    }
+
+    public function getColor(): ?int
+    {
+        return $this->color;
+    }
+
+    public function setColor(int $color): self
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    public function getSex(): ?string
+    {
+        return $this->sex;
+    }
+
+    public function setSex(string $sex): self
+    {
+        $this->sex = $sex;
+
+        return $this;
     }
 }

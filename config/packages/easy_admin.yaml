@@ -22,6 +22,9 @@ easy_admin:
                     - description
                     - biography
                     - friends
+                    - hasHead
+                    - color
+                    - sex
         Background:
             class: App\Entity\Background
 
