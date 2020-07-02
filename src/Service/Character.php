@@ -65,7 +65,6 @@ class Character {
 
     public function generateHeadCharacter($data)
     {
-        return;
         //alpha & transparency
         $dest_img = imagecreatetruecolor(35, 42);
 
