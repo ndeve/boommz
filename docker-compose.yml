@@ -9,7 +9,7 @@ services:
     volumes:
       - .docker/config/vhosts:/etc/apache2/sites-enabled
       - .:/home/wwwroot/boommz
-      - /etc/letsencrypt:/etc/letsencrypt
+      - /home/letsencrypt:/home/letsencrypt
     depends_on:
       - php
 
