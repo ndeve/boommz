@@ -25,3 +25,8 @@ yarn-error.log
 /public/dump_boumz.sql
 /assets/bulma-carousel/src/demo/
 /public/comics/
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
