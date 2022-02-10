@@ -8,7 +8,7 @@
     "fontfaceobserver": "^2.0.13",
     "jquery": "^3.4.1",
     "lazysizes": "^5.2.1",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "sass-loader": "^7.1.0",
     "webpack-notifier": "^1.6.0"
   },
